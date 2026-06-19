@@ -157,7 +157,7 @@ const SERVICES_DATA: ServiceDetail[] = [
     id: 'social-media',
     name: 'Social Media Management',
     icon: Share2,
-    overview: 'Build brand presence where your customers hang out. Banasri Das designs tailored social media growth plans that establish community and engagement.',
+    overview: 'Build brand presence where your customers hang out. Banashree Das designs tailored social media growth plans that establish community and engagement.',
     benefits: [
       'Stay top-of-mind for potential customers.',
       'Develop a highly professional brand voice across channels.',

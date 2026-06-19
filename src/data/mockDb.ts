@@ -121,7 +121,7 @@ const SEED_DATA: DbSchema = {
       projectType: 'Dental Clinic Website',
       budgetRange: '₹50,000 - ₹80,000',
       status: 'won',
-      notes: 'Proposal accepted! Received 50% advance payment. Design phase kicking off on Monday. Banasri Dash mapping SEO keywords.',
+      notes: 'Proposal accepted! Received 50% advance payment. Design phase kicking off on Monday. Banashree Das mapping SEO keywords.',
       createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
     },
     {

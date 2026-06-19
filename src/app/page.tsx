@@ -598,7 +598,7 @@ export default function Home() {
               Next Digital Experience?
             </h2>
             <p className="text-zinc-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10">
-              Schedule a free call with Debanjan and Banasri to discuss how to drive visibility, authority, and sales for your business.
+              Schedule a free call with Debanjan and Banashree to discuss how to drive visibility, authority, and sales for your business.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -41,7 +41,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: 'Alex Riviera',
     role: 'Operations Director',
     company: 'Riviera Restaurant Group',
-    content: 'The custom website and digital branding package exceeded our expectations. Debanjan is a wizard with UI and Next.js, and Banasri mapped a content strategy that brought us thousands of new visitors.',
+    content: 'The custom website and digital branding package exceeded our expectations. Debanjan is a wizard with UI and Next.js, and Banashree mapped a content strategy that brought us thousands of new visitors.',
     rating: 5,
     initials: 'AR',
     color: 'from-emerald-600 to-teal-500',
