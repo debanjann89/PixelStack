@@ -1,0 +1,303 @@
+@import "tailwindcss";
+
+@theme {
+  /* Override default Tailwind colors to adapt to custom green theme variables */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-lightest: var(--primary-lightest);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  
+  --color-blue-600: var(--primary-dark);
+  --color-blue-500: var(--primary);
+  --color-blue-400: var(--primary-light);
+  --color-blue-300: var(--primary-lightest);
+  
+  --color-indigo-600: var(--secondary-dark);
+  --color-indigo-500: var(--secondary);
+  --color-indigo-400: var(--secondary-light);
+  
+  --color-cyan-500: var(--accent);
+  --color-cyan-400: var(--accent-light);
+  
+  --color-purple-950: var(--primary-dark);
+  --color-purple-900: var(--primary-dark);
+  --color-purple-800: var(--primary-dark);
+  --color-purple-700: var(--primary-dark);
+  --color-purple-600: var(--primary-dark);
+  --color-purple-50: var(--primary-lightest);
+  --color-purple-500: var(--primary);
+  --color-purple-400: var(--accent);
+  --color-purple-300: var(--accent-light);
+  --color-purple-200: var(--accent-light);
+  --color-purple-100: var(--primary-lightest);
+  
+  --color-pink-950: var(--secondary-dark);
+  --color-pink-900: var(--secondary-dark);
+  --color-pink-800: var(--secondary-dark);
+  --color-pink-700: var(--secondary-dark);
+  --color-pink-600: var(--secondary-dark);
+  --color-pink-500: var(--secondary);
+  --color-pink-400: var(--secondary-light);
+  --color-pink-300: var(--secondary-light);
+  --color-pink-200: var(--secondary-light);
+  
+  --color-indigo-900: var(--secondary-dark);
+  --color-indigo-950: var(--secondary-dark);
+
+  /* Override neutrals to make them theme-aware */
+  --color-black: var(--bg-black);
+  --color-white: var(--fg-white);
+  
+  --color-zinc-950: var(--neutral-950);
+  --color-zinc-900: var(--neutral-900);
+  --color-zinc-800: var(--neutral-800);
+  --color-zinc-700: var(--neutral-700);
+  --color-zinc-600: var(--neutral-600);
+  --color-zinc-500: var(--neutral-500);
+  --color-zinc-400: var(--neutral-400);
+  --color-zinc-300: var(--neutral-300);
+  --color-zinc-200: var(--neutral-200);
+  --color-zinc-100: var(--neutral-100);
+  --color-zinc-50: var(--neutral-50);
+
+  /* Animation overrides */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-gradient-move: gradient-move 6s ease infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.15; filter: blur(80px); }
+    50% { opacity: 0.35; filter: blur(100px); }
+  }
+  @keyframes gradient-move {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+:root {
+  /* Default: Dark Forest Green Theme */
+  --background: #020604;
+  --foreground: #ecfdf5;
+  --card: #050e09;
+  --card-foreground: #ecfdf5;
+  --border: #0d2216;
+  --ring: #10b981;
+
+  --primary: #10b981;        /* Emerald 500 */
+  --primary-light: #34d399;  /* Emerald 400 */
+  --primary-dark: #059669;   /* Emerald 600 */
+  --primary-lightest: #a7f3d0; /* Emerald 200 */
+  
+  --secondary: #14b8a6;      /* Teal 500 */
+  --secondary-light: #2dd4bf;/* Teal 400 */
+  --secondary-dark: #0d9488; /* Teal 600 */
+  
+  --accent: #34d399;         /* Mint 400 */
+  --accent-light: #6ee7b7;   /* Mint 300 */
+  
+  /* Overrides for black/white */
+  --bg-black: #020604;
+  --fg-white: #ffffff;
+  
+  /* Neutrals for Dark Mode (Zinc equivalents) */
+  --neutral-950: #040c08;
+  --neutral-900: #06130d;
+  --neutral-800: #0c2217;
+  --neutral-700: #123524;
+  --neutral-600: #6b7280;
+  --neutral-500: #9ca3af;
+  --neutral-400: #d1d5db;
+  --neutral-300: #e5e7eb;
+  --neutral-200: #f3f4f6;
+  --neutral-100: #f9fafb;
+  --neutral-50: #ffffff;
+
+  --grid-line-rgb: 16, 185, 129;
+  --grid-opacity: 0.05;
+  --glass-bg-rgb: 5, 14, 9;
+  --glass-border-rgb: 255, 255, 255;
+  --glass-border-opacity: 0.08;
+  --glass-shadow: rgba(0, 0, 0, 0.7);
+}
+
+html.light {
+  /* Light Mint Green Theme */
+  --background: #f0fdf4;     /* Emerald 50 */
+  --foreground: #062f1e;     /* Emerald 950 */
+  --card: #ffffff;           /* Pure White */
+  --card-foreground: #062f1e;
+  --border: #d1fae5;         /* Emerald 100 */
+  --ring: #059669;
+
+  --primary: #059669;        /* Emerald 600 */
+  --primary-light: #10b981;  /* Emerald 500 */
+  --primary-dark: #047857;   /* Emerald 700 */
+  --primary-lightest: #34d399;
+  
+  --secondary: #0d9488;      /* Teal 600 */
+  --secondary-light: #14b8a6;/* Teal 500 */
+  --secondary-dark: #0f766e; /* Teal 700 */
+  
+  --accent: #059669;
+  --accent-light: #10b981;
+
+  /* Overrides for black/white in Light Mode */
+  --bg-black: #f0fdf4;       /* bg-black becomes light background */
+  --fg-white: #062f1e;       /* fg-white becomes dark green text */
+
+  /* Neutrals for Light Mode (Zinc equivalents) */
+  --neutral-950: #ffffff;    /* bg-zinc-950 becomes white */
+  --neutral-900: #f8fafc;    /* bg-zinc-900 becomes light bg */
+  --neutral-800: #e2e8f0;    /* border-zinc-800 becomes light border */
+  --neutral-700: #062f1e;    /* placeholder/text becomes dark green */
+  --neutral-600: #4b5563;    /* gray-600 */
+  --neutral-500: #6b7280;    /* gray-500 */
+  --neutral-400: #374151;    /* text-zinc-400 becomes dark gray */
+  --neutral-300: #1f2937;    /* text-zinc-300 becomes darker gray */
+  --neutral-200: #e2e8f0;    /* borders */
+  --neutral-100: #0f172a;    /* text-zinc-100 */
+  --neutral-50: #0f172a;
+
+  --grid-line-rgb: 5, 150, 105;
+  --grid-opacity: 0.08;
+  --glass-bg-rgb: 255, 255, 255;
+  --glass-border-rgb: 5, 150, 105;
+  --glass-border-opacity: 0.12;
+  --glass-shadow: rgba(5, 150, 105, 0.04);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(var(--grid-line-rgb), var(--grid-opacity)) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--grid-line-rgb), var(--grid-opacity)) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 65% 55% at 50% 25%, #000 60%, transparent 100%);
+  transition: background-image 0.3s ease;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(var(--glass-bg-rgb), 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(var(--glass-border-rgb), var(--glass-border-opacity));
+  box-shadow: 0 4px 30px var(--glass-shadow);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(var(--glass-bg-rgb), 0.04) 0%, rgba(var(--glass-bg-rgb), 0.01) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--glass-border-rgb), var(--glass-border-opacity));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(var(--grid-line-rgb), 0.25);
+  background: linear-gradient(135deg, rgba(var(--glass-bg-rgb), 0.08) 0%, rgba(var(--glass-bg-rgb), 0.03) 100%);
+  box-shadow: 0 10px 35px -10px rgba(16, 185, 129, 0.25);
+}
+
+.timeline-line {
+  background: linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
+}
+
+/* Subtle glow nodes */
+.glow-spot {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--grid-line-rgb), 0.15) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* Blueprint grid pattern */
+.blueprint-grid {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(var(--grid-line-rgb), 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--grid-line-rgb), 0.1) 1px, transparent 1px);
+}
+
+/* Button Visibility & Contrast Polish in Light Mode */
+html.light button,
+html.light .btn,
+html.light a[class*="bg-"] {
+  /* Default button text should be dark forest green for light backgrounds */
+  color: var(--foreground);
+}
+
+/* Force true white text inside buttons that have a colored background or gradient */
+html.light button.bg-primary,
+html.light button.bg-blue-600,
+html.light button[class*="bg-primary-"],
+html.light button[class*="bg-gradient-"],
+html.light a.bg-primary,
+html.light a.bg-blue-600,
+html.light a[class*="bg-primary-"],
+html.light a[class*="bg-gradient-"] {
+  color: #ffffff !important;
+}
+
+/* For buttons with text-white class, force it to be true white in light mode only if inside a button */
+html.light button .text-white,
+html.light .btn .text-white,
+html.light a[class*="bg-"] .text-white {
+  color: #ffffff !important;
+}
+
+/* In light mode, ensure that inner button wrappers (like glass border buttons) have dark green text on white background */
+html.light button span.bg-zinc-950,
+html.light .btn span.bg-zinc-950,
+html.light a span.bg-zinc-950,
+html.light button span.bg-black,
+html.light .btn span.bg-black,
+html.light a span.bg-black {
+  color: var(--foreground) !important;
+}
+
+/* Make sure the text on light buttons is slightly bolder for professional readability */
+html.light button,
+html.light .btn {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
