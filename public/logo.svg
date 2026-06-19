@@ -1,0 +1,54 @@
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 32 32"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <!-- Layer 1: Mint to Emerald -->
+    <linearGradient id="logoLayer1" x1="16" y1="4" x2="16" y2="15" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#34d399" />
+      <stop offset="100%" stopColor="#10b981" />
+    </linearGradient>
+    <!-- Layer 2: Emerald to Dark Emerald -->
+    <linearGradient id="logoLayer2" x1="16" y1="10" x2="16" y2="21" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#10b981" />
+      <stop offset="100%" stopColor="#059669" />
+    </linearGradient>
+    <!-- Layer 3: Dark Emerald to Border Deep Green -->
+    <linearGradient id="logoLayer3" x1="16" y1="16" x2="16" y2="27" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#059669" />
+      <stop offset="100%" stopColor="#0d2216" />
+    </linearGradient>
+  </defs>
+
+  <!-- Bottom Layer -->
+  <path
+    d="M16 27L28 21.5L16 16L4 21.5L16 27Z"
+    fill="url(#logoLayer3)"
+    stroke="#0d2216"
+    stroke-width="1.2"
+    stroke-linejoin="round"
+    opacity="0.4"
+  />
+
+  <!-- Middle Layer -->
+  <path
+    d="M16 21L28 15.5L16 10L4 15.5L16 21Z"
+    fill="url(#logoLayer2)"
+    stroke="#059669"
+    stroke-width="1.2"
+    stroke-linejoin="round"
+    opacity="0.75"
+  />
+
+  <!-- Top Layer -->
+  <path
+    d="M16 15L28 9.5L16 4L4 9.5L16 15Z"
+    fill="url(#logoLayer1)"
+    stroke="#10b981"
+    stroke-width="1.2"
+    stroke-linejoin="round"
+  />
+</svg>
