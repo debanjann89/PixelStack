@@ -1,6 +1,6 @@
 'use server';
 
-import { getDb, saveDb, Lead, ContactSubmission, Consultation, Project } from '@/data/mockDb';
+import { supabase } from '@/lib/supabase';
 import {
   ContactFormSchema,
   ConsultationSchema,
@@ -8,17 +8,129 @@ import {
   ConsultationInput
 } from './schemas';
 
+// Static Portfolio Projects (used by public portfolio page)
+const PORTFOLIO_PROJECTS = [
+  {
+    id: 'bistro',
+    title: 'The Riviera Bistro',
+    category: 'Restaurants',
+    overview: 'A premium ordering & booking website designed for a fine dining restaurant group. Highlights custom reservations, high-fidelity gallery layout, and full responsiveness.',
+    desc: 'The restaurant was losing over 30% of its reservations due to a slow, confusing third-party scheduling widget. We designed a clean, immersive visual experience and custom seat booking API flow.',
+    tech: ['Next.js 15', 'Framer Motion', 'Tailwind CSS', 'PostCSS'],
+    goals: [
+      'Build trust through premium photography showcases.',
+      'Reduce seat reservation friction to under 3 steps.',
+      'Optimize page speed for mobile customers on slow connections.'
+    ],
+    results: [
+      '+135% Increase in online bookings in 30 days.',
+      'Average load time decreased from 4.8s to 0.4s.',
+      'Saved estimated ₹12,000/month in booking system fees.'
+    ],
+    duration: '2 Weeks',
+    bgGradient: 'from-amber-600/10 to-orange-700/20'
+  },
+  {
+    id: 'legal',
+    title: 'Jenkins Legal Associates',
+    category: 'Law Firms',
+    overview: 'An authoritative web presence built for high-value corporate litigation clients. Features consultation funnels, clean typography, and search index optimization.',
+    desc: 'Jenkins Law wanted to attract corporate compliance accounts. We built an enterprise-level site projecting absolute authority, featuring secure booking funnels and structured profile matrixes.',
+    tech: ['Next.js 15', 'TypeScript', 'React Hook Form', 'Zod'],
+    goals: [
+      'Project corporate authority and professionalism.',
+      'Securely gather consultation details through validated forms.',
+      'Ensure high indexability for local search keywords.'
+    ],
+    results: [
+      '+85% Increase in corporate consultation inquiries.',
+      'Perfect 100/100 Lighthouse SEO and Best Practices scores.',
+      'Ranked #1 locally for compliance search terms within 4 weeks.'
+    ],
+    duration: '3 Weeks',
+    bgGradient: 'from-emerald-600/10 to-teal-800/20'
+  },
+  {
+    id: 'dental',
+    title: 'Apex Dental Care',
+    category: 'Dental Clinics',
+    overview: 'A modern clinic portal allowing patients to schedule treatments, read verified credentials, and check patient feedback.',
+    desc: 'Apex Dental needed to automate booking, reduce front-desk phone overload, and build digital trust. We designed a welcoming, light-themed responsive patient portal.',
+    tech: ['Next.js 15', 'Tailwind CSS', 'Lucide React'],
+    goals: [
+      'Design clean layouts that resolve medical anxiety.',
+      'Implement direct appointment booking structures.',
+      'Showcase customer reviews and treatment pricing grids.'
+    ],
+    results: [
+      '250+ Appointments booked online in month one.',
+      'Reduced front-desk booking inquiries by 45%.',
+      'Optimized layout flows for mobile-first patient browsing.'
+    ],
+    duration: '2.5 Weeks',
+    bgGradient: 'from-emerald-500/10 to-teal-700/20'
+  },
+  {
+    id: 'resort',
+    title: 'Grand Palace Resorts',
+    category: 'Hotels',
+    overview: 'An immersive visual showcase website for a luxury resort chain driving direct bookings and bypassing travel agent fees.',
+    desc: 'The client was paying up to 18% in commissions to online travel platforms. We created a high-fidelity media-rich website that features immersive rooms previewing and direct booking redirects.',
+    tech: ['Next.js 15', 'Framer Motion', 'PostCSS'],
+    goals: [
+      'Develop high-fidelity visual displays for luxury suites.',
+      'Bypass third-party commission models through direct calls-to-action.',
+      'Support multi-language translation paths.'
+    ],
+    results: [
+      '+40% Growth in direct bookings in 60 days.',
+      'Bypassed travel portal commissions, saving ₹45,000+ monthly.',
+      'Perfect media load speeds and optimized image assets.'
+    ],
+    duration: '3 Weeks',
+    bgGradient: 'from-primary/10 to-secondary/20'
+  },
+  {
+    id: 'devtech',
+    title: 'DevTech Solutions',
+    category: 'Businesses',
+    overview: 'A premium, modern SaaS-level homepage designed to showcase software products and generate enterprise leads.',
+    desc: 'DevTech Solutions required a modern B2B website to support their enterprise sales team. We built a beautiful landing page with interactive product mockups and validated contact fields.',
+    tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Zod'],
+    goals: [
+      'Align design aesthetics with next-gen technology startups.',
+      'Convert enterprise traffic through targeted contact funnels.',
+      'Display product features through mock interactive grids.'
+    ],
+    results: [
+      '4.9/5 Rating from company board of directors.',
+      'Sub-500ms global node rendering response times.',
+      '+110% Growth in newsletter opt-ins and demo requests.'
+    ],
+    duration: '2 Weeks',
+    bgGradient: 'from-teal-600/10 to-emerald-800/20'
+  }
+];
+
 // Helper to parse budget to numerical value for analytics
 function getBudgetValue(range: string): number {
+  if (!range) return 50000;
   if (range.includes('Under')) return 25000;
   if (range.includes('50,000') && range.includes('80,000')) return 65000;
   if (range.includes('80,000') && range.includes('1,20,000')) return 100000;
   if (range.includes('1,20,000') && range.includes('2,00,000')) return 160000;
   if (range.includes('2,00,000')) return 250000;
-  return 50000; // default average
+  // Parse generic number if it exists
+  const parsed = parseInt(range.replace(/[^0-9]/g, ''), 10);
+  return isNaN(parsed) ? 50000 : parsed;
 }
 
-// 1. Submit Contact Form
+// 1. Fetch Static Portfolio Projects
+export async function getProjects() {
+  return PORTFOLIO_PROJECTS;
+}
+
+// 2. Submit Contact Form
 export async function submitContactForm(prevState: any, formData: ContactFormInput) {
   const result = ContactFormSchema.safeParse(formData);
   
@@ -31,50 +143,53 @@ export async function submitContactForm(prevState: any, formData: ContactFormInp
   }
 
   const data = result.data;
-  const db = await getDb();
 
-  const newSubmission: ContactSubmission = {
-    id: `sub-${Date.now()}`,
-    name: data.name,
-    email: data.email,
-    phone: data.phone,
-    businessName: data.businessName,
-    message: data.message,
-    createdAt: new Date().toISOString(),
-  };
+  try {
+    // 1. Insert into messages table
+    const { error: msgError } = await supabase
+      .from('messages')
+      .insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        business_name: data.businessName,
+        project_type: data.projectType,
+        budget_range: data.budgetRange,
+        message: data.message
+      });
 
-  const newLead: Lead = {
-    id: `lead-${Date.now()}`,
-    leadName: data.name,
-    businessName: data.businessName,
-    phone: data.phone,
-    email: data.email,
-    projectType: data.projectType,
-    budgetRange: data.budgetRange,
-    status: 'new',
-    notes: `Submitted contact form: "${data.message.substring(0, 100)}..."`,
-    createdAt: new Date().toISOString(),
-  };
+    if (msgError) throw msgError;
 
-  db.contact_submissions.unshift(newSubmission);
-  db.leads.unshift(newLead);
+    // 2. Insert into leads table
+    const { error: leadError } = await supabase
+      .from('leads')
+      .insert({
+        name: data.name,
+        business_name: data.businessName,
+        phone: data.phone,
+        email: data.email,
+        project_type: data.projectType,
+        budget_range: data.budgetRange,
+        status: 'new',
+        notes: `Submitted contact form message: "${data.message.substring(0, 100)}..."`
+      });
 
-  const saved = await saveDb(db);
-  
-  if (!saved) {
+    if (leadError) throw leadError;
+
+    return {
+      success: true,
+      message: 'Thank you! Your message has been sent. We will get back to you within 24 hours.',
+    };
+  } catch (err: any) {
+    console.error('Error submitting contact form:', err);
     return {
       success: false,
-      message: 'Server error. Failed to save submission.',
+      message: err.message || 'Server error. Failed to save submission.',
     };
   }
-
-  return {
-    success: true,
-    message: 'Thank you! Your message has been sent. We will get back to you within 24 hours.',
-  };
 }
 
-// 2. Book Consultation
+// 3. Book Consultation
 export async function bookConsultation(prevState: any, formData: ConsultationInput) {
   const result = ConsultationSchema.safeParse(formData);
 
@@ -87,92 +202,161 @@ export async function bookConsultation(prevState: any, formData: ConsultationInp
   }
 
   const data = result.data;
-  const db = await getDb();
 
-  const newConsultation: Consultation = {
-    id: `cons-${Date.now()}`,
-    clientName: data.clientName,
-    email: data.email,
-    phone: data.phone,
-    date: data.date,
-    projectType: data.projectType,
-    createdAt: new Date().toISOString(),
-  };
+  try {
+    // 1. Insert into consultations table
+    const { error: consError } = await supabase
+      .from('consultations')
+      .insert({
+        client_name: data.clientName,
+        email: data.email,
+        phone: data.phone,
+        date: data.date,
+        project_type: data.projectType
+      });
 
-  const newLead: Lead = {
-    id: `lead-${Date.now()}`,
-    leadName: data.clientName,
-    businessName: 'Individual / TBD',
-    phone: data.phone,
-    email: data.email,
-    projectType: data.projectType,
-    budgetRange: '₹50,000 - ₹80,000', // default min budget range
-    status: 'new',
-    notes: `Booked free consultation for date: ${data.date}. Project: ${data.projectType}`,
-    createdAt: new Date().toISOString(),
-  };
+    if (consError) throw consError;
 
-  db.consultations.unshift(newConsultation);
-  db.leads.unshift(newLead);
+    // 2. Insert into leads table
+    const { error: leadError } = await supabase
+      .from('leads')
+      .insert({
+        name: data.clientName,
+        business_name: 'Individual / TBD',
+        phone: data.phone,
+        email: data.email,
+        project_type: data.projectType,
+        budget_range: '₹50,000 - ₹80,000',
+        status: 'new',
+        notes: `Booked free consultation for date: ${data.date}.`
+      });
 
-  const saved = await saveDb(db);
+    if (leadError) throw leadError;
 
-  if (!saved) {
+    return {
+      success: true,
+      message: 'Consultation successfully scheduled! We will contact you to confirm the timing.',
+    };
+  } catch (err: any) {
+    console.error('Error booking consultation:', err);
     return {
       success: false,
-      message: 'Server error. Failed to book consultation.',
+      message: err.message || 'Server error. Failed to book consultation.',
     };
   }
-
-  return {
-    success: true,
-    message: `Consultation successfully scheduled! We will contact you to confirm the timing.`,
-  };
 }
 
-// 3. Update Lead Status (Admin only)
-export async function updateLeadStatus(leadId: string, status: Lead['status'], notes: string) {
+// 4. Update Lead Status
+export async function updateLeadStatus(leadId: string, status: string, notes: string) {
   try {
-    const db = await getDb();
-    const leadIndex = db.leads.findIndex((l) => l.id === leadId);
+    const { error } = await supabase
+      .from('leads')
+      .update({ status, notes })
+      .eq('id', leadId);
 
-    if (leadIndex === -1) {
-      return { success: false, message: 'Lead not found.' };
-    }
-
-    db.leads[leadIndex].status = status;
-    db.leads[leadIndex].notes = notes;
-
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to update.' };
-
+    if (error) throw error;
     return { success: true, message: 'Lead updated successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+  } catch (err: any) {
+    console.error('Error updating lead status:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 4. Fetch Dashboard Data
+// 5. Fetch Dashboard Data (Overview + Tables)
 export async function getDashboardData() {
   try {
-    const db = await getDb();
-    
-    const totalLeads = db.leads.length;
-    const newLeads = db.leads.filter((l) => l.status === 'new').length;
-    const contactedLeads = db.leads.filter((l) => l.status === 'contacted').length;
-    const proposalLeads = db.leads.filter((l) => l.status === 'proposal').length;
-    const wonLeads = db.leads.filter((l) => l.status === 'won').length;
-    const lostLeads = db.leads.filter((l) => l.status === 'lost').length;
+    // Fetch leads
+    const { data: leads, error: leadsErr } = await supabase
+      .from('leads')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-    // Analytics Calculations
+    if (leadsErr) throw leadsErr;
+
+    // Fetch messages (submissions)
+    const { data: messages, error: msgsErr } = await supabase
+      .from('messages')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (msgsErr) throw msgsErr;
+
+    // Fetch consultations
+    const { data: consultations, error: consErr } = await supabase
+      .from('consultations')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (consErr) throw consErr;
+
+    // Fetch client projects
+    const { data: clientProjects, error: projErr } = await supabase
+      .from('projects')
+      .select('*, clients(name, business_name)')
+      .order('created_at', { ascending: false });
+
+    if (projErr) throw projErr;
+
+    // Fetch invoices
+    const { data: invoices, error: invErr } = await supabase
+      .from('invoices')
+      .select('*, clients(name, business_name)')
+      .order('created_at', { ascending: false });
+
+    if (invErr) throw invErr;
+
+    // Map leads to frontend types
+    const mappedLeads = (leads || []).map((l: any) => ({
+      id: l.id,
+      leadName: l.name,
+      businessName: l.business_name || '',
+      phone: l.phone || '',
+      email: l.email || '',
+      projectType: l.project_type || '',
+      budgetRange: l.budget_range || '',
+      status: l.status || 'new',
+      notes: l.notes || '',
+      createdAt: l.created_at
+    }));
+
+    // Map messages to submissions
+    const mappedSubmissions = (messages || []).map((m: any) => ({
+      id: m.id,
+      name: m.name,
+      email: m.email || '',
+      phone: m.phone || '',
+      businessName: m.business_name || '',
+      message: m.message || '',
+      projectType: m.project_type || '',
+      budgetRange: m.budget_range || '',
+      createdAt: m.created_at
+    }));
+
+    // Map consultations
+    const mappedConsultations = (consultations || []).map((c: any) => ({
+      id: c.id,
+      clientName: c.client_name,
+      email: c.email || '',
+      phone: c.phone || '',
+      date: c.date,
+      projectType: c.project_type || '',
+      createdAt: c.created_at
+    }));
+
+    const totalLeads = mappedLeads.length;
+    const newLeads = mappedLeads.filter((l) => l.status === 'new').length;
+    const contactedLeads = mappedLeads.filter((l) => l.status === 'contacted').length;
+    const proposalLeads = mappedLeads.filter((l) => l.status === 'proposal').length;
+    const wonLeads = mappedLeads.filter((l) => l.status === 'won').length;
+    const lostLeads = mappedLeads.filter((l) => l.status === 'lost').length;
+
     const winRate = totalLeads > 0 ? Math.round((wonLeads / (wonLeads + lostLeads || 1)) * 100) : 0;
     
-    // Revenue estimates based on budgets of won projects
-    const wonRevenue = db.leads
+    const wonRevenue = mappedLeads
       .filter((l) => l.status === 'won')
       .reduce((sum, l) => sum + getBudgetValue(l.budgetRange), 0);
 
-    const pipelineRevenue = db.leads
+    const pipelineRevenue = mappedLeads
       .filter((l) => l.status !== 'won' && l.status !== 'lost')
       .reduce((sum, l) => sum + getBudgetValue(l.budgetRange), 0);
 
@@ -188,13 +372,14 @@ export async function getDashboardData() {
         wonRevenue,
         pipelineRevenue,
       },
-      leads: db.leads,
-      submissions: db.contact_submissions,
-      consultations: db.consultations,
-      projects: db.projects || [],
+      leads: mappedLeads,
+      submissions: mappedSubmissions,
+      consultations: mappedConsultations,
+      projects: clientProjects || [],
+      invoices: invoices || []
     };
-  } catch (err) {
-    console.error('Error fetching dashboard stats:', err);
+  } catch (err: any) {
+    console.error('Error fetching dashboard stats from Supabase:', err);
     return {
       stats: {
         totalLeads: 0,
@@ -211,214 +396,465 @@ export async function getDashboardData() {
       submissions: [],
       consultations: [],
       projects: [],
+      invoices: []
     };
   }
 }
 
-// 5. Delete Lead
+// Leads CRUD
+export async function addLead(leadData: any) {
+  try {
+    const { data, error } = await supabase
+      .from('leads')
+      .insert({
+        name: leadData.leadName,
+        business_name: leadData.businessName,
+        phone: leadData.phone,
+        email: leadData.email,
+        project_type: leadData.projectType,
+        budget_range: leadData.budgetRange,
+        status: leadData.status || 'new',
+        notes: leadData.notes || ''
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, lead: data };
+  } catch (err: any) {
+    console.error('Error adding lead:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+export async function updateLead(leadId: string, updatedData: any) {
+  try {
+    const { error } = await supabase
+      .from('leads')
+      .update({
+        name: updatedData.leadName,
+        business_name: updatedData.businessName,
+        phone: updatedData.phone,
+        email: updatedData.email,
+        project_type: updatedData.projectType,
+        budget_range: updatedData.budgetRange,
+        status: updatedData.status,
+        notes: updatedData.notes
+      })
+      .eq('id', leadId);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating lead:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
 export async function deleteLead(leadId: string) {
   try {
-    const db = await getDb();
-    db.leads = db.leads.filter((l) => l.id !== leadId);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to delete lead.' };
-    return { success: true, message: 'Lead deleted successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { error } = await supabase.from('leads').delete().eq('id', leadId);
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting lead:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 6. Delete Submission (Contact Message)
+// Messages CRUD
+export async function addSubmission(subData: any) {
+  try {
+    const { data, error } = await supabase
+      .from('messages')
+      .insert({
+        name: subData.name,
+        email: subData.email,
+        phone: subData.phone,
+        business_name: subData.businessName,
+        project_type: subData.projectType || '',
+        budget_range: subData.budgetRange || '',
+        message: subData.message || ''
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, submission: data };
+  } catch (err: any) {
+    console.error('Error adding message:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+export async function updateSubmission(submissionId: string, updatedData: any) {
+  try {
+    const { error } = await supabase
+      .from('messages')
+      .update({
+        name: updatedData.name,
+        email: updatedData.email,
+        phone: updatedData.phone,
+        business_name: updatedData.businessName,
+        project_type: updatedData.projectType || '',
+        budget_range: updatedData.budgetRange || '',
+        message: updatedData.message || ''
+      })
+      .eq('id', submissionId);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating message:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
 export async function deleteSubmission(submissionId: string) {
   try {
-    const db = await getDb();
-    db.contact_submissions = db.contact_submissions.filter((s) => s.id !== submissionId);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to delete message.' };
-    return { success: true, message: 'Message deleted successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { error } = await supabase.from('messages').delete().eq('id', submissionId);
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting message:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 7. Delete Consultation
-export async function deleteConsultation(consultationId: string) {
+// Consultations CRUD
+export async function addConsultation(consData: any) {
   try {
-    const db = await getDb();
-    db.consultations = db.consultations.filter((c) => c.id !== consultationId);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to delete consultation.' };
-    return { success: true, message: 'Consultation deleted successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { data, error } = await supabase
+      .from('consultations')
+      .insert({
+        client_name: consData.clientName,
+        email: consData.email,
+        phone: consData.phone,
+        date: consData.date,
+        project_type: consData.projectType
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, consultation: data };
+  } catch (err: any) {
+    console.error('Error adding consultation:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 8. Fetch Projects
-export async function getProjects() {
+export async function updateConsultation(consId: string, updatedData: any) {
   try {
-    const db = await getDb();
-    return db.projects || [];
-  } catch (err) {
-    console.error('Error fetching projects:', err);
+    const { error } = await supabase
+      .from('consultations')
+      .update({
+        client_name: updatedData.clientName,
+        email: updatedData.email,
+        phone: updatedData.phone,
+        date: updatedData.date,
+        project_type: updatedData.projectType
+      })
+      .eq('id', consId);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating consultation:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+export async function deleteConsultation(consId: string) {
+  try {
+    const { error } = await supabase.from('consultations').delete().eq('id', consId);
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting consultation:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+// ==============================================
+// PixelStack Agency Client Management CRUD Actions
+// ==============================================
+
+// 1. Clients Table Actions
+export async function getClients() {
+  try {
+    const { data, error } = await supabase
+      .from('clients')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  } catch (err: any) {
+    console.error('Error getting clients:', err);
     return [];
   }
 }
 
-// 9. Add Project
-export async function addProject(project: Omit<Project, 'id' | 'createdAt'>) {
+export async function addClient(client: any) {
   try {
-    const db = await getDb();
-    const newProject: Project = {
-      ...project,
-      id: `proj-${Date.now()}`,
-      createdAt: new Date().toISOString()
-    };
-    if (!db.projects) db.projects = [];
-    db.projects.unshift(newProject);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to save project.' };
-    return { success: true, message: 'Project added successfully.', project: newProject };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { data, error } = await supabase
+      .from('clients')
+      .insert({
+        name: client.name,
+        business_name: client.business_name || '',
+        industry: client.industry || '',
+        phone: client.phone || '',
+        email: client.email || '',
+        project_type: client.project_type || '',
+        project_description: client.project_description || '',
+        selected_package: client.selected_package || '',
+        project_cost: client.project_cost ? Number(client.project_cost) : 0,
+        timeline: client.timeline || '',
+        address: client.address || '',
+        notes: client.notes || '',
+        status: client.status || 'Lead'
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, client: data };
+  } catch (err: any) {
+    console.error('Error adding client:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 10. Update Project
-export async function updateProject(projectId: string, updatedData: Omit<Project, 'id' | 'createdAt'>) {
+export async function updateClient(id: string, client: any) {
   try {
-    const db = await getDb();
-    const index = db.projects.findIndex((p) => p.id === projectId);
-    if (index === -1) return { success: false, message: 'Project not found.' };
-    db.projects[index] = {
-      ...db.projects[index],
-      ...updatedData
-    };
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to update project.' };
-    return { success: true, message: 'Project updated successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { error } = await supabase
+      .from('clients')
+      .update({
+        name: client.name,
+        business_name: client.business_name,
+        industry: client.industry,
+        phone: client.phone,
+        email: client.email,
+        project_type: client.project_type,
+        project_description: client.project_description,
+        selected_package: client.selected_package,
+        project_cost: client.project_cost ? Number(client.project_cost) : 0,
+        timeline: client.timeline,
+        address: client.address,
+        notes: client.notes,
+        status: client.status
+      })
+      .eq('id', id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating client:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 11. Delete Project
-export async function deleteProject(projectId: string) {
+export async function deleteClient(id: string) {
   try {
-    const db = await getDb();
-    db.projects = db.projects.filter((p) => p.id !== projectId);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to delete project.' };
-    return { success: true, message: 'Project deleted successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { error } = await supabase.from('clients').delete().eq('id', id);
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting client:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 12. Add Lead
-export async function addLead(leadData: Omit<Lead, 'id' | 'createdAt'>) {
+// 2. Client Projects Table Actions
+export async function getClientProjects() {
   try {
-    const db = await getDb();
-    const newLead: Lead = {
-      ...leadData,
-      id: `lead-${Date.now()}`,
-      createdAt: new Date().toISOString()
-    };
-    db.leads.unshift(newLead);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to save lead.' };
-    return { success: true, message: 'Lead added successfully.', lead: newLead };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*, clients(*)')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  } catch (err: any) {
+    console.error('Error getting client projects:', err);
+    return [];
   }
 }
 
-// 13. Update Lead
-export async function updateLead(leadId: string, updatedData: Omit<Lead, 'id' | 'createdAt'>) {
+export async function addClientProject(project: any) {
   try {
-    const db = await getDb();
-    const index = db.leads.findIndex((l) => l.id === leadId);
-    if (index === -1) return { success: false, message: 'Lead not found.' };
-    db.leads[index] = {
-      ...db.leads[index],
-      ...updatedData
-    };
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to update lead.' };
-    return { success: true, message: 'Lead updated successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { data, error } = await supabase
+      .from('projects')
+      .insert({
+        client_id: project.client_id,
+        title: project.title,
+        description: project.description || '',
+        selected_package: project.selected_package || '',
+        cost: project.cost ? Number(project.cost) : 0,
+        timeline: project.timeline || '',
+        status: project.status || 'Project Started'
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, project: data };
+  } catch (err: any) {
+    console.error('Error adding client project:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 14. Add Submission (Contact Message)
-export async function addSubmission(submissionData: Omit<ContactSubmission, 'id' | 'createdAt'>) {
+export async function updateClientProject(id: string, project: any) {
   try {
-    const db = await getDb();
-    const newSub: ContactSubmission = {
-      ...submissionData,
-      id: `sub-${Date.now()}`,
-      createdAt: new Date().toISOString()
-    };
-    db.contact_submissions.unshift(newSub);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to save message.' };
-    return { success: true, message: 'Message added successfully.', submission: newSub };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { error } = await supabase
+      .from('projects')
+      .update({
+        client_id: project.client_id,
+        title: project.title,
+        description: project.description,
+        selected_package: project.selected_package,
+        cost: project.cost ? Number(project.cost) : 0,
+        timeline: project.timeline,
+        status: project.status
+      })
+      .eq('id', id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating client project:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 15. Update Submission
-export async function updateSubmission(submissionId: string, updatedData: Omit<ContactSubmission, 'id' | 'createdAt'>) {
+export async function deleteClientProject(id: string) {
   try {
-    const db = await getDb();
-    const index = db.contact_submissions.findIndex((s) => s.id === submissionId);
-    if (index === -1) return { success: false, message: 'Message not found.' };
-    db.contact_submissions[index] = {
-      ...db.contact_submissions[index],
-      ...updatedData
-    };
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to update message.' };
-    return { success: true, message: 'Message updated successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { error } = await supabase.from('projects').delete().eq('id', id);
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting client project:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
 
-// 16. Add Consultation
-export async function addConsultation(consultationData: Omit<Consultation, 'id' | 'createdAt'>) {
+// 3. Invoices Table Actions
+export async function getInvoices() {
   try {
-    const db = await getDb();
-    const newCons: Consultation = {
-      ...consultationData,
-      id: `cons-${Date.now()}`,
-      createdAt: new Date().toISOString()
-    };
-    db.consultations.unshift(newCons);
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to save consultation.' };
-    return { success: true, message: 'Consultation added successfully.', consultation: newCons };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { data, error } = await supabase
+      .from('invoices')
+      .select('*, clients(*), projects(*)')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  } catch (err: any) {
+    console.error('Error getting invoices:', err);
+    return [];
   }
 }
 
-// 17. Update Consultation
-export async function updateConsultation(consultationId: string, updatedData: Omit<Consultation, 'id' | 'createdAt'>) {
+export async function addInvoice(invoice: any) {
   try {
-    const db = await getDb();
-    const index = db.consultations.findIndex((c) => c.id === consultationId);
-    if (index === -1) return { success: false, message: 'Consultation not found.' };
-    db.consultations[index] = {
-      ...db.consultations[index],
-      ...updatedData
-    };
-    const saved = await saveDb(db);
-    if (!saved) return { success: false, message: 'Failed to update consultation.' };
-    return { success: true, message: 'Consultation updated successfully.' };
-  } catch (err) {
-    return { success: false, message: 'Server error occurred.' };
+    const { data, error } = await supabase
+      .from('invoices')
+      .insert({
+        invoice_number: invoice.invoice_number,
+        client_id: invoice.client_id,
+        project_id: invoice.project_id || null,
+        issue_date: invoice.issue_date,
+        due_date: invoice.due_date,
+        package_selected: invoice.package_selected || '',
+        services_breakdown: invoice.services_breakdown || [],
+        amount: invoice.amount ? Number(invoice.amount) : 0,
+        total_amount: invoice.total_amount ? Number(invoice.total_amount) : 0,
+        payment_instructions: invoice.payment_instructions || '',
+        status: invoice.status || 'Pending'
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, invoice: data };
+  } catch (err: any) {
+    console.error('Error adding invoice:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+export async function updateInvoice(id: string, invoice: any) {
+  try {
+    const { error } = await supabase
+      .from('invoices')
+      .update({
+        invoice_number: invoice.invoice_number,
+        client_id: invoice.client_id,
+        project_id: invoice.project_id || null,
+        issue_date: invoice.issue_date,
+        due_date: invoice.due_date,
+        package_selected: invoice.package_selected,
+        services_breakdown: invoice.services_breakdown || [],
+        amount: invoice.amount ? Number(invoice.amount) : 0,
+        total_amount: invoice.total_amount ? Number(invoice.total_amount) : 0,
+        payment_instructions: invoice.payment_instructions,
+        status: invoice.status
+      })
+      .eq('id', id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating invoice:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+export async function deleteInvoice(id: string) {
+  try {
+    const { error } = await supabase.from('invoices').delete().eq('id', id);
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting invoice:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+// 4. Document History Actions
+export async function getDocumentHistory() {
+  try {
+    const { data, error } = await supabase
+      .from('document_history')
+      .select('*, clients(*)')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  } catch (err: any) {
+    console.error('Error getting document history:', err);
+    return [];
+  }
+}
+
+export async function logDocumentGeneration(clientId: string | null, docType: string, name: string, metadata: any = {}) {
+  try {
+    const { data, error } = await supabase
+      .from('document_history')
+      .insert({
+        client_id: clientId,
+        doc_type: docType,
+        name: name,
+        metadata: metadata
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, log: data };
+  } catch (err: any) {
+    console.error('Error logging document generation:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
