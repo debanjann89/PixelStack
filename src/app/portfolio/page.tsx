@@ -350,8 +350,7 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Bottom line action */}
-                <div className="flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-zinc-900 pt-6">
-                  <span className="text-xs text-zinc-500 font-mono">Projects average starting value: ₹50,000+</span>
+                <div className="flex flex-col sm:flex-row gap-4 items-center justify-end border-t border-zinc-900 pt-6">
                   <div className="flex gap-3 w-full sm:w-auto">
                     {activeProj.project_url && (
                       <a

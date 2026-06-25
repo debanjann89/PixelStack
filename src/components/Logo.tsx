@@ -12,7 +12,7 @@ export default function Logo({ className = '', size = 32, interactive = true }: 
   return (
     <motion.div
       whileHover={interactive ? { scale: 1.05 } : undefined}
-      className={`relative flex items-center justify-center ${className}`}
+      className={`relative flex items-center justify-center filter drop-shadow-[0_0_12px_rgba(52,211,153,0.7)] ${className}`}
       style={{ width: size, height: size }}
     >
       <img

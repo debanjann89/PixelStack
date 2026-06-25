@@ -57,9 +57,9 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Logo size={28} className="transition-transform group-hover:scale-105" />
-            <span className="text-xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
+          <Link href="/" className="flex items-center gap-3.5 group">
+            <Logo size={42} className="transition-transform group-hover:scale-105" />
+            <span className="text-2xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
               D.A.B <span className="text-primary-light">Digitals</span>
             </span>
           </Link>

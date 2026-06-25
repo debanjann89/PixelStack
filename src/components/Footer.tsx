@@ -22,9 +22,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand Info */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-6 group">
-              <Logo size={24} className="transition-transform group-hover:scale-105" />
-              <span className="text-xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
+            <Link href="/" className="flex items-center gap-3.5 mb-6 group">
+              <Logo size={36} className="transition-transform group-hover:scale-105" />
+              <span className="text-2xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
                 D.A.B <span className="text-primary-light">Digitals</span>
               </span>
             </Link>
@@ -109,7 +109,6 @@ export default function Footer() {
             © {new Date().getFullYear()} D.A.B Digitals. All rights reserved. Made in India.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-zinc-600 text-xs">Min. Project Value: ₹50,000+</span>
             <Link href="/admin" className="text-zinc-600 hover:text-zinc-400 transition-colors text-xs">
               System Admin
             </Link>
