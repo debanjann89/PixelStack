@@ -78,7 +78,7 @@ export default function AdminOverview() {
         <div>
           <h1 className="text-2xl font-bold text-white tracking-tight">System Overview & Analytics</h1>
           <p className="text-zinc-500 text-xs mt-1">
-            Real-time analytics and agency tracking for PixelStack Studio.
+            Real-time analytics and agency tracking for D.A.B Digitals.
           </p>
         </div>
         

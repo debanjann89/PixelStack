@@ -25,30 +25,33 @@
 
   <!-- Bottom Layer -->
   <path
-    d="M16 27L28 21.5L16 16L4 21.5L16 27Z"
+    d="M16 16L28 21.5L16 27L4 21.5ZM14 19.5L10 21.5L16 24L20 21.5Z"
     fill="url(#logoLayer3)"
     stroke="#0d2216"
     stroke-width="1.2"
     stroke-linejoin="round"
+    fill-rule="evenodd"
     opacity="0.4"
   />
 
   <!-- Middle Layer -->
   <path
-    d="M16 21L28 15.5L16 10L4 15.5L16 21Z"
+    d="M16 10L28 15.5L16 21L4 15.5ZM14 13.5L10 15.5L16 18L20 15.5Z"
     fill="url(#logoLayer2)"
     stroke="#059669"
     stroke-width="1.2"
     stroke-linejoin="round"
+    fill-rule="evenodd"
     opacity="0.75"
   />
 
   <!-- Top Layer -->
   <path
-    d="M16 15L28 9.5L16 4L4 9.5L16 15Z"
+    d="M16 4L28 9.5L16 15L4 9.5ZM14 7.5L10 9.5L16 12L20 9.5Z"
     fill="url(#logoLayer1)"
     stroke="#10b981"
     stroke-width="1.2"
     stroke-linejoin="round"
+    fill-rule="evenodd"
   />
 </svg>

@@ -115,7 +115,7 @@ export default function ContactPage() {
                 </div>
                 <div className="text-left">
                   <div className="text-xs text-zinc-500">Email Inquiry</div>
-                  <div className="text-sm font-bold text-white">hello@pixelstack.agency</div>
+                  <div className="text-sm font-bold text-white">hello@dabdigitals.com</div>
                 </div>
               </div>
 

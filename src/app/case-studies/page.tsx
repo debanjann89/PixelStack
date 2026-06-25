@@ -35,7 +35,7 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'grand-palace',
     title: 'Bypassing 18% Aggregator Commissions for Luxury Hotel Chain',
-    subtitle: 'How PixelStack re-architected Grand Palace Resorts online reservation funnel to drive direct consumer bookings.',
+    subtitle: 'How D.A.B Digitals re-architected Grand Palace Resorts online reservation funnel to drive direct consumer bookings.',
     client: 'Grand Palace Resorts',
     industry: 'Hotels & Hospitality',
     metric: '+40%',

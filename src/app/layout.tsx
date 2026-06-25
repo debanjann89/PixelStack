@@ -18,25 +18,25 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "PixelStack | Premium Web Development & Digital Growth Agency",
-    template: "%s | PixelStack",
+    default: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
+    template: "%s | D.A.B Digitals",
   },
-  description: "PixelStack is a modern digital agency designing and developing premium, conversion-focused websites, UI/UX, and search engine foundations starting at ₹50,000.",
-  metadataBase: new URL("https://pixelstack.agency"),
+  description: "D.A.B Digitals is a modern digital agency designing and developing premium, conversion-focused websites, UI/UX, and search engine foundations starting at ₹50,000.",
+  metadataBase: new URL("https://dabdigitals.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "PixelStack | Premium Web Development & Digital Growth Agency",
+    title: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
     description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹50,000.",
-    url: "https://pixelstack.agency",
-    siteName: "PixelStack Agency",
+    url: "https://dabdigitals.com",
+    siteName: "D.A.B Digitals Agency",
     images: [
       {
-        url: "https://pixelstack.agency/og-image.png",
+        url: "https://dabdigitals.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "PixelStack Agency - Premium Web Development",
+        alt: "D.A.B Digitals Agency - Premium Web Development",
       },
     ],
     locale: "en_US",
@@ -44,10 +44,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PixelStack | Premium Web Development & Digital Growth Agency",
+    title: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
     description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹50,000.",
-    images: ["https://pixelstack.agency/og-image.png"],
-    creator: "@PixelStack",
+    images: ["https://dabdigitals.com/og-image.png"],
+    creator: "@DABDigitals",
   },
   robots: {
     index: true,
@@ -68,7 +68,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('pixelstack-theme');
+                  var theme = localStorage.getItem('dab-digitals-theme');
                   if (theme === 'light') {
                     document.documentElement.classList.add('light');
                   } else {
@@ -86,10 +86,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              "name": "PixelStack",
-              "image": "https://pixelstack.agency/og-image.png",
-              "@id": "https://pixelstack.agency/#agency",
-              "url": "https://pixelstack.agency",
+              "name": "D.A.B Digitals",
+              "image": "https://dabdigitals.com/og-image.png",
+              "@id": "https://dabdigitals.com/#agency",
+              "url": "https://dabdigitals.com",
               "telephone": "+918918186698",
               "priceRange": "INR 50000 - INR 200000",
               "address": {

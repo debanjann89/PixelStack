@@ -54,11 +54,12 @@ export default function Logo({ className = '', size = 32, interactive = true }: 
 
         {/* Bottom Layer (Dark Forest) */}
         <motion.path
-          d="M16 27L28 21.5L16 16L4 21.5L16 27Z"
+          d="M16 16L28 21.5L16 27L4 21.5ZM14 19.5L10 21.5L16 24L20 21.5Z"
           fill="url(#logoLayer3)"
           stroke="var(--border)"
           strokeWidth="1.2"
           strokeLinejoin="round"
+          fillRule="evenodd"
           opacity="0.4"
           variants={bottomVariants}
           transition={{ duration: 0.25, ease: "easeOut" }}
@@ -66,11 +67,12 @@ export default function Logo({ className = '', size = 32, interactive = true }: 
 
         {/* Middle Layer (Emerald) */}
         <motion.path
-          d="M16 21L28 15.5L16 10L4 15.5L16 21Z"
+          d="M16 10L28 15.5L16 21L4 15.5ZM14 13.5L10 15.5L16 18L20 15.5Z"
           fill="url(#logoLayer2)"
           stroke="var(--primary-dark)"
           strokeWidth="1.2"
           strokeLinejoin="round"
+          fillRule="evenodd"
           opacity="0.75"
           variants={middleVariants}
           transition={{ duration: 0.25, ease: "easeOut" }}
@@ -78,11 +80,12 @@ export default function Logo({ className = '', size = 32, interactive = true }: 
 
         {/* Top Layer (Mint) */}
         <motion.path
-          d="M16 15L28 9.5L16 4L4 9.5L16 15Z"
+          d="M16 4L28 9.5L16 15L4 9.5ZM14 7.5L10 9.5L16 12L20 9.5Z"
           fill="url(#logoLayer1)"
           stroke="var(--primary)"
           strokeWidth="1.2"
           strokeLinejoin="round"
+          fillRule="evenodd"
           variants={topVariants}
           transition={{ duration: 0.25, ease: "easeOut" }}
         />

@@ -25,7 +25,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2.5 mb-6 group">
               <Logo size={24} className="transition-transform group-hover:scale-105" />
               <span className="text-xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
-                Pixel<span className="text-primary-light">Stack</span>
+                D.A.B <span className="text-primary-light">Digitals</span>
               </span>
             </Link>
             <p className="text-zinc-400 text-sm max-w-sm mb-6 leading-relaxed">
@@ -53,7 +53,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-6">PixelStack Pages</h4>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-6">D.A.B Digitals Pages</h4>
             <ul className="flex flex-col gap-4">
               <li>
                 <Link href="/" className="text-zinc-400 hover:text-white transition-colors text-sm">
@@ -106,7 +106,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-zinc-500 text-xs">
-            © {new Date().getFullYear()} PixelStack. All rights reserved. Made in India.
+            © {new Date().getFullYear()} D.A.B Digitals. All rights reserved. Made in India.
           </p>
           <div className="flex items-center gap-6">
             <span className="text-zinc-600 text-xs">Min. Project Value: ₹50,000+</span>

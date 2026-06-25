@@ -90,7 +90,7 @@ export default function Preloader() {
               <div className="w-20 h-20 rounded-2xl bg-zinc-950/80 border border-white/10 flex items-center justify-center shadow-2xl relative z-10 backdrop-blur-md">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-secondary/10 rounded-2xl" />
                 
-                {/* Brand Icon (P Symbol) */}
+                {/* Brand Icon (D Symbol) */}
                 <motion.svg
                   width="36"
                   height="36"
@@ -100,7 +100,7 @@ export default function Preloader() {
                   className="text-white drop-shadow-[0_0_10px_rgba(16,185,129,0.6)]"
                 >
                   <motion.path
-                    d="M4 20V4H13C16.866 4 20 7.13401 20 11C20 14.866 16.866 18 13 18H8V20H4ZM8 14H13C14.6569 14 16 12.6569 16 11C16 9.34315 14.6569 8 13 8H8V14Z"
+                    d="M4 20V4H12C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20H4ZM8 16H12C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8H8V16Z"
                     fill="currentColor"
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
@@ -109,7 +109,7 @@ export default function Preloader() {
                 </motion.svg>
               </div>
             </motion.div>
-
+ 
             {/* Brand Title */}
             <div className="text-center mb-8">
               <motion.h2 
@@ -118,7 +118,7 @@ export default function Preloader() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="text-base font-extrabold tracking-[0.4em] text-white uppercase font-mono pl-[0.4em]"
               >
-                Pixel<span className="text-primary-light">Stack</span>
+                D.A.B <span className="text-primary-light">Digitals</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0 }}

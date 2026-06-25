@@ -60,7 +60,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2.5 group">
             <Logo size={28} className="transition-transform group-hover:scale-105" />
             <span className="text-xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
-              Pixel<span className="text-primary-light">Stack</span>
+              D.A.B <span className="text-primary-light">Digitals</span>
             </span>
           </Link>
 

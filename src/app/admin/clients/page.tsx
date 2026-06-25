@@ -382,7 +382,7 @@ export default function ClientsManager() {
                     type="text"
                     value={businessName}
                     onChange={(e) => setBusinessName(e.target.value)}
-                    placeholder="e.g. PixelStack Studio"
+                    placeholder="e.g. D.A.B Digitals"
                     className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
                   />
                 </div>

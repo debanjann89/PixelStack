@@ -257,13 +257,13 @@ const PDFHeader = ({ docTitle }: { docTitle: string }) => (
   <View style={styles.header}>
     <View style={styles.headerLeft}>
       <Text style={styles.logoText}>
-        Pixel<Text style={styles.logoAccent}>Stack</Text>
+        D.A.B <Text style={styles.logoAccent}>Digitals</Text>
       </Text>
       <Text style={styles.logoTagline}>Building Modern Digital Experiences</Text>
     </View>
     <View style={styles.headerRight}>
       <Text style={{ fontFamily: 'Helvetica-Bold', color: colors.accent }}>{docTitle}</Text>
-      <Text>+91 89181 86698 | hello@pixelstack.agency</Text>
+      <Text>+91 89181 86698 | hello@dabdigitals.com</Text>
     </View>
   </View>
 );
@@ -271,7 +271,7 @@ const PDFHeader = ({ docTitle }: { docTitle: string }) => (
 // Reusable Footer Component
 const PDFFooter = ({ pageNum, totalPages = 1 }: { pageNum: number; totalPages?: number }) => (
   <View style={styles.footer}>
-    <Text>© PixelStack Studio. Confidential Document.</Text>
+    <Text>© D.A.B Digitals. Confidential Document.</Text>
     <Text style={styles.pageNum}>Page {pageNum}</Text>
   </View>
 );
@@ -287,7 +287,7 @@ export const BrochurePDF = () => (
         <Text style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: colors.primary, marginBottom: 15 }}>
           Corporate Capabilities Brochure
         </Text>
-        <Text style={styles.coverTitle}>PixelStack</Text>
+        <Text style={styles.coverTitle}>D.A.B Digitals</Text>
         <Text style={styles.coverSubtitle}>Building Modern Digital Experiences That Drive Growth</Text>
       </View>
       <View style={{ marginBottom: 40 }}>
@@ -296,7 +296,7 @@ export const BrochurePDF = () => (
         <Text style={{ fontSize: 10, color: '#ffffff' }}>Search Engine Optimization & Digital Growth Strategy</Text>
       </View>
       <View style={styles.coverFooter}>
-        <Text>PixelStack Studio • hello@pixelstack.agency • +91 89181 86698</Text>
+        <Text>D.A.B Digitals • hello@dabdigitals.com • +91 89181 86698</Text>
       </View>
     </Page>
 
@@ -304,9 +304,9 @@ export const BrochurePDF = () => (
     <Page size="A4" style={styles.page}>
       <PDFHeader docTitle="Agency Capabilities Brochure" />
       
-      <Text style={styles.h1}>About PixelStack</Text>
+      <Text style={styles.h1}>About D.A.B Digitals</Text>
       <Text style={styles.paragraph}>
-        PixelStack is an elite digital engineering agency founded by Debanjan Amin and Banashree Das. We bridge the gap between simple website layouts and high-performance business applications. We build custom web products that look premium, load in under 500ms, and turn visitors into actual customers.
+        D.A.B Digitals is an elite digital engineering agency founded by Debanjan Amin and Banasri Das. We bridge the gap between simple website layouts and high-performance business applications. We build custom web products that look premium, load in under 500ms, and turn visitors into actual customers.
       </Text>
 
       <Text style={styles.h2}>Our Core Capabilities</Text>
@@ -371,7 +371,7 @@ export const ProposalPDF = ({ client }: { client: any }) => (
         <Text style={{ fontSize: 10, color: '#ffffff' }}>Target Timeline: {client.timeline || '2-3 Weeks'}</Text>
       </View>
       <View style={styles.coverFooter}>
-        <Text>PixelStack Studio • hello@pixelstack.agency</Text>
+        <Text>D.A.B Digitals • hello@dabdigitals.com</Text>
       </View>
     </Page>
 
@@ -380,7 +380,11 @@ export const ProposalPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h1}>1. Project Overview & Goals</Text>
       <Text style={styles.paragraph}>
-        We are pleased to submit this proposal to build a modern digital solution for **{client.business_name}** ({client.name}). Based on our discussions, we understand your primary objective is to build a high-performance web asset in the **{client.industry || 'Business'}** sector.
+        We are pleased to submit this proposal to build a modern digital solution for{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>{client.business_name}</Text>{' '}
+        ({client.name}). Based on our discussions, we understand your primary objective is to build a high-performance web asset in the{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>{client.industry || 'Business'}</Text>{' '}
+        sector.
       </Text>
       <Text style={styles.paragraph}>
         Our main goal is to replace slow, outdated structures with a modern Next.js 15 architecture. This will enable faster page speeds (sub-500ms), increase user conversion rates, and lay down technical SEO foundations to secure ranking visibility on search engines.
@@ -388,7 +392,9 @@ export const ProposalPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h1}>2. Scope & Deliverables</Text>
       <Text style={styles.paragraph}>
-        We propose delivering the **{client.selected_package || 'Growth Package'}** as the structural foundation:
+        We propose delivering the{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>{client.selected_package || 'Growth Package'}</Text>{' '}
+        as the structural foundation:
       </Text>
       <View style={styles.bulletList}>
         <View style={styles.bulletItem}>
@@ -411,14 +417,15 @@ export const ProposalPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h2}>3. Financial Summary</Text>
       <Text style={styles.paragraph}>
-        Total Contract Estimate: **₹{client.project_cost || '15,000'}**. 
+        Total Contract Estimate:{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>₹{client.project_cost || '15,000'}</Text>.{' '}
         Payment structure requires a 50% advance to initiate the project, with the remaining 50% due immediately upon final layout launch and deployment.
       </Text>
 
       <View style={styles.signatureRow}>
         <View style={styles.signatureBlock}>
           <Text style={styles.signatureTitle}>Debanjan Amin</Text>
-          <Text style={styles.signatureSubText}>Co-Founder, PixelStack</Text>
+          <Text style={styles.signatureSubText}>Co-Founder, D.A.B Digitals</Text>
         </View>
         <View style={styles.signatureBlock}>
           <Text style={styles.signatureTitle}>{client.name}</Text>
@@ -441,7 +448,11 @@ export const ContractPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h1}>Service Agreement Contract</Text>
       <Text style={styles.paragraph}>
-        This Agreement is made on {new Date().toLocaleDateString()} between **PixelStack Studio** (hereinafter "Developer") and **{client.business_name || client.name}** (hereinafter "Client").
+        This Agreement is made on {new Date().toLocaleDateString()} between{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>D.A.B Digitals</Text>{' '}
+        (hereinafter "Developer") and{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>{client.business_name || client.name}</Text>{' '}
+        (hereinafter "Client").
       </Text>
 
       <Text style={styles.h2}>1. Scope of Work</Text>
@@ -451,10 +462,20 @@ export const ContractPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h2}>2. Payment Terms</Text>
       <Text style={styles.paragraph}>
-        The Client agrees to pay Developer a total fee of **₹{client.project_cost || '15,000'}** for services rendered. Payments shall be executed according to the following schedule:
-        - 50% deposit (₹{(client.project_cost || 15000) * 0.5}) upon signing this agreement, prior to commencement of design.
-        - 50% final payment (₹{(client.project_cost || 15000) * 0.5}) immediately upon website handover and server deployment.
+        The Client agrees to pay Developer a total fee of{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>₹{client.project_cost || '15,000'}</Text>{' '}
+        for services rendered. Payments shall be executed according to the following schedule:
       </Text>
+      <View style={styles.bulletList}>
+        <View style={styles.bulletItem}>
+          <Text style={styles.bullet}>•</Text>
+          <Text style={styles.bulletText}>50% deposit (₹{(client.project_cost || 15000) * 0.5}) upon signing this agreement, prior to commencement of design.</Text>
+        </View>
+        <View style={styles.bulletItem}>
+          <Text style={styles.bullet}>•</Text>
+          <Text style={styles.bulletText}>50% final payment (₹{(client.project_cost || 15000) * 0.5}) immediately upon website handover and server deployment.</Text>
+        </View>
+      </View>
 
       <Text style={styles.h2}>3. Revision Policy</Text>
       <Text style={styles.paragraph}>
@@ -474,7 +495,7 @@ export const ContractPDF = ({ client }: { client: any }) => (
       <View style={styles.signatureRow}>
         <View style={styles.signatureBlock}>
           <Text style={styles.signatureTitle}>Debanjan Amin</Text>
-          <Text style={styles.signatureSubText}>Developer Signatory, PixelStack</Text>
+          <Text style={styles.signatureSubText}>Developer Signatory, D.A.B Digitals</Text>
         </View>
         <View style={styles.signatureBlock}>
           <Text style={styles.signatureTitle}>{client.name}</Text>
@@ -495,15 +516,17 @@ export const WelcomePDF = ({ client }: { client: any }) => (
     <Page size="A4" style={styles.page}>
       <PDFHeader docTitle="Welcome Package & Onboarding" />
 
-      <Text style={styles.h1}>Welcome to PixelStack!</Text>
+      <Text style={styles.h1}>Welcome to D.A.B Digitals!</Text>
       <Text style={styles.paragraph}>
         Dear {client.name},
       </Text>
       <Text style={styles.paragraph}>
-        On behalf of the PixelStack team, we are absolutely thrilled to welcome you as a client. We appreciate the trust you have placed in us to design and engineer your new digital asset.
+        On behalf of the D.A.B Digitals team, we are absolutely thrilled to welcome you as a client. We appreciate the trust you have placed in us to design and engineer your new digital asset.
       </Text>
       <Text style={styles.paragraph}>
-        Our primary mission is to ensure that **{client.business_name || 'your business'}** establishes a modern, fast, and highly authoritative web footprint. We don't just build layouts; we build conversion pipelines.
+        Our primary mission is to ensure that{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>{client.business_name || 'your business'}</Text>{' '}
+        establishes a modern, fast, and highly authoritative web footprint. We don't just build layouts; we build conversion pipelines.
       </Text>
 
       <Text style={styles.h2}>What Happens Next? (Our Workflow)</Text>
@@ -522,22 +545,25 @@ export const WelcomePDF = ({ client }: { client: any }) => (
         </View>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>4.</Text>
-          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Audit & Launch</Text>: Banashree Das conducts SEO schema indexing audits before final edge server deployment.</Text>
+          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Audit & Launch</Text>: Banasri Das conducts SEO schema indexing audits before final edge server deployment.</Text>
         </View>
       </View>
 
       <Text style={styles.h2}>How We Communicate</Text>
       <Text style={styles.paragraph}>
-        To keep communication swift and transparent, we set up a direct WhatsApp channel for your project. You can also reach us via phone at **+91 89181 86698** or email at **hello@pixelstack.agency**.
+        To keep communication swift and transparent, we set up a direct WhatsApp channel for your project. You can also reach us via phone at{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>+91 89181 86698</Text>{' '}
+        or email at{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>hello@dabdigitals.com</Text>.
       </Text>
 
       <Text style={styles.paragraph}>
-        We are excited to kick off this project and collaborate with you. Thank you for choosing PixelStack!
+        We are excited to kick off this project and collaborate with you. Thank you for choosing D.A.B Digitals!
       </Text>
 
       <View style={{ marginTop: 25 }}>
-        <Text style={{ fontFamily: 'Helvetica-Bold', color: colors.accent }}>Debanjan Amin & Banashree Das</Text>
-        <Text style={styles.signatureSubText}>Co-Founders, PixelStack Studio</Text>
+        <Text style={{ fontFamily: 'Helvetica-Bold', color: colors.accent }}>Debanjan Amin & Banasri Das</Text>
+        <Text style={styles.signatureSubText}>Co-Founders, D.A.B Digitals</Text>
       </View>
 
       <PDFFooter pageNum={1} />
@@ -555,7 +581,9 @@ export const RequirementsPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h1}>Client Project Requirements</Text>
       <Text style={styles.paragraph}>
-        Please review the following requirements gathered for **{client.business_name}** ({client.name}). This metadata coordinates the design layout and core code functionalities.
+        Please review the following requirements gathered for{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>{client.business_name}</Text>{' '}
+        ({client.name}). This metadata coordinates the design layout and core code functionalities.
       </Text>
 
       <Text style={styles.h2}>1. Business Overview</Text>
@@ -688,13 +716,13 @@ export const InvoicePDF = ({ invoice, client }: { invoice: any; client: any }) =
 
         <Text style={styles.h2}>Payment Instructions</Text>
         <Text style={styles.paragraph}>
-          {invoice.payment_instructions || 'Please complete payment via bank transfer or UPI within 7 business days. Bank account: State Bank of India, A/C: 1234567890, IFSC: SBIN0000123. UPI: pixelstack@upi'}
+          {invoice.payment_instructions || 'Please complete payment via bank transfer or UPI within 7 business days. Bank account: State Bank of India, A/C: 1234567890, IFSC: SBIN0000123. UPI: dabdigitals@upi'}
         </Text>
 
         <View style={styles.signatureRow}>
           <View style={styles.signatureBlock}>
             <Text style={styles.signatureTitle}>Debanjan Amin</Text>
-            <Text style={styles.signatureSubText}>Authorized Signatory, PixelStack</Text>
+            <Text style={styles.signatureSubText}>Authorized Signatory, D.A.B Digitals</Text>
           </View>
         </View>
 
@@ -754,7 +782,7 @@ export const ReceiptPDF = ({ invoice, client }: { invoice: any; client: any }) =
       <View style={styles.signatureRow}>
         <View style={styles.signatureBlock}>
           <Text style={styles.signatureTitle}>Debanjan Amin</Text>
-          <Text style={styles.signatureSubText}>Accounts Lead, PixelStack</Text>
+          <Text style={styles.signatureSubText}>Accounts Lead, D.A.B Digitals</Text>
         </View>
       </View>
 
@@ -773,14 +801,16 @@ export const HandoverPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h1}>Website Handover Certificate</Text>
       <Text style={styles.paragraph}>
-        This document marks the official completion and successful handover of the custom web project for **{client.business_name}** ({client.name}). All code, domains, and administrative rights are transferred with this signoff.
+        This document marks the official completion and successful handover of the custom web project for{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>{client.business_name}</Text>{' '}
+        ({client.name}). All code, domains, and administrative rights are transferred with this signoff.
       </Text>
 
       <Text style={styles.h2}>1. Deployment Coordinates</Text>
       <View style={styles.table}>
         <View style={styles.tableRow}>
           <View style={{ flex: 1, fontFamily: 'Helvetica-Bold' }}><Text>Production URL</Text></View>
-          <View style={{ flex: 2, color: colors.primaryDark }}><Text>https://{client.business_name?.toLowerCase().replace(/[^a-z0-9]/g, '') || 'client'}.pixelstack.agency</Text></View>
+          <View style={{ flex: 2, color: colors.primaryDark }}><Text>https://{client.business_name?.toLowerCase().replace(/[^a-z0-9]/g, '') || 'client'}.dabdigitals.com</Text></View>
         </View>
         <View style={styles.tableRowAlt}>
           <View style={{ flex: 1, fontFamily: 'Helvetica-Bold' }}><Text>Tech Stack</Text></View>
@@ -797,7 +827,7 @@ export const HandoverPDF = ({ client }: { client: any }) => (
         <Text style={styles.cardTitle}>System Administrative logins</Text>
         <Text style={styles.cardText}>Admin Panel URL: https://example.com/admin</Text>
         <Text style={styles.cardText}>Default Admin Username: admin@{client.business_name?.toLowerCase().replace(/[^a-z0-9]/g, '') || 'client'}.com</Text>
-        <Text style={styles.cardText}>Default Password: PixelHandover2026_Secure</Text>
+        <Text style={styles.cardText}>Default Password: DABHandover2026_Secure</Text>
         <Text style={{ fontSize: 8, color: '#dc2626', marginTop: 4, fontFamily: 'Helvetica-Bold' }}>
           *IMPORTANT: Please change this default password immediately upon your first login to secure your system.
         </Text>
@@ -805,13 +835,17 @@ export const HandoverPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h2}>3. SLA Support & Maintenance</Text>
       <Text style={styles.paragraph}>
-        Your contract includes **{client.selected_package === 'Starter Package' ? '7 days' : client.selected_package === 'Growth Package' ? '15 days' : '30 days'}** of post-launch SLA support. For updates, emergency patches, or content additions post support, billing proceeds at ₹1,000 per page, or via our monthly maintenance contract (₹2,000/month).
+        Your contract includes{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>
+          {client.selected_package === 'Starter Package' ? '7 days' : client.selected_package === 'Growth Package' ? '15 days' : '30 days'}
+        </Text>{' '}
+        of post-launch SLA support. For updates, emergency patches, or content additions post support, billing proceeds at ₹1,000 per page, or via our monthly maintenance contract (₹2,000/month).
       </Text>
 
       <View style={styles.signatureRow}>
         <View style={styles.signatureBlock}>
           <Text style={styles.signatureTitle}>Debanjan Amin</Text>
-          <Text style={styles.signatureSubText}>Technical Co-Founder, PixelStack</Text>
+          <Text style={styles.signatureSubText}>Technical Co-Founder, D.A.B Digitals</Text>
         </View>
         <View style={styles.signatureBlock}>
           <Text style={styles.signatureTitle}>{client.name}</Text>
@@ -834,7 +868,7 @@ export const TestimonialPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h1}>Client Review & Testimonial</Text>
       <Text style={styles.paragraph}>
-        We loved collaborating with you on your new web portal! To help us continuously improve and showcase our capabilities, please share your experience working with Debanjan Amin and Banashree Das.
+        We loved collaborating with you on your new web portal! To help us continuously improve and showcase our capabilities, please share your experience working with Debanjan Amin and Banasri Das.
       </Text>
 
       <Text style={styles.h2}>1. Performance Feedback Questions</Text>
@@ -862,7 +896,7 @@ export const TestimonialPDF = ({ client }: { client: any }) => (
       <View style={styles.bulletList}>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>[ ]</Text>
-          <Text style={styles.bulletText}>I authorize PixelStack Studio to publish this testimonial review, including my business logo and name, on their website and branding brochures.</Text>
+          <Text style={styles.bulletText}>I authorize D.A.B Digitals to publish this testimonial review, including my business logo and name, on their website and branding brochures.</Text>
         </View>
       </View>
 

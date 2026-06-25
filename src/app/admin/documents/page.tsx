@@ -91,38 +91,38 @@ export default function DocumentHub() {
     switch (docKey) {
       case 'brochure':
         docElement = <BrochurePDF />;
-        docTitle = 'PixelStack Agency Brochure';
-        filename = `PixelStack_Agency_Brochure.pdf`;
+        docTitle = 'D.A.B Digitals Agency Brochure';
+        filename = `DAB_Digitals_Agency_Brochure.pdf`;
         break;
       case 'proposal':
         docElement = <ProposalPDF client={client} />;
         docTitle = `Project Proposal - ${client.name}`;
-        filename = `PixelStack_Proposal_${client.name.replace(/\s+/g, '_')}.pdf`;
+        filename = `DAB_Digitals_Proposal_${client.name.replace(/\s+/g, '_')}.pdf`;
         break;
       case 'contract':
         docElement = <ContractPDF client={client} />;
         docTitle = `Service Agreement - ${client.name}`;
-        filename = `PixelStack_Contract_${client.name.replace(/\s+/g, '_')}.pdf`;
+        filename = `DAB_Digitals_Contract_${client.name.replace(/\s+/g, '_')}.pdf`;
         break;
       case 'welcome':
         docElement = <WelcomePDF client={client} />;
         docTitle = `Welcome Onboarding - ${client.name}`;
-        filename = `PixelStack_Welcome_Letter_${client.name.replace(/\s+/g, '_')}.pdf`;
+        filename = `DAB_Digitals_Welcome_Letter_${client.name.replace(/\s+/g, '_')}.pdf`;
         break;
       case 'requirements':
         docElement = <RequirementsPDF client={client} />;
         docTitle = `Requirements checklist - ${client.name}`;
-        filename = `PixelStack_Requirements_${client.name.replace(/\s+/g, '_')}.pdf`;
+        filename = `DAB_Digitals_Requirements_${client.name.replace(/\s+/g, '_')}.pdf`;
         break;
       case 'handover':
         docElement = <HandoverPDF client={client} />;
         docTitle = `Handover Credentials - ${client.name}`;
-        filename = `PixelStack_Handover_${client.name.replace(/\s+/g, '_')}.pdf`;
+        filename = `DAB_Digitals_Handover_${client.name.replace(/\s+/g, '_')}.pdf`;
         break;
       case 'testimonial':
         docElement = <TestimonialPDF client={client} />;
         docTitle = `Testimonial Request - ${client.name}`;
-        filename = `PixelStack_Testimonial_Form_${client.name.replace(/\s+/g, '_')}.pdf`;
+        filename = `DAB_Digitals_Testimonial_Form_${client.name.replace(/\s+/g, '_')}.pdf`;
         break;
       case 'invoice': {
         const invoice = invoices.find(i => i.id === selectedInvoiceId);
@@ -132,7 +132,7 @@ export default function DocumentHub() {
         }
         docElement = <InvoicePDF invoice={invoice} client={client} />;
         docTitle = `Billing Invoice ${invoice.invoice_number}`;
-        filename = `PixelStack_Invoice_${invoice.invoice_number}.pdf`;
+        filename = `DAB_Digitals_Invoice_${invoice.invoice_number}.pdf`;
         break;
       }
       case 'receipt': {
@@ -143,7 +143,7 @@ export default function DocumentHub() {
         }
         docElement = <ReceiptPDF invoice={invoice} client={client} />;
         docTitle = `Payment Receipt REC-${invoice.invoice_number}`;
-        filename = `PixelStack_Receipt_REC_${invoice.invoice_number}.pdf`;
+        filename = `DAB_Digitals_Receipt_REC_${invoice.invoice_number}.pdf`;
         break;
       }
       default:

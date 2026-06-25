@@ -30,7 +30,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     setMounted(true);
-    const authStatus = sessionStorage.getItem('pixelstack_admin_auth');
+    const authStatus = sessionStorage.getItem('dab_digitals_admin_auth');
     if (authStatus === 'true') {
       setIsAuthenticated(true);
     }
@@ -41,7 +41,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     if (password === 'pixeladmin') {
       setIsAuthenticated(true);
       setLoginError('');
-      sessionStorage.setItem('pixelstack_admin_auth', 'true');
+      sessionStorage.setItem('dab_digitals_admin_auth', 'true');
     } else {
       setLoginError('Invalid Administrator Password. Access Denied.');
     }
@@ -49,7 +49,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    sessionStorage.removeItem('pixelstack_admin_auth');
+    sessionStorage.removeItem('dab_digitals_admin_auth');
     router.push('/');
   };
 
@@ -79,7 +79,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Lock className="h-5 w-5 text-primary-light" />
           </div>
 
-          <h1 className="text-xl font-bold text-white mb-2">PixelStack Studio Admin</h1>
+          <h1 className="text-xl font-bold text-white mb-2">D.A.B Digitals Admin</h1>
           <p className="text-zinc-400 text-xs mb-6 leading-relaxed">
             Enter administrator credentials to manage leads, clients, invoices, and documents.
           </p>
@@ -141,7 +141,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <header className="md:hidden flex items-center justify-between p-4 bg-zinc-900/80 border-b border-white/5 z-40 backdrop-blur-md">
         <LinkComponent href="/" className="flex items-center gap-2">
           <span className="text-sm font-bold tracking-tight text-white">
-            Pixel<span className="text-primary-light">Stack</span> <span className="text-[10px] text-zinc-500 font-mono">ADMIN</span>
+            D.A.B <span className="text-primary-light">Digitals</span> <span className="text-[10px] text-zinc-500 font-mono">ADMIN</span>
           </span>
         </LinkComponent>
         <button
@@ -161,7 +161,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="p-6 border-b border-white/5 flex flex-col gap-4">
           <LinkComponent href="/" className="flex items-center gap-2">
             <span className="text-lg font-bold tracking-tight text-white">
-              Pixel<span className="text-primary-light">Stack</span>
+              D.A.B <span className="text-primary-light">Digitals</span>
             </span>
             <span className="text-[9px] bg-primary/10 border border-primary/20 text-primary-light font-bold px-1.5 py-0.5 rounded tracking-widest font-mono">
               STUDIO

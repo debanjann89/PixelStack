@@ -33,7 +33,7 @@ export default function Loading() {
         >
           <span className="h-2 w-2 rounded-full bg-primary" />
           <span className="text-sm font-bold tracking-widest uppercase text-white font-mono">
-            Pixel<span className="text-primary-light">Stack</span>
+            D.A.B <span className="text-primary-light">Digitals</span>
           </span>
         </motion.div>
         

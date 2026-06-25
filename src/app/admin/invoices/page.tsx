@@ -51,7 +51,7 @@ export default function InvoicesManager() {
   const [issueDate, setIssueDate] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [packageSelected, setPackageSelected] = useState('Starter Package');
-  const [paymentInstructions, setPaymentInstructions] = useState('Please transfer UPI to pixelstack@upi or Bank A/C: 1234567890 (IFSC: SBIN0000123)');
+  const [paymentInstructions, setPaymentInstructions] = useState('Please transfer UPI to dabdigitals@upi or Bank A/C: 1234567890 (IFSC: SBIN0000123)');
   const [status, setStatus] = useState('Pending');
 
   // Interactive Breakdown items
@@ -101,7 +101,7 @@ export default function InvoicesManager() {
     setIssueDate(today);
     setDueDate(nextWeek);
     setPackageSelected(clients[0].selected_package || 'Starter Package');
-    setPaymentInstructions('Please transfer UPI to pixelstack@upi or Bank A/C: 1234567890 (IFSC: SBIN0000123)');
+    setPaymentInstructions('Please transfer UPI to dabdigitals@upi or Bank A/C: 1234567890 (IFSC: SBIN0000123)');
     setStatus('Pending');
 
     const defaultCost = Number(clients[0].project_cost || 10000);
@@ -250,7 +250,7 @@ export default function InvoicesManager() {
   const handlePreviewInvoice = async (inv: any) => {
     const client = clients.find(c => c.id === inv.client_id) || inv.clients || {};
     setPdfDocument(<InvoicePDF invoice={inv} client={client} />);
-    setPdfFileName(`PixelStack_Invoice_${inv.invoice_number}_${client.name?.replace(/\s+/g, '_')}.pdf`);
+    setPdfFileName(`DAB_Digitals_Invoice_${inv.invoice_number}_${client.name?.replace(/\s+/g, '_')}.pdf`);
     setIsPreviewOpen(true);
     
     // Log PDF generation event
@@ -261,7 +261,7 @@ export default function InvoicesManager() {
   const handlePreviewReceipt = async (inv: any) => {
     const client = clients.find(c => c.id === inv.client_id) || inv.clients || {};
     setPdfDocument(<ReceiptPDF invoice={inv} client={client} />);
-    setPdfFileName(`PixelStack_Receipt_REC_${inv.invoice_number}_${client.name?.replace(/\s+/g, '_')}.pdf`);
+    setPdfFileName(`DAB_Digitals_Receipt_REC_${inv.invoice_number}_${client.name?.replace(/\s+/g, '_')}.pdf`);
     setIsPreviewOpen(true);
 
     // Log PDF generation event
