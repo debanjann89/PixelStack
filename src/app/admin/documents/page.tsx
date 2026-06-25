@@ -22,7 +22,8 @@ import {
   Key,
   Layers,
   ChevronRight,
-  TrendingUp
+  TrendingUp,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PDFPreviewModal from '@/components/pdf/PDFPreviewModal';
@@ -310,11 +311,11 @@ export default function DocumentHub() {
         ) : clients.length === 0 ? (
           <span className="text-xs text-orange-400 font-semibold">No clients created. Create a client first.</span>
         ) : (
-          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto relative">
             <select
               value={selectedClientId}
               onChange={(e) => setSelectedClientId(e.target.value)}
-              className="px-3 py-2 rounded-lg bg-zinc-950/80 border border-white/5 text-white text-xs font-semibold focus:outline-none w-full sm:w-64"
+              className="appearance-none pl-3 pr-9 py-2 rounded-lg bg-zinc-950/80 border border-white/5 text-white text-xs font-semibold focus:outline-none w-full sm:w-64 cursor-pointer"
             >
               {clients.map((c) => (
                 <option key={c.id} value={c.id} className="bg-zinc-950">
@@ -322,6 +323,7 @@ export default function DocumentHub() {
                 </option>
               ))}
             </select>
+            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
           </div>
         )}
       </div>
@@ -355,34 +357,40 @@ export default function DocumentHub() {
               {tmpl.needsInvoice && isInvoiceSelectable && (
                 <div className="space-y-2 text-left">
                   <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-500">Pick Billing Invoice</label>
-                  <select
-                    value={selectedInvoiceId}
-                    onChange={(e) => setSelectedInvoiceId(e.target.value)}
-                    className="w-full px-2 py-1.5 rounded bg-zinc-950/80 border border-white/5 text-white text-[11px] focus:outline-none"
-                  >
-                    {clientInvoices.map((inv) => (
-                      <option key={inv.id} value={inv.id} className="bg-zinc-950">
-                        {inv.invoice_number} (₹{Number(inv.total_amount).toLocaleString()})
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={selectedInvoiceId}
+                      onChange={(e) => setSelectedInvoiceId(e.target.value)}
+                      className="w-full appearance-none pl-2 pr-7 py-1.5 rounded bg-zinc-950/80 border border-white/5 text-white text-[11px] focus:outline-none cursor-pointer"
+                    >
+                      {clientInvoices.map((inv) => (
+                        <option key={inv.id} value={inv.id} className="bg-zinc-950">
+                          {inv.invoice_number} (₹{Number(inv.total_amount).toLocaleString()})
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
               )}
 
               {tmpl.needsPaidInvoice && isReceiptSelectable && (
                 <div className="space-y-2 text-left">
                   <label className="block text-[9px] font-bold uppercase tracking-wider text-zinc-500">Pick Paid Invoice</label>
-                  <select
-                    value={selectedInvoiceId}
-                    onChange={(e) => setSelectedInvoiceId(e.target.value)}
-                    className="w-full px-2 py-1.5 rounded bg-zinc-950/80 border border-white/5 text-white text-[11px] focus:outline-none font-semibold text-emerald-400"
-                  >
-                    {paidClientInvoices.map((inv) => (
-                      <option key={inv.id} value={inv.id} className="bg-zinc-950">
-                        {inv.invoice_number} (₹{Number(inv.total_amount).toLocaleString()})
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={selectedInvoiceId}
+                      onChange={(e) => setSelectedInvoiceId(e.target.value)}
+                      className="w-full appearance-none pl-2 pr-7 py-1.5 rounded bg-zinc-950/80 border border-white/5 text-white text-[11px] focus:outline-none font-semibold text-emerald-400 cursor-pointer"
+                    >
+                      {paidClientInvoices.map((inv) => (
+                        <option key={inv.id} value={inv.id} className="bg-zinc-950">
+                          {inv.invoice_number} (₹{Number(inv.total_amount).toLocaleString()})
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
               )}
 

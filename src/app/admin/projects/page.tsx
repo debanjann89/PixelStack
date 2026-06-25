@@ -19,7 +19,8 @@ import {
   Clock,
   User,
   ExternalLink,
-  ChevronRight
+  ChevronRight,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DeleteConfirmModal from '@/components/DeleteConfirmModal';
@@ -341,17 +342,20 @@ export default function ProjectsManager() {
               {!editingProject && (
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Associate Client Profile</label>
-                  <select
-                    value={clientId}
-                    onChange={(e) => handleClientSelect(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                  >
-                    {clients.map((c) => (
-                      <option key={c.id} value={c.id} className="bg-zinc-950">
-                        {c.name} {c.business_name ? `(${c.business_name})` : ''}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={clientId}
+                      onChange={(e) => handleClientSelect(e.target.value)}
+                      className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                    >
+                      {clients.map((c) => (
+                        <option key={c.id} value={c.id} className="bg-zinc-950">
+                          {c.name} {c.business_name ? `(${c.business_name})` : ''}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
               )}
 
@@ -369,16 +373,19 @@ export default function ProjectsManager() {
 
               <div>
                 <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Service Package & Level</label>
-                <select
-                  value={selectedPackage}
-                  onChange={(e) => setSelectedPackage(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                >
-                  <option value="Starter Package" className="bg-zinc-950">Starter Package</option>
-                  <option value="Growth Package" className="bg-zinc-950">Growth Package</option>
-                  <option value="Premium Package" className="bg-zinc-950">Premium Package</option>
-                  <option value="Bespoke Custom SLA" className="bg-zinc-950">Bespoke Custom SLA</option>
-                </select>
+                <div className="relative">
+                  <select
+                    value={selectedPackage}
+                    onChange={(e) => setSelectedPackage(e.target.value)}
+                    className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                  >
+                    <option value="Starter Package" className="bg-zinc-950">Starter Package</option>
+                    <option value="Growth Package" className="bg-zinc-950">Growth Package</option>
+                    <option value="Premium Package" className="bg-zinc-950">Premium Package</option>
+                    <option value="Bespoke Custom SLA" className="bg-zinc-950">Bespoke Custom SLA</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -408,15 +415,18 @@ export default function ProjectsManager() {
 
               <div>
                 <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Project Execution Status</label>
-                <select
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                >
-                  {PROJECT_STATUS_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt} className="bg-zinc-950">{opt}</option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                  >
+                    {PROJECT_STATUS_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt} className="bg-zinc-950">{opt}</option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                </div>
               </div>
 
               <div>

@@ -20,7 +20,8 @@ import {
   TrendingUp,
   AlertCircle,
   CheckCircle,
-  Loader2
+  Loader2,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DeleteConfirmModal from '@/components/DeleteConfirmModal';
@@ -545,15 +546,18 @@ export default function LeadsManager() {
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Budget Target</label>
-                  <select
-                    value={leadBudgetRange}
-                    onChange={(e) => setLeadBudgetRange(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                  >
-                    {BUDGET_OPTIONS.map((opt) => (
-                      <option key={opt} value={opt} className="bg-zinc-950">{opt}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={leadBudgetRange}
+                      onChange={(e) => setLeadBudgetRange(e.target.value)}
+                      className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                    >
+                      {BUDGET_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt} className="bg-zinc-950">{opt}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
               </div>
 

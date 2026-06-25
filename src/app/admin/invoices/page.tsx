@@ -23,7 +23,8 @@ import {
   PlusCircle,
   MinusCircle,
   FileText,
-  Receipt
+  Receipt,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PDFPreviewModal from '@/components/pdf/PDFPreviewModal';
@@ -445,33 +446,39 @@ export default function InvoicesManager() {
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Billed Client Profile</label>
-                  <select
-                    value={clientId}
-                    onChange={(e) => handleClientSelect(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                  >
-                    {clients.map((c) => (
-                      <option key={c.id} value={c.id} className="bg-zinc-950">
-                        {c.name} {c.business_name ? `(${c.business_name})` : ''}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={clientId}
+                      onChange={(e) => handleClientSelect(e.target.value)}
+                      className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                    >
+                      {clients.map((c) => (
+                        <option key={c.id} value={c.id} className="bg-zinc-950">
+                          {c.name} {c.business_name ? `(${c.business_name})` : ''}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Link Project (Optional)</label>
-                  <select
-                    value={projectId}
-                    onChange={(e) => setProjectId(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                  >
-                    <option value="" className="bg-zinc-950">Not Linked / General</option>
-                    {clientProjects.map((p) => (
-                      <option key={p.id} value={p.id} className="bg-zinc-950">{p.title}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={projectId}
+                      onChange={(e) => setProjectId(e.target.value)}
+                      className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                    >
+                      <option value="" className="bg-zinc-950">Not Linked / General</option>
+                      {clientProjects.map((p) => (
+                        <option key={p.id} value={p.id} className="bg-zinc-950">{p.title}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Billed Package Type</label>
@@ -509,15 +516,18 @@ export default function InvoicesManager() {
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Billing status</label>
-                  <select
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 font-bold"
-                  >
-                    <option value="Pending" className="bg-zinc-950 text-orange-400">Pending</option>
-                    <option value="Partial" className="bg-zinc-950 text-orange-400">Partial</option>
-                    <option value="Paid" className="bg-zinc-950 text-primary-light">Paid</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                      className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer font-bold"
+                    >
+                      <option value="Pending" className="bg-zinc-950 text-orange-400">Pending</option>
+                      <option value="Partial" className="bg-zinc-950 text-orange-400">Partial</option>
+                      <option value="Paid" className="bg-zinc-950 text-primary-light">Paid</option>
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
               </div>
 

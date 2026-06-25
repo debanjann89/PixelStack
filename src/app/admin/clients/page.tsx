@@ -15,7 +15,8 @@ import {
   Phone,
   MapPin,
   FileText,
-  DollarSign
+  DollarSign,
+  ChevronDown
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DeleteConfirmModal from '@/components/DeleteConfirmModal';
@@ -450,15 +451,18 @@ export default function ClientsManager() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Service Package</label>
-                  <select
-                    value={selectedPackage}
-                    onChange={(e) => handlePackageChange(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                  >
-                    {PACKAGE_OPTIONS.map((opt) => (
-                      <option key={opt.value} value={opt.value} className="bg-zinc-950">{opt.label}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={selectedPackage}
+                      onChange={(e) => handlePackageChange(e.target.value)}
+                      className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                    >
+                      {PACKAGE_OPTIONS.map((opt) => (
+                        <option key={opt.value} value={opt.value} className="bg-zinc-950">{opt.label}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Contract Cost (₹)</label>
@@ -476,15 +480,18 @@ export default function ClientsManager() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Account Status</label>
-                  <select
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
-                  >
-                    {CLIENT_STATUS_OPTIONS.map((opt) => (
-                      <option key={opt} value={opt} className="bg-zinc-950">{opt}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                      className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50 cursor-pointer"
+                    >
+                      {CLIENT_STATUS_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt} className="bg-zinc-950">{opt}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Billing Address</label>

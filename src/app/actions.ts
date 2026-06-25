@@ -147,7 +147,9 @@ export async function getProjects() {
         duration: item.duration,
         bgGradient: item.bg_gradient, // Map bg_gradient to bgGradient
         image_url: item.image_url,
-        video_url: item.video_url
+        video_url: item.video_url,
+        images: item.images || [],
+        project_url: item.project_url
       }));
     }
     return PORTFOLIO_PROJECTS;
@@ -917,7 +919,9 @@ export async function addPortfolioItem(item: any) {
         duration: item.duration || '',
         bg_gradient: item.bg_gradient || 'from-primary/10 to-secondary/20',
         image_url: item.image_url || '',
-        video_url: item.video_url || ''
+        video_url: item.video_url || '',
+        images: item.images || [],
+        project_url: item.project_url || ''
       })
       .select()
       .single();
@@ -945,7 +949,9 @@ export async function updatePortfolioItem(id: string, item: any) {
         duration: item.duration,
         bg_gradient: item.bg_gradient,
         image_url: item.image_url,
-        video_url: item.video_url
+        video_url: item.video_url,
+        images: item.images || [],
+        project_url: item.project_url || ''
       })
       .eq('id', id);
 

@@ -11,7 +11,9 @@ import {
   TrendingUp,
   Globe,
   Award,
-  Clock
+  Clock,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { getProjects } from '@/app/actions';
 
@@ -28,6 +30,8 @@ interface Project {
   bgGradient: string;
   image_url?: string;
   video_url?: string;
+  images?: string[];
+  project_url?: string;
 }
 
 const CATEGORIES = ['All', 'Restaurants', 'Law Firms', 'Dental Clinics', 'Hotels', 'Businesses'] as const;
@@ -35,9 +39,15 @@ const CATEGORIES = ['All', 'Restaurants', 'Law Firms', 'Dental Clinics', 'Hotels
 export default function PortfolioPage() {
   const [filter, setFilter] = useState<typeof CATEGORIES[number]>('All');
   const [activeProj, setActiveProj] = useState<Project | null>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
   const [projectsList, setProjectsList] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  const handleSetActiveProj = (proj: Project | null) => {
+    setActiveProj(proj);
+    setCarouselIndex(0);
+  };
 
   useEffect(() => {
     const loadProjects = async () => {
@@ -118,13 +128,13 @@ export default function PortfolioPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  onClick={() => setActiveProj(proj)}
+                  onClick={() => handleSetActiveProj(proj)}
                   className="glass-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col h-full border border-white/5 hover:border-white/10"
                 >
                   {/* Visual Header */}
-                  {proj.image_url ? (
+                  {(proj.images && proj.images.length > 0) || proj.image_url ? (
                     <div className="aspect-[4/3] relative overflow-hidden border-b border-white/5 group-hover:scale-[1.02] transition-transform duration-300">
-                      <img src={proj.image_url} alt={proj.title} className="w-full h-full object-cover" />
+                      <img src={proj.images && proj.images.length > 0 ? proj.images[0] : proj.image_url} alt={proj.title} className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-black/45 flex items-end p-4">
                         <span className="text-[9px] bg-black/60 border border-white/10 px-2 py-0.5 rounded uppercase tracking-wider font-bold text-zinc-200">
                           {proj.category}
@@ -171,7 +181,7 @@ export default function PortfolioPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={() => setActiveProj(null)}
+                onClick={() => handleSetActiveProj(null)}
                 className="absolute inset-0 bg-black/85 backdrop-blur-md"
               />
 
@@ -183,7 +193,7 @@ export default function PortfolioPage() {
                 className="relative w-full max-w-2xl glass-panel rounded-2xl p-6 md:p-8 border border-white/10 z-10 shadow-2xl max-h-[90vh] overflow-y-auto"
               >
                 <button
-                  onClick={() => setActiveProj(null)}
+                  onClick={() => handleSetActiveProj(null)}
                   className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors cursor-pointer"
                 >
                   <X className="h-5 w-5" />
@@ -220,9 +230,69 @@ export default function PortfolioPage() {
                       <video src={activeProj.video_url} controls className="w-full h-full object-contain" />
                     )}
                   </div>
-                ) : activeProj.image_url ? (
-                  <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 bg-zinc-950">
-                    <img src={activeProj.image_url} alt={activeProj.title} className="w-full h-full object-cover" />
+                ) : ((activeProj.images && activeProj.images.length > 0) || activeProj.image_url) ? (
+                  <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 bg-zinc-950 group">
+                    {(() => {
+                      const carouselImages = activeProj.images && activeProj.images.length > 0 
+                        ? activeProj.images 
+                        : (activeProj.image_url ? [activeProj.image_url] : []);
+                      return (
+                        <>
+                          <motion.img
+                            key={carouselIndex}
+                            src={carouselImages[carouselIndex]}
+                            alt={`${activeProj.title} screenshot ${carouselIndex + 1}`}
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.3 }}
+                            className="w-full h-full object-cover"
+                          />
+
+                          {carouselImages.length > 1 && (
+                            <>
+                              {/* Left Arrow */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCarouselIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
+                                }}
+                                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black text-white transition-colors cursor-pointer"
+                              >
+                                <ChevronLeft className="h-4 w-4" />
+                              </button>
+
+                              {/* Right Arrow */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCarouselIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
+                                }}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black text-white transition-colors cursor-pointer"
+                              >
+                                <ChevronRight className="h-4 w-4" />
+                              </button>
+
+                              {/* Indicators */}
+                              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                                {carouselImages.map((_, idx) => (
+                                  <button
+                                    key={idx}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setCarouselIndex(idx);
+                                    }}
+                                    className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                                      carouselIndex === idx ? 'w-4 bg-primary' : 'w-1.5 bg-white/40'
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                            </>
+                          )}
+                        </>
+                      );
+                    })()}
                   </div>
                 ) : null}
 
@@ -280,17 +350,29 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Bottom line action */}
-                <div className="flex items-center justify-between border-t border-zinc-900 pt-6">
+                <div className="flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-zinc-900 pt-6">
                   <span className="text-xs text-zinc-500 font-mono">Projects average starting value: ₹50,000+</span>
-                  <button
-                    onClick={() => {
-                      setActiveProj(null);
-                      handleBook();
-                    }}
-                    className="px-5 py-2.5 bg-white text-black font-semibold rounded-xl text-xs flex items-center gap-1.5 hover:bg-zinc-200 transition-colors cursor-pointer"
-                  >
-                    Build A Similar Website <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
+                  <div className="flex gap-3 w-full sm:w-auto">
+                    {activeProj.project_url && (
+                      <a
+                        href={activeProj.project_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 sm:flex-initial px-5 py-2.5 bg-zinc-900 text-zinc-200 hover:text-white border border-white/5 hover:border-white/10 font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors"
+                      >
+                        <Globe className="h-3.5 w-3.5" /> Visit Live Website
+                      </a>
+                    )}
+                    <button
+                      onClick={() => {
+                        handleSetActiveProj(null);
+                        handleBook();
+                      }}
+                      className="flex-1 sm:flex-initial px-5 py-2.5 bg-white text-black font-semibold rounded-xl text-xs flex items-center justify-center gap-1.5 hover:bg-zinc-200 transition-colors cursor-pointer"
+                    >
+                      Build A Similar Website <ArrowRight className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
                 </div>
 
               </motion.div>

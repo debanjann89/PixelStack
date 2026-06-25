@@ -15,7 +15,8 @@ import {
   Clock,
   ArrowRight,
   TrendingUp,
-  Award
+  Award,
+  ChevronDown
 } from 'lucide-react';
 import {
   getPortfolioItems,
@@ -24,6 +25,7 @@ import {
   deletePortfolioItem
 } from '@/app/actions';
 import DeleteConfirmModal from '@/components/DeleteConfirmModal';
+import { supabase } from '@/lib/supabase';
 
 const GRADIENTS = [
   { name: 'Amber Glow', value: 'from-amber-600/10 to-orange-700/20' },
@@ -56,9 +58,54 @@ export default function AdminPortfolioPage() {
   const [bgGradient, setBgGradient] = useState(GRADIENTS[3].value);
   const [imageUrl, setImageUrl] = useState('');
   const [videoUrl, setVideoUrl] = useState('');
+  const [images, setImages] = useState<string[]>([]);
+  const [projectUrl, setProjectUrl] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
   
   // Delete modal state
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: '', title: '', isLoading: false });
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    setIsUploading(true);
+    const uploadedUrls: string[] = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
+      const filePath = `showcase/${fileName}`;
+
+      try {
+        const { error } = await supabase.storage
+          .from('portfolio')
+          .upload(filePath, file, {
+            cacheControl: '3600',
+            upsert: false
+          });
+
+        if (error) throw error;
+
+        const { data: { publicUrl } } = supabase.storage
+          .from('portfolio')
+          .getPublicUrl(filePath);
+
+        uploadedUrls.push(publicUrl);
+      } catch (err: any) {
+        console.error('Error uploading file:', err);
+        triggerToast(`Upload failed for ${file.name}: ${err.message || err}`, 'error');
+      }
+    }
+
+    if (uploadedUrls.length > 0) {
+      setImages((prev) => [...prev, ...uploadedUrls]);
+      triggerToast(`Successfully uploaded ${uploadedUrls.length} file(s).`);
+    }
+    setIsUploading(false);
+    e.target.value = '';
+  };
 
   const triggerToast = (message: string, type: 'success' | 'error' = 'success') => {
     setToast({ message, type });
@@ -89,6 +136,8 @@ export default function AdminPortfolioPage() {
     setBgGradient(GRADIENTS[3].value);
     setImageUrl('');
     setVideoUrl('');
+    setImages([]);
+    setProjectUrl('');
     setIsModalOpen(true);
   };
 
@@ -105,6 +154,8 @@ export default function AdminPortfolioPage() {
     setBgGradient(item.bg_gradient || GRADIENTS[3].value);
     setImageUrl(item.image_url || '');
     setVideoUrl(item.video_url || '');
+    setImages(item.images || []);
+    setProjectUrl(item.project_url || '');
     setIsModalOpen(true);
   };
 
@@ -114,6 +165,8 @@ export default function AdminPortfolioPage() {
       triggerToast('Title and Category are required.', 'error');
       return;
     }
+
+    const firstImage = images.length > 0 ? images[0] : imageUrl.trim();
 
     const payload = {
       title: title.trim(),
@@ -125,8 +178,10 @@ export default function AdminPortfolioPage() {
       results: resultsText.split('\n').map((r) => r.trim()).filter(Boolean),
       duration: duration.trim(),
       bg_gradient: bgGradient,
-      image_url: imageUrl.trim(),
-      video_url: videoUrl.trim()
+      image_url: firstImage,
+      video_url: videoUrl.trim(),
+      images: images,
+      project_url: projectUrl.trim()
     };
 
     if (editingItem) {
@@ -376,23 +431,26 @@ export default function AdminPortfolioPage() {
                       placeholder="e.g. The Riviera Bistro"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                     />
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Category</label>
-                    <select
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
-                    >
-                      <option value="Businesses">Businesses</option>
-                      <option value="Restaurants">Restaurants</option>
-                      <option value="Law Firms">Law Firms</option>
-                      <option value="Dental Clinics">Dental Clinics</option>
-                      <option value="Hotels">Hotels</option>
-                      <option value="Other">Other / Custom</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 cursor-pointer text-xs"
+                      >
+                        <option value="Businesses" className="bg-zinc-950">Businesses</option>
+                        <option value="Restaurants" className="bg-zinc-950">Restaurants</option>
+                        <option value="Law Firms" className="bg-zinc-950">Law Firms</option>
+                        <option value="Dental Clinics" className="bg-zinc-950">Dental Clinics</option>
+                        <option value="Hotels" className="bg-zinc-950">Hotels</option>
+                        <option value="Other" className="bg-zinc-950">Other / Custom</option>
+                      </select>
+                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                    </div>
                   </div>
                 </div>
 
@@ -404,7 +462,7 @@ export default function AdminPortfolioPage() {
                       type="text"
                       placeholder="e.g. E-Commerce"
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                     />
                   </div>
                 )}
@@ -417,7 +475,7 @@ export default function AdminPortfolioPage() {
                     placeholder="e.g. A premium ordering & booking website designed for a fine dining restaurant group."
                     value={overview}
                     onChange={(e) => setOverview(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                   />
                 </div>
 
@@ -428,34 +486,90 @@ export default function AdminPortfolioPage() {
                     placeholder="Describe the client challenge, what was developed, and how it solves their issue..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                   />
                 </div>
 
-                {/* Row 3: Image and Video */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+                {/* Image Upload section */}
+                <div className="space-y-3">
+                  <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1">
+                    Showcase Photos / screenshots
+                  </label>
+                  <div className="flex flex-col gap-3">
+                    <label className="flex flex-col items-center justify-center border-2 border-dashed border-white/10 rounded-xl p-5 bg-zinc-950/40 hover:bg-zinc-950/80 cursor-pointer hover:border-primary/50 transition-colors">
+                      <input
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="hidden"
+                        disabled={isUploading}
+                      />
+                      {isUploading ? (
+                        <div className="flex flex-col items-center gap-1.5 py-1">
+                          <Loader2 className="h-5 w-5 animate-spin text-primary" />
+                          <span className="text-[11px] text-zinc-400 font-mono">Uploading assets to Supabase Storage...</span>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center gap-1 py-1">
+                          <ImageIcon className="h-5 w-5 text-zinc-500" />
+                          <span className="text-[11px] text-zinc-400 font-semibold">Upload normal images from local disk</span>
+                          <span className="text-[9px] text-zinc-600 font-mono">Select single or multiple files (JPG, PNG, WebP)</span>
+                        </div>
+                      )}
+                    </label>
+
+                    {/* Previews grid */}
+                    {images.length > 0 && (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-1">
+                        {images.map((url, idx) => (
+                          <div key={idx} className="relative aspect-[16/10] rounded-lg overflow-hidden border border-white/5 group bg-zinc-950">
+                            <img
+                              src={url}
+                              alt={`Screenshot ${idx + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => setImages((prev) => prev.filter((_, i) => i !== idx))}
+                              className="absolute top-1 right-1 p-1 rounded bg-black/80 text-red-400 hover:text-red-300 hover:bg-black transition-all cursor-pointer opacity-80 group-hover:opacity-100"
+                            >
+                              <Trash2 className="h-3 w-3" />
+                            </button>
+                            <span className="absolute bottom-1 left-1 bg-black/80 px-1 py-0.5 rounded text-[8px] font-mono text-zinc-400">
+                              {idx === 0 ? 'Thumbnail' : `#${idx + 1}`}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Row 3: URLs & Links */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="md:col-span-2">
                     <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                      <ImageIcon className="h-3.5 w-3.5 text-zinc-400" /> Photo / Image URL
+                      <Globe className="h-3.5 w-3.5 text-zinc-400" /> Live Website URL (Optional link for "Visit Live Website")
                     </label>
                     <input
                       type="url"
-                      placeholder="https://images.unsplash.com/... or public image link"
-                      value={imageUrl}
-                      onChange={(e) => setImageUrl(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                      placeholder="https://example.com"
+                      value={projectUrl}
+                      onChange={(e) => setProjectUrl(e.target.value)}
+                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                     />
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                      <VideoIcon className="h-3.5 w-3.5 text-zinc-400" /> Video Demo URL
+                      <VideoIcon className="h-3.5 w-3.5 text-zinc-400" /> Video Demo URL (Optional)
                     </label>
                     <input
                       type="url"
-                      placeholder="https://youtube.com/watch?v=... or direct mp4 url"
+                      placeholder="https://youtube.com/watch?v=..."
                       value={videoUrl}
                       onChange={(e) => setVideoUrl(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                     />
                   </div>
                 </div>
@@ -468,7 +582,7 @@ export default function AdminPortfolioPage() {
                     placeholder="Next.js 15, Tailwind CSS, TypeScript, Server Actions"
                     value={techText}
                     onChange={(e) => setTechText(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                    className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                   />
                 </div>
 
@@ -481,20 +595,23 @@ export default function AdminPortfolioPage() {
                       placeholder="e.g. 2 Weeks"
                       value={duration}
                       onChange={(e) => setDuration(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                     />
                   </div>
                   <div>
                     <label className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-2">Background Gradient Preset (Card Fallback)</label>
-                    <select
-                      value={bgGradient}
-                      onChange={(e) => setBgGradient(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
-                    >
-                      {GRADIENTS.map((grad) => (
-                        <option key={grad.value} value={grad.value}>{grad.name}</option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        value={bgGradient}
+                        onChange={(e) => setBgGradient(e.target.value)}
+                        className="w-full appearance-none px-3 py-2 pr-8 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 cursor-pointer text-xs"
+                      >
+                        {GRADIENTS.map((grad) => (
+                          <option key={grad.value} value={grad.value} className="bg-zinc-950">{grad.name}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+                    </div>
                   </div>
                 </div>
 
@@ -507,7 +624,7 @@ export default function AdminPortfolioPage() {
                       placeholder="e.g. Build trust through photography showcases.&#10;Reduce seat reservation friction."
                       value={goalsText}
                       onChange={(e) => setGoalsText(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                     />
                   </div>
                   <div>
@@ -517,7 +634,7 @@ export default function AdminPortfolioPage() {
                       placeholder="e.g. +135% Increase in online bookings.&#10;Lighthouse score 100/100."
                       value={resultsText}
                       onChange={(e) => setResultsText(e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50"
+                      className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white focus:outline-none focus:border-primary/50 text-xs"
                     />
                   </div>
                 </div>
