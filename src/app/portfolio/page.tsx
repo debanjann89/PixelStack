@@ -26,6 +26,8 @@ interface Project {
   results: string[];
   duration: string;
   bgGradient: string;
+  image_url?: string;
+  video_url?: string;
 }
 
 const CATEGORIES = ['All', 'Restaurants', 'Law Firms', 'Dental Clinics', 'Hotels', 'Businesses'] as const;
@@ -120,14 +122,25 @@ export default function PortfolioPage() {
                   className="glass-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col h-full border border-white/5 hover:border-white/10"
                 >
                   {/* Visual Header */}
-                  <div className={`aspect-[4/3] bg-gradient-to-br ${proj.bgGradient} relative flex items-center justify-center p-8 border-b border-white/5`}>
-                    <div className="glass-panel p-4 rounded-xl border border-white/10 text-center shadow-lg w-5/6">
-                      <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block mb-1">
-                        {proj.category}
-                      </span>
-                      <h4 className="text-sm font-bold text-white truncate">{proj.title}</h4>
+                  {proj.image_url ? (
+                    <div className="aspect-[4/3] relative overflow-hidden border-b border-white/5 group-hover:scale-[1.02] transition-transform duration-300">
+                      <img src={proj.image_url} alt={proj.title} className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/45 flex items-end p-4">
+                        <span className="text-[9px] bg-black/60 border border-white/10 px-2 py-0.5 rounded uppercase tracking-wider font-bold text-zinc-200">
+                          {proj.category}
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className={`aspect-[4/3] bg-gradient-to-br ${proj.bgGradient} relative flex items-center justify-center p-8 border-b border-white/5`}>
+                      <div className="glass-panel p-4 rounded-xl border border-white/10 text-center shadow-lg w-5/6">
+                        <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block mb-1">
+                          {proj.category}
+                        </span>
+                        <h4 className="text-sm font-bold text-white truncate">{proj.title}</h4>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Details */}
                   <div className="p-6 flex-grow flex flex-col justify-between">
@@ -189,6 +202,30 @@ export default function PortfolioPage() {
 
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{activeProj.title}</h2>
                 
+                {/* Project Media Showcase */}
+                {activeProj.video_url ? (
+                  <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 bg-black">
+                    {activeProj.video_url.includes('youtube.com') || activeProj.video_url.includes('youtu.be') || activeProj.video_url.includes('vimeo.com') ? (
+                      <iframe
+                        src={activeProj.video_url.includes('watch?v=') 
+                          ? activeProj.video_url.replace('watch?v=', 'embed/') 
+                          : activeProj.video_url.includes('youtu.be/') 
+                          ? `https://www.youtube.com/embed/${activeProj.video_url.split('youtu.be/')[1]}`
+                          : activeProj.video_url}
+                        className="w-full h-full"
+                        allowFullScreen
+                        title={activeProj.title}
+                      />
+                    ) : (
+                      <video src={activeProj.video_url} controls className="w-full h-full object-contain" />
+                    )}
+                  </div>
+                ) : activeProj.image_url ? (
+                  <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 bg-zinc-950">
+                    <img src={activeProj.image_url} alt={activeProj.title} className="w-full h-full object-cover" />
+                  </div>
+                ) : null}
+
                 {/* Backstory */}
                 <div className="mb-6">
                   <h4 className="text-white text-xs font-bold uppercase tracking-wider mb-2">Project Overview</h4>

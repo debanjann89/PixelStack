@@ -127,7 +127,34 @@ function getBudgetValue(range: string): number {
 
 // 1. Fetch Static Portfolio Projects
 export async function getProjects() {
-  return PORTFOLIO_PROJECTS;
+  try {
+    const { data, error } = await supabase
+      .from('portfolio_items')
+      .select('*')
+      .order('created_at', { ascending: true });
+
+    if (error) throw error;
+    if (data && data.length > 0) {
+      return data.map((item: any) => ({
+        id: item.id,
+        title: item.title,
+        category: item.category,
+        overview: item.overview,
+        desc: item.description, // Map description to desc
+        tech: item.tech || [],
+        goals: item.goals || [],
+        results: item.results || [],
+        duration: item.duration,
+        bgGradient: item.bg_gradient, // Map bg_gradient to bgGradient
+        image_url: item.image_url,
+        video_url: item.video_url
+      }));
+    }
+    return PORTFOLIO_PROJECTS;
+  } catch (err: any) {
+    console.error('Error getting database projects, falling back to static:', err);
+    return PORTFOLIO_PROJECTS;
+  }
 }
 
 // 2. Submit Contact Form
@@ -855,6 +882,92 @@ export async function logDocumentGeneration(clientId: string | null, docType: st
     return { success: true, log: data };
   } catch (err: any) {
     console.error('Error logging document generation:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+// 5. Portfolio Items Actions
+export async function getPortfolioItems() {
+  try {
+    const { data, error } = await supabase
+      .from('portfolio_items')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return data || [];
+  } catch (err: any) {
+    console.error('Error getting portfolio items:', err);
+    return [];
+  }
+}
+
+export async function addPortfolioItem(item: any) {
+  try {
+    const { data, error } = await supabase
+      .from('portfolio_items')
+      .insert({
+        title: item.title,
+        category: item.category,
+        overview: item.overview || '',
+        description: item.description || '',
+        tech: item.tech || [],
+        goals: item.goals || [],
+        results: item.results || [],
+        duration: item.duration || '',
+        bg_gradient: item.bg_gradient || 'from-primary/10 to-secondary/20',
+        image_url: item.image_url || '',
+        video_url: item.video_url || ''
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, item: data };
+  } catch (err: any) {
+    console.error('Error adding portfolio item:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+export async function updatePortfolioItem(id: string, item: any) {
+  try {
+    const { error } = await supabase
+      .from('portfolio_items')
+      .update({
+        title: item.title,
+        category: item.category,
+        overview: item.overview,
+        description: item.description,
+        tech: item.tech,
+        goals: item.goals,
+        results: item.results,
+        duration: item.duration,
+        bg_gradient: item.bg_gradient,
+        image_url: item.image_url,
+        video_url: item.video_url
+      })
+      .eq('id', id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating portfolio item:', err);
+    return { success: false, message: err.message || 'Server error occurred.' };
+  }
+}
+
+export async function deletePortfolioItem(id: string) {
+  try {
+    const { error } = await supabase
+      .from('portfolio_items')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting portfolio item:', err);
     return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
