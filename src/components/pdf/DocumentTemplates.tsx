@@ -306,7 +306,7 @@ export const BrochurePDF = () => (
       
       <Text style={styles.h1}>About D.A.B Digitals</Text>
       <Text style={styles.paragraph}>
-        D.A.B Digitals is an elite digital engineering agency founded by Debanjan Amin and Banasri Das. We bridge the gap between simple website layouts and high-performance business applications. We build custom web products that look premium, load in under 500ms, and turn visitors into actual customers.
+        D.A.B Digitals is an elite digital engineering agency founded by Debanjan Amin and Banashree Das. We bridge the gap between simple website layouts and high-performance business applications. We build custom web products that look premium, load in under 500ms, and turn visitors into actual customers.
       </Text>
 
       <Text style={styles.h2}>Our Core Capabilities</Text>
@@ -545,7 +545,7 @@ export const WelcomePDF = ({ client }: { client: any }) => (
         </View>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>4.</Text>
-          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Audit & Launch</Text>: Banasri Das conducts SEO schema indexing audits before final edge server deployment.</Text>
+          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Audit & Launch</Text>: Banashree Das conducts SEO schema indexing audits before final edge server deployment.</Text>
         </View>
       </View>
 
@@ -562,7 +562,7 @@ export const WelcomePDF = ({ client }: { client: any }) => (
       </Text>
 
       <View style={{ marginTop: 25 }}>
-        <Text style={{ fontFamily: 'Helvetica-Bold', color: colors.accent }}>Debanjan Amin & Banasri Das</Text>
+        <Text style={{ fontFamily: 'Helvetica-Bold', color: colors.accent }}>Debanjan Amin & Banashree Das</Text>
         <Text style={styles.signatureSubText}>Co-Founders, D.A.B Digitals</Text>
       </View>
 
@@ -868,7 +868,7 @@ export const TestimonialPDF = ({ client }: { client: any }) => (
 
       <Text style={styles.h1}>Client Review & Testimonial</Text>
       <Text style={styles.paragraph}>
-        We loved collaborating with you on your new web portal! To help us continuously improve and showcase our capabilities, please share your experience working with Debanjan Amin and Banasri Das.
+        We loved collaborating with you on your new web portal! To help us continuously improve and showcase our capabilities, please share your experience working with Debanjan Amin and Banashree Das.
       </Text>
 
       <Text style={styles.h2}>1. Performance Feedback Questions</Text>

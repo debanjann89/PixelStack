@@ -72,8 +72,8 @@ const FOUNDERS = [
     skills: ['Social Marketing', 'Content Strategy', 'Digital Marketing', 'Brand Positioning', 'Client Comm', 'Web Planning'],
     social: {
       github: '#',
-      linkedin: 'https://linkedin.com/in/banasridas',
-      email: 'mailto:banasri@dabdigitals.com'
+      linkedin: 'https://linkedin.com/in/banashreedas',
+      email: 'mailto:banashree@dabdigitals.com'
     },
     avatarColor: 'from-primary to-secondary',
     initials: 'BD'
@@ -121,7 +121,7 @@ export default function AboutPage() {
           <div className="md:col-span-7 text-left space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Our Story</h2>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              D.A.B Digitals was founded by **Debanjan Amin** and **Banasri Das** to bridge the gap between simple visual templates and high-performance business applications. We saw that many business owners spent money on slow, generic freelancer layouts that failed to build trust or generate client leads.
+              D.A.B Digitals was founded by **Debanjan Amin** and **Banashree Das** to bridge the gap between simple visual templates and high-performance business applications. We saw that many business owners spent money on slow, generic freelancer layouts that failed to build trust or generate client leads.
             </p>
             <p className="text-zinc-400 text-sm leading-relaxed">
               We set out to create a dedicated agency that focuses exclusively on custom engineering. By combining modern React frameworks (Next.js 15), precise UI design systems, and results-focused growth strategies, we deliver web assets that look premium, load instantly, and drive growth.
