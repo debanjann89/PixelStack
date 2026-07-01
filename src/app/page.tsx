@@ -22,12 +22,16 @@ import {
   MessageSquare,
   ChevronRight,
   X,
-  CheckCircle2
+  CheckCircle2,
+  Clock,
+  ChevronLeft,
+  Award
 } from 'lucide-react';
 import DashboardMockup from '@/components/DashboardMockup';
 import TestimonialsSlider from '@/components/TestimonialsSlider';
 import PricingPlans from '@/components/PricingPlans';
 import CanvasParticles from '@/components/CanvasParticles';
+import { getProjects } from '@/app/actions';
 
 // Reusable Counter Component
 function Counter({ value, suffix = '', duration = 1.5 }: { value: string; suffix?: string; duration?: number }) {
@@ -135,8 +139,25 @@ const ROTATING_WORDS = ['Customers', 'Leads', 'Growth', 'Revenue'];
 
 export default function Home() {
   const router = useRouter();
-  const [activeProj, setActiveProj] = useState<typeof FEATURED_PROJECTS[0] | null>(null);
+  const [activeProj, setActiveProj] = useState<any | null>(null);
+  const [carouselIndex, setCarouselIndex] = useState(0);
   const [wordIdx, setWordIdx] = useState(0);
+  const [projectsList, setProjectsList] = useState<any[]>([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+
+  const handleSetActiveProj = (proj: any | null) => {
+    setActiveProj(proj);
+    setCarouselIndex(0);
+  };
+
+  useEffect(() => {
+    const loadProjects = async () => {
+      const data = await getProjects();
+      setProjectsList(data);
+      setLoadingProjects(false);
+    };
+    loadProjects();
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -394,41 +415,63 @@ export default function Home() {
           </ScrollReveal>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FEATURED_PROJECTS.map((proj, idx) => (
-              <ScrollReveal key={proj.id} delay={idx * 0.05}>
-                <div
-                  onClick={() => setActiveProj(proj)}
-                  className="glass-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col h-full border border-white/5 hover:border-white/10"
-                >
-                  {/* Mock Screenshot Card */}
-                  <div className={`aspect-[4/3] bg-gradient-to-br ${proj.bg} relative flex items-center justify-center p-8 border-b border-white/5 group-hover:scale-[1.01] transition-all duration-300`}>
-                    <div className="glass-panel p-4 rounded-xl border border-white/10 text-center shadow-lg w-5/6">
-                      <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block mb-1">
-                        {proj.category}
-                      </span>
-                      <h4 className="text-sm font-bold text-white truncate">{proj.title}</h4>
-                    </div>
-                  </div>
+          {loadingProjects ? (
+            <div className="flex flex-col items-center justify-center py-20 text-zinc-500 font-mono text-xs w-full col-span-full">
+              <span className="h-6 w-6 rounded-full border-t-2 border-r-2 border-primary border-b-transparent border-l-transparent animate-spin mb-4" />
+              Compiling Featured Projects...
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projectsList.slice(0, 3).map((proj, idx) => (
+                <ScrollReveal key={proj.id} delay={idx * 0.05}>
+                  <div
+                    onClick={() => handleSetActiveProj(proj)}
+                    className="glass-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col h-full border border-white/5 hover:border-white/10"
+                  >
+                    {/* Visual Header */}
+                    {(proj.images && proj.images.length > 0) || proj.image_url ? (
+                      <div className="aspect-[4/3] relative overflow-hidden border-b border-white/5 group-hover:scale-[1.01] transition-transform duration-300">
+                        <img 
+                          src={proj.images && proj.images.length > 0 ? proj.images[0] : proj.image_url} 
+                          alt={proj.title} 
+                          className="w-full h-full object-cover" 
+                        />
+                        <div className="absolute inset-0 bg-black/45 flex items-end p-4">
+                          <span className="text-[9px] bg-black/60 border border-white/10 px-2 py-0.5 rounded uppercase tracking-wider font-bold text-zinc-200">
+                            {proj.category}
+                          </span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={`aspect-[4/3] bg-gradient-to-br ${proj.bgGradient || 'from-primary/20 to-secondary/25'} relative flex items-center justify-center p-8 border-b border-white/5`}>
+                        <div className="glass-panel p-4 rounded-xl border border-white/10 text-center shadow-lg w-5/6">
+                          <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block mb-1">
+                            {proj.category}
+                          </span>
+                          <h4 className="text-sm font-bold text-white truncate">{proj.title}</h4>
+                        </div>
+                      </div>
+                    )}
 
-                  {/* Details */}
-                  <div className="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                      <span className="text-[10px] text-primary-light font-bold uppercase tracking-wider block mb-2">
-                        {proj.category}
-                      </span>
-                      <h3 className="text-lg font-bold text-white mb-2">{proj.title}</h3>
-                      <p className="text-zinc-400 text-xs leading-relaxed mb-4">{proj.desc}</p>
-                    </div>
-                    <div className="flex items-center gap-2 mt-4 pt-4 border-t border-white/5 text-xs text-zinc-500">
-                      <span>Click to view results</span>
-                      <ChevronRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                    {/* Details */}
+                    <div className="p-6 flex-grow flex flex-col justify-between">
+                      <div>
+                        <span className="text-[10px] text-primary-light font-bold uppercase tracking-wider block mb-2">
+                          {proj.category}
+                        </span>
+                        <h3 className="text-lg font-bold text-white mb-2">{proj.title}</h3>
+                        <p className="text-zinc-400 text-xs leading-relaxed mb-4 line-clamp-2">{proj.overview}</p>
+                      </div>
+                      <div className="flex items-center gap-2 mt-4 pt-4 border-t border-white/5 text-xs text-zinc-500">
+                        <span>Click to view results</span>
+                        <ChevronRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          )}
 
         </div>
       </section>
@@ -621,68 +664,203 @@ export default function Home() {
       </section>
 
       {/* ================= PORTFOLIO PROJECT DETAIL DIALOG ================= */}
-      {activeProj && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-black/85 backdrop-blur-md" onClick={() => setActiveProj(null)} />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="relative w-full max-w-xl glass-panel rounded-2xl p-6 md:p-8 border border-white/10 z-10 shadow-2xl"
-          >
-            <button
-              onClick={() => setActiveProj(null)}
-              className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+      <AnimatePresence>
+        {activeProj && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-black/85 backdrop-blur-md" onClick={() => handleSetActiveProj(null)} />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              className="relative w-full max-w-2xl glass-panel rounded-2xl p-6 md:p-8 border border-white/10 z-10 shadow-2xl max-h-[90vh] overflow-y-auto"
             >
-              <X className="h-5 w-5" />
-            </button>
-
-            <span className="text-xs font-bold uppercase tracking-wider text-primary-light bg-primary/5 px-2.5 py-1 rounded border border-primary/15 inline-block mb-4">
-              {activeProj.category}
-            </span>
-            <h3 className="text-2xl font-bold text-white mb-2">{activeProj.title}</h3>
-            <p className="text-zinc-400 text-sm leading-relaxed mb-6">{activeProj.desc}</p>
-            
-            <div className="space-y-4">
-              <div>
-                <h5 className="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-1">Key Deliverables</h5>
-                <p className="text-white text-sm leading-relaxed">{activeProj.details}</p>
-              </div>
-
-              <div>
-                <h5 className="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-1">Business Results</h5>
-                <p className="text-emerald-400 font-bold text-sm flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400" /> {activeProj.results}
-                </p>
-              </div>
-
-              <div>
-                <h5 className="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-2">Technologies Used</h5>
-                <div className="flex flex-wrap gap-2">
-                  {activeProj.tech.map((t) => (
-                    <span key={t} className="text-[10px] bg-zinc-900 border border-white/5 px-2 py-1 rounded text-zinc-300 font-mono">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 flex items-center justify-between">
-              <span className="text-[11px] text-zinc-500 font-mono">Value: ₹50,000+ project standard</span>
               <button
-                onClick={() => {
-                  setActiveProj(null);
-                  handleConsultation();
-                }}
-                className="px-5 py-2.5 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                onClick={() => handleSetActiveProj(null)}
+                className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors cursor-pointer"
               >
-                Inquire For Similar <ArrowRight className="h-3.5 w-3.5" />
+                <X className="h-5 w-5" />
               </button>
-            </div>
-          </motion.div>
-        </div>
-      )}
+
+              {/* Tag / Category */}
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary-light bg-primary/5 px-2.5 py-1 rounded border border-primary/15">
+                  {activeProj.category}
+                </span>
+                {activeProj.duration && (
+                  <div className="flex items-center gap-1.5 text-zinc-500 text-xs font-mono">
+                    <Clock className="h-3.5 w-3.5" />
+                    <span>Duration: {activeProj.duration}</span>
+                  </div>
+                )}
+              </div>
+
+              <h3 className="text-2xl font-bold text-white mb-2">{activeProj.title}</h3>
+              
+              {/* Project Media Showcase */}
+              {activeProj.video_url ? (
+                <div className="w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 bg-black">
+                  {activeProj.video_url.includes('youtube.com') || activeProj.video_url.includes('youtu.be') || activeProj.video_url.includes('vimeo.com') ? (
+                    <iframe
+                      src={activeProj.video_url.includes('watch?v=') 
+                        ? activeProj.video_url.replace('watch?v=', 'embed/') 
+                        : activeProj.video_url.includes('youtu.be/') 
+                        ? `https://www.youtube.com/embed/${activeProj.video_url.split('youtu.be/')[1]}`
+                        : activeProj.video_url}
+                      className="w-full h-full"
+                      allowFullScreen
+                      title={activeProj.title}
+                    />
+                  ) : (
+                    <video src={activeProj.video_url} controls className="w-full h-full object-contain" />
+                  )}
+                </div>
+              ) : ((activeProj.images && activeProj.images.length > 0) || activeProj.image_url) ? (
+                <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-6 border border-white/10 bg-zinc-950 group">
+                  {(() => {
+                    const carouselImages = activeProj.images && activeProj.images.length > 0 
+                      ? activeProj.images 
+                      : (activeProj.image_url ? [activeProj.image_url] : []);
+                    return (
+                      <>
+                        <motion.img
+                          key={carouselIndex}
+                          src={carouselImages[carouselIndex]}
+                          alt={`${activeProj.title} screenshot ${carouselIndex + 1}`}
+                          initial={{ opacity: 0, x: 50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -50 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-full h-full object-cover"
+                        />
+
+                        {carouselImages.length > 1 && (
+                          <>
+                            {/* Left Arrow */}
+                            <button
+                              onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCarouselIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
+                              }}
+                              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black text-white transition-colors cursor-pointer"
+                            >
+                              <ChevronLeft className="h-4 w-4" />
+                            </button>
+
+                            {/* Right Arrow */}
+                            <button
+                              onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCarouselIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
+                              }}
+                              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black text-white transition-colors cursor-pointer"
+                            >
+                              <ChevronRight className="h-4 w-4" />
+                            </button>
+
+                            {/* Indicators */}
+                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                              {carouselImages.map((_: any, idx: number) => (
+                                <button
+                                  key={idx}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCarouselIndex(idx);
+                                  }}
+                                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                                    carouselIndex === idx ? 'w-4 bg-primary' : 'w-1.5 bg-white/40'
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
+              ) : null}
+
+              <div className="space-y-4">
+                <div>
+                  <h5 className="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-1">Project Backstory</h5>
+                  <p className="text-zinc-300 text-sm leading-relaxed">{activeProj.desc}</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  {/* Goals */}
+                  {activeProj.goals && activeProj.goals.length > 0 && (
+                    <div className="bg-zinc-950 p-4 rounded-xl border border-white/5">
+                      <h5 className="text-white text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <Award className="h-4 w-4 text-primary-light" /> Project Goals
+                      </h5>
+                      <ul className="space-y-2.5">
+                        {activeProj.goals.map((goal: string, i: number) => (
+                          <li key={i} className="text-zinc-400 text-xs flex items-start gap-2 leading-normal">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-1.5" />
+                            <span>{goal}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Results */}
+                  {activeProj.results && activeProj.results.length > 0 && (
+                    <div className="bg-zinc-950 p-4 rounded-xl border border-emerald-500/10">
+                      <h5 className="text-white text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <TrendingUp className="h-4 w-4 text-emerald-400" /> Final Outcome
+                      </h5>
+                      <ul className="space-y-2.5">
+                        {activeProj.results.map((res: string, i: number) => (
+                          <li key={i} className="text-zinc-400 text-xs flex items-start gap-2 leading-normal">
+                            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                            <span className="text-zinc-300 font-semibold">{res}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                {activeProj.tech && activeProj.tech.length > 0 && (
+                  <div>
+                    <h5 className="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-2">Technologies Used</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {activeProj.tech.map((t: string) => (
+                        <span key={t} className="text-[10px] bg-zinc-900 border border-white/5 px-2 py-1 rounded text-zinc-300 font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-8 flex items-center justify-end gap-3 border-t border-zinc-900 pt-6">
+                {activeProj.project_url && (
+                  <a
+                    href={activeProj.project_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 bg-zinc-900 text-zinc-200 hover:text-white border border-white/5 hover:border-white/10 font-semibold rounded-xl text-xs flex items-center gap-1.5 transition-colors"
+                  >
+                    <Globe className="h-3.5 w-3.5" /> Visit Live Website
+                  </a>
+                )}
+                <button
+                  onClick={() => {
+                    handleSetActiveProj(null);
+                    handleConsultation();
+                  }}
+                  className="px-5 py-2.5 bg-white text-black font-semibold rounded-xl text-xs flex items-center gap-1.5 hover:bg-zinc-200 transition-colors cursor-pointer"
+                >
+                  Inquire For Similar <ArrowRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
     </div>
   );
