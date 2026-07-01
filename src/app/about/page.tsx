@@ -60,7 +60,7 @@ const FOUNDERS = [
     social: {
       github: 'https://github.com/debanjanamin',
       linkedin: 'https://linkedin.com/in/debanjanamin',
-      email: 'mailto:debanjan@dabdigitals.com'
+      email: 'mailto:dabdigitalofficials@gmail.com'
     },
     avatarColor: 'from-primary-dark to-secondary-dark',
     initials: 'DA'
@@ -73,7 +73,7 @@ const FOUNDERS = [
     social: {
       github: '#',
       linkedin: 'https://linkedin.com/in/banashreedas',
-      email: 'mailto:banashree@dabdigitals.com'
+      email: 'mailto:dabdigitalofficials@gmail.com'
     },
     avatarColor: 'from-primary to-secondary',
     initials: 'BD'

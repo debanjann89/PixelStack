@@ -263,7 +263,7 @@ const PDFHeader = ({ docTitle }: { docTitle: string }) => (
     </View>
     <View style={styles.headerRight}>
       <Text style={{ fontFamily: 'Helvetica-Bold', color: colors.accent }}>{docTitle}</Text>
-      <Text>+91 89181 86698 | hello@dabdigitals.com</Text>
+      <Text>+91 89181 86998 | dabdigitalofficials@gmail.com</Text>
     </View>
   </View>
 );
@@ -283,24 +283,55 @@ export const BrochurePDF = () => (
   <Document>
     {/* Cover Page */}
     <Page size="A4" style={styles.coverPage}>
-      <View>
-        <Text style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: colors.primary, marginBottom: 15 }}>
-          Corporate Capabilities Brochure
+      {/* Decorative Top Accent Bar */}
+      <View style={{ borderLeft: '4 solid ' + colors.primary, paddingLeft: 15, marginBottom: 20 }}>
+        <Text style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: colors.primary, fontFamily: 'Helvetica-Bold' }}>
+          Corporate Capabilities & Services
         </Text>
-        <Text style={styles.coverTitle}>D.A.B Digitals</Text>
-        <Text style={styles.coverSubtitle}>Building Modern Digital Experiences That Drive Growth</Text>
       </View>
-      <View style={{ marginBottom: 40 }}>
-        <Text style={{ fontSize: 10, color: '#ffffff', marginBottom: 4 }}>Next.js 15 App Router Experts</Text>
-        <Text style={{ fontSize: 10, color: '#ffffff', marginBottom: 4 }}>Bespoke Website Development & UI/UX Design</Text>
-        <Text style={{ fontSize: 10, color: '#ffffff' }}>Search Engine Optimization & Digital Growth Strategy</Text>
+
+      <View style={{ flex: 1, justifyContent: 'center', marginVertical: 30 }}>
+        <Text style={{ fontSize: 38, fontFamily: 'Helvetica-Bold', color: colors.primary, marginBottom: 10 }}>D.A.B Digitals</Text>
+        <Text style={{ fontSize: 16, fontFamily: 'Helvetica-Bold', color: '#ffffff', marginBottom: 25, letterSpacing: 0.5 }}>
+          Building Modern Digital Experiences That Drive Growth
+        </Text>
+        
+        {/* Horizontal separator line */}
+        <View style={{ height: 2, backgroundColor: 'rgba(255, 255, 255, 0.1)', width: '100%', marginBottom: 30 }} />
+
+        {/* Agency Pillars section */}
+        <View style={{ gap: 12 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <View style={{ width: 6, height: 6, backgroundColor: colors.primary, borderRadius: 3, marginRight: 10 }} />
+            <Text style={{ fontSize: 11, color: '#ffffff', fontFamily: 'Helvetica-Bold' }}>Next.js 15 React Architecture (Sub-500ms FCP guarantee)</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <View style={{ width: 6, height: 6, backgroundColor: colors.primary, borderRadius: 3, marginRight: 10 }} />
+            <Text style={{ fontSize: 11, color: '#ffffff', fontFamily: 'Helvetica-Bold' }}>Bespoke Conversion-Driven UI/UX Layout Designs</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+            <View style={{ width: 6, height: 6, backgroundColor: colors.primary, borderRadius: 3, marginRight: 10 }} />
+            <Text style={{ fontSize: 11, color: '#ffffff', fontFamily: 'Helvetica-Bold' }}>Technical SEO Audits & Local Authority Mapping</Text>
+          </View>
+        </View>
       </View>
-      <View style={styles.coverFooter}>
-        <Text>D.A.B Digitals • hello@dabdigitals.com • +91 89181 86698</Text>
+
+      {/* Structured Cover Footer */}
+      <View style={{ borderTop: '1 solid rgba(255, 255, 255, 0.1)', paddingTop: 15 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', fontSize: 9, color: colors.primary }}>
+          <View>
+            <Text style={{ color: '#ffffff', fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>FOUNDED BY:</Text>
+            <Text style={{ color: colors.lightText }}>Debanjan Amin & Banashree Das</Text>
+          </View>
+          <View style={{ alignItems: 'flex-end' }}>
+            <Text style={{ color: '#ffffff', fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>OFFICIAL CONTACT:</Text>
+            <Text style={{ color: colors.lightText }}>dabdigitalofficials@gmail.com | +91 89181 86998</Text>
+          </View>
+        </View>
       </View>
     </Page>
 
-    {/* Content Page */}
+    {/* Page 2: Capabilities & Packages */}
     <Page size="A4" style={styles.page}>
       <PDFHeader docTitle="Agency Capabilities Brochure" />
       
@@ -335,19 +366,57 @@ export const BrochurePDF = () => (
       <View style={styles.bulletList}>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>•</Text>
-          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Starter Package (₹10,000)</Text>: Custom 5-page responsive site, basic SEO, contact form, WhatsApp.</Text>
+          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Starter Package (Rs. 15,000)</Text>: Custom 5-page responsive site, basic SEO, contact form, WhatsApp live integration.</Text>
         </View>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>•</Text>
-          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Growth Package (₹15,000)</Text>: Custom 10-page site, analytics, enhanced SEO, lead capture, blog setup.</Text>
+          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Growth Package (Rs. 20,000)</Text>: Custom 10-page site, local analytics dashboard, enhanced SEO optimization, lead capture setup.</Text>
         </View>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>•</Text>
-          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Premium Package (Starting ₹30,000)</Text>: Bespoke portal flow, priority SLA, 1-year hosting, SSL, and maintenance.</Text>
+          <Text style={styles.bulletText}><Text style={{ fontFamily: 'Helvetica-Bold' }}>Premium Package (Starting Rs. 30,000)</Text>: Bespoke portal flow, priority support SLA, 1-year hosting, SSL certification, and system maintenance.</Text>
         </View>
       </View>
 
       <PDFFooter pageNum={2} />
+    </Page>
+
+    {/* Page 3: Our Operational Workflow */}
+    <Page size="A4" style={styles.page}>
+      <PDFHeader docTitle="Agency Capabilities Brochure" />
+
+      <Text style={styles.h1}>Our Execution Pipeline</Text>
+      <Text style={styles.paragraph}>
+        We follow a disciplined, modern engineering process to take your project from initial concept to a high-converting web asset in three steps:
+      </Text>
+
+      <View style={{ marginVertical: 10, padding: 15, backgroundColor: colors.cardBg, border: '1 solid ' + colors.border, borderRadius: 6 }}>
+        <Text style={{ fontFamily: 'Helvetica-Bold', fontSize: 11, color: colors.primaryDark, marginBottom: 5 }}>Stage 1: Discovery & Figma Wireframing (Days 1–5)</Text>
+        <Text style={styles.cardText}>
+          We align on brand guidelines, color aesthetics, and structure. We design high-fidelity visual mockups of your home screen and core sections to define exact specifications before writing any code.
+        </Text>
+      </View>
+
+      <View style={{ marginVertical: 10, padding: 15, backgroundColor: colors.cardBg, border: '1 solid ' + colors.border, borderRadius: 6 }}>
+        <Text style={{ fontFamily: 'Helvetica-Bold', fontSize: 11, color: colors.primaryDark, marginBottom: 5 }}>Stage 2: Next.js 15 Full-Stack Coding (Days 6–15)</Text>
+        <Text style={styles.cardText}>
+          Debanjan Amin manages the system architecture. We code custom React components, wire up Zod-validated input forms, build the dynamic Admin Dashboard (/admin), and ensure absolute responsiveness on mobile screens.
+        </Text>
+      </View>
+
+      <View style={{ marginVertical: 10, padding: 15, backgroundColor: colors.cardBg, border: '1 solid ' + colors.border, borderRadius: 6 }}>
+        <Text style={{ fontFamily: 'Helvetica-Bold', fontSize: 11, color: colors.primaryDark, marginBottom: 5 }}>Stage 3: Technical SEO & Speed Optimization (Days 16–20)</Text>
+        <Text style={styles.cardText}>
+          Banashree Das inspects indexing tags, generates automated XML sitemaps, integrates Google Analytics tracking, and structures JSON-LD schemas. We run final performance tuning audits to secure 95%+ Google PageSpeed grades.
+        </Text>
+      </View>
+
+      <Text style={styles.h2}>Why Partner With Us?</Text>
+      <Text style={styles.paragraph}>
+        Unlike generic freelancers or agencies that rely on visual builders (Wordpress/Wix) that load slowly and suffer from constant security bugs, we write clean, custom React code deployed on edge networks. This guarantees fast page speeds, high search engine ranks, and a reliable foundation for your business growth.
+      </Text>
+
+      <PDFFooter pageNum={3} />
     </Page>
   </Document>
 );
@@ -371,7 +440,7 @@ export const ProposalPDF = ({ client }: { client: any }) => (
         <Text style={{ fontSize: 10, color: '#ffffff' }}>Target Timeline: {client.timeline || '2-3 Weeks'}</Text>
       </View>
       <View style={styles.coverFooter}>
-        <Text>D.A.B Digitals • hello@dabdigitals.com</Text>
+        <Text>D.A.B Digitals • dabdigitalofficials@gmail.com • +91 89181 86998</Text>
       </View>
     </Page>
 
@@ -418,7 +487,7 @@ export const ProposalPDF = ({ client }: { client: any }) => (
       <Text style={styles.h2}>3. Financial Summary</Text>
       <Text style={styles.paragraph}>
         Total Contract Estimate:{' '}
-        <Text style={{ fontFamily: 'Helvetica-Bold' }}>₹{client.project_cost || '15,000'}</Text>.{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>Rs. {client.project_cost || '15,000'}</Text>.{' '}
         Payment structure requires a 50% advance to initiate the project, with the remaining 50% due immediately upon final layout launch and deployment.
       </Text>
 
@@ -463,23 +532,23 @@ export const ContractPDF = ({ client }: { client: any }) => (
       <Text style={styles.h2}>2. Payment Terms</Text>
       <Text style={styles.paragraph}>
         The Client agrees to pay Developer a total fee of{' '}
-        <Text style={{ fontFamily: 'Helvetica-Bold' }}>₹{client.project_cost || '15,000'}</Text>{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>Rs. {client.project_cost || '15,000'}</Text>{' '}
         for services rendered. Payments shall be executed according to the following schedule:
       </Text>
       <View style={styles.bulletList}>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>•</Text>
-          <Text style={styles.bulletText}>50% deposit (₹{(client.project_cost || 15000) * 0.5}) upon signing this agreement, prior to commencement of design.</Text>
+          <Text style={styles.bulletText}>50% deposit (Rs. {(client.project_cost || 15000) * 0.5}) upon signing this agreement, prior to commencement of design.</Text>
         </View>
         <View style={styles.bulletItem}>
           <Text style={styles.bullet}>•</Text>
-          <Text style={styles.bulletText}>50% final payment (₹{(client.project_cost || 15000) * 0.5}) immediately upon website handover and server deployment.</Text>
+          <Text style={styles.bulletText}>50% final payment (Rs. {(client.project_cost || 15000) * 0.5}) immediately upon website handover and server deployment.</Text>
         </View>
       </View>
 
       <Text style={styles.h2}>3. Revision Policy</Text>
       <Text style={styles.paragraph}>
-        We include up to three (3) major rounds of design revisions during the wireframing phase. Any subsequent changes requested post-launch or outside the original scope will be billed at an additional rate of ₹1,000 per page.
+        We include up to three (3) major rounds of design revisions during the wireframing phase. Any subsequent changes requested post-launch or outside the original scope will be billed at an additional rate of Rs. 1,000 per page.
       </Text>
 
       <Text style={styles.h2}>4. Intellectual Property & Code Ownership</Text>
@@ -552,9 +621,9 @@ export const WelcomePDF = ({ client }: { client: any }) => (
       <Text style={styles.h2}>How We Communicate</Text>
       <Text style={styles.paragraph}>
         To keep communication swift and transparent, we set up a direct WhatsApp channel for your project. You can also reach us via phone at{' '}
-        <Text style={{ fontFamily: 'Helvetica-Bold' }}>+91 89181 86698</Text>{' '}
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>+91 89181 86998</Text>{' '}
         or email at{' '}
-        <Text style={{ fontFamily: 'Helvetica-Bold' }}>hello@dabdigitals.com</Text>.
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>dabdigitalofficials@gmail.com</Text>.
       </Text>
 
       <Text style={styles.paragraph}>
@@ -686,8 +755,8 @@ export const InvoicePDF = ({ invoice, client }: { invoice: any; client: any }) =
           <View style={styles.tableHeader}>
             <Text style={styles.col1}>Service Description</Text>
             <Text style={styles.col2}>Qty</Text>
-            <Text style={styles.col3}>Rate (₹)</Text>
-            <Text style={styles.col4}>Amount (₹)</Text>
+            <Text style={styles.col3}>Rate (Rs.)</Text>
+            <Text style={styles.col4}>Amount (Rs.)</Text>
           </View>
 
           {breakdown.length === 0 ? (
@@ -710,7 +779,7 @@ export const InvoicePDF = ({ invoice, client }: { invoice: any; client: any }) =
 
           <View style={styles.totalRow}>
             <Text style={styles.totalLabel}>Total Due:</Text>
-            <Text style={styles.totalValue}>₹{invoice.total_amount}</Text>
+            <Text style={styles.totalValue}>Rs. {invoice.total_amount}</Text>
           </View>
         </View>
 
@@ -765,7 +834,7 @@ export const ReceiptPDF = ({ invoice, client }: { invoice: any; client: any }) =
         <View style={styles.tableRow}>
           <View style={{ flex: 1, fontFamily: 'Helvetica-Bold' }}><Text>Amount Received</Text></View>
           <View style={{ flex: 2, color: colors.primaryDark, fontFamily: 'Helvetica-Bold' }}>
-            <Text>₹{invoice.total_amount}</Text>
+            <Text>Rs. {invoice.total_amount}</Text>
           </View>
         </View>
         <View style={styles.tableRowAlt}>
@@ -839,7 +908,7 @@ export const HandoverPDF = ({ client }: { client: any }) => (
         <Text style={{ fontFamily: 'Helvetica-Bold' }}>
           {client.selected_package === 'Starter Package' ? '7 days' : client.selected_package === 'Growth Package' ? '15 days' : '30 days'}
         </Text>{' '}
-        of post-launch SLA support. For updates, emergency patches, or content additions post support, billing proceeds at ₹1,000 per page, or via our monthly maintenance contract (₹2,000/month).
+        of post-launch SLA support. For updates, emergency patches, or content additions post support, billing proceeds at Rs. 1,000 per page, or via our monthly maintenance contract (Rs. 2,000/month).
       </Text>
 
       <View style={styles.signatureRow}>

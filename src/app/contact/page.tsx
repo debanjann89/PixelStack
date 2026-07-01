@@ -74,7 +74,7 @@ export default function ContactPage() {
               
               {/* Call Now */}
               <a
-                href="tel:+918918186698"
+                href="tel:+918918186998"
                 className="flex items-center justify-between p-4 rounded-xl bg-zinc-950 border border-zinc-900 hover:border-primary/30 transition-all group"
               >
                 <div className="flex items-center gap-3">
@@ -83,7 +83,7 @@ export default function ContactPage() {
                   </div>
                   <div className="text-left">
                     <div className="text-xs text-zinc-500">Call Co-Founders</div>
-                    <div className="text-sm font-bold text-white">+91 89181 86698</div>
+                    <div className="text-sm font-bold text-white">+91 89181 86998</div>
                   </div>
                 </div>
                 <ArrowRight className="h-4 w-4 text-zinc-500 group-hover:text-primary-light group-hover:translate-x-0.5 transition-all" />
@@ -91,7 +91,7 @@ export default function ContactPage() {
 
               {/* WhatsApp Now */}
               <a
-                href="https://wa.me/918918186698"
+                href="https://wa.me/918918186998"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between p-4 rounded-xl bg-zinc-950 border border-zinc-900 hover:border-green-500/30 transition-all group"
@@ -109,15 +109,21 @@ export default function ContactPage() {
               </a>
 
               {/* Email */}
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-zinc-950 border border-zinc-900">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Mail className="h-5 w-5 text-primary" />
+              <a
+                href="mailto:dabdigitalofficials@gmail.com"
+                className="flex items-center justify-between p-4 rounded-xl bg-zinc-950 border border-zinc-900 hover:border-primary/30 transition-all group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs text-zinc-500">Email Inquiry</div>
+                    <div className="text-sm font-bold text-white">dabdigitalofficials@gmail.com</div>
+                  </div>
                 </div>
-                <div className="text-left">
-                  <div className="text-xs text-zinc-500">Email Inquiry</div>
-                  <div className="text-sm font-bold text-white">hello@dabdigitals.com</div>
-                </div>
-              </div>
+                <ArrowRight className="h-4 w-4 text-zinc-500 group-hover:text-primary-light group-hover:translate-x-0.5 transition-all" />
+              </a>
 
               {/* Location */}
               <div className="flex items-center gap-3 p-4 rounded-xl bg-zinc-950 border border-zinc-900">
@@ -136,7 +142,7 @@ export default function ContactPage() {
             <div className="glass-card p-6 rounded-2xl border border-white/5 text-left">
               <span className="text-xs font-bold text-white block mb-2">Project Min. Budget</span>
               <p className="text-zinc-500 text-xs leading-relaxed">
-                To guarantee maximum attention to detail, code optimization, and founders support, our custom Next.js agency contracts begin at **₹50,000**.
+                To guarantee maximum attention to detail, code optimization, and founders support, our custom Next.js agency contracts begin at **₹15,000**.
               </p>
             </div>
 
@@ -223,7 +229,7 @@ export default function ContactPage() {
                       <input
                         id="phone"
                         type="tel"
-                        placeholder="e.g. +91 89181 86698"
+                        placeholder="e.g. +91 89181 86998"
                         {...register('phone')}
                         className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-base md:text-sm text-white placeholder-zinc-700 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
                       />
@@ -266,11 +272,11 @@ export default function ContactPage() {
                         className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-base md:text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors appearance-none"
                       >
                         <option value="">Select Budget Range</option>
-                        <option value="₹50,000 - ₹80,000">₹50,000 - ₹80,000</option>
-                        <option value="₹80,000 - ₹1,20,000">₹80,000 - ₹1,20,000</option>
-                        <option value="₹1,20,000 - ₹2,00,000">₹1,20,000 - ₹2,00,000</option>
-                        <option value="₹2,00,000+">₹2,00,000+</option>
-                        <option value="Under ₹30,000">Under ₹30,000 (Non-standard)</option>
+                        <option value="₹15,000 - ₹20,000">₹15,000 - ₹20,000</option>
+                        <option value="₹20,000 - ₹30,000">₹20,000 - ₹30,000</option>
+                        <option value="₹30,000 - ₹50,000">₹30,000 - ₹50,000</option>
+                        <option value="₹50,000+">₹50,000+</option>
+                        <option value="Under ₹15,000">Under ₹15,000 (Non-standard)</option>
                       </select>
                       {errors.budgetRange && (
                         <p className="text-xs text-red-400 mt-1">{errors.budgetRange.message}</p>

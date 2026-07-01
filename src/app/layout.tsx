@@ -21,14 +21,14 @@ export const metadata: Metadata = {
     default: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
     template: "%s | D.A.B Digitals",
   },
-  description: "D.A.B Digitals is a modern digital agency designing and developing premium, conversion-focused websites, UI/UX, and search engine foundations starting at ₹50,000.",
+  description: "D.A.B Digitals is a modern digital agency designing and developing premium, conversion-focused websites, UI/UX, and search engine foundations starting at ₹15,000.",
   metadataBase: new URL("https://dabdigitals.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
-    description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹50,000.",
+    description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
     url: "https://dabdigitals.com",
     siteName: "D.A.B Digitals Agency",
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
-    description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹50,000.",
+    description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
     images: ["https://dabdigitals.com/og-image.png"],
     creator: "@DABDigitals",
   },
@@ -90,8 +90,8 @@ export default function RootLayout({
               "image": "https://dabdigitals.com/og-image.png",
               "@id": "https://dabdigitals.com/#agency",
               "url": "https://dabdigitals.com",
-              "telephone": "+918918186698",
-              "priceRange": "INR 50000 - INR 200000",
+              "telephone": "+918918186998",
+              "priceRange": "INR 15000 - INR 100000",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Siliguri, West Bengal",

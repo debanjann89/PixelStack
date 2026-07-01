@@ -22,8 +22,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import DeleteConfirmModal from '@/components/DeleteConfirmModal';
 
 const PACKAGE_OPTIONS = [
-  { label: 'Starter Package (₹10,000)', value: 'Starter Package', cost: 10000 },
-  { label: 'Growth Package (₹15,000)', value: 'Growth Package', cost: 15000 },
+  { label: 'Starter Package (₹15,000)', value: 'Starter Package', cost: 15000 },
+  { label: 'Growth Package (₹20,000)', value: 'Growth Package', cost: 20000 },
   { label: 'Premium Package (₹30,000+)', value: 'Premium Package', cost: 30000 },
   { label: 'Bespoke Custom SLA', value: 'Bespoke Custom SLA', cost: 0 }
 ];
@@ -417,7 +417,7 @@ export default function ClientsManager() {
                     type="text"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="e.g. +91 89181 86698"
+                    placeholder="e.g. +91 89181 86998"
                     className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
                   />
                 </div>

@@ -150,7 +150,7 @@ function ConsultationModalContent() {
                   <input
                     id="phone"
                     type="tel"
-                    placeholder="+91 89181 86698"
+                    placeholder="+91 89181 86998"
                     {...register('phone')}
                     className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-base md:text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                   />

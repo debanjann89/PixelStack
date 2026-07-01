@@ -526,7 +526,7 @@ export default function LeadsManager() {
                     required
                     value={leadPhone}
                     onChange={(e) => setLeadPhone(e.target.value)}
-                    placeholder="e.g. +91 89181 86698"
+                    placeholder="e.g. +91 89181 86998"
                     className="w-full px-3 py-2 rounded-lg bg-zinc-950/60 border border-white/5 text-white text-xs focus:outline-none focus:border-primary/50"
                   />
                 </div>
