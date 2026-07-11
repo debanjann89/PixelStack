@@ -990,78 +990,90 @@ export const TestimonialPDF = ({ client }: { client: any }) => (
 // ==========================================
 export const PackagesPDF = () => {
   const localColors = {
-    primary: '#d4af37',       // Metallic Royal Gold
-    primaryDark: '#b89028',   // Dark Gold
-    accent: '#05291b',        // Shahi Emerald Green
-    border: '#ebdcb9',        // Soft gold-cream border
-    cardBg: '#faf8f2'         // Ivory Cream background
+    primary: '#10b981',       // Emerald Green
+    primaryDark: '#059669',   // Dark Emerald
+    accent: '#062f1e',        // Deep Forest Green
+    darkText: '#0f172a',      // Slate 900
+    bodyText: '#334155',      // Slate 700
+    lightText: '#64748b',     // Slate 500
+    border: '#e2e8f0',        // Slate 200
+    cardBg: '#f8fafc'         // Slate 50
   };
 
   const localStyles = {
-    coverPage: [styles.coverPage, { backgroundColor: localColors.accent, border: '8 solid ' + localColors.primary }],
-    coverBar: { borderBottom: '2 solid ' + localColors.primary, paddingBottom: 10, marginBottom: 15 },
-    coverTitle: { fontSize: 34, fontFamily: 'Helvetica-Bold', color: localColors.primary, marginBottom: 5 },
-    coverSub: { fontSize: 13, fontFamily: 'Helvetica-Bold', color: '#ffffff', marginBottom: 15, letterSpacing: 0.8 },
-    coverGoldLine: { height: 2, backgroundColor: localColors.primary, width: '60%', marginBottom: 20 },
-    coverPill: { fontSize: 9, color: '#ffffff' },
-    coverDot: { width: 5, height: 5, backgroundColor: localColors.primary, borderRadius: 2.5, marginRight: 8 },
-    coverDesc: { fontSize: 9, color: '#d9e2dd', marginBottom: 15, lineHeight: 1.6 },
-    coverMeta: { borderTop: '1 solid ' + localColors.primary, paddingTop: 10 },
-    card: [styles.card, { backgroundColor: localColors.cardBg, borderColor: localColors.border, borderWidth: 1.5 }],
-    fullCard: [styles.card, { backgroundColor: localColors.cardBg, borderColor: localColors.border, borderWidth: 1.5, minWidth: '100%' }],
+    coverPage: [styles.coverPage, { backgroundColor: '#ffffff', color: localColors.darkText }],
+    coverBar: { borderLeft: '4 solid ' + localColors.primary, paddingLeft: 15, marginTop: 20 },
+    coverTitle: { fontSize: 38, fontFamily: 'Helvetica-Bold', color: localColors.accent, marginBottom: 10 },
+    coverSub: { fontSize: 16, fontFamily: 'Helvetica-Bold', color: localColors.lightText, marginBottom: 25 },
+    coverLine: { height: 2, backgroundColor: localColors.border, width: '100%', marginBottom: 25 },
+    coverDot: { width: 6, height: 6, backgroundColor: localColors.primary, borderRadius: 3, marginRight: 10 },
+    coverPill: { fontSize: 10, color: localColors.darkText, fontFamily: 'Helvetica-Bold' },
+    coverDesc: { fontSize: 10, color: localColors.bodyText, marginBottom: 20, lineHeight: 1.6 },
+    coverMeta: { borderTop: '1 solid ' + localColors.border, paddingTop: 15 },
+    card: [styles.card, { backgroundColor: localColors.cardBg, borderColor: localColors.border, borderWidth: 1 }],
+    bulletItem: { flexDirection: 'row' as const, marginBottom: 4 },
+    bulletDot: { width: 8, color: localColors.primary, fontWeight: 'bold' as const },
+    bulletText: { flex: 1, fontSize: 8.5, color: localColors.bodyText, lineHeight: 1.4 },
     headerText: { flex: 2, fontFamily: 'Helvetica-Bold' },
     headerCol: { flex: 1.3, textAlign: 'center' as const, fontFamily: 'Helvetica-Bold' },
     colBold: { flex: 2, fontFamily: 'Helvetica-Bold' },
     colText: { flex: 1.3, textAlign: 'center' as const },
-    tableHeader: [styles.tableHeader, { backgroundColor: localColors.accent, color: localColors.primary }],
-    tableBorder: [styles.table, { borderColor: localColors.border, borderWidth: 1.5 }],
-    shahiBadge: { marginTop: 15, padding: 8, backgroundColor: localColors.accent, borderRadius: 6, border: '1 solid ' + localColors.primary },
-    shahiBadgeTitle: { fontFamily: 'Helvetica-Bold', color: localColors.primary, fontSize: 9, marginBottom: 2 },
-    shahiBadgeText: { color: '#d9e2dd', fontSize: 8 }
+    tableHeader: [styles.tableHeader, { backgroundColor: localColors.accent, color: '#ffffff' }],
+    tableBorder: [styles.table, { borderColor: localColors.border, borderWidth: 1 }],
+    shahiBadge: { marginTop: 15, padding: 10, backgroundColor: localColors.cardBg, borderRadius: 6, border: '1 solid ' + localColors.border },
+    shahiBadgeTitle: { fontFamily: 'Helvetica-Bold', color: localColors.accent, fontSize: 9, marginBottom: 3 },
+    shahiBadgeText: { color: localColors.bodyText, fontSize: 8.5, lineHeight: 1.4 }
   };
+
+  const renderBullet = (text: string) => (
+    <View style={localStyles.bulletItem}>
+      <Text style={localStyles.bulletDot}>•</Text>
+      <Text style={localStyles.bulletText}>{text}</Text>
+    </View>
+  );
 
   return (
     <Document>
-      {/* PAGE 1: COVER (Shahi Indian Style) */}
+      {/* PAGE 1: COVER (Clean, Minimalist Tech Flyer style) */}
       <Page size="A4" style={localStyles.coverPage}>
         <View style={localStyles.coverBar}>
-          <Text style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: localColors.primary, fontFamily: 'Helvetica-Bold' }}>
-            SWADESHI DIGITAL PLANS & PRICING
+          <Text style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: 2, color: localColors.primary, fontFamily: 'Helvetica-Bold' }}>
+            Service Framework & Pricing
           </Text>
         </View>
-        <View style={{ flex: 1, justifyContent: 'center', marginVertical: 20 }}>
+        <View style={{ flex: 1, justifyContent: 'center', marginVertical: 40 }}>
           <Text style={localStyles.coverTitle}>D.A.B Digitals</Text>
           <Text style={localStyles.coverSub}>
-            Service Packages & Pricing Comparison Guide
+            Project Plans & Pricing Packages
           </Text>
-          <View style={localStyles.coverGoldLine} />
+          <View style={localStyles.coverLine} />
           <Text style={localStyles.coverDesc}>
-            A comprehensive guide tailored for Indian businesses and service providers. This document outlines D.A.B Digitals' standard Next.js engineering packages, Indian payment gateway systems, local SEO strategies, and custom tier frameworks.
+            A formal overview of D.A.B Digitals' standard Next.js engineering packages, optimized for the Indian business market. This guide documents the deliverables, limitations, custom budget adjustments, and integrated localized components.
           </Text>
-          <View style={{ gap: 8 }}>
+          <View style={{ gap: 10 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <View style={localStyles.coverDot} />
-              <Text style={localStyles.coverPill}>Starter Package — Rs. 15,000 (Responsive Swadeshi Web Brochure)</Text>
+              <Text style={localStyles.coverPill}>Starter Package — Rs. 15,000 (Responsive brochure web)</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <View style={localStyles.coverDot} />
-              <Text style={localStyles.coverPill}>Growth Package — Rs. 20,000 (UPI Leads & Regional Analytics)</Text>
+              <Text style={localStyles.coverPill}>Growth Package — Rs. 20,000 (Lead capture database & local tracking)</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <View style={localStyles.coverDot} />
-              <Text style={localStyles.coverPill}>Premium Package — Rs. 30,000+ (Custom Portals & Dynamic Dashboards)</Text>
+              <Text style={localStyles.coverPill}>Premium Package — Rs. 30,000+ (User login portals & custom data tables)</Text>
             </View>
           </View>
         </View>
         <View style={localStyles.coverMeta}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', fontSize: 8, color: localColors.primary }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', fontSize: 9, color: localColors.lightText }}>
             <View>
-              <Text style={{ color: '#ffffff', fontFamily: 'Helvetica-Bold', marginBottom: 1 }}>FOUNDERS:</Text>
-              <Text style={{ color: '#ffffff' }}>Debanjan Amin & Banashree Das</Text>
+              <Text style={{ color: localColors.darkText, fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>FOUNDERS:</Text>
+              <Text>Debanjan Amin & Banashree Das</Text>
             </View>
             <View style={{ alignItems: 'flex-end' }}>
-              <Text style={{ color: '#ffffff', fontFamily: 'Helvetica-Bold', marginBottom: 1 }}>OFFICIAL CONTACT:</Text>
-              <Text style={{ color: '#ffffff' }}>dabdigitalofficials@gmail.com | +91 89181 86998</Text>
+              <Text style={{ color: localColors.darkText, fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>ONLINE PITCH:</Text>
+              <Text>d-a-b-digitals.vercel.app | dabdigitalofficials@gmail.com</Text>
             </View>
           </View>
         </View>
@@ -1070,7 +1082,7 @@ export const PackagesPDF = () => {
       {/* PAGE 2: COMPARISON MATRIX */}
       <Page size="A4" style={styles.page}>
         <PDFHeader docTitle="Pricing Packages Framework" />
-        <Text style={styles.h1}>Swadeshi Core Deliverables Matrix</Text>
+        <Text style={styles.h1}>Deliverables & Capabilities Matrix</Text>
         <View style={localStyles.tableBorder}>
           <View style={localStyles.tableHeader}>
             <Text style={localStyles.headerText}>Deliverable / Feature</Text>
@@ -1079,111 +1091,109 @@ export const PackagesPDF = () => {
             <Text style={localStyles.headerCol}>Premium (Rs. 30k+)</Text>
           </View>
           <View style={styles.tableRow}>
-            <Text style={localStyles.colBold}>Optimal Audience</Text>
+            <Text style={localStyles.colBold}>Target Audience</Text>
             <Text style={localStyles.colText}>Local Shops / Portfolios</Text>
             <Text style={localStyles.colText}>Service/Travel Agencies</Text>
-            <Text style={localStyles.colText}>D2C Brands / Dynamic Portals</Text>
+            <Text style={localStyles.colText}>D2C Brands / Web Apps</Text>
           </View>
           <View style={styles.tableRowAlt}>
-            <Text style={localStyles.colBold}>Page Count Scope</Text>
+            <Text style={localStyles.colBold}>Page Scope</Text>
             <Text style={localStyles.colText}>Up to 3 Static Pages</Text>
             <Text style={localStyles.colText}>Up to 6 Custom Pages</Text>
             <Text style={localStyles.colText}>Dynamic / Unlimited</Text>
           </View>
           <View style={styles.tableRow}>
             <Text style={localStyles.colBold}>Figma Prototyping</Text>
-            <Text style={localStyles.colText}>❌ No (Standard Template)</Text>
-            <Text style={localStyles.colText}>✅ Yes (Custom Wireframe)</Text>
-            <Text style={localStyles.colText}>✅ Yes (Interactive Mockups)</Text>
+            <Text style={localStyles.colText}>❌ Template Based</Text>
+            <Text style={localStyles.colText}>✅ Custom Wireframes</Text>
+            <Text style={localStyles.colText}>✅ Interactive UX Design</Text>
           </View>
           <View style={styles.tableRowAlt}>
-            <Text style={localStyles.colBold}>Lead Database Console</Text>
-            <Text style={localStyles.colText}>❌ No (Direct Email Setup)</Text>
-            <Text style={localStyles.colText}>✅ Yes (Admin Dashboard)</Text>
-            <Text style={localStyles.colText}>✅ Yes (Full Portal Setup)</Text>
+            <Text style={localStyles.colBold}>Lead Management</Text>
+            <Text style={localStyles.colText}>❌ Direct Email Only</Text>
+            <Text style={localStyles.colText}>✅ Admin Lead Logger</Text>
+            <Text style={localStyles.colText}>✅ Full User Portal Setup</Text>
           </View>
           <View style={styles.tableRow}>
-            <Text style={localStyles.colBold}>Local Support & SLA</Text>
-            <Text style={localStyles.colText}>7 Days SLA</Text>
-            <Text style={localStyles.colText}>15 Days SLA</Text>
-            <Text style={localStyles.colText}>30 Days Priority support</Text>
+            <Text style={localStyles.colBold}>Local Integrations</Text>
+            <Text style={localStyles.colText}>Basic Contact Forms</Text>
+            <Text style={localStyles.colText}>WhatsApp & Local Call</Text>
+            <Text style={localStyles.colText}>UPI Payment / Custom API</Text>
           </View>
           <View style={styles.tableRowAlt}>
-            <Text style={localStyles.colBold}>Regional Analytics</Text>
-            <Text style={localStyles.colText}>❌ No</Text>
-            <Text style={localStyles.colText}>✅ GA4 Tracking</Text>
-            <Text style={localStyles.colText}>✅ Custom Events & Funnels</Text>
+            <Text style={localStyles.colBold}>Post-Launch SLA</Text>
+            <Text style={localStyles.colText}>7 Days</Text>
+            <Text style={localStyles.colText}>15 Days</Text>
+            <Text style={localStyles.colText}>30 Days (Priority Developer)</Text>
           </View>
         </View>
 
-        <Text style={styles.h2}>Detailed Swadeshi Plan Deliverables</Text>
+        <Text style={styles.h2}>Detailed Package Deliverables</Text>
         <View style={styles.grid}>
           <View style={localStyles.card}>
             <Text style={styles.cardTitle}>Starter Package — Rs. 15,000</Text>
-            <Text style={styles.cardText}>
-              {'• Full mobile/desktop responsiveness.\n' +
-              '• Handcoded Next.js App Router for Indian internet bandwidth optimization.\n' +
-              '• Direct static form routed to secure email endpoints.\n' +
-              '• Basic XML sitemap generation & search console setup.'}
-            </Text>
+            <View style={styles.bulletList}>
+              {renderBullet('Responsive mobile/tablet/desktop layouts.')}
+              {renderBullet('Built on Next.js App Router for extreme performance.')}
+              {renderBullet('Static forms routed directly to business email.')}
+              {renderBullet('Basic SEO setup including sitemaps and indexation.')}
+            </View>
           </View>
           <View style={localStyles.card}>
             <Text style={styles.cardTitle}>Growth Package — Rs. 20,000</Text>
-            <Text style={styles.cardText}>
-              {'• Figma visual layouts built based on your brand files.\n' +
-              '• Secure local database connection to log customer leads.\n' +
-              '• Admin panel to login, view, and export leads to CSV.\n' +
-              '• Integrated WhatsApp float bubbles & direct call-to-action buttons.'}
-            </Text>
+            <View style={styles.bulletList}>
+              {renderBullet('Figma layout wireframe mockups created beforehand.')}
+              {renderBullet('Custom database configuration to capture leads.')}
+              {renderBullet('Secure Admin lead management console with CSV export.')}
+              {renderBullet('Full tracking analytics setup (GA4 & Meta pixels).')}
+              {renderBullet('Floating WhatsApp buttons for immediate lead conversion.')}
+            </View>
           </View>
         </View>
         <PDFFooter pageNum={2} />
       </Page>
 
-      {/* PAGE 3: BUDGET VARIATIONS */}
+      {/* PAGE 3: DYNAMIC PREMIUM, LOW BUDGETS & HIGH BUDGETS */}
       <Page size="A4" style={styles.page}>
         <PDFHeader docTitle="Pricing Packages Framework" />
-        <Text style={styles.h1}>Premium & Custom Budget Options</Text>
+        <Text style={styles.h1}>Premium & Budget Alternatives</Text>
         
         <View style={{ marginBottom: 12 }}>
-          <Text style={styles.h2}>Premium Package — Rs. 30,000+ (Dynamic Digital Portals)</Text>
-          <View style={localStyles.fullCard}>
-            <Text style={styles.cardText}>
-              {'• Dynamic data-driven pages driven by custom React components.\n' +
-              '• Secure login credentials for clients & interactive profile management.\n' +
-              '• Customized internal directories (e.g. Travel booking lists, tour packages).\n' +
-              '• Easy-to-use admin panel to add, edit, or delete items without needing code.\n' +
-              '• 30 Days of Priority SLA developer support & page-load speed verification.'}
-            </Text>
+          <Text style={styles.h2}>Premium Package — Rs. 30,000+ (Dynamic Portals)</Text>
+          <View style={localStyles.card}>
+            <View style={styles.bulletList}>
+              {renderBullet('Unlimited dynamic pages managed by database models.')}
+              {renderBullet('User authentication (secure accounts for client logging).')}
+              {renderBullet('Bespoke micro-animations, charts, and interactive dashboards.')}
+              {renderBullet('Content management dashboards to update systems without writing code.')}
+              {renderBullet('Advanced API integrations (third-party CRM, database lookups).')}
+              {renderBullet('30 days of priority post-launch developer maintenance support.')}
+            </View>
           </View>
         </View>
 
-        <Text style={styles.h2}>Flexible Indian Market Budget Adjustments</Text>
+        <Text style={styles.h2}>Alternative Budget Adjustments</Text>
         <View style={styles.grid}>
           <View style={localStyles.card}>
             <Text style={styles.cardTitle}>Below Minimum: Under Rs. 15,000</Text>
-            <Text style={styles.cardText}>
-              {'• Rs. 5,000 - Rs. 8,000 (Figma Design Only):\n' +
-              '  Bespoke visual mobile + web layouts, typography grids, color pairing. No code/hosting.\n\n' +
-              '• Rs. 10,000 - Rs. 12,000 (Single-Page Landing):\n' +
-              '  Fast 1-page Next.js site, mobile responsive CSS, and contact email form integration.'}
-            </Text>
+            <View style={styles.bulletList}>
+              {renderBullet('Rs. 5,000 - Rs. 8,000 (Figma Design Only): high-fidelity UI layout prototypes. No development code.')}
+              {renderBullet('Rs. 10,000 - Rs. 12,000 (1-Page Landing): responsive single-page Next.js layout, email contact forms, basic sitemaps.')}
+            </View>
           </View>
           <View style={localStyles.card}>
             <Text style={styles.cardTitle}>Enterprise Scope: Above Rs. 50,000</Text>
-            <Text style={styles.cardText}>
-              {'• Complete Indian E-Commerce:\n' +
-              '  Razorpay, UPI (GPay, PhonePe, Paytm), & Stripe integration, automatic invoice generator, and stock levels panel.\n\n' +
-              '• Regional Language Support:\n' +
-              '  Multi-lingual translation toggle support (English, Hindi, Bengali, etc.) & 90 Days SLA support.'}
-            </Text>
+            <View style={styles.bulletList}>
+              {renderBullet('E-commerce integration: carts, UPI (GPay/Paytm) & local checkout gateways (Razorpay/PayU), automated PDF billing invoices.')}
+              {renderBullet('Complex systems: booking engines, multilingual toggles, custom CRM setups, and 90 days SLA support.')}
+            </View>
           </View>
         </View>
 
         <View style={localStyles.shahiBadge}>
-          <Text style={localStyles.shahiBadgeTitle}>Shahi Quality Assurance:</Text>
+          <Text style={localStyles.shahiBadgeTitle}>Engineering Quality Assurance:</Text>
           <Text style={localStyles.shahiBadgeText}>
-            We never use cheap WordPress or Wix visual templates that load sluggishly on Indian mobile networks. All our products are coded from scratch in premium Next.js react layouts, ensuring speed, security, and a royal design identity.
+            All Next.js codebases are hand-coded from scratch. We do not use slow or template-heavy drag-and-drop builders like WordPress or Wix. This guarantees that your site loads instantly, remains highly secure, and is search-engine optimized for the Indian business marketplace.
           </Text>
         </View>
 
