@@ -984,3 +984,137 @@ export const TestimonialPDF = ({ client }: { client: any }) => (
     </Page>
   </Document>
 );
+
+// ==========================================
+// 10. PACKAGES COMPARISON GUIDE PDF
+// ==========================================
+export const PackagesPDF = () => (
+  <Document>
+    {/* Page 1: Cover Page */}
+    <Page size="A4" style={styles.coverPage}>
+      <View style={{ borderLeft: '4 solid ' + colors.primary, paddingLeft: 15, marginBottom: 20 }}>
+        <Text style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: 2, color: colors.primary, fontFamily: 'Helvetica-Bold' }}>
+          Pricing & Plans Framework
+        </Text>
+      </View>
+
+      <View style={{ flex: 1, justifyContent: 'center', marginVertical: 30 }}>
+        <Text style={{ fontSize: 34, fontFamily: 'Helvetica-Bold', color: colors.primary, marginBottom: 10 }}>D.A.B Digitals</Text>
+        <Text style={{ fontSize: 16, fontFamily: 'Helvetica-Bold', color: '#ffffff', marginBottom: 25, letterSpacing: 0.5 }}>
+          Service Packages & Pricing Comparison Guide
+        </Text>
+        
+        <View style={{ height: 2, backgroundColor: 'rgba(255, 255, 255, 0.1)', width: '100%', marginBottom: 30 }} />
+
+        <Text style={{ fontSize: 10, color: colors.lightText, marginBottom: 15, lineHeight: 1.6 }}>
+          This reference document outlines D.A.B Digitals' pricing models, plan comparison metrics, exact inclusion and exclusion details, and guidelines for custom project budgets below Rs. 15,000 or above Rs. 30,000.
+        </Text>
+
+        <View style={{ gap: 10, marginTop: 10 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+            <View style={{ width: 6, height: 6, backgroundColor: colors.primary, borderRadius: 3, marginRight: 10 }} />
+            <Text style={{ fontSize: 10, color: '#ffffff' }}>Starter Package — Rs. 15,000 (Brochure Web Layouts)</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+            <View style={{ width: 6, height: 6, backgroundColor: colors.primary, borderRadius: 3, marginRight: 10 }} />
+            <Text style={{ fontSize: 10, color: '#ffffff' }}>Growth Package — Rs. 20,000 (Database Lead Logging)</Text>
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
+            <View style={{ width: 6, height: 6, backgroundColor: colors.primary, borderRadius: 3, marginRight: 10 }} />
+            <Text style={{ fontSize: 10, color: '#ffffff' }}>Premium Package — Rs. 30,000+ (Custom Dynamic Software)</Text>
+          </View>
+        </View>
+      </View>
+
+      <View style={{ borderTop: '1 solid rgba(255, 255, 255, 0.1)', paddingTop: 15 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', fontSize: 9, color: colors.primary }}>
+          <View>
+            <Text style={{ color: '#ffffff', fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>FOUNDERS:</Text>
+            <Text style={{ color: colors.lightText }}>Debanjan Amin & Banashree Das</Text>
+          </View>
+          <View style={{ alignItems: 'flex-end' }}>
+            <Text style={{ color: '#ffffff', fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>OFFICIAL CONTACT:</Text>
+            <Text style={{ color: colors.lightText }}>dabdigitalofficials@gmail.com | +91 89181 86998</Text>
+          </View>
+        </View>
+      </View>
+    </Page>
+
+    {/* Page 2: Comparison & Budget Rules */}
+    <Page size="A4" style={styles.page}>
+      <PDFHeader docTitle="Pricing Packages Framework" />
+
+      <Text style={styles.h1}>Service Comparison Matrix</Text>
+      
+      <View style={styles.table}>
+        <View style={styles.tableHeader}>
+          <Text style={{ flex: 2, fontFamily: 'Helvetica-Bold' }}>Feature / Capability</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center', fontFamily: 'Helvetica-Bold' }}>Starter (Rs. 15k)</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center', fontFamily: 'Helvetica-Bold' }}>Growth (Rs. 20k)</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center', fontFamily: 'Helvetica-Bold' }}>Premium (Rs. 30k+)</Text>
+        </View>
+
+        <View style={styles.tableRow}>
+          <Text style={{ flex: 2, fontFamily: 'Helvetica-Bold' }}>Target Audience</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Local Shops / Portfolios</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Service Businesses</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Dynamic Systems</Text>
+        </View>
+
+        <View style={styles.tableRowAlt}>
+          <Text style={{ flex: 2, fontFamily: 'Helvetica-Bold' }}>Page Count Scope</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Up to 3 Static Pages</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Up to 6 Pages</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Unlimited Pages</Text>
+        </View>
+
+        <View style={styles.tableRow}>
+          <Text style={{ flex: 2, fontFamily: 'Helvetica-Bold' }}>UI/UX Design Approach</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Standard Custom Layout</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Bespoke Figma Mockup</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Custom Prototyping</Text>
+        </View>
+
+        <View style={styles.tableRowAlt}>
+          <Text style={{ flex: 2, fontFamily: 'Helvetica-Bold' }}>Client Lead Panel</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>No (Direct Email Only)</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Yes (Database Admin)</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>Yes (Custom Portal)</Text>
+        </View>
+
+        <View style={styles.tableRow}>
+          <Text style={{ flex: 2, fontFamily: 'Helvetica-Bold' }}>SLA Support Included</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>7 Days SLA</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>15 Days SLA</Text>
+          <Text style={{ flex: 1.5, textAlign: 'center' }}>30 Days SLA</Text>
+        </View>
+      </View>
+
+      <Text style={styles.h2}>Low Budget Projects (Under Rs. 15,000)</Text>
+      <View style={styles.grid}>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Rs. 5,000 - Rs. 8,000 (Design Only)</Text>
+          <Text style={styles.cardText}>
+            High-fidelity custom Figma screens, typographic grids, UI styles, and exported image assets. No code/deployment.
+          </Text>
+        </View>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Rs. 10,000 - Rs. 12,000 (Landing Page)</Text>
+          <Text style={styles.cardText}>
+            Single-page Next.js layout, responsive CSS, contact form routed directly to email endpoint, and basic SEO tags.
+          </Text>
+        </View>
+      </View>
+
+      <Text style={styles.h2}>High Budget Enterprise Scope (Above Rs. 50,000)</Text>
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Complete E-Commerce & Multi-Role Systems</Text>
+        <Text style={styles.cardText}>
+          Integration of secure payment gateways (Razorpay, Stripe, UPI), automated digital PDF invoices, inventory trackers, multi-role portals (e.g. travel booking calendars), third-party API configurations, and 90 days of dedicated maintenance.
+        </Text>
+      </View>
+
+      <PDFFooter pageNum={2} />
+    </Page>
+  </Document>
+);

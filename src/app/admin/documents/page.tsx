@@ -36,7 +36,8 @@ import {
   InvoicePDF,
   ReceiptPDF,
   HandoverPDF,
-  TestimonialPDF
+  TestimonialPDF,
+  PackagesPDF
 } from '@/components/pdf/DocumentTemplates';
 
 export default function DocumentHub() {
@@ -94,6 +95,11 @@ export default function DocumentHub() {
         docElement = <BrochurePDF />;
         docTitle = 'D.A.B Digitals Agency Brochure';
         filename = `DAB_Digitals_Agency_Brochure.pdf`;
+        break;
+      case 'packages':
+        docElement = <PackagesPDF />;
+        docTitle = 'D.A.B Digitals Pricing Packages';
+        filename = `DAB_Digitals_Pricing_Packages.pdf`;
         break;
       case 'proposal':
         docElement = <ProposalPDF client={client} />;
@@ -178,6 +184,9 @@ export default function DocumentHub() {
       case 'brochure':
         docElement = <BrochurePDF />;
         break;
+      case 'packages':
+        docElement = <PackagesPDF />;
+        break;
       case 'proposal':
         docElement = <ProposalPDF client={client} />;
         break;
@@ -245,6 +254,7 @@ export default function DocumentHub() {
 
   const documentTemplates = [
     { key: 'brochure', title: 'Agency Brochure', desc: 'Agency capabilities brochure detailing services and packages.', icon: BookOpen },
+    { key: 'packages', title: 'Service Packages Guide', desc: 'Pricing comparison guide detailing all plans and budgets.', icon: Layers },
     { key: 'proposal', title: 'Client Proposal', desc: 'Custom project proposal detailing scope and milestones.', icon: FileText },
     { key: 'contract', title: 'Service Contract', desc: 'Legal web development service agreement contract.', icon: FileCheck },
     { key: 'welcome', title: 'Welcome Onboarding', desc: 'Onboarding welcome letter outlining agency workflow.', icon: Smile },
