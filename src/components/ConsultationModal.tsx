@@ -71,7 +71,7 @@ function ConsultationModalContent() {
         initial={{ opacity: 0, scale: 0.95, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 10 }}
-        className="relative w-full max-w-lg glass-panel rounded-2xl p-6 md:p-8 border border-white/10 z-10 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-lg bg-[#0a0a0a] rounded-2xl p-6 md:p-8 border border-zinc-800 z-10 shadow-2xl overflow-hidden"
       >
         <button
           onClick={handleClose}
@@ -209,7 +209,7 @@ function ConsultationModalContent() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="w-full mt-6 py-4 bg-gradient-to-r from-primary-dark to-secondary-dark hover:from-primary hover:to-secondary text-white font-semibold rounded-xl text-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full mt-6 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-full text-sm transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {isPending ? 'Scheduling Call...' : 'Confirm Strategy Booking'} <ArrowRight className="h-4 w-4" />
               </button>

@@ -12,8 +12,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 const NAV_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
-  { name: 'Portfolio', path: '/portfolio' },
-  { name: 'Case Studies', path: '/case-studies' },
+  { name: 'Work', path: '/portfolio' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
 ];
@@ -26,11 +25,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,101 +37,104 @@ export default function Navbar() {
   }, [pathname]);
 
   const triggerConsultation = () => {
-    // Open consultation modal via URL parameter
     router.push(`${pathname}?consultation=open`);
   };
 
+  // Skip navbar rendering on admin pages
+  if (pathname.startsWith('/admin')) return null;
+
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'glass-panel py-4 shadow-lg border-b border-white/5'
-            : 'bg-transparent py-6 border-b border-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
+        <nav
+          className={`w-full max-w-5xl transition-all duration-500 rounded-full px-6 py-3 flex items-center justify-between ${
+            scrolled
+              ? 'glass-panel shadow-2xl shadow-black/20'
+              : 'bg-white/[0.03] backdrop-blur-md border border-white/[0.06]'
+          }`}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3.5 group">
-            <Logo size={42} className="transition-transform group-hover:scale-105" />
-            <span className="text-2xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            <Logo size={32} className="transition-transform group-hover:scale-105" />
+            <span className="text-lg font-bold tracking-tight text-white group-hover:text-primary-light transition-colors hidden sm:inline">
               D.A.B <span className="text-primary-light">Digitals</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`relative text-sm font-medium transition-colors hover:text-white ${
-                    isActive ? 'text-white' : 'text-zinc-400'
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-zinc-400 hover:text-zinc-200'
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.span
-                      layoutId="activeNavIndicator"
-                      className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-primary"
+                      layoutId="navPill"
+                      className="absolute inset-0 bg-white/[0.08] rounded-full -z-10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
                 </Link>
               );
             })}
-          </nav>
-
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            <button
-              onClick={triggerConsultation}
-              className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold rounded-full group bg-gradient-to-br from-primary to-secondary group-hover:from-primary-light group-hover:to-secondary-light text-white focus:ring-1 focus:ring-primary cursor-pointer"
-            >
-              <span className="relative px-4 py-2 transition-all ease-in duration-75 bg-zinc-950 rounded-full group-hover:bg-opacity-0">
-                Book Consultation
-              </span>
-            </button>
-            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-zinc-400 hover:text-white transition-colors"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
+          {/* CTA + Theme + Mobile Toggle */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={triggerConsultation}
+              className="hidden md:inline-flex items-center gap-1.5 px-5 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-full transition-all cursor-pointer"
+            >
+              Get in Touch
+            </button>
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden text-zinc-400 hover:text-white transition-colors p-1"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+        </nav>
       </header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Navigation — Full-screen overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden bg-black/95 pt-28 px-6 flex flex-col justify-between pb-12 border-b border-white/10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 md:hidden bg-[#050505]/98 backdrop-blur-xl flex flex-col justify-center items-center"
           >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col items-center gap-2">
               {NAV_LINKS.map((link, idx) => {
                 const isActive = pathname === link.path;
                 return (
                   <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ delay: idx * 0.08, duration: 0.4 }}
                     key={link.path}
                   >
                     <Link
                       href={link.path}
-                      className={`text-2xl font-semibold block py-2 ${
-                        isActive ? 'text-primary-light' : 'text-zinc-400'
+                      className={`text-4xl font-bold tracking-tight block py-3 transition-colors ${
+                        isActive ? 'text-primary-light' : 'text-zinc-500 hover:text-white'
                       }`}
                     >
                       {link.name}
@@ -146,17 +144,20 @@ export default function Navbar() {
               })}
             </div>
 
-            <div className="flex flex-col gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: NAV_LINKS.length * 0.08 + 0.1 }}
+              className="mt-12 flex flex-col items-center gap-4"
+            >
               <button
                 onClick={triggerConsultation}
-                className="w-full text-center py-4 bg-gradient-to-r from-primary-dark to-secondary-dark hover:from-primary hover:to-secondary text-white font-medium rounded-xl flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-full flex items-center gap-2 transition-all text-lg"
               >
-                Book Free Consultation <ArrowUpRight className="h-4 w-4" />
+                Get in Touch <ArrowUpRight className="h-5 w-5" />
               </button>
-              <div className="flex items-center justify-center gap-4 mt-2">
-                <ThemeToggle />
-              </div>
-            </div>
+              <ThemeToggle />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

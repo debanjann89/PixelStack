@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Override default Tailwind colors to adapt to custom green theme variables */
+  /* Primary brand colors */
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-dark);
   --color-primary-light: var(--primary-light);
@@ -12,19 +12,17 @@
   --color-secondary-dark: var(--secondary-dark);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
-  
+
+  /* Map common Tailwind colors to our brand palette */
   --color-blue-600: var(--primary-dark);
   --color-blue-500: var(--primary);
   --color-blue-400: var(--primary-light);
   --color-blue-300: var(--primary-lightest);
-  
   --color-indigo-600: var(--secondary-dark);
   --color-indigo-500: var(--secondary);
   --color-indigo-400: var(--secondary-light);
-  
   --color-cyan-500: var(--accent);
   --color-cyan-400: var(--accent-light);
-  
   --color-purple-950: var(--primary-dark);
   --color-purple-900: var(--primary-dark);
   --color-purple-800: var(--primary-dark);
@@ -36,7 +34,6 @@
   --color-purple-300: var(--accent-light);
   --color-purple-200: var(--accent-light);
   --color-purple-100: var(--primary-lightest);
-  
   --color-pink-950: var(--secondary-dark);
   --color-pink-900: var(--secondary-dark);
   --color-pink-800: var(--secondary-dark);
@@ -46,14 +43,12 @@
   --color-pink-400: var(--secondary-light);
   --color-pink-300: var(--secondary-light);
   --color-pink-200: var(--secondary-light);
-  
   --color-indigo-900: var(--secondary-dark);
   --color-indigo-950: var(--secondary-dark);
 
-  /* Override neutrals to make them theme-aware */
+  /* Override neutrals */
   --color-black: var(--bg-black);
   --color-white: var(--fg-white);
-  
   --color-zinc-950: var(--neutral-950);
   --color-zinc-900: var(--neutral-900);
   --color-zinc-800: var(--neutral-800);
@@ -66,10 +61,12 @@
   --color-zinc-100: var(--neutral-100);
   --color-zinc-50: var(--neutral-50);
 
-  /* Animation overrides */
+  /* Animations */
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-gradient-move: gradient-move 6s ease infinite;
+  --animate-marquee: marquee var(--marquee-duration, 30s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 30s) linear infinite;
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -83,189 +80,379 @@
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
 }
 
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+
 :root {
-  /* Default: Dark Forest Green Theme */
-  --background: #020604;
-  --foreground: #ecfdf5;
-  --card: #050e09;
-  --card-foreground: #ecfdf5;
-  --border: #0d2216;
+  /* Dark theme (default) */
+  --background: #050505;
+  --foreground: #f5f5f5;
+  --card: #0a0a0a;
+  --card-foreground: #f5f5f5;
+  --border: #1a1a1a;
+  --border-light: #222222;
   --ring: #10b981;
 
-  --primary: #10b981;        /* Emerald 500 */
-  --primary-light: #34d399;  /* Emerald 400 */
-  --primary-dark: #059669;   /* Emerald 600 */
-  --primary-lightest: #a7f3d0; /* Emerald 200 */
-  
-  --secondary: #14b8a6;      /* Teal 500 */
-  --secondary-light: #2dd4bf;/* Teal 400 */
-  --secondary-dark: #0d9488; /* Teal 600 */
-  
-  --accent: #34d399;         /* Mint 400 */
-  --accent-light: #6ee7b7;   /* Mint 300 */
-  
-  /* Overrides for black/white */
-  --bg-black: #020604;
-  --fg-white: #ffffff;
-  
-  /* Neutrals for Dark Mode (Zinc equivalents) */
-  --neutral-950: #040c08;
-  --neutral-900: #06130d;
-  --neutral-800: #0c2217;
-  --neutral-700: #123524;
-  --neutral-600: #6b7280;
-  --neutral-500: #9ca3af;
-  --neutral-400: #d1d5db;
-  --neutral-300: #e5e7eb;
-  --neutral-200: #f3f4f6;
-  --neutral-100: #f9fafb;
-  --neutral-50: #ffffff;
+  --primary: #10b981;
+  --primary-light: #34d399;
+  --primary-dark: #059669;
+  --primary-lightest: #a7f3d0;
 
-  --grid-line-rgb: 16, 185, 129;
-  --grid-opacity: 0.05;
-  --glass-bg-rgb: 5, 14, 9;
+  --secondary: #14b8a6;
+  --secondary-light: #2dd4bf;
+  --secondary-dark: #0d9488;
+
+  --accent: #34d399;
+  --accent-light: #6ee7b7;
+
+  --bg-black: #050505;
+  --fg-white: #ffffff;
+
+  /* Neutrals */
+  --neutral-950: #0a0a0a;
+  --neutral-900: #111111;
+  --neutral-800: #1a1a1a;
+  --neutral-700: #2a2a2a;
+  --neutral-600: #525252;
+  --neutral-500: #737373;
+  --neutral-400: #a3a3a3;
+  --neutral-300: #d4d4d4;
+  --neutral-200: #e5e5e5;
+  --neutral-100: #f5f5f5;
+  --neutral-50: #fafafa;
+
+  /* Glass effect */
+  --glass-bg-rgb: 10, 10, 10;
   --glass-border-rgb: 255, 255, 255;
-  --glass-border-opacity: 0.08;
+  --glass-border-opacity: 0.06;
   --glass-shadow: rgba(0, 0, 0, 0.7);
 }
 
 html.light {
-  /* Light Mint Green Theme */
-  --background: #f0fdf4;     /* Emerald 50 */
-  --foreground: #062f1e;     /* Emerald 950 */
-  --card: #ffffff;           /* Pure White */
-  --card-foreground: #062f1e;
-  --border: #d1fae5;         /* Emerald 100 */
+  --background: #fafafa;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --border: #e5e5e5;
+  --border-light: #d4d4d4;
   --ring: #059669;
 
-  --primary: #059669;        /* Emerald 600 */
-  --primary-light: #10b981;  /* Emerald 500 */
-  --primary-dark: #047857;   /* Emerald 700 */
+  --primary: #059669;
+  --primary-light: #10b981;
+  --primary-dark: #047857;
   --primary-lightest: #34d399;
-  
-  --secondary: #0d9488;      /* Teal 600 */
-  --secondary-light: #14b8a6;/* Teal 500 */
-  --secondary-dark: #0f766e; /* Teal 700 */
-  
+
+  --secondary: #0d9488;
+  --secondary-light: #14b8a6;
+  --secondary-dark: #0f766e;
+
   --accent: #059669;
   --accent-light: #10b981;
 
-  /* Overrides for black/white in Light Mode */
-  --bg-black: #f0fdf4;       /* bg-black becomes light background */
-  --fg-white: #062f1e;       /* fg-white becomes dark green text */
+  --bg-black: #fafafa;
+  --fg-white: #0a0a0a;
 
-  /* Neutrals for Light Mode (Zinc equivalents) */
-  --neutral-950: #ffffff;    /* bg-zinc-950 becomes white */
-  --neutral-900: #f8fafc;    /* bg-zinc-900 becomes light bg */
-  --neutral-800: #e2e8f0;    /* border-zinc-800 becomes light border */
-  --neutral-700: #062f1e;    /* placeholder/text becomes dark green */
-  --neutral-600: #4b5563;    /* gray-600 */
-  --neutral-500: #6b7280;    /* gray-500 */
-  --neutral-400: #374151;    /* text-zinc-400 becomes dark gray */
-  --neutral-300: #1f2937;    /* text-zinc-300 becomes darker gray */
-  --neutral-200: #e2e8f0;    /* borders */
-  --neutral-100: #0f172a;    /* text-zinc-100 */
-  --neutral-50: #0f172a;
+  --neutral-950: #fafafa;
+  --neutral-900: #f5f5f5;
+  --neutral-800: #e5e5e5;
+  --neutral-700: #0a0a0a;
+  --neutral-600: #525252;
+  --neutral-500: #737373;
+  --neutral-400: #404040;
+  --neutral-300: #262626;
+  --neutral-200: #e5e5e5;
+  --neutral-100: #171717;
+  --neutral-50: #0a0a0a;
 
-  --grid-line-rgb: 5, 150, 105;
-  --grid-opacity: 0.08;
   --glass-bg-rgb: 255, 255, 255;
   --glass-border-rgb: 5, 150, 105;
-  --glass-border-opacity: 0.12;
+  --glass-border-opacity: 0.1;
   --glass-shadow: rgba(5, 150, 105, 0.04);
 }
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom Scrollbar */
+/* Typography — headings use Plus Jakarta Sans */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-plus-jakarta), var(--font-inter), system-ui, sans-serif;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
 
-/* Grid background pattern */
-.grid-bg {
-  background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, rgba(var(--grid-line-rgb), var(--grid-opacity)) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(var(--grid-line-rgb), var(--grid-opacity)) 1px, transparent 1px);
-  mask-image: radial-gradient(ellipse 65% 55% at 50% 25%, #000 60%, transparent 100%);
-  transition: background-image 0.3s ease;
-}
+/* ============================================
+   GLASSMORPHISM (used by Navbar)
+   ============================================ */
 
-/* Glassmorphism */
 .glass-panel {
-  background: rgba(var(--glass-bg-rgb), 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(var(--glass-bg-rgb), 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(var(--glass-border-rgb), var(--glass-border-opacity));
   box-shadow: 0 4px 30px var(--glass-shadow);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.glass-card {
-  background: linear-gradient(135deg, rgba(var(--glass-bg-rgb), 0.04) 0%, rgba(var(--glass-bg-rgb), 0.01) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(var(--glass-border-rgb), var(--glass-border-opacity));
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+
+/* Gradient text fill */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary), var(--primary));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-move 6s ease infinite;
 }
 
-.glass-card:hover {
-  border-color: rgba(var(--grid-line-rgb), 0.25);
-  background: linear-gradient(135deg, rgba(var(--glass-bg-rgb), 0.08) 0%, rgba(var(--glass-bg-rgb), 0.03) 100%);
-  box-shadow: 0 10px 35px -10px rgba(16, 185, 129, 0.25);
+/* Outline/stroke text (no fill) */
+.text-outline {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.3);
+  color: transparent;
 }
 
-.timeline-line {
-  background: linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
+.text-outline-thick {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.4);
+  color: transparent;
 }
 
-/* Subtle glow nodes */
-.glow-spot {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(var(--grid-line-rgb), 0.15) 0%, transparent 70%);
-  filter: blur(40px);
-  pointer-events: none;
+html.light .text-outline {
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.2);
 }
 
-/* Blueprint grid pattern */
-.blueprint-grid {
-  background-size: 20px 20px;
-  background-image: 
-    linear-gradient(to right, rgba(var(--grid-line-rgb), 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(var(--grid-line-rgb), 0.1) 1px, transparent 1px);
+html.light .text-outline-thick {
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.25);
 }
 
-/* Button Visibility & Contrast Polish in Light Mode */
-html.light button,
-html.light .btn,
-html.light a[class*="bg-"] {
-  /* Default button text should be dark forest green for light backgrounds */
+/* Heading sizes with fluid clamp */
+.heading-hero {
+  font-size: clamp(3rem, 8vw, 9rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.heading-xl {
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+.heading-lg {
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.heading-md {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+/* ============================================
+   MARQUEE
+   ============================================ */
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse var(--marquee-duration, 30s) linear infinite;
+}
+
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.card-dark {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-dark:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   SERVICE ROW (editorial list style)
+   ============================================ */
+
+.service-row {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-row:hover {
+  padding-left: 1.5rem;
+}
+
+.service-row:hover .service-number {
+  color: var(--primary-light);
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.service-row:hover .service-name {
   color: var(--foreground);
 }
 
-/* Force true white text inside buttons that have a colored background or gradient */
+.service-row .service-number {
+  font-family: var(--font-inter), monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  min-width: 3rem;
+  transition: all 0.4s ease;
+}
+
+.service-row .service-name {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.4s ease;
+  flex: 1;
+}
+
+html.light .service-row .service-name {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+html.light .service-row:hover .service-name {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.service-row .service-desc {
+  font-size: 0.875rem;
+  color: var(--neutral-500);
+  max-width: 300px;
+  text-align: right;
+  transition: all 0.4s ease;
+}
+
+/* ============================================
+   MESH GRADIENT BLOBS
+   ============================================ */
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.12;
+  animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.blob-primary {
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+}
+
+.blob-secondary {
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+}
+
+/* ============================================
+   SECTION DIVIDER
+   ============================================ */
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), var(--primary-dark), var(--border), transparent);
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scroll-indicator::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+  animation: float 2s ease-in-out infinite;
+}
+
+/* ============================================
+   LIGHT MODE BUTTON OVERRIDES
+   ============================================ */
+
+html.light button,
+html.light .btn,
+html.light a[class*="bg-"] {
+  color: var(--foreground);
+}
+
 html.light button.bg-primary,
 html.light button.bg-blue-600,
 html.light button[class*="bg-primary-"],
@@ -277,14 +464,12 @@ html.light a[class*="bg-gradient-"] {
   color: #ffffff !important;
 }
 
-/* For buttons with text-white class, force it to be true white in light mode only if inside a button */
 html.light button .text-white,
 html.light .btn .text-white,
 html.light a[class*="bg-"] .text-white {
   color: #ffffff !important;
 }
 
-/* In light mode, ensure that inner button wrappers (like glass border buttons) have dark green text on white background */
 html.light button span.bg-zinc-950,
 html.light .btn span.bg-zinc-950,
 html.light a span.bg-zinc-950,
@@ -294,10 +479,8 @@ html.light a span.bg-black {
   color: var(--foreground) !important;
 }
 
-/* Make sure the text on light buttons is slightly bolder for professional readability */
 html.light button,
 html.light .btn {
   font-weight: 600;
   letter-spacing: 0.02em;
 }
-

@@ -2,115 +2,92 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Phone, MessageSquare, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import Logo from '@/components/Logo';
+import SplitText from '@/components/SplitText';
+
+const FOOTER_LINKS = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services' },
+  { name: 'Work', path: '/portfolio' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
+];
 
 export default function Footer() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleConsultationClick = () => {
+  // Don't render footer on admin pages
+  if (pathname.startsWith('/admin')) return null;
+
+  const triggerConsultation = () => {
     router.push(`${pathname}?consultation=open`);
   };
 
   return (
-    <footer className="relative bg-black border-t border-zinc-900 pt-20 pb-12 overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-72 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+    <footer className="relative border-t border-zinc-900 bg-[#050505]">
+      {/* Big CTA Section */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 text-center">
+        <SplitText
+          text="Let's build something extraordinary"
+          className="mb-8"
+          as="h2"
+          scrollTrigger
+          highlightWords={['extraordinary']}
+        />
+        <p className="text-zinc-500 text-lg md:text-xl max-w-xl mx-auto mb-10">
+          Ready to transform your digital presence? Let&apos;s start a conversation.
+        </p>
+        <button
+          onClick={triggerConsultation}
+          className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-full transition-all text-base cursor-pointer group"
+        >
+          Start a Project
+          <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </button>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          {/* Brand Info */}
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-3.5 mb-6 group">
-              <Logo size={36} className="transition-transform group-hover:scale-105" />
-              <span className="text-2xl font-bold tracking-tight text-white group-hover:text-primary-light transition-colors">
-                D.A.B <span className="text-primary-light">Digitals</span>
-              </span>
-            </Link>
-            <p className="text-zinc-400 text-sm max-w-sm mb-6 leading-relaxed">
-              We design and develop high-converting custom websites and growth-focused digital strategies that help businesses scale their online authority.
-            </p>
-            <div className="flex flex-col gap-3">
-              <a
-                href="tel:+918918186998"
-                className="flex items-center gap-2 text-zinc-400 hover:text-primary-light transition-colors text-sm"
-              >
-                <Phone className="h-4 w-4 text-primary" />
-                <span>+91 89181 86998</span>
-              </a>
-              <a
-                href="https://wa.me/918918186998"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 text-zinc-400 hover:text-green-400 transition-colors text-sm"
-              >
-                <MessageSquare className="h-4 w-4 text-green-500" />
-                <span>WhatsApp Live Chat</span>
-              </a>
-            </div>
+      {/* Divider */}
+      <div className="section-divider" />
+
+      {/* Bottom Info Strip */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Left — Logo + Copyright */}
+          <div className="flex items-center gap-3">
+            <Logo size={24} />
+            <span className="text-zinc-600 text-sm">
+              © {new Date().getFullYear()} D.A.B Digitals. All rights reserved.
+            </span>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-6">D.A.B Digitals Pages</h4>
-            <ul className="flex flex-col gap-4">
-              <li>
-                <Link href="/" className="text-zinc-400 hover:text-white transition-colors text-sm">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-zinc-400 hover:text-white transition-colors text-sm">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio" className="text-zinc-400 hover:text-white transition-colors text-sm">
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link href="/case-studies" className="text-zinc-400 hover:text-white transition-colors text-sm">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-zinc-400 hover:text-white transition-colors text-sm">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-zinc-400 hover:text-white transition-colors text-sm">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Call to Action Area */}
-          <div>
-            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-6">Start Growth</h4>
-            <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
-              Have a project in mind? Book a 30-min strategy call. No obligation.
-            </p>
-            <button
-              onClick={handleConsultationClick}
-              className="w-full text-center py-3 bg-white text-black font-semibold rounded-xl text-xs hover:bg-zinc-200 transition-colors duration-200 cursor-pointer"
-            >
-              Book Strategy Call
-            </button>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-zinc-500 text-xs">
-            © {new Date().getFullYear()} D.A.B Digitals. All rights reserved. Made in India.
-          </p>
+          {/* Center — Links */}
           <div className="flex items-center gap-6">
-            <Link href="/admin" className="text-zinc-600 hover:text-zinc-400 transition-colors text-xs">
-              System Admin
+            {FOOTER_LINKS.map((link) => (
+              <Link
+                key={link.path}
+                href={link.path}
+                className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right — Contact + Admin */}
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:dabdigitalofficials@gmail.com"
+              className="text-zinc-500 hover:text-primary text-sm transition-colors"
+            >
+              dabdigitalofficials@gmail.com
+            </a>
+            <Link
+              href="/admin"
+              className="text-zinc-700 hover:text-zinc-500 text-xs transition-colors"
+            >
+              Admin
             </Link>
           </div>
         </div>
