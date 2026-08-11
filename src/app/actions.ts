@@ -606,7 +606,7 @@ export async function deleteConsultation(consId: string) {
 }
 
 // ==============================================
-// PixelStack Agency Client Management CRUD Actions
+// D&B Digitals Agency Client Management CRUD Actions
 // ==============================================
 
 // 1. Clients Table Actions

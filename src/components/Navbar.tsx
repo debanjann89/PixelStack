@@ -57,7 +57,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2.5 group shrink-0">
             <Logo size={32} className="transition-transform group-hover:scale-105" />
             <span className="text-lg font-bold tracking-tight text-white group-hover:text-primary-light transition-colors hidden sm:inline">
-              D.A.B <span className="text-primary-light">Digitals</span>
+              D&B <span className="text-primary-light">Digitals</span>
             </span>
           </Link>
 

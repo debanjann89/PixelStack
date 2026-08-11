@@ -11,6 +11,7 @@ const FOOTER_LINKS = [
   { name: 'Services', path: '/services' },
   { name: 'Work', path: '/portfolio' },
   { name: 'About', path: '/about' },
+  { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -58,7 +59,7 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <Logo size={24} />
             <span className="text-zinc-600 text-sm">
-              © {new Date().getFullYear()} D.A.B Digitals. All rights reserved.
+              © {new Date().getFullYear()} D&B Digitals. All rights reserved.
             </span>
           </div>
 

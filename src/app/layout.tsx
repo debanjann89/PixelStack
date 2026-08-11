@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | D&B Digitals",
   },
   description:
-    "D&B Digitals is a high-performance web development and digital growth agency. We design and build ultra-fast, conversion-focused websites, custom UI/UX, and technical SEO starting at ₹15,000.",
+    "D&B Digitals is a high-performance web development agency. We design ultra-fast, conversion-focused websites, custom UI/UX, and technical SEO for businesses in the US and India.",
   keywords: [
     "D&B Digitals",
     "Web Development Agency",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "D&B Digitals | Premium Web Development & Digital Growth Agency",
     description:
-      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
+      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO for businesses worldwide.",
     url: SITE_URL,
     siteName: "D&B Digitals Agency",
     locale: "en_US",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "D&B Digitals | Premium Web Development & Digital Growth Agency",
     description:
-      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
+      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO for businesses worldwide.",
     creator: "@DBDigitals",
   },
   robots: {
@@ -105,7 +105,7 @@ export default function RootLayout({
     "url": SITE_URL,
     "telephone": "+918918186998",
     "email": "dabdigitalofficials@gmail.com",
-    "priceRange": "₹15,000 - ₹1,00,000+",
+    "priceRange": "$179 - $5,000+",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Siliguri, West Bengal",
@@ -147,7 +147,12 @@ export default function RootLayout({
     ],
     "sameAs": [
       "https://github.com/debanjanamin",
-      "https://linkedin.com/in/debanjanamin"
+      "https://linkedin.com/in/debanjanamin",
+      "https://linkedin.com/in/banashreedas"
+    ],
+    "areaServed": [
+      { "@type": "Country", "name": "United States" },
+      { "@type": "Country", "name": "India" }
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",

@@ -26,13 +26,16 @@ function Counter({
   suffix?: string;
   duration?: number;
 }) {
-  const [count, setCount] = useState(0);
+  const num = parseInt(value.replace(/\D/g, ''));
+  const [count, setCount] = useState(num); // SSR renders the final number
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
-    if (!isInView) return;
-    const num = parseInt(value.replace(/\D/g, ''));
+    if (!isInView || hasAnimated) return;
+    // Reset to 0 and animate up (progressive enhancement)
+    setCount(0);
     let start = 0;
     const totalSteps = 40;
     const stepDuration = (duration * 1000) / totalSteps;
@@ -41,6 +44,7 @@ function Counter({
       start += Math.ceil(num / totalSteps);
       if (start >= num) {
         setCount(num);
+        setHasAnimated(true);
         clearInterval(timer);
       } else {
         setCount(start);
@@ -48,7 +52,7 @@ function Counter({
     }, stepDuration);
 
     return () => clearInterval(timer);
-  }, [isInView, value, duration]);
+  }, [isInView, num, duration, hasAnimated]);
 
   return (
     <span
@@ -184,7 +188,7 @@ export default function AboutPage() {
 
           <ScrollReveal delay={0.3}>
             <p className="text-zinc-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-              D.A.B Digitals is a modern digital agency helping businesses build
+              D&B Digitals is a modern digital agency helping businesses build
               authoritative online presence through premium development, strategic
               design, and data-driven growth.
             </p>

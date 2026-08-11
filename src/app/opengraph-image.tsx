@@ -120,7 +120,7 @@ export default async function Image() {
             🎯 100/100 Lighthouse SEO
           </span>
           <span style={{ fontSize: '18px', color: '#a1a1aa', fontWeight: 600 }}>
-            🚀 Packages starting at ₹15,000
+            🚀 Serving Businesses in the US & India
           </span>
         </div>
       </div>

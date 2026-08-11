@@ -66,7 +66,7 @@ export default function Preloader() {
             transition={{ delay: 0.3 }}
             className="mt-6 text-zinc-600 text-xs font-medium tracking-[0.3em] uppercase"
           >
-            D.A.B Digitals
+            D&B Digitals
           </motion.span>
         </motion.div>
       )}

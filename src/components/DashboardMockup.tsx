@@ -53,7 +53,7 @@ export default function DashboardMockup() {
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
             <div className="w-3 h-3 rounded-full bg-green-500/80" />
             <div className="ml-4 text-xs font-mono text-zinc-500 bg-zinc-900/80 px-3 py-1 rounded-full border border-white/5">
-              pixelstack.agency/studio
+              dabdigitals.com/studio
             </div>
           </div>
           <div className="flex items-center gap-3">

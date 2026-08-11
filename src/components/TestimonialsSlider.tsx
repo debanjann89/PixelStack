@@ -19,7 +19,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: 'Dr. Amit Verma',
     role: 'Chief Orthodontist & Owner',
     company: 'Apex Dental Clinic',
-    content: 'PixelStack transformed our clinic\'s online presence. The consultation booking integration works flawlessly and patients constantly compliment our modern design. Truly worth every rupee!',
+    content: 'D&B Digitals transformed our clinic\'s online presence. The consultation booking integration works flawlessly and patients constantly compliment our modern design. Truly worth the investment!',
     rating: 5,
     initials: 'AV',
   },

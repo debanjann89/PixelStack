@@ -1,0 +1,44 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hotel & Resort Website Design | Luxury Hospitality Web Development',
+  description: 'Premium website design for hotels, resorts, and hospitality businesses. Increase direct bookings and reduce OTA commissions with a stunning, fast website by D&B Digitals.',
+  keywords: 'hotel website design, resort website development, hospitality web design, hotel booking website',
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://d-a-b-digitals.vercel.app',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Industries',
+        item: 'https://d-a-b-digitals.vercel.app/industries',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Hotel & Resort Website Design',
+        item: 'https://d-a-b-digitals.vercel.app/industries/hotel-resort-website-design',
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
+}

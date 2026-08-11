@@ -13,7 +13,7 @@ import {
 // Register standard fonts
 // Note: We use built-in Helvetica which is guaranteed to render instantly without loading delays.
 
-// Unified Design Token Palette for PixelStack PDFs
+// Unified Design Token Palette for D&B Digitals PDFs
 const colors = {
   primary: '#10b981',       // Emerald Green
   primaryDark: '#059669',   // Dark Emerald

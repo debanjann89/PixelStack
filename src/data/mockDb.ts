@@ -145,7 +145,7 @@ const SEED_DATA: DbSchema = {
       projectType: 'Business Website',
       budgetRange: 'Under ₹30,000',
       status: 'lost',
-      notes: 'Budget mismatch. Suresh requested standard WordPress theme for ₹15,000. PixelStack focuses on high-fidelity custom experiences starting at ₹50,000. Closed lead.',
+      notes: 'Budget mismatch. Suresh requested standard WordPress theme for ₹15,000. D&B Digitals focuses on high-fidelity custom experiences starting at ₹50,000. Closed lead.',
       createdAt: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString(),
     }
   ],

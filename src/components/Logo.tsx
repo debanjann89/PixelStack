@@ -17,7 +17,7 @@ export default function Logo({ className = '', size = 32, interactive = true }: 
     >
       <img
         src="/logo.png"
-        alt="DAB Digitals Logo"
+        alt="D&B Digitals Logo"
         width={size}
         height={size}
         className="w-full h-full object-contain"

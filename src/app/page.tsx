@@ -37,13 +37,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 // ─── Helpers ────────────────────────────────────────────
 function Counter({ value, suffix = '', duration = 1.5 }: { value: string; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
+  const num = parseInt(value.replace(/\D/g, ''));
+  const [count, setCount] = useState(num); // SSR renders the final number
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   useEffect(() => {
-    if (!isInView) return;
-    const num = parseInt(value.replace(/\D/g, ''));
+    if (!isInView || hasAnimated) return;
+    // Reset to 0 and animate up (progressive enhancement)
+    setCount(0);
     let start = 0;
     const totalSteps = 40;
     const stepDuration = (duration * 1000) / totalSteps;
@@ -52,6 +55,7 @@ function Counter({ value, suffix = '', duration = 1.5 }: { value: string; suffix
       start += Math.ceil(num / totalSteps);
       if (start >= num) {
         setCount(num);
+        setHasAnimated(true);
         clearInterval(timer);
       } else {
         setCount(start);
@@ -59,7 +63,7 @@ function Counter({ value, suffix = '', duration = 1.5 }: { value: string; suffix
     }, stepDuration);
 
     return () => clearInterval(timer);
-  }, [isInView, value, duration]);
+  }, [isInView, num, duration, hasAnimated]);
 
   return (
     <span ref={ref} className="tabular-nums">
@@ -425,7 +429,7 @@ export default function HomePage() {
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
-              Why D.A.B Digitals
+              Why D&B Digitals
             </span>
             <h2 className="heading-lg text-white">
               Built different. Built better.
@@ -468,6 +472,64 @@ export default function HomePage() {
           ═══════════════════════════════════════════════════ */}
       <div className="section-divider" />
       <PricingPlans />
+
+      {/* ═══════════════════════════════════════════════════
+          SECTION — FAQ
+          ═══════════════════════════════════════════════════ */}
+      <section className="relative z-10 py-24 md:py-32">
+        <div className="max-w-4xl mx-auto px-6 md:px-12">
+          <ScrollReveal>
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
+                FAQ
+              </span>
+              <h2 className="heading-lg text-white">
+                Common questions, straight answers
+              </h2>
+            </div>
+          </ScrollReveal>
+          <div className="space-y-4">
+            {[
+              { q: 'How long does it take to build a website?', a: 'Most projects are delivered within 2–4 weeks depending on complexity. A simple landing page can be ready in under 10 days, while full-stack web applications with admin dashboards typically take 4–6 weeks.' },
+              { q: 'Do you work with businesses outside India?', a: 'Absolutely. We primarily serve small-to-medium businesses in the United States and India. Our workflow is fully remote — we communicate via video calls, Slack, and email across time zones.' },
+              { q: 'What is included in your web development packages?', a: 'Every package includes custom UI/UX design, hand-coded development in Next.js 15, mobile responsiveness, basic SEO setup, contact form integration, and post-launch support. Higher tiers add admin dashboards, CRM integration, and advanced SEO.' },
+              { q: 'Can you redesign my existing website?', a: 'Yes — website redesign is one of our core services. We migrate your content to a modern Next.js architecture, dramatically improving speed, design, and search engine visibility without losing your existing SEO equity.' },
+              { q: 'Do you offer ongoing maintenance and support?', a: 'Yes. All packages include 30–365 days of post-launch support depending on the tier. We also offer monthly retainer plans for ongoing updates, performance monitoring, and content changes.' },
+              { q: 'What industries do you specialize in?', a: 'We have deep experience building websites for home service businesses (plumbing, HVAC, roofing), hotels & resorts, real estate agencies, dental & healthcare clinics, restaurants, and eCommerce brands.' },
+            ].map((faq, i) => (
+              <ScrollReveal key={i} delay={i * 0.05}>
+                <details className="group rounded-2xl bg-[#0a0a0a] border border-zinc-800/60 overflow-hidden">
+                  <summary className="flex items-center justify-between cursor-pointer px-6 py-5 text-white font-medium text-sm md:text-base list-none [&::-webkit-details-marker]:hidden">
+                    {faq.q}
+                    <span className="ml-4 text-zinc-500 group-open:rotate-45 transition-transform duration-200 text-xl">+</span>
+                  </summary>
+                  <div className="px-6 pb-5 text-zinc-400 text-sm leading-relaxed border-t border-zinc-800/40 pt-4">
+                    {faq.a}
+                  </div>
+                </details>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+        {/* FAQPage Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                { '@type': 'Question', name: 'How long does it take to build a website?', acceptedAnswer: { '@type': 'Answer', text: 'Most projects are delivered within 2–4 weeks depending on complexity. A simple landing page can be ready in under 10 days, while full-stack web applications with admin dashboards typically take 4–6 weeks.' } },
+                { '@type': 'Question', name: 'Do you work with businesses outside India?', acceptedAnswer: { '@type': 'Answer', text: 'Absolutely. We primarily serve small-to-medium businesses in the United States and India. Our workflow is fully remote — we communicate via video calls, Slack, and email across time zones.' } },
+                { '@type': 'Question', name: 'What is included in your web development packages?', acceptedAnswer: { '@type': 'Answer', text: 'Every package includes custom UI/UX design, hand-coded development in Next.js 15, mobile responsiveness, basic SEO setup, contact form integration, and post-launch support.' } },
+                { '@type': 'Question', name: 'Can you redesign my existing website?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — website redesign is one of our core services. We migrate your content to a modern Next.js architecture, dramatically improving speed, design, and search engine visibility.' } },
+                { '@type': 'Question', name: 'Do you offer ongoing maintenance and support?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. All packages include 30–365 days of post-launch support depending on the tier. We also offer monthly retainer plans for ongoing updates, performance monitoring, and content changes.' } },
+                { '@type': 'Question', name: 'What industries do you specialize in?', acceptedAnswer: { '@type': 'Answer', text: 'We have deep experience building websites for home service businesses (plumbing, HVAC, roofing), hotels & resorts, real estate agencies, dental & healthcare clinics, restaurants, and eCommerce brands.' } },
+              ],
+            }),
+          }}
+        />
+      </section>
 
       {/* ═══════════════════════════════════════════════════
           SECTION 10 — FINAL CTA (scale-on-scroll)

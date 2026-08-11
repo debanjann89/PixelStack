@@ -15,11 +15,11 @@ export default function ThemeToggle() {
   const toggleTheme = () => {
     if (theme === 'dark') {
       document.documentElement.classList.add('light');
-      localStorage.setItem('pixelstack-theme', 'light');
+      localStorage.setItem('dab-digitals-theme', 'light');
       setTheme('light');
     } else {
       document.documentElement.classList.remove('light');
-      localStorage.setItem('pixelstack-theme', 'dark');
+      localStorage.setItem('dab-digitals-theme', 'dark');
       setTheme('dark');
     }
   };

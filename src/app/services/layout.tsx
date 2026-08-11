@@ -63,9 +63,18 @@ export default function ServicesLayout({
         'name': 'How much does a custom website cost with D&B Digitals?',
         'acceptedAnswer': {
           '@type': 'Answer',
-          'text': 'Our packages start from ₹15,000 for high-converting landing pages up to ₹1,00,000+ for complex enterprise digital web applications.'
+          'text': 'Our packages start from $179 (₹15,000) for high-converting landing pages, scaling up to $5,000+ (₹1,00,000+) for complex enterprise web applications. We serve businesses in the US and India with transparent, competitive pricing.'
         }
       }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': SITE_URL },
+      { '@type': 'ListItem', 'position': 2, 'name': 'Services', 'item': `${SITE_URL}/services` }
     ]
   };
 
@@ -75,6 +84,12 @@ export default function ServicesLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqSchema)
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema)
         }}
       />
       {children}
