@@ -270,6 +270,7 @@ export default function PortfolioPage() {
                             src={displayImage}
                             alt={proj.title}
                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent opacity-85 group-hover:opacity-75 transition-opacity duration-500" />
                         </>
@@ -329,6 +330,7 @@ export default function PortfolioPage() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                data-lenis-prevent
                 className="relative w-full max-w-3xl bg-zinc-950 rounded-2xl border border-zinc-900 z-10 shadow-2xl max-h-[90vh] overflow-y-auto"
               >
                 {/* Close Button floating absolute */}

@@ -118,6 +118,7 @@ const FEATURED_PROJECTS_FALLBACK = [
     category: 'Restaurant',
     desc: 'A high-end ordering & booking experience.',
     bg: 'from-emerald-900/40 to-emerald-950/60',
+    image: null as string | null,
   },
   {
     id: 'proj-2',
@@ -125,6 +126,7 @@ const FEATURED_PROJECTS_FALLBACK = [
     category: 'Law Firm',
     desc: 'An authoritative corporate web presence.',
     bg: 'from-teal-900/40 to-teal-950/60',
+    image: null as string | null,
   },
   {
     id: 'proj-3',
@@ -132,6 +134,7 @@ const FEATURED_PROJECTS_FALLBACK = [
     category: 'Healthcare',
     desc: 'Modern patient portal with online booking.',
     bg: 'from-green-900/40 to-green-950/60',
+    image: null as string | null,
   },
 ];
 
@@ -372,6 +375,18 @@ export default function HomePage() {
                   className={`relative h-[50vh] md:h-[60vh] rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br ${project.bg} border border-zinc-800/50`}
                   onClick={() => setSelectedProject(project)}
                 >
+                  {/* Project image if available */}
+                  {project.image && (
+                    <>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent" />
+                    </>
+                  )}
                   {/* Project info at bottom */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                     <span className="text-primary text-xs font-semibold uppercase tracking-[0.15em] block mb-2">

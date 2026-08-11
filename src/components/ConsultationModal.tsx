@@ -72,6 +72,7 @@ function ConsultationModalContent() {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 10 }}
         className="relative w-full max-w-lg bg-[#0a0a0a] rounded-2xl p-6 md:p-8 border border-zinc-800 z-10 shadow-2xl overflow-hidden"
+        data-lenis-prevent
       >
         <button
           onClick={handleClose}
