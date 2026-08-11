@@ -157,7 +157,7 @@ export default function HomePage() {
               id: p.id || `proj-${i}`,
               title: p.title || p.name || `Project ${i + 1}`,
               category: p.category || 'Website',
-              desc: p.description || p.desc || '',
+              desc: p.overview || (p.desc || p.description || '').slice(0, 80),
               bg: FEATURED_PROJECTS_FALLBACK[i % FEATURED_PROJECTS_FALLBACK.length].bg,
               image: p.thumbnail_url || p.image_url || null,
             }))
@@ -372,35 +372,36 @@ export default function HomePage() {
                 transition={{ delay: i * 0.1 }}
               >
                 <div
-                  className={`relative h-[50vh] md:h-[60vh] rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br ${project.bg} border border-zinc-800/50`}
+                  className={`relative h-[50vh] md:h-[60vh] rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br ${project.bg} border border-zinc-800/50 hover:border-primary/20 transition-all duration-500`}
                   onClick={() => setSelectedProject(project)}
                 >
                   {/* Project image if available */}
                   {project.image && (
-                    <>
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent" />
-                    </>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
                   )}
-                  {/* Project info at bottom */}
+
+                  {/* Gradient overlay — always present for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+
+                  {/* Project info — pinned to bottom, clean and tight */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                    <span className="text-primary text-xs font-semibold uppercase tracking-[0.15em] block mb-2">
+                    <span className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] block mb-3">
                       {project.category}
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">
                       {project.title}
                     </h3>
-                    <p className="text-zinc-400 text-sm">{project.desc}</p>
+                    <p className="text-zinc-400 text-xs md:text-sm line-clamp-2 max-w-sm">{project.desc}</p>
                   </div>
 
-                  {/* Arrow on hover */}
-                  <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowUpRight className="h-4 w-4 text-white" />
+                  {/* Arrow indicator */}
+                  <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-black/40 border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-white transition-transform duration-300 group-hover:rotate-45" />
                   </div>
                 </div>
               </motion.div>
