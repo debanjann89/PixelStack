@@ -1,171 +1,93 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
 
-interface CylinderCarouselProps {
-  items: {
-    id: string;
-    title: string;
-    category: string;
-    desc: string;
-    image: string | null;
-    bg: string;
-  }[];
-  onItemClick?: (item: CylinderCarouselProps['items'][0]) => void;
+export interface CarouselImage {
+  src: string;
+  alt?: string;
 }
 
-export function CylinderCarousel({ items, onItemClick }: CylinderCarouselProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [rotation, setRotation] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartRef = useRef(0);
-  const rotationStartRef = useRef(0);
-  const animationRef = useRef<number | null>(null);
+export interface CylinderCarouselProps extends React.HTMLAttributes<HTMLDivElement> {
+  images: CarouselImage[];
+  containerClassName?: string;
+  cardClassName?: string;
+  animationDuration?: number; // in seconds
+  cardWidth?: number; // in pixels
+}
 
-  const faceCount = items.length || 6;
-  const anglePerFace = 360 / faceCount;
-  // Radius calculated from face width to form a proper cylinder
-  const faceWidth = 320;
-  const radius = faceWidth / (2 * Math.tan(Math.PI / faceCount));
-
-  // Auto-rotate
-  useEffect(() => {
-    if (isHovered || isDragging) return;
-
-    let lastTime = performance.now();
-    const speed = 0.015; // degrees per ms
-
-    const animate = (time: number) => {
-      const delta = time - lastTime;
-      lastTime = time;
-      setRotation((prev) => prev + speed * delta);
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-  }, [isHovered, isDragging]);
-
-  // Drag handlers
-  const handlePointerDown = useCallback(
-    (e: React.PointerEvent) => {
-      setIsDragging(true);
-      dragStartRef.current = e.clientX;
-      rotationStartRef.current = rotation;
-      (e.target as HTMLElement).setPointerCapture(e.pointerId);
+export const CylinderCarousel = React.forwardRef<HTMLDivElement, CylinderCarouselProps>(
+  (
+    {
+      images,
+      className = "",
+      containerClassName = "",
+      cardClassName = "",
+      animationDuration = 32,
+      cardWidth = 250,
+      ...props
     },
-    [rotation]
-  );
+    ref
+  ) => {
+    const N = images.length;
+    
+    // We compute the CSS variables here instead of polluting the global CSS
+    // --n: number of cards
+    // --w: card width
+    const customStyle = {
+      "--n": N,
+      "--w": `${cardWidth}px`,
+      "--ba": `calc(1turn / var(--n))`,
+      // animation duration
+      "--anim-dur": `${animationDuration}s`,
+    } as React.CSSProperties;
 
-  const handlePointerMove = useCallback(
-    (e: React.PointerEvent) => {
-      if (!isDragging) return;
-      const delta = e.clientX - dragStartRef.current;
-      setRotation(rotationStartRef.current + delta * 0.3);
-    },
-    [isDragging]
-  );
-
-  const handlePointerUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative w-full overflow-hidden select-none"
-      style={{ perspective: '1200px', height: '420px' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-    >
-      {/* Reflection/glow underneath */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-32 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
-
-      {/* 3D Cylinder */}
+    return (
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        ref={ref}
+        className={`w-full h-full min-h-[500px] grid place-items-center overflow-hidden ${className}`}
         style={{
-          transformStyle: 'preserve-3d',
-          transform: `rotateY(${rotation}deg)`,
-          width: `${faceWidth}px`,
-          height: '360px',
-          transition: isDragging ? 'none' : undefined,
+          perspective: "35em",
+          maskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent, #000 20% 80%, transparent)",
         }}
+        {...props}
       >
-        {items.map((item, index) => {
-          const angle = index * anglePerFace;
-
-          return (
-            <motion.div
-              key={item.id}
-              className="absolute inset-0 w-full h-full cursor-pointer"
+        <div
+          className={`grid place-items-center [transform-style:preserve-3d] motion-reduce:!animate-[ry_128s_linear_infinite] ${containerClassName}`}
+          style={{
+            ...customStyle,
+            animation: "ry var(--anim-dur) linear infinite",
+          }}
+        >
+          {/* We define the keyframes inline via a style block to ensure it works without global CSS config */}
+          <style>
+            {`
+              @keyframes ry {
+                to { transform: rotateY(1turn); }
+              }
+            `}
+          </style>
+          
+          {images.map((img, i) => (
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt || `Carousel image ${i}`}
+              className={`[grid-area:1/1] object-cover rounded-2xl [backface-visibility:hidden] ${cardClassName}`}
               style={{
-                transformStyle: 'preserve-3d',
-                transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
-                backfaceVisibility: 'hidden',
-              }}
-              onClick={() => onItemClick?.(item)}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div
-                className={`relative w-full h-full rounded-xl overflow-hidden border border-zinc-800/60 bg-gradient-to-br ${item.bg} shadow-2xl shadow-black/50 group`}
-              >
-                {/* Image */}
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                    }}
-                    draggable={false}
-                  />
-                )}
-
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-
-                {/* Subtle shine on edges */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/[0.03] via-transparent to-white/[0.03]" />
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <span className="text-primary text-[9px] font-bold uppercase tracking-[0.25em] block mb-2">
-                    {item.category}
-                  </span>
-                  <h3 className="text-white text-base font-bold leading-tight mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-zinc-400 text-[11px] line-clamp-2 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-
-                {/* Top-right glow dot */}
-                <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-primary/50 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-            </motion.div>
-          );
-        })}
+                width: "var(--w)",
+                aspectRatio: "7/10",
+                "--i": i,
+                // transform: rotateY(calc(var(--i) * var(--ba))) translateZ(calc(-1 * (0.5 * var(--w) + 0.5em) / tan(0.5 * var(--ba))))
+                // Note: using modern CSS tan() function. Fallback translates are recommended if targeting very old browsers.
+                transform: "rotateY(calc(var(--i) * var(--ba))) translateZ(calc(-1 * (0.5 * var(--w) + 0.5em) / tan(0.5 * var(--ba))))",
+              } as React.CSSProperties}
+            />
+          ))}
+        </div>
       </div>
+    );
+  }
+);
 
-      {/* Drag hint */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-zinc-600 text-[10px] font-medium tracking-wider uppercase flex items-center gap-2 pointer-events-none">
-        <span className="inline-block w-4 h-px bg-zinc-700" />
-        Drag to explore
-        <span className="inline-block w-4 h-px bg-zinc-700" />
-      </div>
-    </div>
-  );
-}
+CylinderCarousel.displayName = "CylinderCarousel";

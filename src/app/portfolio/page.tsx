@@ -243,8 +243,6 @@ export default function PortfolioPage() {
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((proj, idx) => {
-                // Editorial layout spacing: alternate between aspect-video and tall aspect-square
-                const isTall = idx % 3 === 1;
                 const hasImage = !!(proj.images && proj.images.length > 0 || proj.image_url);
                 const displayImage = proj.images && proj.images.length > 0 ? proj.images[0] : proj.image_url;
 
@@ -258,9 +256,7 @@ export default function PortfolioPage() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.55, ease: 'easeOut' }}
                     onClick={() => handleSetActiveProj(proj)}
-                    className={`group relative rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 border border-zinc-900 hover:border-primary/20 transition-all duration-500 ${
-                      isTall ? 'md:aspect-[4/5]' : 'aspect-video'
-                    }`}
+                    className="group relative rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 border border-zinc-900 hover:border-primary/20 transition-all duration-500 aspect-video"
                   >
                     {/* Visual Media wrapper */}
                     <div className="absolute inset-0 w-full h-full overflow-hidden">
