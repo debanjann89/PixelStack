@@ -20,42 +20,73 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://d-a-b-digitals.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
-    template: "%s | D.A.B Digitals",
+    default: "D&B Digitals | Premium Web Development & Digital Growth Agency",
+    template: "%s | D&B Digitals",
   },
-  description: "D.A.B Digitals is a modern digital agency designing and developing premium, conversion-focused websites, UI/UX, and search engine foundations starting at ₹15,000.",
-  metadataBase: new URL("https://dabdigitals.com"),
+  description:
+    "D&B Digitals is a high-performance web development and digital growth agency. We design and build ultra-fast, conversion-focused websites, custom UI/UX, and technical SEO starting at ₹15,000.",
+  keywords: [
+    "D&B Digitals",
+    "Web Development Agency",
+    "Next.js Web Developer",
+    "Website Redesign Services",
+    "UI UX Design Agency",
+    "SEO Optimization Services",
+    "Web Design Siliguri",
+    "Custom React Website",
+    "B2B Web Development India",
+    "E-commerce Development Agency",
+    "Debanjan Amin",
+    "Banashree Das"
+  ],
+  authors: [
+    { name: "Debanjan Amin", url: "https://github.com/debanjanamin" },
+    { name: "Banashree Das" }
+  ],
+  creator: "D&B Digitals",
+  publisher: "D&B Digitals",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
-    description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
-    url: "https://dabdigitals.com",
-    siteName: "D.A.B Digitals Agency",
-    images: [
-      {
-        url: "https://dabdigitals.com/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "D.A.B Digitals Agency - Premium Web Development",
-      },
-    ],
+    title: "D&B Digitals | Premium Web Development & Digital Growth Agency",
+    description:
+      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
+    url: SITE_URL,
+    siteName: "D&B Digitals Agency",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "D.A.B Digitals | Premium Web Development & Digital Growth Agency",
-    description: "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
-    images: ["https://dabdigitals.com/og-image.png"],
-    creator: "@DABDigitals",
+    title: "D&B Digitals | Premium Web Development & Digital Growth Agency",
+    description:
+      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO starting at ₹15,000.",
+    creator: "@DBDigitals",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
   },
 };
 
@@ -64,6 +95,112 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "D&B Digitals",
+    "alternateName": "D&B Digitals Agency",
+    "image": `${SITE_URL}/opengraph-image`,
+    "@id": `${SITE_URL}/#agency`,
+    "url": SITE_URL,
+    "telephone": "+918918186998",
+    "email": "dabdigitalofficials@gmail.com",
+    "priceRange": "₹15,000 - ₹1,00,000+",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Siliguri, West Bengal",
+      "addressLocality": "Siliguri",
+      "addressRegion": "West Bengal",
+      "postalCode": "734001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 26.7271,
+      "longitude": 88.3953
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "20:00"
+    },
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Debanjan Amin",
+        "jobTitle": "Co-Founder & Lead Developer",
+        "sameAs": "https://github.com/debanjanamin"
+      },
+      {
+        "@type": "Person",
+        "name": "Banashree Das",
+        "jobTitle": "Co-Founder & Growth Strategist"
+      }
+    ],
+    "sameAs": [
+      "https://github.com/debanjanamin",
+      "https://linkedin.com/in/debanjanamin"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Website Development",
+            "description": "High-performance full-stack websites using Next.js 15, TypeScript, and modern frameworks."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "UI/UX Design",
+            "description": "Interface systems that are clean, professional, and intuitive."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Website Redesign",
+            "description": "Transform slow WordPress/Wix sites into modern, high-speed digital assets."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "SEO Optimization",
+            "description": "Comprehensive technical SEO foundations from clean code to search console indexing."
+          }
+        }
+      ]
+    }
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "D&B Digitals",
+    "url": SITE_URL,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${SITE_URL}/services?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <html lang="en">
       <head>
@@ -83,50 +220,18 @@ export default function RootLayout({
             `
           }}
         />
-        {/* Schema Markup (JSON-LD) */}
+        {/* Local Business JSON-LD Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "D.A.B Digitals",
-              "image": "https://dabdigitals.com/og-image.png",
-              "@id": "https://dabdigitals.com/#agency",
-              "url": "https://dabdigitals.com",
-              "telephone": "+918918186998",
-              "priceRange": "INR 15000 - INR 100000",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Siliguri, West Bengal",
-                "addressLocality": "Siliguri",
-                "addressRegion": "West Bengal",
-                "postalCode": "734001",
-                "addressCountry": "IN"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 26.7271,
-                "longitude": 88.3953
-              },
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday"
-                ],
-                "opens": "09:00",
-                "closes": "19:00"
-              },
-              "sameAs": [
-                "https://github.com/debanjanamin",
-                "https://linkedin.com/in/debanjanamin"
-              ]
-            })
+            __html: JSON.stringify(localBusinessSchema)
+          }}
+        />
+        {/* WebSite JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema)
           }}
         />
       </head>

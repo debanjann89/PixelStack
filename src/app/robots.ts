@@ -1,12 +1,21 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/admin', // Prevent indexing of the admin panel
-    },
-    sitemap: 'https://pixelstack.agency/sitemap.xml',
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/admin/', '/api/'],
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: ['/admin/', '/api/'],
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
