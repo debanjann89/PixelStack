@@ -31,7 +31,6 @@ import Marquee from '@/components/Marquee';
 import MagneticButton from '@/components/MagneticButton';
 import TestimonialsSlider from '@/components/TestimonialsSlider';
 import PricingPlans from '@/components/PricingPlans';
-import { CylinderCarousel } from '@/components/CylinderCarousel';
 import { getProjects } from '@/app/actions';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -144,6 +143,8 @@ export default function HomePage() {
   const router = useRouter();
   const [projects, setProjects] = useState<typeof FEATURED_PROJECTS_FALLBACK>([]);
   const [selectedProject, setSelectedProject] = useState<(typeof FEATURED_PROJECTS_FALLBACK)[0] | null>(null);
+  const horizontalRef = useRef<HTMLDivElement>(null);
+  const horizontalInnerRef = useRef<HTMLDivElement>(null);
 
   // Load projects from Supabase
   useEffect(() => {
@@ -170,6 +171,31 @@ export default function HomePage() {
     }
     loadProjects();
   }, []);
+
+  // Horizontal scroll GSAP effect
+  useEffect(() => {
+    if (!horizontalRef.current || !horizontalInnerRef.current) return;
+
+    const scrollWidth = horizontalInnerRef.current.scrollWidth - horizontalRef.current.offsetWidth;
+    if (scrollWidth <= 0) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to(horizontalInnerRef.current, {
+        x: -scrollWidth,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: horizontalRef.current,
+          start: 'top top',
+          end: `+=${scrollWidth}`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, [projects]);
 
   const handleConsultation = () => {
     router.push('/?consultation=open');
@@ -304,10 +330,10 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          SECTION 5 — FEATURED WORK (Cylinder Carousel)
+          SECTION 5 — FEATURED WORK (Horizontal scroll)
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <section className="relative z-10">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 pb-8">
           <ScrollReveal>
             <div className="flex items-end justify-between mb-12">
               <div>
@@ -326,19 +352,58 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
 
-        {/* Cylinder Carousel implementation */}
-        <div className="w-full flex justify-center pb-20">
-          <CylinderCarousel
-            images={(projects.length > 0 ? projects : FEATURED_PROJECTS_FALLBACK)
-              .filter((p) => p.image)
-              .map((p) => ({
-                src: p.image as string,
-                alt: p.title,
-              }))}
-            animationDuration={25}
-            cardWidth={300}
-            className="mt-10"
-          />
+        {/* Horizontal scroll container */}
+        <div ref={horizontalRef} className="relative overflow-hidden">
+          <div
+            ref={horizontalInnerRef}
+            className="flex gap-6 px-6 md:px-12"
+            style={{ width: 'max-content' }}
+          >
+            {(projects.length > 0 ? projects : FEATURED_PROJECTS_FALLBACK).map((project, i) => (
+              <motion.div
+                key={project.id}
+                className="w-[80vw] md:w-[45vw] lg:w-[35vw] shrink-0"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div
+                  className={`relative h-[50vh] md:h-[60vh] rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br ${project.bg} border border-zinc-800/50 hover:border-primary/20 transition-all duration-500`}
+                  onClick={() => setSelectedProject(project)}
+                >
+                  {/* Project image if available */}
+                  {project.image && (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                    />
+                  )}
+
+                  {/* Gradient overlay — always present for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+
+                  {/* Project info — pinned to bottom, clean and tight */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <span className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] block mb-3">
+                      {project.category}
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">
+                      {project.title}
+                    </h3>
+                    <p className="text-zinc-400 text-xs md:text-sm line-clamp-2 max-w-sm">{project.desc}</p>
+                  </div>
+
+                  {/* Arrow indicator */}
+                  <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-black/40 border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-white transition-transform duration-300 group-hover:rotate-45" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
