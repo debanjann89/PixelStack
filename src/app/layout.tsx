@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     "D&B Digitals is a high-performance web development agency. We design ultra-fast, conversion-focused websites, custom UI/UX, and technical SEO for businesses in the US and India.",
   keywords: [
     "D&B Digitals",
+    "DNB Digitals",
     "Web Development Agency",
     "Next.js Web Developer",
     "Website Redesign Services",
@@ -50,6 +51,15 @@ export const metadata: Metadata = {
   ],
   creator: "D&B Digitals",
   publisher: "D&B Digitals",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -63,7 +73,7 @@ export const metadata: Metadata = {
     description:
       "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO for businesses worldwide.",
     url: SITE_URL,
-    siteName: "D&B Digitals Agency",
+    siteName: "D&B Digitals",
     locale: "en_US",
     type: "website",
   },
@@ -146,6 +156,8 @@ export default function RootLayout({
       }
     ],
     "sameAs": [
+      "https://www.instagram.com/dnbdigitals/",
+      "https://wa.me/918918186998",
       "https://github.com/debanjanamin",
       "https://linkedin.com/in/debanjanamin",
       "https://linkedin.com/in/banashreedas"
@@ -198,6 +210,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "D&B Digitals",
+    "alternateName": ["DNB Digitals", "D&B Digitals Agency", "D and B Digitals"],
     "url": SITE_URL,
     "potentialAction": {
       "@type": "SearchAction",
