@@ -6,6 +6,15 @@ import { motion } from 'framer-motion';
 
 const ARTICLES = [
   {
+    slug: 'why-wix-wordpress-websites-fail-to-rank-google',
+    title: 'Why 90% of Wix & WordPress Websites Fail to Rank on Google (And How to Fix It)',
+    excerpt: 'Discover why template builders and bloated WordPress themes struggle to hit Page 1 of Google — and how custom Next.js web architecture fixes Core Web Vitals and SEO rankings.',
+    category: 'SEO & Performance',
+    date: '2026-08-22',
+    readTime: '9 min read',
+    author: 'Debanjan Amin',
+  },
+  {
     slug: 'how-much-should-a-small-business-website-cost',
     title: 'How Much Should a Small Business Website Cost in 2026?',
     excerpt: 'A transparent breakdown of website pricing — from DIY builders to custom agency builds. Know what you\'re paying for before you invest.',
