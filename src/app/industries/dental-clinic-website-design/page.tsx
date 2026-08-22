@@ -28,7 +28,7 @@ export default function DentalHealthcarePage() {
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto text-center z-10 relative">
           <SplitText
-            text="Website Design for Dental Clinics & Healthcare"
+            text="Dental Clinic Website Development & Healthcare Web Design"
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
             delay={50}
           />
@@ -38,7 +38,7 @@ export default function DentalHealthcarePage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
-            Professional, trustworthy, and HIPAA-friendly web design. We build websites that attract new patients, streamline booking, and elevate your practice.
+            Custom full-stack web development and high-converting UI/UX for dental practices, orthodontists, and healthcare clinics. Fast, secure, patient-focused digital systems built to rank #1 locally.
           </motion.p>
           <motion.div 
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
