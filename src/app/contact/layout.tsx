@@ -5,7 +5,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.ver
 export const metadata: Metadata = {
   title: 'Contact Us | Book a Free Consultation with D&B Digitals',
   description:
-    'Get in touch with D&B Digitals. Phone: +91 89181 86998 | Email: dabdigitalofficials@gmail.com | Location: Siliguri, West Bengal, India. Tell us about your project for a fast proposal.',
+    'Contact D&B Digitals for custom web development and SEO. Book a consultation or request a project proposal. Call +91 8918186998 or reach out online.',
   keywords: [
     'Contact D&B Digitals',
     'Hire Web Development Agency',

@@ -5,7 +5,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.ver
 export const metadata: Metadata = {
   title: 'Our Portfolio & Case Studies | Real Results & Client Showcase',
   description:
-    'Discover real-world projects built by D&B Digitals for restaurants, law firms, dental clinics, luxury resorts, and SaaS startups. High-converting designs that doubled online revenue.',
+    'Explore real client case studies and high-converting custom websites built by D&B Digitals for healthcare, hospitality, real estate, and B2B brands.',
   keywords: [
     'D&B Digitals Portfolio',
     'Web Design Portfolio India',

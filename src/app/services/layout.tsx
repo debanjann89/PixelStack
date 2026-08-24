@@ -5,7 +5,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.ver
 export const metadata: Metadata = {
   title: 'Our Services | Web Development, UI/UX Design & SEO',
   description:
-    'Explore D&B Digitals core services: Full-Stack Next.js 15 Website Development, Custom UI/UX Design, WordPress-to-Next.js Redesign, Technical SEO Optimization, and Digital Marketing.',
+    'Custom Next.js website development, modern UI/UX design, site redesigns, and technical SEO services engineered to scale your business by D&B Digitals.',
   keywords: [
     'Website Development Services',
     'Custom UI UX Design',

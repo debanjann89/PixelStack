@@ -5,7 +5,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.ver
 export const metadata: Metadata = {
   title: 'About Us | Founders Debanjan Amin & Banashree Das',
   description:
-    'Learn about D&B Digitals — a digital agency co-founded by Debanjan Amin (Lead Developer) and Banashree Das (Growth Strategist). We build web applications that drive real business growth.',
+    'Learn about D&B Digitals, founded by Debanjan Amin and Banashree Das. We build high-performance, conversion-focused digital platforms for growing brands.',
   keywords: [
     'About D&B Digitals',
     'Debanjan Amin Developer',

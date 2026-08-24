@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | D&B Digitals",
   },
   description:
-    "D&B Digitals is a high-performance web development agency. We design ultra-fast, conversion-focused websites, custom UI/UX, and technical SEO for businesses in the US and India.",
+    "D&B Digitals builds ultra-fast, conversion-focused custom websites, UI/UX design systems, and technical SEO for growing businesses in the US and India.",
   keywords: [
     "D&B Digitals",
     "DNB Digitals",
