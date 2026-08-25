@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'Website Design for Plumbing & HVAC Companies | D&B Digitals',
   description: 'Custom website design for plumbing, HVAC, and home service businesses. Get more emergency calls, online bookings, and local leads with a fast, mobile-optimized website built by D&B Digitals.',
   keywords: 'plumbing website design, HVAC website development, home service website, custom website for plumbers',
+  alternates: {
+    canonical: 'https://d-a-b-digitals.vercel.app/industries/hvac-plumbing-website-design',
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -32,11 +35,31 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     ],
   };
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'HVAC & Plumbing Website Design & Home Service Web Development',
+    provider: {
+      '@type': 'Organization',
+      name: 'D&B Digitals',
+      url: 'https://d-a-b-digitals.vercel.app',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'United States' },
+      { '@type': 'Country', name: 'India' },
+    ],
+    description: 'Custom website design for plumbing, HVAC, and home service businesses featuring emergency dispatch CTAs, online booking, and local SEO optimization.',
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       {children}
     </>

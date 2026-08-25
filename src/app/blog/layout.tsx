@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Blog | Web Design Tips & Digital Marketing Insights',
   description: 'Read expert articles on web design, development, SEO, and digital marketing from D&B Digitals. Tips and strategies for small businesses in the US and India.',
+  alternates: {
+    canonical: 'https://d-a-b-digitals.vercel.app/blog',
+  },
 }
 
 export default function BlogLayout({

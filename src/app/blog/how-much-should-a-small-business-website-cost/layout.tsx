@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'How Much Should a Small Business Website Cost in 2026?',
   description: 'A transparent breakdown of website pricing in 2026 — from $0 DIY builders to $5,000+ custom agency builds. Learn what affects cost and what you should expect.',
+  alternates: {
+    canonical: 'https://d-a-b-digitals.vercel.app/blog/how-much-should-a-small-business-website-cost',
+  },
 }
 
 export default function ArticleLayout({

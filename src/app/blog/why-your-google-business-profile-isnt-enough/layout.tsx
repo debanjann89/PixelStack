@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Why Your Google Business Profile Isn\'t Enough Anymore',
   description: 'A Google Business Profile gets you found — but a website is what converts visitors into paying customers. Here\'s why you need both.',
+  alternates: {
+    canonical: 'https://d-a-b-digitals.vercel.app/blog/why-your-google-business-profile-isnt-enough',
+  },
 }
 
 export default function ArticleLayout({
