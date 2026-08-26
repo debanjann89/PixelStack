@@ -15,7 +15,8 @@ import {
   Menu,
   X,
   ChevronRight,
-  Globe
+  Globe,
+  Film
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LinkComponent from 'next/link';
@@ -131,6 +132,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Invoices & Billing', href: '/admin/invoices', icon: DollarSign },
     { name: 'Document Hub', href: '/admin/documents', icon: FileText },
     { name: 'Portfolio Showcase', href: '/admin/portfolio', icon: Globe },
+    { name: 'Instagram Reels', href: '/admin/reels', icon: Film },
   ];
 
   return (

@@ -977,3 +977,101 @@ export async function deletePortfolioItem(id: string) {
     return { success: false, message: err.message || 'Server error occurred.' };
   }
 }
+
+// 6. Instagram Reels Actions
+import { REELS_DATA, ReelItem } from '@/data/reels';
+
+export async function getReels(): Promise<ReelItem[]> {
+  try {
+    const { data, error } = await supabase
+      .from('instagram_reels')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error || !data || data.length === 0) {
+      return REELS_DATA;
+    }
+
+    return data.map((item: any) => ({
+      id: item.id,
+      title: item.title,
+      category: item.category || 'Web Design',
+      description: item.description || '',
+      instagramUrl: item.instagram_url || 'https://www.instagram.com/dnbdigitals/',
+      viewsBadge: item.views_badge || '',
+      duration: item.duration || '0:45',
+      gradient: item.gradient || 'from-emerald-500/20 via-zinc-950 to-black',
+      previewUrl: item.preview_url || '',
+      topics: item.topics || ['Next.js', 'SEO', 'WebDesign']
+    }));
+  } catch (err) {
+    console.warn('Supabase reels fetch failed, using default reels:', err);
+    return REELS_DATA;
+  }
+}
+
+export async function addReel(reel: Partial<ReelItem>) {
+  try {
+    const { data, error } = await supabase
+      .from('instagram_reels')
+      .insert({
+        title: reel.title,
+        category: reel.category || 'Web Design',
+        description: reel.description || '',
+        instagram_url: reel.instagramUrl || 'https://www.instagram.com/dnbdigitals/',
+        views_badge: reel.viewsBadge || '',
+        duration: reel.duration || '0:45',
+        gradient: reel.gradient || 'from-emerald-500/20 via-zinc-950 to-black',
+        preview_url: reel.previewUrl || '',
+        topics: reel.topics || []
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, reel: data };
+  } catch (err: any) {
+    console.error('Error adding reel to Supabase:', err);
+    return { success: false, message: err.message || 'Database error occurred.' };
+  }
+}
+
+export async function updateReel(id: string, reel: Partial<ReelItem>) {
+  try {
+    const { error } = await supabase
+      .from('instagram_reels')
+      .update({
+        title: reel.title,
+        category: reel.category,
+        description: reel.description,
+        instagram_url: reel.instagramUrl,
+        views_badge: reel.viewsBadge,
+        duration: reel.duration,
+        gradient: reel.gradient,
+        preview_url: reel.previewUrl,
+        topics: reel.topics
+      })
+      .eq('id', id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error updating reel:', err);
+    return { success: false, message: err.message || 'Database error occurred.' };
+  }
+}
+
+export async function deleteReel(id: string) {
+  try {
+    const { error } = await supabase
+      .from('instagram_reels')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error('Error deleting reel:', err);
+    return { success: false, message: err.message || 'Database error occurred.' };
+  }
+}

@@ -1,13 +1,13 @@
 export interface ReelItem {
   id: string;
   title: string;
-  category: 'Web Design' | 'Next.js Speed' | 'SEO Strategy' | 'Client Redesign' | 'UI/UX';
+  category: string;
   description: string;
   instagramUrl: string;
   viewsBadge?: string;
   duration?: string;
-  gradient: string;
-  previewUrl?: string; // Optional direct video URL or high-res thumbnail
+  gradient?: string;
+  previewUrl?: string;
   topics: string[];
 }
 
@@ -23,7 +23,7 @@ export const REELS_DATA: ReelItem[] = [
     instagramUrl: 'https://www.instagram.com/dnbdigitals/',
     viewsBadge: 'Viral Breakdown',
     duration: '0:45',
-    gradient: 'from-emerald-600/30 via-teal-900/40 to-black',
+    gradient: 'from-emerald-500/20 via-zinc-950 to-black',
     topics: ['Next.js 15', 'Speed Test', '99 PageSpeed'],
   },
   {
@@ -34,7 +34,7 @@ export const REELS_DATA: ReelItem[] = [
     instagramUrl: 'https://www.instagram.com/dnbdigitals/',
     viewsBadge: 'Client Showcase',
     duration: '0:52',
-    gradient: 'from-cyan-600/30 via-blue-900/40 to-black',
+    gradient: 'from-emerald-600/25 via-zinc-950 to-black',
     topics: ['Healthcare UI', 'Booking Funnel', 'High CRO'],
   },
   {
@@ -45,29 +45,29 @@ export const REELS_DATA: ReelItem[] = [
     instagramUrl: 'https://www.instagram.com/dnbdigitals/',
     viewsBadge: 'SEO Masterclass',
     duration: '0:38',
-    gradient: 'from-purple-600/30 via-indigo-900/40 to-black',
+    gradient: 'from-teal-500/20 via-zinc-950 to-black',
     topics: ['Google Algorithm', 'Technical SEO', 'Page 1 Strategy'],
   },
   {
     id: 'reel-4',
     title: 'Micro-Interactions That Make Websites Feel 10x More Expensive',
-    category: 'UI/UX',
+    category: 'UI/UX Design',
     description: 'Behind-the-scenes look at custom Framer Motion & GSAP animations we engineered for modern luxury brands.',
     instagramUrl: 'https://www.instagram.com/dnbdigitals/',
     viewsBadge: 'Design Breakdown',
     duration: '0:42',
-    gradient: 'from-amber-600/30 via-orange-950/40 to-black',
+    gradient: 'from-emerald-500/20 via-zinc-950 to-black',
     topics: ['Framer Motion', 'Luxury UX', 'Interactive'],
   },
   {
     id: 'reel-5',
     title: 'E-Commerce Checkout Redesign: Boosting Revenue by 38%',
-    category: 'Client Redesign',
+    category: 'E-Commerce',
     description: 'Removing friction from product catalogs and adding one-tap checkouts for high-growth direct-to-consumer brands.',
     instagramUrl: 'https://www.instagram.com/dnbdigitals/',
     viewsBadge: 'Case Study',
     duration: '0:58',
-    gradient: 'from-emerald-600/30 via-green-950/40 to-black',
+    gradient: 'from-emerald-600/20 via-zinc-950 to-black',
     topics: ['E-Commerce', 'Razorpay/Stripe', 'Mobile CRO'],
   },
 ];
