@@ -31,6 +31,7 @@ import Marquee from '@/components/Marquee';
 import MagneticButton from '@/components/MagneticButton';
 import TestimonialsSlider from '@/components/TestimonialsSlider';
 import PricingPlans from '@/components/PricingPlans';
+import InstagramReelsShowcase from '@/components/InstagramReelsShowcase';
 import { getProjects } from '@/app/actions';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -432,11 +433,16 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══════════════════════════════════════════════════
+          SECTION 7 — INSTAGRAM REELS SHOWCASE (Viral Growth)
+          ═══════════════════════════════════════════════════ */}
+      <InstagramReelsShowcase />
+
       {/* Divider */}
       <div className="section-divider" />
 
       {/* ═══════════════════════════════════════════════════
-          SECTION 7 — WHY US
+          SECTION 8 — WHY US
           ═══════════════════════════════════════════════════ */}
       <section className="relative z-10 py-24 md:py-32 max-w-6xl mx-auto px-6 md:px-12">
         <ScrollReveal>
