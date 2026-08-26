@@ -9,10 +9,18 @@ import SplitText from '@/components/SplitText';
 const FOOTER_LINKS = [
   { name: 'Home', path: '/' },
   { name: 'Services', path: '/services' },
+  { name: 'Industries', path: '/industries' },
   { name: 'Work', path: '/portfolio' },
-  { name: 'About', path: '/about' },
   { name: 'Blog', path: '/blog' },
+  { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
+];
+
+const FOOTER_INDUSTRIES = [
+  { name: 'Dental Clinics', path: '/industries/dental-clinic-website-design' },
+  { name: 'HVAC & Plumbing', path: '/industries/hvac-plumbing-website-design' },
+  { name: 'Hotels & Resorts', path: '/industries/hotel-resort-website-design' },
+  { name: 'Real Estate', path: '/industries/real-estate-website-development' },
 ];
 
 export default function Footer() {
@@ -51,6 +59,32 @@ export default function Footer() {
 
       {/* Divider */}
       <div className="section-divider" />
+
+      {/* Middle Links Grid (SEO Internal Linking Anchor) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 border-b border-zinc-900/60">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between">
+          <div className="md:col-span-4">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 block mb-2">
+              Specialized Industries
+            </span>
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              Custom high-performance web systems engineered for lead generation and conversion in the US and India.
+            </p>
+          </div>
+          <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-3">
+            {FOOTER_INDUSTRIES.map((ind) => (
+              <Link
+                key={ind.path}
+                href={ind.path}
+                className="text-xs text-zinc-400 hover:text-primary transition-colors flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                {ind.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Bottom Info Strip */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">

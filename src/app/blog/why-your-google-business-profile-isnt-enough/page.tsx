@@ -75,10 +75,10 @@ export default function ArticleGMBPage() {
 
             <h2 className="text-2xl font-bold mt-12 mb-6">Real Example: The Dental Clinic</h2>
             <p className="mb-6">
-              We recently worked with a local dental clinic that had a strong GBP with 100+ five-star reviews, but no website. They were getting calls for basic checkups, but struggling to book high-value procedures like Invisalign. 
+              We worked with a dental practice that had a strong GBP with 100+ five-star reviews, but an outdated site. They were getting calls for basic cleanings, but struggling to book high-value procedures like Invisalign and dental implants.
             </p>
             <p className="mb-6">
-              We built them a custom website with dedicated service pages explaining their Invisalign process, showing before-and-after galleries, and offering an easy online consultation request form. Within two months, their high-ticket bookings doubled. The trust established by the website was the missing link.
+              We built them a custom platform featuring dedicated service pages explaining their cosmetic procedures, before-and-after smile galleries, and seamless online consultation forms (read the full story in our <Link href="/case-studies/apex-dental-care" className="text-emerald-400 font-semibold underline">Apex Dental Care Case Study</Link> or learn more about our <Link href="/industries/dental-clinic-website-design" className="text-emerald-400 font-semibold underline">Dental Clinic Web Development</Link> approach). Within two months, high-ticket procedure bookings surged. The trust established by the website was the missing link.
             </p>
 
             <div className="bg-[#0a0a0a] border border-zinc-800 rounded-2xl p-8 mt-12">

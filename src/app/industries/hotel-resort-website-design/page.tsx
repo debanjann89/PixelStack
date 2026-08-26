@@ -151,9 +151,12 @@ export default function HotelResortPage() {
                   <CheckCircle2 className="w-5 h-5 text-primary" /> Fully Integrated Custom Booking Engine
                 </li>
               </ul>
-              <div>
-                <Link href="/portfolio" className="text-primary hover:text-emerald-400 font-semibold inline-flex items-center gap-2">
-                  View Full Portfolio <ArrowRight className="w-4 h-4" />
+              <div className="flex flex-wrap items-center gap-6">
+                <Link href="/case-studies/grand-palace-resorts" className="text-primary hover:text-emerald-400 font-semibold inline-flex items-center gap-2">
+                  Read Grand Palace Case Study <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="/blog/how-much-should-a-small-business-website-cost" className="text-zinc-500 hover:text-zinc-300 text-sm inline-flex items-center gap-1.5 transition-colors">
+                  Website Pricing & ROI Breakdown <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>

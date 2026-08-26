@@ -51,6 +51,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     description: 'Premium website design for hotels, resorts, and hospitality businesses featuring direct booking systems, virtual tours, and OTA commission reduction strategies.',
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Can you integrate our existing booking engine?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. We regularly integrate with major booking engines like SynXis, TravelClick, SiteMinder, and Cloudbeds. We ensure the transition from the main site to the booking engine is as seamless as possible.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do you handle high-resolution imagery without slowing down the site?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We utilize advanced image optimization techniques, next-gen formats (like WebP), and Content Delivery Networks (CDNs) to ensure your stunning photos load instantly without compromising quality.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is it easy to update special offers and seasonal packages?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Absolutely. We build our hotel websites on modern Content Management Systems (CMS) with intuitive dashboards, allowing your marketing team to easily update promotions, rates, and announcements.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do you provide ongoing support?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, we offer comprehensive maintenance plans to ensure your hospitality website remains secure, fast, and up-to-date with the latest web standards.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -60,6 +99,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       {children}
     </>

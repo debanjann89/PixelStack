@@ -3,21 +3,21 @@ import type { Metadata } from 'next';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Industry-Specific Web Development & UI/UX Solutions | D&B Digitals',
+  title: 'Client Case Studies & Real Results | D&B Digitals',
   description:
-    'Custom web development, conversion-focused UI/UX design, and technical SEO engineered specifically for Dental Clinics, Home Services, Hotels & Resorts, and Real Estate.',
+    'Explore detailed case studies on how D&B Digitals built high-converting websites for Dental Clinics, Luxury Resorts, Law Firms, Restaurants, and Tech SaaS.',
   alternates: {
-    canonical: `${SITE_URL}/industries`,
+    canonical: `${SITE_URL}/case-studies`,
   },
   openGraph: {
-    title: 'Industry Web Development Solutions | D&B Digitals',
+    title: 'Web Development Case Studies | D&B Digitals',
     description:
-      'High-performance, industry-tailored websites engineered for Dental Clinics, HVAC/Plumbing, Hospitality, and Real Estate.',
-    url: `${SITE_URL}/industries`,
+      'Real client case studies, verified outcomes, and technical breakdowns by D&B Digitals.',
+    url: `${SITE_URL}/case-studies`,
   },
 };
 
-export default function IndustriesLayout({
+export default function CaseStudiesLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -35,8 +35,8 @@ export default function IndustriesLayout({
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Industries',
-        item: `${SITE_URL}/industries`,
+        name: 'Case Studies',
+        item: `${SITE_URL}/case-studies`,
       },
     ],
   };

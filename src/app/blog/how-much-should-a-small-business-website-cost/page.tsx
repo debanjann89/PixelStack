@@ -74,10 +74,10 @@ export default function ArticleCostPage() {
             <p className="mb-4">Here is what a professional build typically includes:</p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
               <li>Custom design tailored to your specific brand (no cheap templates).</li>
-              <li>High-performance code (Next.js, React) ensuring lightning-fast load times.</li>
-              <li>On-page SEO optimization so you rank on Google.</li>
-              <li>Professional copywriting and content strategy.</li>
-              <li>Ongoing support and maintenance.</li>
+              <li>High-performance code (Next.js 15, React 19) ensuring sub-500ms load times.</li>
+              <li>On-page & technical SEO architecture so you actually rank on Google.</li>
+              <li>Professional copywriting and conversion funnel strategy (see our <Link href="/industries">Industry Solutions</Link>).</li>
+              <li>Proven track record of ROI (explore our <Link href="/case-studies">Client Case Studies</Link>).</li>
             </ul>
 
             <h2 className="text-2xl font-bold mt-12 mb-6">What Actually Affects the Price?</h2>

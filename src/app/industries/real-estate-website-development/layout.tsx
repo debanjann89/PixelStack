@@ -51,6 +51,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     description: 'Custom real estate website development with property listings, lead capture funnels, neighborhood guides, and IDX integration.',
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Can you integrate our local MLS/IDX feed?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. We are experienced in working with various IDX providers and MLS systems. We ensure properties sync accurately and the search interface looks custom to your brand, rather than a bolted-on widget.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Will the website integrate with my CRM?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We can integrate your lead forms with top real estate CRMs like Follow Up Boss, BoomTown, Salesforce, or standard email marketing platforms via API or webhook.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do neighborhood guides help my business?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Neighborhood guides are incredibly powerful for local SEO. They help you rank for hyper-local search terms while providing genuine value to buyers researching an area.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do you build single-property websites?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, in addition to full brokerage sites, we can develop high-end, immersive single-property websites tailored for luxury listings that require their own dedicated marketing presence.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -60,6 +99,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       {children}
     </>

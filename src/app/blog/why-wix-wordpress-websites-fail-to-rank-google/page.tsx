@@ -97,7 +97,10 @@ export default function ArticleWixWordpressPage() {
               Schema markup is the code language you provide directly to Google to tell it: <em>Who you are, where you operate, what your pricing is, and what specific services you provide</em>.
             </p>
             <p className="mb-6">
-              Most template builders only generate generic, shallow metadata. For specialized industries like <Link href="/industries/dental-clinic-website-design">Dental Clinic Web Development</Link> or local service providers, Google requires deep <code>LocalBusiness</code>, <code>Service</code>, <code>FAQPage</code>, and <code>BreadcrumbList</code> schemas to award rich snippets and map rankings.
+              Most template builders only generate generic, shallow metadata. For specialized industries like <Link href="/industries/dental-clinic-website-design">Dental Clinic Web Development</Link>, <Link href="/industries/hvac-plumbing-website-design">HVAC & Plumbing Contractors</Link>, or <Link href="/industries/hotel-resort-website-design">Hotel & Resort Direct Bookings</Link>, Google requires deep <code>LocalBusiness</code>, <code>Service</code>, <code>FAQPage</code>, and <code>BreadcrumbList</code> schemas to award rich snippets and map rankings.
+            </p>
+            <p className="mb-6 text-sm text-zinc-400">
+              💡 <em>See how we solved this in practice: Check out the <Link href="/case-studies/apex-dental-care" className="text-emerald-400 font-semibold underline">Apex Dental Care Case Study</Link> or the <Link href="/case-studies/grand-palace-resorts" className="text-emerald-400 font-semibold underline">Grand Palace Resorts Case Study</Link>.</em>
             </p>
 
             <h2 className="text-2xl font-bold mt-12 mb-6 flex items-center gap-3">

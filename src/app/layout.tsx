@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ConsultationModal from "@/components/ConsultationModal";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Preloader from "@/components/Preloader";
 import SmoothScroll from "@/components/SmoothScroll";
 
@@ -264,6 +265,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <ConsultationModal />
+          <FloatingWhatsApp />
         </SmoothScroll>
       </body>
     </html>

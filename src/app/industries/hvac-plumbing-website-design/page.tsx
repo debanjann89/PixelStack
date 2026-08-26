@@ -80,7 +80,10 @@ export default function HVACPlumbingPage() {
                 <MapPin className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-white mb-4">Google Maps Isn't Enough</h3>
-              <p className="text-zinc-400">A Google Business Profile is a great start, but a dedicated website builds trust and authority. It provides the space to showcase your full range of services and service areas.</p>
+              <p className="text-zinc-400 mb-4">A Google Business Profile is a great start, but a dedicated website builds trust and authority. It provides the space to showcase your full range of services and service areas.</p>
+              <Link href="/blog/why-your-google-business-profile-isnt-enough" className="text-xs text-primary hover:text-emerald-300 font-semibold inline-flex items-center gap-1">
+                Read: Why GBP Alone Isn't Enough <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </motion.div>
             <motion.div className="bg-[#0a0a0a] border border-zinc-800/60 rounded-2xl p-8" {...fadeInUp} transition={{ duration: 0.6, delay: 0.3 }}>
               <div className="w-14 h-14 bg-zinc-900 rounded-xl flex items-center justify-center mb-6 text-primary">
@@ -125,6 +128,16 @@ export default function HVACPlumbingPage() {
                 <p className="text-zinc-400 text-sm">{feature.desc}</p>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              href="/blog/best-website-features-for-home-service-businesses"
+              className="inline-flex items-center gap-2 text-sm text-primary hover:text-emerald-300 font-semibold transition-colors"
+            >
+              <span>Explore All 7 Must-Have Features for Contractor Websites</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
