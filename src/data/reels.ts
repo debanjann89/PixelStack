@@ -7,6 +7,7 @@ export interface ReelItem {
   viewsBadge?: string;
   duration?: string;
   gradient?: string;
+  thumbnailUrl?: string; // Custom cover image for the reel card
   previewUrl?: string;
   topics: string[];
 }

@@ -123,8 +123,22 @@ export default function InstagramReelsShowcase() {
                 onClick={() => setSelectedReel(reel)}
                 className="group relative h-[480px] rounded-2xl overflow-hidden cursor-pointer border border-zinc-800/70 hover:border-primary/40 bg-zinc-950 transition-all duration-500 shadow-xl shadow-black/70 flex flex-col justify-between p-6"
               >
-                {/* Emerald Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-zinc-950/80 to-[#020202] z-0 transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Custom Thumbnail Image if available */}
+                {(reel.thumbnailUrl || reel.previewUrl) && (
+                  <img
+                    src={reel.thumbnailUrl || reel.previewUrl}
+                    alt={reel.title}
+                    className="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-700 group-hover:scale-105"
+                  />
+                )}
+
+                {/* Emerald Background Glow & Gradient Overlay */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-b from-primary/10 via-zinc-950/85 to-[#020202] z-0 transition-opacity duration-500 ${
+                    reel.thumbnailUrl || reel.previewUrl ? 'opacity-80 group-hover:opacity-70' : 'opacity-100'
+                  }`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent z-0" />
                 <div className="absolute inset-0 bg-radial-vignette pointer-events-none" />
 
                 {/* Top: Category Tag & Views Badge */}

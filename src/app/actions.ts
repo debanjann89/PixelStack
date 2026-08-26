@@ -1001,7 +1001,8 @@ export async function getReels(): Promise<ReelItem[]> {
       viewsBadge: item.views_badge || '',
       duration: item.duration || '0:45',
       gradient: item.gradient || 'from-emerald-500/20 via-zinc-950 to-black',
-      previewUrl: item.preview_url || '',
+      thumbnailUrl: item.thumbnail_url || item.preview_url || '',
+      previewUrl: item.preview_url || item.thumbnail_url || '',
       topics: item.topics || ['Next.js', 'SEO', 'WebDesign']
     }));
   } catch (err) {
@@ -1022,7 +1023,8 @@ export async function addReel(reel: Partial<ReelItem>) {
         views_badge: reel.viewsBadge || '',
         duration: reel.duration || '0:45',
         gradient: reel.gradient || 'from-emerald-500/20 via-zinc-950 to-black',
-        preview_url: reel.previewUrl || '',
+        thumbnail_url: reel.thumbnailUrl || reel.previewUrl || '',
+        preview_url: reel.previewUrl || reel.thumbnailUrl || '',
         topics: reel.topics || []
       })
       .select()
@@ -1048,7 +1050,8 @@ export async function updateReel(id: string, reel: Partial<ReelItem>) {
         views_badge: reel.viewsBadge,
         duration: reel.duration,
         gradient: reel.gradient,
-        preview_url: reel.previewUrl,
+        thumbnail_url: reel.thumbnailUrl || reel.previewUrl || '',
+        preview_url: reel.previewUrl || reel.thumbnailUrl || '',
         topics: reel.topics
       })
       .eq('id', id);
