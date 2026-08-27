@@ -130,12 +130,19 @@ export default function HVACPlumbingPage() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center flex flex-wrap items-center justify-center gap-6">
             <Link
               href="/blog/best-website-features-for-home-service-businesses"
               className="inline-flex items-center gap-2 text-sm text-primary hover:text-emerald-300 font-semibold transition-colors"
             >
               <span>Explore All 7 Must-Have Features for Contractor Websites</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/blog/hvac-plumbing-website-cost-contractors"
+              className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 font-semibold transition-colors"
+            >
+              <span>HVAC Website Cost Guide 2026</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

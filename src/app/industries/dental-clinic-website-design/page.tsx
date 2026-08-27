@@ -155,6 +155,9 @@ export default function DentalHealthcarePage() {
                 <Link href="/case-studies/apex-dental-care" className="text-primary hover:text-emerald-400 font-semibold inline-flex items-center gap-2">
                   Read Full Apex Dental Case Study <ArrowRight className="w-4 h-4" />
                 </Link>
+                <Link href="/blog/dental-clinic-website-cost-2026" className="text-zinc-500 hover:text-zinc-300 text-sm inline-flex items-center gap-1.5 transition-colors">
+                  Dental Website Cost Guide 2026 <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
                 <Link href="/blog/why-wix-wordpress-websites-fail-to-rank-google" className="text-zinc-500 hover:text-zinc-300 text-sm inline-flex items-center gap-1.5 transition-colors">
                   Why WordPress Fails Core Web Vitals <ArrowRight className="w-3.5 h-3.5" />
                 </Link>

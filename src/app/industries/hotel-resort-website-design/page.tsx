@@ -155,6 +155,9 @@ export default function HotelResortPage() {
                 <Link href="/case-studies/grand-palace-resorts" className="text-primary hover:text-emerald-400 font-semibold inline-flex items-center gap-2">
                   Read Grand Palace Case Study <ArrowRight className="w-4 h-4" />
                 </Link>
+                <Link href="/blog/hotel-direct-booking-vs-ota-commission" className="text-zinc-500 hover:text-zinc-300 text-sm inline-flex items-center gap-1.5 transition-colors">
+                  Hotel Direct Booking vs. OTA Math <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
                 <Link href="/blog/how-much-should-a-small-business-website-cost" className="text-zinc-500 hover:text-zinc-300 text-sm inline-flex items-center gap-1.5 transition-colors">
                   Website Pricing & ROI Breakdown <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
