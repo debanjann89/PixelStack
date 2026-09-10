@@ -5,14 +5,13 @@ import { ArrowUpRight } from 'lucide-react';
 
 const INSTAGRAM_HANDLE = 'dnbdigitals';
 const INSTAGRAM_PROFILE_URL = 'https://www.instagram.com/dnbdigitals/';
-const ELFSIGHT_APP_ID = '3be93e15-7f61-4be6-9378-62a5664b5836';
 
 export default function InstagramReelsShowcase() {
   useEffect(() => {
-    // Load Elfsight platform script once
-    if (typeof window !== 'undefined' && !document.querySelector('script[src*="elfsightcdn"]')) {
+    // Load Elfsight platform script once (exact URL from Elfsight embed code)
+    if (typeof window !== 'undefined' && !document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) {
       const script = document.createElement('script');
-      script.src = 'https://static.elfsight.com/platform/platform.js';
+      script.src = 'https://elfsightcdn.com/platform.js';
       script.async = true;
       document.body.appendChild(script);
     }
@@ -61,27 +60,14 @@ export default function InstagramReelsShowcase() {
           </div>
         </div>
 
-        {/* Elfsight Instagram Feed Widget */}
-        <div className="elfsight-instagram-wrapper rounded-2xl overflow-hidden">
+        {/* Elfsight Instagram Feed Widget — exact embed from Elfsight dashboard */}
+        <div className="rounded-2xl overflow-hidden">
           <div
-            className={`elfsight-app-${ELFSIGHT_APP_ID}`}
+            className="elfsight-app-3be93e15-7f61-4be6-9378-62a5664b5836"
             data-elfsight-app-lazy
           />
         </div>
       </div>
-
-      {/* Custom CSS overrides to blend Elfsight into dark theme */}
-      <style jsx global>{`
-        /* Force dark background on Elfsight container */
-        .elfsight-instagram-wrapper [class*="eapps-instagram"] {
-          background: transparent !important;
-        }
-
-        /* Remove any white backgrounds from inner elements */
-        .elfsight-instagram-wrapper iframe {
-          color-scheme: dark;
-        }
-      `}</style>
     </section>
   );
 }
