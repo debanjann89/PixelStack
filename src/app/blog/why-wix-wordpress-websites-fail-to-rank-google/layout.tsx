@@ -25,7 +25,7 @@ export default function ArticleLayout({
       name: 'Debanjan Amin',
     },
     datePublished: '2026-08-22T08:00:00+08:00',
-    dateModified: '2026-08-22T08:00:00+08:00',
+    dateModified: '2026-09-27T08:00:00+08:00',
     publisher: {
       '@type': 'Organization',
       name: 'D&B Digitals',

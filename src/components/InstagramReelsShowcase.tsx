@@ -1,24 +1,46 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const INSTAGRAM_HANDLE = 'dnbdigitals';
 const INSTAGRAM_PROFILE_URL = 'https://www.instagram.com/dnbdigitals/';
 
 export default function InstagramReelsShowcase() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    // Load Elfsight platform script once (exact URL from Elfsight embed code)
-    if (typeof window !== 'undefined' && !document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) {
+    // Only load Elfsight when user scrolls near this section (saves ~400ms LCP)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isVisible && typeof window !== 'undefined' && !document.querySelector('script[src="https://elfsightcdn.com/platform.js"]')) {
       const script = document.createElement('script');
       script.src = 'https://elfsightcdn.com/platform.js';
       script.async = true;
+      script.defer = true;
       document.body.appendChild(script);
     }
-  }, []);
+  }, [isVisible]);
 
   return (
-    <section className="relative z-10 py-24 md:py-32 bg-[#050505] overflow-hidden border-t border-b border-zinc-900/80">
+    <section ref={sectionRef} className="relative z-10 py-24 md:py-32 bg-[#050505] overflow-hidden border-t border-b border-zinc-900/80">
       {/* Background ambient lighting — Emerald / Cyber Dark Theme */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[130px] pointer-events-none" />
