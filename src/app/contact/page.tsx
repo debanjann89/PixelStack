@@ -113,6 +113,7 @@ export default function ContactPage() {
       projectType: '',
       budgetRange: '',
       message: '',
+      consentGiven: undefined as unknown as true,
     },
   });
 
@@ -451,6 +452,28 @@ export default function ContactPage() {
                       />
                       {errors.message && (
                         <p className="text-xs text-red-400 mt-1.5">{errors.message.message}</p>
+                      )}
+                    </div>
+
+                    {/* DPDP Act Consent Checkbox */}
+                    <div className="mt-1">
+                      <label className="flex items-start gap-3 cursor-pointer group">
+                        <input
+                          type="checkbox"
+                          {...register('consentGiven', {
+                            setValueAs: (v: boolean) => v === true ? true : undefined,
+                          })}
+                          className="mt-1 w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-primary focus:ring-primary/30 focus:ring-2 accent-emerald-500 cursor-pointer shrink-0"
+                        />
+                        <span className="text-xs text-zinc-500 leading-relaxed group-hover:text-zinc-400 transition-colors">
+                          I consent to D&B Digitals collecting and processing my personal information to respond to my inquiry. I understand my data will be stored securely for up to 24 months and I can request its deletion at any time by emailing{' '}
+                          <a href="mailto:dabdigitalofficials@gmail.com" className="text-primary hover:underline">dabdigitalofficials@gmail.com</a>.{' '}
+                          View our{' '}
+                          <a href="/privacy" target="_blank" className="text-primary hover:underline">Privacy Policy</a>.
+                        </span>
+                      </label>
+                      {errors.consentGiven && (
+                        <p className="text-xs text-red-400 mt-2 ml-7">{errors.consentGiven.message}</p>
                       )}
                     </div>
 

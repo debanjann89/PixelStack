@@ -8,6 +8,9 @@ export const ContactFormSchema = z.object({
   projectType: z.string().min(1, { message: 'Please select a project type.' }),
   budgetRange: z.string().min(1, { message: 'Please select a budget range.' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  consentGiven: z.literal(true, {
+    message: 'You must consent to data processing to submit this form.',
+  }),
 });
 
 export const ConsultationSchema = z.object({

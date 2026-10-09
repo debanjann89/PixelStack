@@ -14,6 +14,7 @@ const FOOTER_LINKS = [
   { name: 'Blog', path: '/blog' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
+  { name: 'Privacy', path: '/privacy' },
 ];
 
 const FOOTER_INDUSTRIES = [

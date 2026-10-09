@@ -7,6 +7,7 @@ import {
   ContactFormInput,
   ConsultationInput
 } from './schemas';
+import { sendLeadNotification, sendClientConfirmation } from '@/lib/mailer';
 
 // Static Portfolio Projects (used by public portfolio page)
 const PORTFOLIO_PROJECTS = [
@@ -175,35 +176,69 @@ export async function submitContactForm(prevState: any, formData: ContactFormInp
 
   try {
     // 1. Insert into messages table
-    const { error: msgError } = await supabase
-      .from('messages')
-      .insert({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        business_name: data.businessName,
-        project_type: data.projectType,
-        budget_range: data.budgetRange,
-        message: data.message
-      });
+    try {
+      const { error: msgError } = await supabase
+        .from('messages')
+        .insert({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          business_name: data.businessName,
+          project_type: data.projectType,
+          budget_range: data.budgetRange,
+          message: data.message
+        });
 
-    if (msgError) throw msgError;
+      if (msgError) console.error('Supabase messages insert error:', msgError);
+    } catch (msgCatch) {
+      console.error('Supabase messages insert exception:', msgCatch);
+    }
 
     // 2. Insert into leads table
-    const { error: leadError } = await supabase
-      .from('leads')
-      .insert({
-        name: data.name,
-        business_name: data.businessName,
-        phone: data.phone,
-        email: data.email,
-        project_type: data.projectType,
-        budget_range: data.budgetRange,
-        status: 'new',
-        notes: `Submitted contact form message: "${data.message.substring(0, 100)}..."`
-      });
+    try {
+      const { error: leadError } = await supabase
+        .from('leads')
+        .insert({
+          name: data.name,
+          business_name: data.businessName,
+          phone: data.phone,
+          email: data.email,
+          project_type: data.projectType,
+          budget_range: data.budgetRange,
+          status: 'new',
+          notes: `Submitted contact form message: "${data.message.substring(0, 100)}..."`
+        });
 
-    if (leadError) throw leadError;
+      if (leadError) console.error('Supabase leads insert error:', leadError);
+    } catch (leadCatch) {
+      console.error('Supabase leads insert exception:', leadCatch);
+    }
+
+    // 3. Send email notifications via Gmail SMTP (Team alert + Client confirmation)
+    try {
+      await Promise.allSettled([
+        sendLeadNotification({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          businessName: data.businessName,
+          projectType: data.projectType,
+          budgetRange: data.budgetRange,
+          message: data.message,
+        }),
+        sendClientConfirmation({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          businessName: data.businessName,
+          projectType: data.projectType,
+          budgetRange: data.budgetRange,
+          message: data.message,
+        }),
+      ]);
+    } catch (mailErr) {
+      console.error('Email dispatch exception:', mailErr);
+    }
 
     return {
       success: true,
@@ -234,33 +269,55 @@ export async function bookConsultation(prevState: any, formData: ConsultationInp
 
   try {
     // 1. Insert into consultations table
-    const { error: consError } = await supabase
-      .from('consultations')
-      .insert({
-        client_name: data.clientName,
-        email: data.email,
-        phone: data.phone,
-        date: data.date,
-        project_type: data.projectType
-      });
+    try {
+      const { error: consError } = await supabase
+        .from('consultations')
+        .insert({
+          client_name: data.clientName,
+          email: data.email,
+          phone: data.phone,
+          date: data.date,
+          project_type: data.projectType
+        });
 
-    if (consError) throw consError;
+      if (consError) console.error('Supabase consultations error:', consError);
+    } catch (consCatch) {
+      console.error('Supabase consultations exception:', consCatch);
+    }
 
     // 2. Insert into leads table
-    const { error: leadError } = await supabase
-      .from('leads')
-      .insert({
-        name: data.clientName,
-        business_name: 'Individual / TBD',
-        phone: data.phone,
-        email: data.email,
-        project_type: data.projectType,
-        budget_range: '₹50,000 - ₹80,000',
-        status: 'new',
-        notes: `Booked free consultation for date: ${data.date}.`
-      });
+    try {
+      const { error: leadError } = await supabase
+        .from('leads')
+        .insert({
+          name: data.clientName,
+          business_name: 'Individual / TBD',
+          phone: data.phone,
+          email: data.email,
+          project_type: data.projectType,
+          budget_range: '₹50,000 - ₹80,000',
+          status: 'new',
+          notes: `Booked free consultation for date: ${data.date}.`
+        });
 
-    if (leadError) throw leadError;
+      if (leadError) console.error('Supabase leads error:', leadError);
+    } catch (leadCatch) {
+      console.error('Supabase leads exception:', leadCatch);
+    }
+
+    // 3. Send email notification to team
+    try {
+      await sendLeadNotification({
+        name: data.clientName,
+        email: data.email,
+        phone: data.phone,
+        businessName: 'Consultation Request',
+        projectType: data.projectType,
+        message: `Booked Free Consultation for Scheduled Date: ${data.date}`,
+      });
+    } catch (mailErr) {
+      console.error('Mailer error in bookConsultation:', mailErr);
+    }
 
     return {
       success: true,
