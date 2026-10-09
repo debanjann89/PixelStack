@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'See the real commission math behind OTA vs direct booking websites for hotels. Learn how much a custom website can save you and reduce OTA dependency.',
   keywords: 'hotel direct booking website, reduce OTA commissions, hotel website vs booking.com, hotel web design cost',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/hotel-direct-booking-vs-ota-commission',
+    canonical: 'https://dnbdigitals.in/blog/hotel-direct-booking-vs-ota-commission',
   },
 };
 
@@ -14,7 +14,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const jsonLd = {
     '@context': 'https://schema.org',

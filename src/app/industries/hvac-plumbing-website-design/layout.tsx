@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Custom website design for plumbing, HVAC, and home service businesses. Get more emergency calls, online bookings, and local leads with a fast, mobile-optimized website built by D&B Digitals.',
   keywords: 'plumbing website design, HVAC website development, home service website, custom website for plumbers',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/industries/hvac-plumbing-website-design',
+    canonical: 'https://dnbdigitals.in/industries/hvac-plumbing-website-design',
   },
 };
 
@@ -18,19 +18,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://d-a-b-digitals.vercel.app',
+        item: 'https://dnbdigitals.in',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Industries',
-        item: 'https://d-a-b-digitals.vercel.app/industries',
+        item: 'https://dnbdigitals.in/industries',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'HVAC & Plumbing Website Design',
-        item: 'https://d-a-b-digitals.vercel.app/industries/hvac-plumbing-website-design',
+        item: 'https://dnbdigitals.in/industries/hvac-plumbing-website-design',
       },
     ],
   };
@@ -42,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     provider: {
       '@type': 'Organization',
       name: 'D&B Digitals',
-      url: 'https://d-a-b-digitals.vercel.app',
+      url: 'https://dnbdigitals.in',
     },
     areaServed: [
       { '@type': 'Country', name: 'United States' },

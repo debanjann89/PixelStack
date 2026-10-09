@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Transparent web design pricing for small businesses. From starter websites at ₹15,000 to custom enterprise builds. No hidden fees. See what you get at every tier.',
   keywords: 'web design pricing, website cost India, web development packages, website design plans, affordable web design agency',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/pricing',
+    canonical: 'https://dnbdigitals.in/pricing',
   },
 };
 
@@ -14,7 +14,7 @@ export default function PricingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const webPage = {
     '@context': 'https://schema.org',

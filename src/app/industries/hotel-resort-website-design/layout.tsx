@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Premium website design for hotels, resorts, and hospitality businesses. Increase direct bookings and reduce OTA commissions with a stunning, fast website by D&B Digitals.',
   keywords: 'hotel website design, resort website development, hospitality web design, hotel booking website',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/industries/hotel-resort-website-design',
+    canonical: 'https://dnbdigitals.in/industries/hotel-resort-website-design',
   },
 };
 
@@ -18,19 +18,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://d-a-b-digitals.vercel.app',
+        item: 'https://dnbdigitals.in',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Industries',
-        item: 'https://d-a-b-digitals.vercel.app/industries',
+        item: 'https://dnbdigitals.in/industries',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Hotel & Resort Website Design',
-        item: 'https://d-a-b-digitals.vercel.app/industries/hotel-resort-website-design',
+        item: 'https://dnbdigitals.in/industries/hotel-resort-website-design',
       },
     ],
   };
@@ -42,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     provider: {
       '@type': 'Organization',
       name: 'D&B Digitals',
-      url: 'https://d-a-b-digitals.vercel.app',
+      url: 'https://dnbdigitals.in',
     },
     areaServed: [
       { '@type': 'Country', name: 'United States' },

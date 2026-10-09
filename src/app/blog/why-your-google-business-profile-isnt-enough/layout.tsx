@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Why Your Google Business Profile Isn\'t Enough Anymore',
   description: 'A Google Business Profile gets you found — but a website is what converts visitors into paying customers. Here\'s why you need both.',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/why-your-google-business-profile-isnt-enough',
+    canonical: 'https://dnbdigitals.in/blog/why-your-google-business-profile-isnt-enough',
   },
 }
 
@@ -13,7 +13,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
   
   const jsonLd = {
     "@context": "https://schema.org",

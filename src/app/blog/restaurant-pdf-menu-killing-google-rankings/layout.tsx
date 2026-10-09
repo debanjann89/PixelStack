@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Learn why PDF menus destroy restaurant SEO and mobile user experience. Discover how HTML menus with schema markup can boost local search visibility and drive reservations.',
   keywords: 'restaurant website design, restaurant website cost India, restaurant online menu SEO, restaurant PDF menu problems',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/restaurant-pdf-menu-killing-google-rankings',
+    canonical: 'https://dnbdigitals.in/blog/restaurant-pdf-menu-killing-google-rankings',
   },
 };
 
@@ -14,7 +14,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const jsonLd = {
     '@context': 'https://schema.org',

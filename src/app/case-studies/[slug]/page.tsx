@@ -15,7 +15,7 @@ import {
   ChevronLeft,
 } from 'lucide-react';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
 interface Props {
   params: Promise<{ slug: string }>;

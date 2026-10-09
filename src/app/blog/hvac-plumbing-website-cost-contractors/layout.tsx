@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'A straightforward pricing guide for HVAC and plumbing contractors. Learn the real costs of web design, essential features for lead generation, and ROI.',
   keywords: 'HVAC website cost, plumber website design cost, contractor web design pricing, home service website cost',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/hvac-plumbing-website-cost-contractors',
+    canonical: 'https://dnbdigitals.in/blog/hvac-plumbing-website-cost-contractors',
   },
 };
 
@@ -14,7 +14,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const jsonLd = {
     '@context': 'https://schema.org',

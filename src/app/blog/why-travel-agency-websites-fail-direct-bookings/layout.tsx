@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Most travel agency websites act as digital brochures while OTAs siphon 15-25% in commissions. Learn why template sites fail and how to build a high-converting direct booking engine.',
   keywords: 'travel agency website design, tour operator website cost, travel agency direct booking website, travel website development',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/why-travel-agency-websites-fail-direct-bookings',
+    canonical: 'https://dnbdigitals.in/blog/why-travel-agency-websites-fail-direct-bookings',
   },
 };
 
@@ -14,7 +14,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const jsonLd = {
     '@context': 'https://schema.org',

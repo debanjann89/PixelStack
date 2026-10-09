@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Blog | Web Design Tips & Digital Marketing Insights',
   description: 'Read expert articles on web design, development, SEO, and digital marketing from D&B Digitals. Tips and strategies for small businesses in the US and India.',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog',
+    canonical: 'https://dnbdigitals.in/blog',
   },
 }
 
@@ -13,7 +13,7 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
   
   const jsonLd = {
     "@context": "https://schema.org",

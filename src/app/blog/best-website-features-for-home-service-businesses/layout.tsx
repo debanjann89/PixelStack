@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: '7 Website Features Every Home Service Business Needs',
   description: 'From click-to-call buttons to service area pages — the must-have features that turn your website into a lead generation machine.',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/best-website-features-for-home-service-businesses',
+    canonical: 'https://dnbdigitals.in/blog/best-website-features-for-home-service-businesses',
   },
 }
 
@@ -13,7 +13,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
   
   const jsonLd = {
     "@context": "https://schema.org",

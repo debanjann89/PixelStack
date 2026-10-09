@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Discover why template builders like Wix and bloated WordPress themes struggle to hit Page 1 of Google — and how custom Next.js web architecture fixes Core Web Vitals and SEO rankings.',
   keywords: 'why wix websites fail to rank, wordpress seo problems, wix vs custom website seo, core web vitals ranking factor, custom nextjs web development agency',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/why-wix-wordpress-websites-fail-to-rank-google',
+    canonical: 'https://dnbdigitals.in/blog/why-wix-wordpress-websites-fail-to-rank-google',
   },
 };
 
@@ -14,7 +14,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const jsonLd = {
     '@context': 'https://schema.org',

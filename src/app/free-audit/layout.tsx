@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Get a free, no-obligation website audit from D&B Digitals. We analyze your site speed, SEO health, mobile responsiveness, and conversion potential. Results delivered via WhatsApp within 24 hours.',
   keywords: 'free website audit, website speed test, SEO audit free, website analysis, site performance check',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/free-audit',
+    canonical: 'https://dnbdigitals.in/free-audit',
   },
 };
 
@@ -14,7 +14,7 @@ export default function FreeAuditLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const webPageSchema = {
     '@context': 'https://schema.org',

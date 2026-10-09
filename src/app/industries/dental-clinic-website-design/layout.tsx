@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Custom dental clinic website development and healthcare web design. High-converting patient booking portals, HIPAA-conscious architecture, and local SEO by D&B Digitals.',
   keywords: 'dental clinic website development, dental website design, dentist web development, healthcare website development, clinic website with online booking, dental practice web developer',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/industries/dental-clinic-website-design',
+    canonical: 'https://dnbdigitals.in/industries/dental-clinic-website-design',
   },
 };
 
@@ -18,19 +18,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://d-a-b-digitals.vercel.app',
+        item: 'https://dnbdigitals.in',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Industries',
-        item: 'https://d-a-b-digitals.vercel.app/industries',
+        item: 'https://dnbdigitals.in/industries',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Dental Clinic Website Development',
-        item: 'https://d-a-b-digitals.vercel.app/industries/dental-clinic-website-design',
+        item: 'https://dnbdigitals.in/industries/dental-clinic-website-design',
       },
     ],
   };
@@ -42,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     provider: {
       '@type': 'Organization',
       name: 'D&B Digitals',
-      url: 'https://d-a-b-digitals.vercel.app',
+      url: 'https://dnbdigitals.in',
     },
     areaServed: [
       { '@type': 'Country', name: 'United States' },

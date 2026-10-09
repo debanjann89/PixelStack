@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'How Much Should a Small Business Website Cost in 2026?',
   description: 'A transparent breakdown of website pricing in 2026 — from $0 DIY builders to $5,000+ custom agency builds. Learn what affects cost and what you should expect.',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/how-much-should-a-small-business-website-cost',
+    canonical: 'https://dnbdigitals.in/blog/how-much-should-a-small-business-website-cost',
   },
 }
 
@@ -13,7 +13,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
   
   const jsonLd = {
     "@context": "https://schema.org",

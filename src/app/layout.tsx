@@ -21,7 +21,7 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://d-a-b-digitals.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://dnbdigitals.in";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

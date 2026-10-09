@@ -26,7 +26,7 @@ const sections = [
     content: (
       <div className="space-y-3 text-zinc-300 text-sm leading-relaxed">
         <p>
-          This Privacy Policy sets out how <strong className="text-white">D&B Digitals</strong> (operating as a digital agency based in Siliguri, West Bengal, India, co-founded by Debanjan Amin & Banashree Das) collects, processes, protects, and stores personal data provided by individuals (&quot;Data Principals&quot;) when visiting our website (<code className="text-primary bg-zinc-900 px-1.5 py-0.5 rounded text-xs">d-a-b-digitals.vercel.app</code>) or submitting inquiries through our contact and consultation forms.
+          This Privacy Policy sets out how <strong className="text-white">D&B Digitals</strong> (operating as a digital agency based in Siliguri, West Bengal, India, co-founded by Debanjan Amin & Banashree Das) collects, processes, protects, and stores personal data provided by individuals (&quot;Data Principals&quot;) when visiting our website (<code className="text-primary bg-zinc-900 px-1.5 py-0.5 rounded text-xs">dnbdigitals.in</code>) or submitting inquiries through our contact and consultation forms.
         </p>
         <p>
           We are committed to respecting your privacy and comply strictly with India&apos;s <strong className="text-white">Digital Personal Data Protection Act, 2023 (&quot;DPDP Act&quot;)</strong>, the Information Technology Act, 2000, and applicable data security regulations.

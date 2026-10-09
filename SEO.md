@@ -9,7 +9,7 @@
 ## 1. Agency Overview & Identity
 
 * **Brand Name:** D&B Digitals (Search Variations: *DNB Digitals*, *D and B Digitals*, *D&B Digitals Agency*)
-* **Live Deployment:** `https://d-a-b-digitals.vercel.app` (Target Production Domain: `dabdigitals.com` / `dnbdigitals.com`)
+* **Live Deployment:** `https://dnbdigitals.in` (Official Production Domain: `dnbdigitals.in`)
 * **Founders:** Debanjan Amin (Co-Founder & Lead Developer) & Banashree Das (Co-Founder & Growth Strategist)
 * **Location:** Siliguri, West Bengal, India (Serving Global Clients)
 * **Target Geographies:** 

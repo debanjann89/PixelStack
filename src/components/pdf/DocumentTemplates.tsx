@@ -1073,7 +1073,7 @@ export const PackagesPDF = () => {
             </View>
             <View style={{ alignItems: 'flex-end' }}>
               <Text style={{ color: localColors.darkText, fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>ONLINE PITCH:</Text>
-              <Text>d-a-b-digitals.vercel.app | dabdigitalofficials@gmail.com</Text>
+              <Text>dnbdigitals.in | dabdigitalofficials@gmail.com</Text>
             </View>
           </View>
         </View>

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Custom real estate website development with property listings, lead capture, and neighborhood guides. Help buyers find their dream home with a premium website by D&B Digitals.',
   keywords: 'real estate website development, property listing website, real estate agent website, IDX website design',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/industries/real-estate-website-development',
+    canonical: 'https://dnbdigitals.in/industries/real-estate-website-development',
   },
 };
 
@@ -18,19 +18,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://d-a-b-digitals.vercel.app',
+        item: 'https://dnbdigitals.in',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Industries',
-        item: 'https://d-a-b-digitals.vercel.app/industries',
+        item: 'https://dnbdigitals.in/industries',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Real Estate Website Development',
-        item: 'https://d-a-b-digitals.vercel.app/industries/real-estate-website-development',
+        item: 'https://dnbdigitals.in/industries/real-estate-website-development',
       },
     ],
   };
@@ -42,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     provider: {
       '@type': 'Organization',
       name: 'D&B Digitals',
-      url: 'https://d-a-b-digitals.vercel.app',
+      url: 'https://dnbdigitals.in',
     },
     areaServed: [
       { '@type': 'Country', name: 'United States' },

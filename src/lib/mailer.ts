@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
+
 // Gmail SMTP transporter using App Password
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
@@ -7,7 +9,7 @@ const transporter = nodemailer.createTransport({
   secure: false, // true for 465, false for 587 (STARTTLS)
   auth: {
     user: process.env.SMTP_USER || '',
-    pass: process.env.SMTP_PASS || '',
+    pass: (process.env.SMTP_PASS || '').replace(/\s+/g, ''),
   },
 });
 
@@ -157,7 +159,7 @@ export async function sendClientConfirmation(data: LeadEmailData) {
         </p>
       </div>
       <p>
-        In the meantime, feel free to explore our portfolio and recent case studies at <a href="https://d-a-b-digitals.vercel.app/portfolio" style="color:#10b981;font-weight:600;">our website</a>.
+        In the meantime, feel free to explore our portfolio and recent case studies at <a href="${SITE_URL}/portfolio" style="color:#10b981;font-weight:600;">our website</a>.
       </p>
       <p style="text-align:center;margin-top:24px;">
         <a href="https://wa.me/918918186998" class="cta">Chat on WhatsApp →</a>
@@ -168,7 +170,7 @@ export async function sendClientConfirmation(data: LeadEmailData) {
         <strong>Data Protection Notice (DPDP Act, 2023):</strong> Your personal data (name, email, phone, and project details) is collected solely to respond to your inquiry and provide you with a project proposal. Your data is stored securely and will be retained for up to 24 months. We do not share your data with any third parties.
       </p>
       <p>
-        You have the right to access, correct, or request deletion of your personal data at any time by emailing <a href="mailto:dabdigitalofficials@gmail.com">dabdigitalofficials@gmail.com</a> with the subject line "Data Deletion Request". View our full <a href="https://d-a-b-digitals.vercel.app/privacy">Privacy Policy</a>.
+        You have the right to access, correct, or request deletion of your personal data at any time by emailing <a href="mailto:dabdigitalofficials@gmail.com">dabdigitalofficials@gmail.com</a> with the subject line "Data Deletion Request". View our full <a href="${SITE_URL}/privacy">Privacy Policy</a>.
       </p>
       <p style="margin-top:12px;color:#d4d4d8;">
         © ${new Date().getFullYear()} D&B Digitals. Siliguri, West Bengal, India.

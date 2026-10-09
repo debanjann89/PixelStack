@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Learn how a 3-tap booking system on your salon or spa website can double your appointments and eliminate booking drop-offs.',
   keywords: 'salon website design, spa website cost, beauty salon online booking website, salon appointment system',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/salon-spa-website-design-booking-system',
+    canonical: 'https://dnbdigitals.in/blog/salon-spa-website-design-booking-system',
   },
 };
 
@@ -14,7 +14,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const jsonLd = {
     '@context': 'https://schema.org',

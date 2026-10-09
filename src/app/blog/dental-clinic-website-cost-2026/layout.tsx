@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'A comprehensive pricing guide for dental clinic websites in 2026. Discover the real costs, avoid hidden agency fees, and understand the ROI of a high-converting dental website.',
   keywords: 'dental website cost, dental clinic web design pricing, dentist website cost India, how much does a dentist website cost',
   alternates: {
-    canonical: 'https://d-a-b-digitals.vercel.app/blog/dental-clinic-website-cost-2026',
+    canonical: 'https://dnbdigitals.in/blog/dental-clinic-website-cost-2026',
   },
 };
 
@@ -14,7 +14,7 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://d-a-b-digitals.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
   const jsonLd = {
     '@context': 'https://schema.org',
