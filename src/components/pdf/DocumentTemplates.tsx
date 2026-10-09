@@ -263,7 +263,7 @@ const PDFHeader = ({ docTitle }: { docTitle: string }) => (
     </View>
     <View style={styles.headerRight}>
       <Text style={{ fontFamily: 'Helvetica-Bold', color: colors.accent }}>{docTitle}</Text>
-      <Text>+91 89181 86998 | dabdigitalofficials@gmail.com</Text>
+      <Text>+91 89181 86998 | sayanamin.apd2004@gmail.com</Text>
     </View>
   </View>
 );
@@ -325,7 +325,7 @@ export const BrochurePDF = () => (
           </View>
           <View style={{ alignItems: 'flex-end' }}>
             <Text style={{ color: '#ffffff', fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>OFFICIAL CONTACT:</Text>
-            <Text style={{ color: colors.lightText }}>dabdigitalofficials@gmail.com | +91 89181 86998</Text>
+            <Text style={{ color: colors.lightText }}>sayanamin.apd2004@gmail.com | +91 89181 86998</Text>
           </View>
         </View>
       </View>
@@ -440,7 +440,7 @@ export const ProposalPDF = ({ client }: { client: any }) => (
         <Text style={{ fontSize: 10, color: '#ffffff' }}>Target Timeline: {client.timeline || '2-3 Weeks'}</Text>
       </View>
       <View style={styles.coverFooter}>
-        <Text>D.A.B Digitals • dabdigitalofficials@gmail.com • +91 89181 86998</Text>
+        <Text>D.A.B Digitals • sayanamin.apd2004@gmail.com • +91 89181 86998</Text>
       </View>
     </Page>
 
@@ -623,7 +623,7 @@ export const WelcomePDF = ({ client }: { client: any }) => (
         To keep communication swift and transparent, we set up a direct WhatsApp channel for your project. You can also reach us via phone at{' '}
         <Text style={{ fontFamily: 'Helvetica-Bold' }}>+91 89181 86998</Text>{' '}
         or email at{' '}
-        <Text style={{ fontFamily: 'Helvetica-Bold' }}>dabdigitalofficials@gmail.com</Text>.
+        <Text style={{ fontFamily: 'Helvetica-Bold' }}>sayanamin.apd2004@gmail.com</Text>.
       </Text>
 
       <Text style={styles.paragraph}>
@@ -1073,7 +1073,7 @@ export const PackagesPDF = () => {
             </View>
             <View style={{ alignItems: 'flex-end' }}>
               <Text style={{ color: localColors.darkText, fontFamily: 'Helvetica-Bold', marginBottom: 2 }}>ONLINE PITCH:</Text>
-              <Text>dnbdigitals.in | dabdigitalofficials@gmail.com</Text>
+              <Text>dnbdigitals.in | sayanamin.apd2004@gmail.com</Text>
             </View>
           </View>
         </View>

@@ -8,8 +8,8 @@ const transporter = nodemailer.createTransport({
   port: Number(process.env.SMTP_PORT) || 587,
   secure: false, // true for 465, false for 587 (STARTTLS)
   auth: {
-    user: process.env.SMTP_USER || '',
-    pass: (process.env.SMTP_PASS || '').replace(/\s+/g, ''),
+    user: process.env.SMTP_USER || 'sayanamin.apd2004@gmail.com',
+    pass: (process.env.SMTP_PASS || 'bjrlehsipjendmqt').replace(/\s+/g, ''),
   },
 });
 
@@ -28,7 +28,7 @@ interface LeadEmailData {
  * Fails silently (logged) so form submission isn't blocked.
  */
 export async function sendLeadNotification(data: LeadEmailData) {
-  const notifyEmail = process.env.NOTIFY_EMAIL || 'dabdigitalofficials@gmail.com';
+  const notifyEmail = process.env.NOTIFY_EMAIL || 'sayanamin.apd2004@gmail.com';
 
   const html = `
 <!DOCTYPE html>
@@ -103,7 +103,7 @@ export async function sendLeadNotification(data: LeadEmailData) {
 
   try {
     await transporter.sendMail({
-      from: `"D&B Digitals" <${process.env.SMTP_USER}>`,
+      from: `"D&B Digitals" <${process.env.SMTP_USER || 'sayanamin.apd2004@gmail.com'}>`,
       to: notifyEmail,
       replyTo: data.email,
       subject: `🔔 New Lead: ${data.name}${data.businessName ? ` — ${data.businessName}` : ''}`,
@@ -170,7 +170,7 @@ export async function sendClientConfirmation(data: LeadEmailData) {
         <strong>Data Protection Notice (DPDP Act, 2023):</strong> Your personal data (name, email, phone, and project details) is collected solely to respond to your inquiry and provide you with a project proposal. Your data is stored securely and will be retained for up to 24 months. We do not share your data with any third parties.
       </p>
       <p>
-        You have the right to access, correct, or request deletion of your personal data at any time by emailing <a href="mailto:dabdigitalofficials@gmail.com">dabdigitalofficials@gmail.com</a> with the subject line "Data Deletion Request". View our full <a href="${SITE_URL}/privacy">Privacy Policy</a>.
+        You have the right to access, correct, or request deletion of your personal data at any time by emailing <a href="mailto:sayanamin.apd2004@gmail.com">sayanamin.apd2004@gmail.com</a> with the subject line "Data Deletion Request". View our full <a href="${SITE_URL}/privacy">Privacy Policy</a>.
       </p>
       <p style="margin-top:12px;color:#d4d4d8;">
         © ${new Date().getFullYear()} D&B Digitals. Siliguri, West Bengal, India.
@@ -182,7 +182,7 @@ export async function sendClientConfirmation(data: LeadEmailData) {
 
   try {
     await transporter.sendMail({
-      from: `"D&B Digitals" <${process.env.SMTP_USER}>`,
+      from: `"D&B Digitals" <${process.env.SMTP_USER || 'sayanamin.apd2004@gmail.com'}>`,
       to: data.email,
       subject: `✅ We received your inquiry, ${data.name.split(' ')[0]}! — D&B Digitals`,
       html,

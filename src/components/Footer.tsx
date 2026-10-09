@@ -144,10 +144,10 @@ export default function Footer() {
           {/* Right — Contact + Admin */}
           <div className="flex items-center gap-4">
             <a
-              href="mailto:dabdigitalofficials@gmail.com"
+              href="mailto:sayanamin.apd2004@gmail.com"
               className="hidden lg:block text-zinc-500 hover:text-primary text-sm transition-colors"
             >
-              dabdigitalofficials@gmail.com
+              sayanamin.apd2004@gmail.com
             </a>
             <Link
               href="/admin"

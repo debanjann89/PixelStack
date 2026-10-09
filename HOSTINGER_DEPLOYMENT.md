@@ -72,9 +72,9 @@ NEXT_PUBLIC_SUPABASE_URL=https://rxazsxnxpumjyscqzkzq.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4YXpzeG54cHVtanlzY3F6a3pxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NjQ3MjgsImV4cCI6MjA5NzQ0MDcyOH0.W_t6hmxBYXinxWoZTE8WzXT92icq2_vIchvXxyPZtCc
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=dabdigitalofficials@gmail.com
+SMTP_USER=sayanamin.apd2004@gmail.com
 SMTP_PASS=bjrlehsipjendmqt
-NOTIFY_EMAIL=dabdigitalofficials@gmail.com
+NOTIFY_EMAIL=sayanamin.apd2004@gmail.com
 NODE_ENV=production
 PORT=3000
 ```
@@ -132,9 +132,9 @@ If your Hostinger plan includes **Node.js** in hPanel:
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `<YOUR_KEY>`
    - `SMTP_HOST` = `smtp.gmail.com`
    - `SMTP_PORT` = `587`
-   - `SMTP_USER` = `dabdigitalofficials@gmail.com`
+   - `SMTP_USER` = `sayanamin.apd2004@gmail.com`
    - `SMTP_PASS` = `bjrlehsipjendmqt`
-   - `NOTIFY_EMAIL` = `dabdigitalofficials@gmail.com`
+   - `NOTIFY_EMAIL` = `sayanamin.apd2004@gmail.com`
 6. Click **Run NPM Install**, then in the SSH/Terminal console run:
    ```bash
    npm run build

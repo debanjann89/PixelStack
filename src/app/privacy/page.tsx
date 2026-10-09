@@ -159,8 +159,8 @@ const sections = [
             </div>
             <div>
               <div className="text-[11px] uppercase tracking-wider text-zinc-500 font-semibold">Email For Data & Erasure Requests</div>
-              <a href="mailto:dabdigitalofficials@gmail.com" className="text-sm font-semibold text-primary hover:underline">
-                dabdigitalofficials@gmail.com
+              <a href="mailto:sayanamin.apd2004@gmail.com" className="text-sm font-semibold text-primary hover:underline">
+                sayanamin.apd2004@gmail.com
               </a>
             </div>
           </div>
@@ -264,7 +264,7 @@ export default function PrivacyPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href="mailto:dabdigitalofficials@gmail.com"
+              href="mailto:sayanamin.apd2004@gmail.com"
               className="px-6 py-2.5 rounded-full bg-primary hover:bg-primary-dark text-black font-bold text-xs uppercase tracking-wider transition-all"
             >
               Email Grievance Officer

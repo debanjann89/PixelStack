@@ -115,7 +115,7 @@ export default function RootLayout({
     "@id": `${SITE_URL}/#agency`,
     "url": SITE_URL,
     "telephone": "+918918186998",
-    "email": "dabdigitalofficials@gmail.com",
+    "email": "sayanamin.apd2004@gmail.com",
     "priceRange": "$179 - $5,000+",
     "address": {
       "@type": "PostalAddress",

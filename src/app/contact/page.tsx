@@ -35,8 +35,8 @@ const contactChannels = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'dabdigitalofficials@gmail.com',
-    href: 'mailto:dabdigitalofficials@gmail.com',
+    value: 'sayanamin.apd2004@gmail.com',
+    href: 'mailto:sayanamin.apd2004@gmail.com',
     color: 'text-primary',
     bgColor: 'bg-primary/10',
     borderHover: 'hover:border-primary/40',
@@ -467,7 +467,7 @@ export default function ContactPage() {
                         />
                         <span className="text-xs text-zinc-500 leading-relaxed group-hover:text-zinc-400 transition-colors">
                           I consent to D&B Digitals collecting and processing my personal information to respond to my inquiry. I understand my data will be stored securely for up to 24 months and I can request its deletion at any time by emailing{' '}
-                          <a href="mailto:dabdigitalofficials@gmail.com" className="text-primary hover:underline">dabdigitalofficials@gmail.com</a>.{' '}
+                          <a href="mailto:sayanamin.apd2004@gmail.com" className="text-primary hover:underline">sayanamin.apd2004@gmail.com</a>.{' '}
                           View our{' '}
                           <a href="/privacy" target="_blank" className="text-primary hover:underline">Privacy Policy</a>.
                         </span>
