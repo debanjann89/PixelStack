@@ -253,7 +253,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Preloader />
           <Navbar />
-          <main className="flex-grow pt-24">
+          <main className="flex-grow pt-24 overflow-x-hidden">
             {children}
           </main>
           <Footer />

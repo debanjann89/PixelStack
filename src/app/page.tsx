@@ -277,7 +277,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════
           SECTION 4 — SERVICES LIST (editorial numbered rows)
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-24 md:py-32 max-w-6xl mx-auto px-6 md:px-12">
+      <section className="relative z-10 py-24 md:py-32 max-w-6xl mx-auto px-6 md:px-12 content-visibility-auto">
         <ScrollReveal>
           <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
             Our Expertise
@@ -302,7 +302,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════
           SECTION 5 — FEATURED WORK (Normal Vertical Grid)
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-16 md:py-24">
+      <section className="relative z-10 py-16 md:py-24 content-visibility-auto">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <ScrollReveal>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -338,6 +338,8 @@ export default function HomePage() {
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                       onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                     />
@@ -386,7 +388,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════
           SECTION 6 — STATS
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 md:py-28">
+      <section className="relative z-10 py-20 md:py-28 content-visibility-auto">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
@@ -419,7 +421,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════
           SECTION 8 — WHY US
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-24 md:py-32 max-w-6xl mx-auto px-6 md:px-12">
+      <section className="relative z-10 py-24 md:py-32 max-w-6xl mx-auto px-6 md:px-12 content-visibility-auto">
         <ScrollReveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
@@ -449,7 +451,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════
           SECTION 8 — TESTIMONIALS (marquee)
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-24 border-t border-zinc-900/50">
+      <section className="relative z-10 py-24 border-t border-zinc-900/50 content-visibility-auto">
         <div className="max-w-6xl mx-auto px-6 md:px-12 mb-12">
           <ScrollReveal>
             <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
@@ -470,7 +472,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════
           SECTION — FAQ
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-24 md:py-32">
+      <section className="relative z-10 py-24 md:py-32 content-visibility-auto">
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto mb-16">

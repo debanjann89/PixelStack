@@ -4,13 +4,24 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Preloader() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Counter animation: 0 → 100 in ~1.2s
-    const duration = 1200;
-    const steps = 50;
+    // Check if user already saw preloader in this session
+    try {
+      if (sessionStorage.getItem('dab_preloaded')) {
+        return;
+      }
+    } catch {
+      // sessionStorage unavailable
+    }
+
+    setIsLoading(true);
+
+    // Fast, crisp entrance: 0 → 100 in ~400ms
+    const duration = 400;
+    const steps = 15;
     const stepTime = duration / steps;
     let current = 0;
 
@@ -19,8 +30,10 @@ export default function Preloader() {
       if (current >= 100) {
         setCount(100);
         clearInterval(timer);
-        // Small delay after reaching 100 before exit
-        setTimeout(() => setIsLoading(false), 300);
+        try {
+          sessionStorage.setItem('dab_preloaded', 'true');
+        } catch {}
+        setTimeout(() => setIsLoading(false), 150);
       } else {
         setCount(Math.floor(current));
       }

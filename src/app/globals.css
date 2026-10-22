@@ -73,8 +73,8 @@
     50% { transform: translateY(-12px); }
   }
   @keyframes pulse-slow {
-    0%, 100% { opacity: 0.15; filter: blur(80px); }
-    50% { opacity: 0.35; filter: blur(100px); }
+    0%, 100% { opacity: 0.12; transform: scale(1) translate3d(0, 0, 0); }
+    50% { opacity: 0.22; transform: scale(1.06) translate3d(0, 0, 0); }
   }
   @keyframes gradient-move {
     0%, 100% { background-position: 0% 50%; }
@@ -188,12 +188,16 @@ html.light {
    BASE STYLES
    ============================================ */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Typography — headings use Plus Jakarta Sans */
@@ -402,10 +406,23 @@ html.light .service-row:hover .service-name {
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(80px);
   pointer-events: none;
   opacity: 0.12;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
   animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Defer rendering offscreen sections for silky-smooth scroll FPS */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}
+
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .blob-primary {
