@@ -24,6 +24,13 @@ const FOOTER_INDUSTRIES = [
   { name: 'Real Estate', path: '/industries/real-estate-website-development' },
 ];
 
+const FOOTER_LOCATIONS = [
+  { name: 'Siliguri & North Bengal', path: '/web-design-siliguri' },
+  { name: 'Kolkata Metro', path: '/web-design-kolkata' },
+  { name: 'West Bengal Hub', path: '/web-design-west-bengal' },
+  { name: 'All India', path: '/web-design-india' },
+];
+
 export default function Footer() {
   const pathname = usePathname();
   const router = useRouter();
@@ -62,17 +69,18 @@ export default function Footer() {
       <div className="section-divider" />
 
       {/* Middle Links Grid (SEO Internal Linking Anchor) */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 border-b border-zinc-900/60">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 border-b border-zinc-900/60 space-y-8">
+        {/* Row 1: Specialized Industries */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center justify-between">
           <div className="md:col-span-4">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 block mb-2">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 block mb-1">
               Specialized Industries
             </span>
             <p className="text-xs text-zinc-500 leading-relaxed">
-              Custom high-performance web systems engineered for lead generation and conversion in the US and India.
+              Custom high-performance web systems engineered for lead generation and direct conversions.
             </p>
           </div>
-          <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-3">
+          <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-2.5">
             {FOOTER_INDUSTRIES.map((ind) => (
               <Link
                 key={ind.path}
@@ -81,6 +89,30 @@ export default function Footer() {
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary/60" />
                 {ind.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2: Regional Service Locations */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center justify-between pt-6 border-t border-zinc-900/40">
+          <div className="md:col-span-4">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 block mb-1">
+              Regional Locations
+            </span>
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              Localized web design, Google SEO, and digital consulting across West Bengal and India.
+            </p>
+          </div>
+          <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-2.5">
+            {FOOTER_LOCATIONS.map((loc) => (
+              <Link
+                key={loc.path}
+                href={loc.path}
+                className="text-xs text-zinc-300 hover:text-emerald-400 transition-colors flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                {loc.name}
               </Link>
             ))}
           </div>
