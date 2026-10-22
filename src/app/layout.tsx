@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,19 +6,6 @@ import ConsultationModal from "@/components/ConsultationModal";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Preloader from "@/components/Preloader";
 import SmoothScroll from "@/components/SmoothScroll";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
-});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://dnbdigitals.in";
 
@@ -253,9 +239,16 @@ export default function RootLayout({
             __html: JSON.stringify(websiteSchema)
           }}
         />
+        {/* Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@400..800&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
-        className={`${inter.variable} ${plusJakarta.variable} antialiased bg-[#050505] text-zinc-100 min-h-screen flex flex-col`}
+        className="antialiased bg-[#050505] text-zinc-100 min-h-screen flex flex-col"
       >
         <SmoothScroll>
           <Preloader />
