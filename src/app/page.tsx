@@ -4,8 +4,6 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Code,
   Layers,
@@ -33,8 +31,6 @@ import TestimonialsSlider from '@/components/TestimonialsSlider';
 import PricingPlans from '@/components/PricingPlans';
 import InstagramReelsShowcase from '@/components/InstagramReelsShowcase';
 import { getProjects } from '@/app/actions';
-
-gsap.registerPlugin(ScrollTrigger);
 
 // ─── Helpers ────────────────────────────────────────────
 function Counter({ value, suffix = '', duration = 1.5 }: { value: string; suffix?: string; duration?: number }) {
@@ -144,8 +140,6 @@ export default function HomePage() {
   const router = useRouter();
   const [projects, setProjects] = useState<typeof FEATURED_PROJECTS_FALLBACK>([]);
   const [selectedProject, setSelectedProject] = useState<(typeof FEATURED_PROJECTS_FALLBACK)[0] | null>(null);
-  const horizontalRef = useRef<HTMLDivElement>(null);
-  const horizontalInnerRef = useRef<HTMLDivElement>(null);
 
   // Load projects from Supabase
   useEffect(() => {
@@ -172,31 +166,6 @@ export default function HomePage() {
     }
     loadProjects();
   }, []);
-
-  // Horizontal scroll GSAP effect
-  useEffect(() => {
-    if (!horizontalRef.current || !horizontalInnerRef.current) return;
-
-    const scrollWidth = horizontalInnerRef.current.scrollWidth - horizontalRef.current.offsetWidth;
-    if (scrollWidth <= 0) return;
-
-    const ctx = gsap.context(() => {
-      gsap.to(horizontalInnerRef.current, {
-        x: -scrollWidth,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: horizontalRef.current,
-          start: 'top top',
-          end: `+=${scrollWidth}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, [projects]);
 
   const handleConsultation = () => {
     router.push('/?consultation=open');
@@ -331,46 +300,37 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          SECTION 5 — FEATURED WORK (Horizontal scroll)
+          SECTION 5 — FEATURED WORK (Normal Vertical Grid)
           ═══════════════════════════════════════════════════ */}
-      <section className="relative z-10">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 pb-8">
+      <section className="relative z-10 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <div className="flex items-end justify-between mb-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
               <div>
-                <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em] block mb-4">
+                <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em] block mb-3">
                   Portfolio
                 </span>
                 <h2 className="heading-lg text-white">Featured Work</h2>
+                <p className="text-zinc-400 text-sm md:text-base mt-2 max-w-xl">
+                  Handcrafted digital platforms engineered for conversion, search dominance, and brand authority.
+                </p>
               </div>
               <Link
                 href="/portfolio"
-                className="text-zinc-500 hover:text-white text-sm font-medium flex items-center gap-1.5 transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light transition-colors group"
               >
-                View All <ArrowRight className="h-4 w-4" />
+                View All Projects{' '}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </ScrollReveal>
-        </div>
 
-        {/* Horizontal scroll container */}
-        <div ref={horizontalRef} className="relative overflow-hidden">
-          <div
-            ref={horizontalInnerRef}
-            className="flex gap-6 px-6 md:px-12"
-            style={{ width: 'max-content' }}
-          >
+          {/* Normal Vertical Responsive Project Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {(projects.length > 0 ? projects : FEATURED_PROJECTS_FALLBACK).map((project, i) => (
-              <motion.div
-                key={project.id}
-                className="w-[80vw] md:w-[45vw] lg:w-[35vw] shrink-0"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <ScrollReveal key={project.id} delay={i * 0.1}>
                 <div
-                  className={`relative h-[50vh] md:h-[60vh] rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br ${project.bg} border border-zinc-800/50 hover:border-primary/20 transition-all duration-500`}
+                  className={`relative h-[380px] md:h-[440px] rounded-2xl overflow-hidden cursor-pointer group bg-gradient-to-br ${project.bg} border border-zinc-800/80 hover:border-primary/40 transition-all duration-500 shadow-xl`}
                   onClick={() => setSelectedProject(project)}
                 >
                   {/* Project image if available */}
@@ -383,27 +343,42 @@ export default function HomePage() {
                     />
                   )}
 
-                  {/* Gradient overlay — always present for text readability */}
+                  {/* Gradient overlay for readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
-                  {/* Project info — pinned to bottom, clean and tight */}
+                  {/* Project info card */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                    <span className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] block mb-3">
+                    <span className="text-primary text-[11px] font-bold uppercase tracking-[0.2em] block mb-2">
                       {project.category}
                     </span>
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5 leading-tight">
+                    <h3 className="text-2xl font-bold text-white mb-2 leading-tight group-hover:text-primary-light transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-zinc-400 text-xs md:text-sm line-clamp-2 max-w-sm">{project.desc}</p>
+                    <p className="text-zinc-300 text-sm line-clamp-2 max-w-md mb-4 leading-relaxed">
+                      {project.desc}
+                    </p>
+                    <div className="inline-flex items-center text-xs font-semibold text-primary group-hover:text-white transition-colors gap-1.5">
+                      Explore Case Details <ArrowRight className="h-3.5 w-3.5" />
+                    </div>
                   </div>
 
-                  {/* Arrow indicator */}
-                  <div className="absolute top-5 right-5 w-9 h-9 rounded-full bg-black/40 border border-white/10 flex items-center justify-center backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <ArrowUpRight className="h-3.5 w-3.5 text-white transition-transform duration-300 group-hover:rotate-45" />
+                  {/* Arrow indicator top-right */}
+                  <div className="absolute top-5 right-5 w-10 h-10 rounded-full bg-black/60 border border-white/10 flex items-center justify-center backdrop-blur-md transition-all duration-300 group-hover:bg-primary group-hover:border-primary">
+                    <ArrowUpRight className="h-4 w-4 text-white transition-transform duration-300 group-hover:rotate-45" />
                   </div>
                 </div>
-              </motion.div>
+              </ScrollReveal>
             ))}
+          </div>
+
+          {/* Mobile View All button */}
+          <div className="mt-10 text-center md:hidden">
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-900 border border-zinc-800 text-sm font-semibold text-zinc-300 hover:text-white transition-all"
+            >
+              View All Projects <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
