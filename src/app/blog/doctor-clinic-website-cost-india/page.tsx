@@ -71,11 +71,11 @@ export default function DoctorClinicCostArticlePage() {
 
           <h2 className="flex items-center gap-3 text-2xl font-bold text-white mt-12 mb-6">
             <DollarSign className="w-7 h-7 text-emerald-400 shrink-0" />
-            2. Clinic Website Cost Breakdown in India (2026)
+            2. Medical Practice Packages & Scope in India (2026)
           </h2>
 
           <p>
-            Here is what fair, honest pricing looks like for medical practices in India today:
+            Rather than paying monthly aggregator cuts, healthcare providers invest in a customized web asset with clear deliverables:
           </p>
 
           {/* Pricing Table */}
@@ -84,29 +84,41 @@ export default function DoctorClinicCostArticlePage() {
               <thead>
                 <tr className="bg-zinc-900/90 text-white border-b border-zinc-800">
                   <th className="p-4 font-semibold">Clinic Type</th>
-                  <th className="p-4 font-semibold">Pricing (INR)</th>
+                  <th className="p-4 font-semibold">Investment Model</th>
                   <th className="p-4 font-semibold">Essential Features</th>
-                  <th className="p-4 font-semibold">Delivery Time</th>
+                  <th className="p-4 font-semibold">Consultation</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-800/80">
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Individual Doctor Chamber</td>
-                  <td className="p-4 text-white">₹15,000 – ₹28,000</td>
+                  <td className="p-4 text-white">Custom Chamber Scope</td>
                   <td className="p-4 text-zinc-300">Bio & degrees, chamber timings, Google Maps directions, 1-tap WhatsApp booking button</td>
-                  <td className="p-4 text-zinc-400">5 – 7 Days</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20am%20a%20doctor%20interested%20in%20a%20website%20quotation." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Polyclinic / Dental Clinic</td>
-                  <td className="p-4 text-white">₹35,000 – ₹65,000</td>
+                  <td className="p-4 text-white">Full Clinic Lead System</td>
                   <td className="p-4 text-zinc-300">Multi-doctor schedule, service pages (Implants, Ortho, etc.), patient testimonials, local SEO</td>
-                  <td className="p-4 text-zinc-400">10 – 14 Days</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20am%20interested%20in%20a%20custom%20dental%2Fpolyclinic%20website%20quote." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Hospital / Diagnostic Center</td>
-                  <td className="p-4 text-white">₹85,000 – ₹1,80,000</td>
+                  <td className="p-4 text-white">Enterprise Healthcare Portal</td>
                   <td className="p-4 text-zinc-300">Department directory, online test booking, report download portal, ambulance trigger, full hospital SEO</td>
-                  <td className="p-4 text-zinc-400">3 – 4 Weeks</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20would%20like%20to%20discuss%20a%20Hospital%20portal%20build." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Discuss Scope →
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -149,7 +161,7 @@ export default function DoctorClinicCostArticlePage() {
           <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 my-6">
             <p className="text-zinc-200 font-semibold mb-2">The Medical ROI Equation:</p>
             <ul className="space-y-2 text-sm text-zinc-300">
-              <li>• Professional Clinic Website: <strong>₹25,000 (one-time)</strong></li>
+              <li>• Professional Clinic Website: <strong>Customized project investment based on chamber count & features</strong></li>
               <li>• Average patient lifetime value (consultations + procedures): <strong>₹5,000 – ₹15,000</strong></li>
               <li>• If the website brings just <strong>3 to 5 new patients</strong> via Google: <strong>The entire website is paid off</strong></li>
               <li>• Every single patient consultation after that is 100% pure profit, month after month.</li>

@@ -15,9 +15,9 @@ export default function PricingPage() {
     <main className="min-h-screen bg-black text-white pt-32 pb-24 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="text-center mb-16">
-          <SplitText text="Transparent Pricing" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white" />
+          <SplitText text="Project Investment & Packages" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white" />
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            Clear, upfront costs. No hidden fees. Choose the plan that fits your business goals.
+            Tailored digital solutions engineered for your business goals. Every project is custom-quoted based on your exact scope—no rigid templates or cookie-cutter pricing.
           </p>
         </motion.div>
 
@@ -27,11 +27,11 @@ export default function PricingPage() {
             <div className="mb-8">
               <Zap className="w-8 h-8 text-emerald-500 mb-4" />
               <h3 className="text-2xl font-bold text-white mb-2">Starter</h3>
-              <p className="text-zinc-400 text-sm mb-6 h-10">Perfect for new businesses and personal brands</p>
+              <p className="text-zinc-400 text-sm mb-6 h-10">Perfect for local shops, clinics, and personal brands</p>
               <div className="mb-1">
-                <span className="text-3xl font-bold text-white">₹15k - ₹35k</span>
+                <span className="text-2xl font-bold text-white">Custom Quote</span>
               </div>
-              <div className="text-zinc-500 text-sm font-medium">($200 - $450)</div>
+              <div className="text-emerald-400 text-xs font-medium">Tailored to your exact pages & design</div>
             </div>
 
             <ul className="space-y-4 mb-8 flex-grow">
@@ -46,11 +46,17 @@ export default function PricingPage() {
             <div className="mt-auto space-y-4">
               <div className="text-xs text-zinc-500 space-y-1">
                 <p><span className="font-semibold text-zinc-400">Delivery:</span> 7-10 days</p>
-                <p><span className="font-semibold text-zinc-400">Best for:</span> Freelancers, local shops, portfolios</p>
+                <p><span className="font-semibold text-zinc-400">Best for:</span> Local shops, consultants, clinics</p>
               </div>
-              <Link href="/contact" className="w-full border border-zinc-700 hover:border-zinc-500 text-white font-medium px-6 py-3 rounded-full transition-colors flex items-center justify-center gap-2">
-                Get Started
-              </Link>
+              <a
+                href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20am%20interested%20in%20a%20quotation%20for%20the%20Starter%20website%20package."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-400 font-medium px-6 py-3 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Get Instant Quote on WhatsApp
+              </a>
             </div>
           </motion.div>
 
@@ -61,12 +67,12 @@ export default function PricingPage() {
             </div>
             <div className="mb-8 mt-2">
               <Crown className="w-8 h-8 text-emerald-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Professional</h3>
-              <p className="text-zinc-400 text-sm mb-6 h-10">For businesses ready to generate leads online</p>
+              <h3 className="text-2xl font-bold text-white mb-2">Growth & Leads</h3>
+              <p className="text-zinc-400 text-sm mb-6 h-10">For businesses ready to aggressively generate inquiries online</p>
               <div className="mb-1">
-                <span className="text-3xl font-bold text-white">₹50k - ₹1.5L</span>
+                <span className="text-2xl font-bold text-white">Custom Growth Scope</span>
               </div>
-              <div className="text-zinc-500 text-sm font-medium">($600 - $1,800)</div>
+              <div className="text-emerald-400 text-xs font-medium">Tailored for maximum lead conversion</div>
             </div>
 
             <ul className="space-y-4 mb-8 flex-grow">
@@ -81,11 +87,17 @@ export default function PricingPage() {
             <div className="mt-auto space-y-4">
               <div className="text-xs text-zinc-500 space-y-1">
                 <p><span className="font-semibold text-zinc-400">Delivery:</span> 2-4 weeks</p>
-                <p><span className="font-semibold text-zinc-400">Best for:</span> Clinics, hotels, salons, contractors</p>
+                <p><span className="font-semibold text-zinc-400">Best for:</span> Hotels, clinics, coaching institutes, contractors</p>
               </div>
-              <Link href="/contact" className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-6 py-3 rounded-full transition-colors flex items-center justify-center gap-2">
-                Get Started
-              </Link>
+              <a
+                href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20want%20to%20discuss%20a%20custom%20quotation%20for%20the%20Growth%20website%20plan."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-6 py-3 rounded-full transition-colors flex items-center justify-center gap-2 text-sm shadow-lg shadow-emerald-500/20"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Request Custom Quote
+              </a>
             </div>
           </motion.div>
 
@@ -94,11 +106,11 @@ export default function PricingPage() {
             <div className="mb-8">
               <Building2 className="w-8 h-8 text-emerald-500 mb-4" />
               <h3 className="text-2xl font-bold text-white mb-2">Enterprise</h3>
-              <p className="text-zinc-400 text-sm mb-6 h-10">Full digital transformation for established businesses</p>
+              <p className="text-zinc-400 text-sm mb-6 h-10">Full digital transformation for established businesses & chains</p>
               <div className="mb-1">
-                <span className="text-3xl font-bold text-white">₹2L+</span>
+                <span className="text-2xl font-bold text-white">Enterprise Scope</span>
               </div>
-              <div className="text-zinc-500 text-sm font-medium">($2,500+)</div>
+              <div className="text-emerald-400 text-xs font-medium">Bespoke architecture & multi-branch systems</div>
             </div>
 
             <ul className="space-y-4 mb-8 flex-grow">
@@ -113,11 +125,17 @@ export default function PricingPage() {
             <div className="mt-auto space-y-4">
               <div className="text-xs text-zinc-500 space-y-1">
                 <p><span className="font-semibold text-zinc-400">Delivery:</span> 4-8 weeks</p>
-                <p><span className="font-semibold text-zinc-400">Best for:</span> Hotel chains, multi-location, SaaS</p>
+                <p><span className="font-semibold text-zinc-400">Best for:</span> Hotel chains, schools, multi-location brands, SaaS</p>
               </div>
-              <Link href="/contact" className="w-full border border-zinc-700 hover:border-zinc-500 text-white font-medium px-6 py-3 rounded-full transition-colors flex items-center justify-center gap-2">
-                Get Started
-              </Link>
+              <a
+                href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20would%20like%20to%20discuss%20an%20Enterprise%20website%20consultation."
+                target="_blank"
+                rel="noreferrer"
+                className="w-full border border-zinc-700 hover:border-zinc-500 text-white font-medium px-6 py-3 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Discuss Enterprise Scope
+              </a>
             </div>
           </motion.div>
         </div>

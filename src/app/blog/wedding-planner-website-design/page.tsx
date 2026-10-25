@@ -109,29 +109,41 @@ export default function WeddingPlannerArticlePage() {
               <thead>
                 <tr className="bg-zinc-900/90 text-white border-b border-zinc-800">
                   <th className="p-4 font-semibold">Tier</th>
-                  <th className="p-4 font-semibold">Cost (INR)</th>
+                  <th className="p-4 font-semibold">Scope & Delivery</th>
                   <th className="p-4 font-semibold">Key Capabilities</th>
-                  <th className="p-4 font-semibold">Ideal For</th>
+                  <th className="p-4 font-semibold">Inquiry</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-800/80">
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Boutique Planner Showcase</td>
-                  <td className="p-4 text-white">₹22,000 – ₹38,000</td>
+                  <td className="p-4 text-white">Custom Portfolio Scope</td>
                   <td className="p-4 text-zinc-300">6-8 pages, high-res photo gallery, client reviews, WhatsApp inquiry, mobile speed</td>
-                  <td className="p-4 text-zinc-400">Independent wedding planners, bridal decorators</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20am%20interested%20in%20a%20quote%20for%20the%20Boutique%20Wedding%20Planner%20showcase." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Luxury Event Funnel</td>
-                  <td className="p-4 text-white">₹45,000 – ₹85,000</td>
+                  <td className="p-4 text-white">High-Ticket Destination Funnel</td>
                   <td className="p-4 text-zinc-300">Cinematic video hero, destination pages (Darjeeling/Goa/Kolkata), date availability calendar, local Google SEO</td>
-                  <td className="p-4 text-zinc-400">Established event management firms booking ₹10L - ₹50L weddings</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20want%20to%20discuss%20a%20Luxury%20Wedding%20Funnel%20website%20quote." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Multi-City Agency Portal</td>
-                  <td className="p-4 text-white">₹95,000 – ₹1,80,000</td>
+                  <td className="p-4 text-white">Enterprise Production System</td>
                   <td className="p-4 text-zinc-300">Client portal, interactive moodboards, vendor coordination modules, national SEO</td>
-                  <td className="p-4 text-zinc-400">Top-tier destination wedding production companies</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20would%20like%20to%20discuss%20an%20Enterprise%20Wedding%20Agency%20portal." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Discuss Scope →
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -139,15 +151,15 @@ export default function WeddingPlannerArticlePage() {
 
           <h2 className="flex items-center gap-3 text-2xl font-bold text-white mt-12 mb-6">
             <TrendingUp className="w-7 h-7 text-emerald-400 shrink-0" />
-            4. The ROI Math: 1 Wedding Pays for 20 Websites
+            4. The ROI Math: 1 Wedding Pays for Your Entire Website
           </h2>
 
           <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 my-6">
             <p className="text-zinc-200 font-semibold mb-2">The High-Ticket Math:</p>
             <ul className="space-y-2 text-sm text-zinc-300">
-              <li>• Custom Luxury Website: <strong>₹35,000 (one-time investment)</strong></li>
-              <li>• Average planner commission/profit on one ₹15 Lakh wedding: <strong>₹1,50,000 – ₹3,00,000</strong></li>
-              <li>• If the website books just <strong>ONE single extra wedding</strong> this entire season: <strong>You make 4x to 8x your entire website cost</strong></li>
+              <li>• Custom Luxury Website: <strong>One-time customized project investment</strong></li>
+              <li>• Average planner profit on one ₹15 Lakh wedding: <strong>₹1,50,000 – ₹3,00,000</strong></li>
+              <li>• If the website books just <strong>ONE single extra wedding</strong> this season: <strong>You make 4x to 8x your entire website cost</strong></li>
             </ul>
           </div>
 

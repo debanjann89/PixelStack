@@ -72,7 +72,7 @@ const LOCAL_INDUSTRIES = [
 const LOCAL_FAQS = [
   {
     q: 'How much does a website cost in Siliguri?',
-    a: 'At D&B Digitals, starter business websites begin at ₹15,000. Professional growth websites with custom booking or dynamic features are typically ₹35,000 to ₹75,000. We give clear upfront quotations with zero hidden surprises.'
+    a: 'Website costs in Siliguri depend on your specific business goals, number of pages, and required features (like online booking, WhatsApp triggers, or custom catalogs). We provide a free consultation and a transparent, customized proposal based on your exact scope with zero hidden surprises.'
   },
   {
     q: 'Can we meet face-to-face in Siliguri to discuss our project?',
@@ -227,68 +227,87 @@ export default function SiliguriWebDesignPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-2">
-              Fair & Transparent
+              Flexible Investment
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Website Packages for Siliguri Businesses
+              Website Solutions for Siliguri Businesses
             </h2>
             <p className="text-zinc-400 text-sm md:text-base">
-              No hidden renewal shocks or inflated agency markups. Pay once, own forever.
+              Custom-tailored to your exact business model. Transparent scope, zero recurring developer lock-ins.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-black border border-zinc-800">
-              <h4 className="text-lg font-bold text-white mb-1">Starter Business</h4>
-              <p className="text-xs text-zinc-500 mb-4">For local shops, doctors & consultants</p>
-              <div className="text-2xl font-bold text-white mb-4">₹15,000 <span className="text-xs text-zinc-500 font-normal">one-time</span></div>
-              <ul className="text-xs text-zinc-300 space-y-2.5 mb-6">
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Up to 5 Responsive Pages</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Direct WhatsApp Inquiry Button</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Google Maps & Business Profile</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> 7-10 Days Fast Delivery</li>
-              </ul>
-              <Link href="/contact" className="block text-center py-2.5 text-xs font-semibold rounded-full border border-zinc-700 hover:border-emerald-500 text-white transition-colors">
-                Choose Starter
-              </Link>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-zinc-900/60 border-2 border-emerald-500/60 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-wider">
-                Recommended
+            <div className="p-6 rounded-2xl bg-black border border-zinc-800 flex flex-col justify-between">
+              <div>
+                <h4 className="text-lg font-bold text-white mb-1">Starter Business</h4>
+                <p className="text-xs text-zinc-500 mb-4">For local shops, doctors & consultants</p>
+                <div className="text-xl font-bold text-white mb-1">Custom Quote</div>
+                <div className="text-xs text-emerald-400 mb-4 font-medium">Tailored to your basic scope</div>
+                <ul className="text-xs text-zinc-300 space-y-2.5 mb-6">
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Up to 5 Responsive Pages</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Direct WhatsApp Inquiry Button</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Google Maps & Business Profile</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> 7-10 Days Fast Delivery</li>
+                </ul>
               </div>
-              <h4 className="text-lg font-bold text-white mb-1">Growth & Local SEO</h4>
-              <p className="text-xs text-zinc-400 mb-4">For hotels, clinics & expanding brands</p>
-              <div className="text-2xl font-bold text-white mb-4">₹45,000 <span className="text-xs text-zinc-500 font-normal">one-time</span></div>
-              <ul className="text-xs text-zinc-200 space-y-2.5 mb-6">
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> 10-15 Custom Next.js Pages</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Online Booking / Lead Capture Engine</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Siliguri & North Bengal Local SEO</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Sub-1 Second Core Web Vitals</li>
-              </ul>
               <a
-                href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20want%20to%20know%20more%20about%20the%20Growth%20%E2%82%B945%2C000%20package%20for%20Siliguri."
+                href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20am%20interested%20in%20a%20quotation%20for%20a%20Starter%20business%20website%20in%20Siliguri."
                 target="_blank"
                 rel="noreferrer"
-                className="block text-center py-2.5 text-xs font-bold rounded-full bg-emerald-500 hover:bg-emerald-400 text-black transition-colors"
+                className="block text-center py-2.5 text-xs font-semibold rounded-full border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-400 transition-colors"
               >
-                Get Growth Plan
+                Get Quote on WhatsApp
               </a>
             </div>
 
-            <div className="p-6 rounded-2xl bg-black border border-zinc-800">
-              <h4 className="text-lg font-bold text-white mb-1">Custom Enterprise</h4>
-              <p className="text-xs text-zinc-500 mb-4">For hotel chains, schools & e-commerce</p>
-              <div className="text-2xl font-bold text-white mb-4">₹95,000+ <span className="text-xs text-zinc-500 font-normal">custom build</span></div>
-              <ul className="text-xs text-zinc-300 space-y-2.5 mb-6">
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Custom Booking Engine / Payment Gateway</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Student / Admin Portal & CRM sync</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Full Pan-India SEO Architecture</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Dedicated Technical Support</li>
-              </ul>
-              <Link href="/pricing" className="block text-center py-2.5 text-xs font-semibold rounded-full border border-zinc-700 hover:border-emerald-500 text-white transition-colors">
-                View Full Pricing
-              </Link>
+            <div className="p-6 rounded-2xl bg-zinc-900/60 border-2 border-emerald-500/60 relative flex flex-col justify-between">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-wider">
+                Most Popular
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-white mb-1">Growth & Local SEO</h4>
+                <p className="text-xs text-zinc-400 mb-4">For hotels, clinics & expanding brands</p>
+                <div className="text-xl font-bold text-white mb-1">Custom Growth Scope</div>
+                <div className="text-xs text-emerald-400 mb-4 font-medium">Optimized for maximum client inquiries</div>
+                <ul className="text-xs text-zinc-200 space-y-2.5 mb-6">
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> 10-15 Custom Next.js Pages</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Online Booking / Lead Capture Engine</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Siliguri & North Bengal Local SEO</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Sub-1 Second Core Web Vitals</li>
+                </ul>
+              </div>
+              <a
+                href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20want%20to%20discuss%20a%20Growth%20website%20proposal%20for%20my%20business%20in%20Siliguri."
+                target="_blank"
+                rel="noreferrer"
+                className="block text-center py-2.5 text-xs font-bold rounded-full bg-emerald-500 hover:bg-emerald-400 text-black transition-colors shadow-lg shadow-emerald-500/20"
+              >
+                Request Custom Proposal
+              </a>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-black border border-zinc-800 flex flex-col justify-between">
+              <div>
+                <h4 className="text-lg font-bold text-white mb-1">Custom Enterprise</h4>
+                <p className="text-xs text-zinc-500 mb-4">For hotel chains, schools & e-commerce</p>
+                <div className="text-xl font-bold text-white mb-1">Bespoke Scope</div>
+                <div className="text-xs text-emerald-400 mb-4 font-medium">Multi-branch & full portal integration</div>
+                <ul className="text-xs text-zinc-300 space-y-2.5 mb-6">
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Custom Booking Engine / Payment Gateway</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Student / Admin Portal & CRM sync</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Full Pan-India SEO Architecture</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> Dedicated Technical Support</li>
+                </ul>
+              </div>
+              <a
+                href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20would%20like%20to%20discuss%20an%20Enterprise%20website%20consultation%20in%20Siliguri."
+                target="_blank"
+                rel="noreferrer"
+                className="block text-center py-2.5 text-xs font-semibold rounded-full border border-zinc-700 hover:border-emerald-500 text-white transition-colors"
+              >
+                Discuss Enterprise Scope
+              </a>
             </div>
           </div>
         </div>

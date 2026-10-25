@@ -85,8 +85,8 @@ export default function CheapVsPremiumArticlePage() {
               <thead>
                 <tr className="bg-zinc-900/90 text-white border-b border-zinc-800">
                   <th className="p-4 font-semibold">Factor</th>
-                  <th className="p-4 font-semibold text-red-400">₹5,000 Template Site</th>
-                  <th className="p-4 font-semibold text-emerald-400">₹45,000 Custom Next.js Build</th>
+                  <th className="p-4 font-semibold text-red-400">Cheap Freelancer Template</th>
+                  <th className="p-4 font-semibold text-emerald-400">Custom High-Performance Build</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-800/80">
@@ -155,16 +155,16 @@ export default function CheapVsPremiumArticlePage() {
 
           <div className="space-y-4 my-6">
             <div className="p-5 rounded-xl bg-zinc-950 border border-zinc-800">
-              <h4 className="font-bold text-white mb-1">When is a ₹15,000 Starter Site enough?</h4>
+              <h4 className="font-bold text-white mb-1">When is a Starter Website enough?</h4>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                If you are a solo freelancer, personal hobbyist, or just need a simple digital visiting card to put on your visiting card. You don&apos;t expect high Google organic traffic; you just need a professional presence.
+                If you are a solo freelancer, personal hobbyist, or just need a simple digital card to put on your visiting card. You don&apos;t expect high Google organic traffic; you just need a professional presence.
               </p>
             </div>
 
             <div className="p-5 rounded-xl bg-zinc-950 border border-emerald-500/40">
-              <h4 className="font-bold text-emerald-400 mb-1">When MUST you invest in a ₹45,000 – ₹85,000 Custom Build?</h4>
+              <h4 className="font-bold text-emerald-400 mb-1">When MUST you invest in a Custom Performance Build?</h4>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                If you run a real business (hotel, clinic, coaching academy, B2B firm, contractor) where a single client is worth ₹20,000 to ₹5,00,000. In this case, saving ₹25,000 on a cheap website that fails to convert customers is the most expensive mistake you can make.
+                If you run a real business (hotel, clinic, coaching academy, B2B firm, contractor) where a single client is worth ₹20,000 to ₹5,00,000. In this case, choosing a slow, unoptimized template that fails to capture customer inquiries is the most expensive mistake you can make.
               </p>
             </div>
           </div>

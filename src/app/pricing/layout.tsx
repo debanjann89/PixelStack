@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Web Design Pricing | Transparent Website Cost Plans — D&B Digitals',
-  description: 'Transparent web design pricing for small businesses. From starter websites at ₹15,000 to custom enterprise builds. No hidden fees. See what you get at every tier.',
-  keywords: 'web design pricing, website cost India, web development packages, website design plans, affordable web design agency',
+  title: 'Web Design Pricing & Packages | Custom Website Quotes — D&B Digitals',
+  description: 'Custom web design pricing and tailored investment packages. Flexible tiers from local business starter sites to custom enterprise platforms. Request an instant quote.',
+  keywords: 'web design pricing, website cost India, web development packages, website design plans, custom website quote agency',
   alternates: {
     canonical: 'https://dnbdigitals.in/pricing',
   },
@@ -19,8 +19,8 @@ export default function PricingLayout({
   const webPage = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Web Design Pricing | Transparent Website Cost Plans',
-    description: 'Transparent web design pricing for small businesses. From starter websites at ₹15,000 to custom enterprise builds. No hidden fees. See what you get at every tier.',
+    name: 'Web Design Pricing & Packages | Custom Website Quotes',
+    description: 'Custom web design pricing and tailored investment packages. Flexible tiers from local business starter sites to custom enterprise platforms. Request an instant quote.',
     url: `${baseUrl}/pricing`,
   };
 

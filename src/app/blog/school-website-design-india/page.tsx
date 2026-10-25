@@ -110,29 +110,41 @@ export default function SchoolWebsiteArticlePage() {
               <thead>
                 <tr className="bg-zinc-900/90 text-white border-b border-zinc-800">
                   <th className="p-4 font-semibold">Institution Type</th>
-                  <th className="p-4 font-semibold">Cost (INR)</th>
+                  <th className="p-4 font-semibold">Scope & Model</th>
                   <th className="p-4 font-semibold">Features Included</th>
-                  <th className="p-4 font-semibold">Timeline</th>
+                  <th className="p-4 font-semibold">Inquiry</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-800/80">
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Pre-School / Daycare</td>
-                  <td className="p-4 text-white">₹18,000 – ₹32,000</td>
+                  <td className="p-4 text-white">Custom Campus Scope</td>
                   <td className="p-4 text-zinc-300">Playful mobile UI, safety features showcase, WhatsApp admissions, Google Maps</td>
-                  <td className="p-4 text-zinc-400">7 – 10 Days</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20am%20interested%20in%20a%20quote%20for%20a%20Pre-School%20website." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">K-12 Private High School</td>
-                  <td className="p-4 text-white">₹45,000 – ₹85,000</td>
+                  <td className="p-4 text-white">Full Admission & Compliance Portal</td>
                   <td className="p-4 text-zinc-300">CBSE/ICSE disclosure portal, online admission form, faculty directory, campus gallery, local SEO</td>
-                  <td className="p-4 text-zinc-400">2 – 3 Weeks</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20want%20to%20discuss%20a%20K-12%20Private%20School%20website%20quote." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Multi-Campus Trust / College</td>
-                  <td className="p-4 text-white">₹95,000 – ₹1,80,000</td>
+                  <td className="p-4 text-white">Institutional Enterprise System</td>
                   <td className="p-4 text-zinc-300">Multi-institution routing, student notice board, fee gateway integration, custom admin portal</td>
-                  <td className="p-4 text-zinc-400">3 – 5 Weeks</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hello%20D%26B%20Digitals%2C%20I%20would%20like%20to%20discuss%20an%20Institutional%20College%20portal." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Discuss Scope →
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -146,7 +158,7 @@ export default function SchoolWebsiteArticlePage() {
           <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 my-6">
             <p className="text-zinc-200 font-semibold mb-2">School Enrollment Math:</p>
             <ul className="space-y-2 text-sm text-zinc-300">
-              <li>• Complete custom school website: <strong>₹45,000 (one-time)</strong></li>
+              <li>• Complete custom school website: <strong>One-time customized institutional investment</strong></li>
               <li>• Average annual student fee: <strong>₹35,000 – ₹90,000 per child</strong></li>
               <li>• If the new website drives just <strong>2 additional student admissions</strong>: <strong>The entire project is profitable in Year 1</strong></li>
               <li>• A student typically stays in school for 5 to 12 years, yielding <strong>₹2,00,000 to ₹10,00,000+ in lifetime tuition revenue</strong> from just one enrolled child.</li>

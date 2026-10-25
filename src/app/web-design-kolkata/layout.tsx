@@ -32,7 +32,7 @@ export default function KolkataLayout({
     '@id': `${baseUrl}/web-design-kolkata`,
     url: `${baseUrl}/web-design-kolkata`,
     telephone: '+918918186998',
-    priceRange: '₹15,000 - ₹2,50,000',
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Kolkata',
@@ -76,7 +76,7 @@ export default function KolkataLayout({
         name: 'What does website design cost in Kolkata?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Our website packages for Kolkata businesses start at ₹15,000 for standard business sites. Custom dynamic websites with appointment systems or lead funnels range from ₹45,000 to ₹85,000, while complex e-commerce or SaaS platforms range from ₹1,20,000 upwards.',
+          text: 'Website costs in Kolkata depend on your industry and project scope—from high-converting service websites to advanced SaaS and full-stack platforms. We offer transparent, scope-based quotations tailored to your exact business objectives with zero recurring developer royalties.',
         },
       },
       {

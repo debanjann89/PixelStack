@@ -63,7 +63,7 @@ export default function ServicesLayout({
         'name': 'How much does a custom website cost with D&B Digitals?',
         'acceptedAnswer': {
           '@type': 'Answer',
-          'text': 'Our packages start from $179 (₹15,000) for high-converting landing pages, scaling up to $5,000+ (₹1,00,000+) for complex enterprise web applications. We serve businesses in the US and India with transparent, competitive pricing.'
+          'text': 'Our website packages are custom-tailored based on your business objectives, design requirements, and features. We provide transparent, scope-based proposals for small businesses, growth brands, and enterprise portals. Contact us for an instant customized estimate.'
         }
       }
     ]

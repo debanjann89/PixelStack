@@ -65,11 +65,11 @@ const projectTypes = [
 ];
 
 const budgetRanges = [
-  'Under $500 (₹15,000)',
-  '$500 - $1,000 (₹15,000 - ₹30,000)',
-  '$1,000 - $2,500 (₹30,000 - ₹50,000)',
-  '$2,500 - $5,000 (₹50,000 - ₹1,00,000)',
-  'Above $5,000 (₹1,00,000+)',
+  'Flexible / Seeking Quote',
+  'Starter Scope (₹15k – ₹30k)',
+  'Growth Scope (₹30k – ₹60k)',
+  'Scale & Performance (₹60k – ₹1.2L)',
+  'Enterprise Portal (₹1.2L+)',
 ];
 
 /* ──────────────────────────────────────────────

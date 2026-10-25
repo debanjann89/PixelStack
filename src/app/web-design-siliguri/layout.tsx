@@ -32,7 +32,7 @@ export default function SiliguriLayout({
     '@id': `${baseUrl}/web-design-siliguri`,
     url: `${baseUrl}/web-design-siliguri`,
     telephone: '+918918186998',
-    priceRange: '₹15,000 - ₹1,50,000',
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Siliguri',
@@ -89,7 +89,7 @@ export default function SiliguriLayout({
         name: 'How much does website design cost in Siliguri?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'At D&B Digitals, professional business websites start from ₹15,000 for local service businesses and go up to ₹45,000 - ₹95,000 for custom hotel booking engines, clinic management systems, and e-commerce platforms. We offer 100% transparent pricing with no hidden charges.',
+          text: 'Website costs in Siliguri depend on your specific business goals, number of pages, and required features (like online booking, WhatsApp triggers, or custom catalogs). We provide a free consultation and a transparent, customized proposal based on your exact scope with zero hidden surprises.',
         },
       },
       {

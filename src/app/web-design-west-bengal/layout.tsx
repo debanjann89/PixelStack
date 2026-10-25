@@ -32,7 +32,7 @@ export default function WestBengalLayout({
     '@id': `${baseUrl}/web-design-west-bengal`,
     url: `${baseUrl}/web-design-west-bengal`,
     telephone: '+918918186998',
-    priceRange: '₹15,000 - ₹2,50,000',
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressRegion: 'West Bengal',

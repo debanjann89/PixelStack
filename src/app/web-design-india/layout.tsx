@@ -32,7 +32,7 @@ export default function IndiaLayout({
     '@id': `${baseUrl}/web-design-india`,
     url: `${baseUrl}/web-design-india`,
     telephone: '+918918186998',
-    priceRange: '₹15,000 - ₹3,00,000',
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'IN',
@@ -62,7 +62,7 @@ export default function IndiaLayout({
         name: 'What does a professional website cost in India?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'At D&B Digitals, professional business websites start from ₹15,000 for local service providers, ₹45,000 for dynamic growth websites with online booking, and ₹95,000+ for enterprise platforms. We offer clear, transparent pricing with zero recurring developer royalties.',
+          text: 'Website costs in India vary depending on features, page count, and technical architecture (Next.js vs templates). We provide customized project proposals based on your business objectives, with clear milestone deliverables and zero recurring developer royalties.',
         },
       },
       {

@@ -107,7 +107,7 @@ export default function IndiaWebDesignPage() {
               href="/pricing"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-semibold rounded-full transition-all text-base"
             >
-              Check ₹ Transparent Pricing
+              Explore Project Packages
             </Link>
           </motion.div>
 
@@ -116,7 +116,7 @@ export default function IndiaWebDesignPage() {
               { title: 'Sub-1s Mobile Speed', desc: 'Engineered for 5G/4G Jio & Airtel' },
               { title: 'Direct WhatsApp Funnels', desc: 'Instant 1-tap customer calls & chats' },
               { title: 'National & Local SEO', desc: 'Built-in schema for Google top ranks' },
-              { title: 'Transparent ₹ Pricing', desc: 'No monthly developer lock-ins' },
+              { title: 'Tailored Investment', desc: 'No monthly developer lock-ins' },
             ].map((f, i) => (
               <div key={i} className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800/60">
                 <div className="flex items-center gap-2 text-emerald-400 font-semibold text-sm mb-1">

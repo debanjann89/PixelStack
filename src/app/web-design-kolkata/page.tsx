@@ -240,7 +240,7 @@ export default function KolkataWebDesignPage() {
           {[
             {
               q: 'How much does a custom business website cost in Kolkata?',
-              a: 'Starter business packages begin at ₹15,000 to ₹35,000. Custom dynamic websites with appointment systems, blogs, and SEO funnels are ₹45,000 to ₹85,000. Full-scale e-commerce and web portals are ₹1,20,000+.'
+              a: 'Website costs in Kolkata depend on your business model, feature complexity, and page requirements. We create customized project proposals for businesses in Salt Lake, New Town, and South Kolkata with clear milestones and zero hidden fees. Contact us on WhatsApp for an instant estimate.'
             },
             {
               q: 'Why should we choose Next.js over standard WordPress?',

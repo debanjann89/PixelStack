@@ -117,7 +117,7 @@ export default function WestBengalWebDesignPage() {
               href="/pricing"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-semibold rounded-full transition-all text-base"
             >
-              See Pricing in INR (₹)
+              Explore Project Packages
             </Link>
           </motion.div>
         </div>

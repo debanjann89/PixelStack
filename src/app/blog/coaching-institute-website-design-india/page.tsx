@@ -105,11 +105,11 @@ export default function CoachingInstituteArticlePage() {
 
           <h2 className="flex items-center gap-3 text-2xl font-bold text-white mt-12 mb-6">
             <DollarSign className="w-7 h-7 text-emerald-400 shrink-0" />
-            3. Coaching Website Cost Breakdown in India (2026)
+            3. Coaching Website Packages & Investment Models in India
           </h2>
 
           <p>
-            How much should you realistically budget? Here is a transparent breakdown:
+            Rather than paying for rigid, one-size-fits-all packages, modern institutes invest based on their specific batch size and admission goals:
           </p>
 
           {/* Pricing Table */}
@@ -118,29 +118,41 @@ export default function CoachingInstituteArticlePage() {
               <thead>
                 <tr className="bg-zinc-900/90 text-white border-b border-zinc-800">
                   <th className="p-4 font-semibold">Tier</th>
-                  <th className="p-4 font-semibold">Cost (INR)</th>
+                  <th className="p-4 font-semibold">Scope & Delivery</th>
                   <th className="p-4 font-semibold">Included Features</th>
-                  <th className="p-4 font-semibold">Best For</th>
+                  <th className="p-4 font-semibold">Inquiry</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-800/80">
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Starter Academy</td>
-                  <td className="p-4 text-white">₹18,000 – ₹30,000</td>
+                  <td className="p-4 text-white">Custom Small-Batch Scope</td>
                   <td className="p-4 text-zinc-300">5-7 pages, results gallery, faculty list, WhatsApp integration, mobile SEO</td>
-                  <td className="p-4 text-zinc-400">Single center tuition classes, local subject tutors</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20am%20interested%20in%20a%20quote%20for%20the%20Starter%20Coaching%20website." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Growth Admission Engine</td>
-                  <td className="p-4 text-white">₹45,000 – ₹75,000</td>
+                  <td className="p-4 text-white">Full Admission Funnel</td>
                   <td className="p-4 text-zinc-300">Prospectus lead capture, test series landing pages, online admission form, rank filter, local SEO</td>
-                  <td className="p-4 text-zinc-400">Established JEE/NEET/WBJEE institutes (2-5 branches)</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20want%20to%20discuss%20a%20Growth%20Admission%20website%20quote." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Get Quote →
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-bold text-emerald-400">Multi-Branch EdTech Portal</td>
-                  <td className="p-4 text-white">₹95,000 – ₹1,80,000</td>
+                  <td className="p-4 text-white">Enterprise Architecture</td>
                   <td className="p-4 text-zinc-300">Student portal, test score upload, fee payment gateway, multi-city branch pages, LMS sync</td>
-                  <td className="p-4 text-zinc-400">Regional coaching chains & career colleges</td>
+                  <td className="p-4">
+                    <a href="https://wa.me/918918186998?text=Hi%20D%26B%20Digitals%2C%20I%20would%20like%20to%20discuss%20an%20EdTech%20Portal%20build." target="_blank" rel="noreferrer" className="text-emerald-400 font-semibold hover:underline text-xs">
+                      Discuss Scope →
+                    </a>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -158,10 +170,10 @@ export default function CoachingInstituteArticlePage() {
           <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 my-6">
             <p className="text-zinc-200 font-semibold mb-2">The Admission Math:</p>
             <ul className="space-y-2 text-sm text-zinc-300">
-              <li>• A professional custom website costs: <strong>₹35,000 (one-time)</strong></li>
-              <li>• Average student tuition fee: <strong>₹45,000 / year</strong></li>
-              <li>• If the website brings in just <strong>2 additional students</strong> through Google & WhatsApp: <strong>₹90,000 revenue</strong></li>
-              <li>• <strong>Net Profit after paying for website: +₹55,000 in Year 1 alone.</strong></li>
+              <li>• Custom Admission Website: <strong>One-time customized project investment</strong></li>
+              <li>• Average student tuition fee: <strong>₹35,000 – ₹70,000 / year</strong></li>
+              <li>• If the website brings in just <strong>2 additional students</strong> through Google & WhatsApp: <strong>₹70,000 – ₹1,40,000 in new revenue</strong></li>
+              <li>• <strong>Result:</strong> The website pays for itself and produces continuous student leads every single admission cycle.</li>
             </ul>
           </div>
 
