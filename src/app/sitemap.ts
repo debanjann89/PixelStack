@@ -184,7 +184,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // Service + City Landing Pages
+    {
+      url: `${baseUrl}/digital-marketing-siliguri`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/graphic-design-kolkata`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+
     // India & West Bengal City Landing Pages
+    {
+      url: `${baseUrl}/seo-services-siliguri`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/social-media-management-siliguri`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/web-design-siliguri`,
       lastModified: currentDate,

@@ -31,6 +31,13 @@ const FOOTER_LOCATIONS = [
   { name: 'All India', path: '/web-design-india' },
 ];
 
+const FOOTER_SERVICES = [
+  { name: 'SEO Services – Siliguri', path: '/seo-services-siliguri' },
+  { name: 'Social Media Management', path: '/social-media-management-siliguri' },
+  { name: 'Digital Marketing – Siliguri', path: '/digital-marketing-siliguri' },
+  { name: 'Graphic Design – Kolkata', path: '/graphic-design-kolkata' },
+];
+
 export default function Footer() {
   const pathname = usePathname();
   const router = useRouter();
@@ -113,6 +120,30 @@ export default function Footer() {
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                 {loc.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 3: Digital Services */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center justify-between pt-6 border-t border-zinc-900/40">
+          <div className="md:col-span-4">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-violet-400 block mb-1">
+              Digital Services
+            </span>
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              SEO, social media, graphic design, and full digital marketing for Indian businesses.
+            </p>
+          </div>
+          <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-2.5">
+            {FOOTER_SERVICES.map((svc) => (
+              <Link
+                key={svc.path}
+                href={svc.path}
+                className="text-xs text-zinc-300 hover:text-violet-400 transition-colors flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+                {svc.name}
               </Link>
             ))}
           </div>
