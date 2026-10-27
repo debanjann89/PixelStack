@@ -6,6 +6,33 @@ import { motion } from 'framer-motion';
 
 const ARTICLES = [
   {
+    slug: 'social-media-management-cost-india',
+    title: 'Social Media Management Cost in India 2026: What You Actually Pay',
+    excerpt: '₹2,000 freelancer vs ₹15,000 local agency vs ₹80,000 Mumbai firm. An honest breakdown of what social media management actually costs in India, what is included, and how to avoid costly mistakes.',
+    category: 'Digital Marketing & Social Media',
+    date: '2026-10-27',
+    readTime: '8 min read',
+    author: 'Debanjan Amin',
+  },
+  {
+    slug: 'digital-marketing-for-restaurants-india',
+    title: 'Digital Marketing for Restaurants in India 2026: How to Get More Customers Without Burning Money on Zomato',
+    excerpt: 'Most restaurant owners spend ₹20,000/month on Zomato and still break even. Learn how Indian restaurants are using Instagram Reels, Google Business Profile, and WhatsApp marketing to build a direct, loyal customer base.',
+    category: 'Restaurant Marketing',
+    date: '2026-10-27',
+    readTime: '10 min read',
+    author: 'Debanjan Amin',
+  },
+  {
+    slug: 'how-to-get-more-students-for-coaching-institute-online',
+    title: 'How to Get More Students for Your Coaching Institute Online (2026)',
+    excerpt: 'Struggling to fill your next batch? Discover how Indian coaching institutes and tuition centers use Google Local SEO, faculty reels, and WhatsApp admission funnels to get 3x more enrollments.',
+    category: 'Education & Lead Gen',
+    date: '2026-10-27',
+    readTime: '9 min read',
+    author: 'Debanjan Amin',
+  },
+  {
     slug: 'coaching-institute-website-design-india',
     title: 'Coaching Institute Website Design India: How to Get 3x More Student Inquiries in 2026',
     excerpt: 'Why pamphlet marketing is failing Indian coaching academies — and how a high-converting website captures student admissions directly via WhatsApp.',

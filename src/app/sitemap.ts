@@ -237,6 +237,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // New India-focused Blog Articles
     {
+      url: `${baseUrl}/blog/social-media-management-cost-india`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/digital-marketing-for-restaurants-india`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/how-to-get-more-students-for-coaching-institute-online`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog/coaching-institute-website-design-india`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
