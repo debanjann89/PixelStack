@@ -12,23 +12,23 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://dnbdigitals.in";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "D&B Digitals | Premium Web Development & Digital Growth Agency",
+    default: "Web Design, SEO & Digital Marketing Agency in Siliguri — D&B Digitals",
     template: "%s | D&B Digitals",
   },
   description:
-    "D&B Digitals builds ultra-fast, conversion-focused custom websites, UI/UX design systems, and technical SEO for growing businesses in the US and India.",
+    "D&B Digitals is a digital marketing agency in Siliguri, India. We build high-speed websites, do SEO, social media management, graphic design & video editing for Indian businesses. WhatsApp us today.",
   keywords: [
     "D&B Digitals",
     "DNB Digitals",
-    "Web Development Agency",
-    "Next.js Web Developer",
-    "Website Redesign Services",
-    "UI UX Design Agency",
-    "SEO Optimization Services",
-    "Web Design Siliguri",
-    "Custom React Website",
-    "B2B Web Development India",
-    "E-commerce Development Agency",
+    "web design agency Siliguri",
+    "digital marketing agency Siliguri",
+    "SEO services Siliguri",
+    "social media management India",
+    "graphic design Kolkata",
+    "website design India",
+    "web developer North Bengal",
+    "digital marketing West Bengal",
+    "website design company Siliguri",
     "Debanjan Amin",
     "Banashree Das"
   ],
@@ -56,19 +56,19 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "D&B Digitals | Premium Web Development & Digital Growth Agency",
+    title: "Web Design, SEO & Digital Marketing Agency in Siliguri — D&B Digitals",
     description:
-      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO for businesses worldwide.",
+      "D&B Digitals builds high-speed websites, handles SEO, social media, graphic design & video editing for businesses across India. Based in Siliguri, West Bengal.",
     url: SITE_URL,
     siteName: "D&B Digitals",
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "D&B Digitals | Premium Web Development & Digital Growth Agency",
+    title: "Web Design, SEO & Digital Marketing Agency in Siliguri — D&B Digitals",
     description:
-      "Building modern digital experiences that drive growth. Custom web development, UI/UX design, and technical SEO for businesses worldwide.",
+      "D&B Digitals builds high-speed websites, handles SEO, social media, graphic design & video editing for businesses across India. Based in Siliguri, West Bengal.",
     creator: "@DBDigitals",
   },
   robots: {
@@ -102,7 +102,7 @@ export default function RootLayout({
     "url": SITE_URL,
     "telephone": "+918918186998",
     "email": "sayanamin.apd2004@gmail.com",
-    "priceRange": "$179 - $5,000+",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Siliguri, West Bengal",
@@ -150,8 +150,10 @@ export default function RootLayout({
       "https://linkedin.com/in/banashreedas"
     ],
     "areaServed": [
-      { "@type": "Country", "name": "United States" },
-      { "@type": "Country", "name": "India" }
+      { "@type": "Country", "name": "India" },
+      { "@type": "State", "name": "West Bengal" },
+      { "@type": "City", "name": "Siliguri" },
+      { "@type": "City", "name": "Kolkata" }
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -162,23 +164,7 @@ export default function RootLayout({
           "itemOffered": {
             "@type": "Service",
             "name": "Website Development",
-            "description": "High-performance full-stack websites using Next.js 15, TypeScript, and modern frameworks."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "UI/UX Design",
-            "description": "Interface systems that are clean, professional, and intuitive."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Website Redesign",
-            "description": "Transform slow WordPress/Wix sites into modern, high-speed digital assets."
+            "description": "High-performance custom websites built with Next.js for Indian businesses — hotels, clinics, coaching institutes, and e-commerce."
           }
         },
         {
@@ -186,7 +172,47 @@ export default function RootLayout({
           "itemOffered": {
             "@type": "Service",
             "name": "SEO Optimization",
-            "description": "Comprehensive technical SEO foundations from clean code to search console indexing."
+            "description": "Local SEO, technical SEO, Google Business Profile optimization, and content strategy to rank on Google's first page in India."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Social Media Management",
+            "description": "Instagram, Facebook, and LinkedIn management with reels, carousels, stories, and monthly analytics for Indian brands."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Digital Marketing",
+            "description": "Full-service digital marketing including Meta Ads, Google Ads, content marketing, and lead generation funnels."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Graphic Design",
+            "description": "Logo design, brand identity kits, social media creatives, brochures, and packaging design for businesses across India."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Video Editing",
+            "description": "Professional video editing for Instagram Reels, YouTube Shorts, promotional videos, and brand storytelling."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "UI/UX Design",
+            "description": "Clean, professional interface design focused on mobile-first experiences and lead generation."
           }
         }
       ]
@@ -207,7 +233,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <script
           dangerouslySetInnerHTML={{

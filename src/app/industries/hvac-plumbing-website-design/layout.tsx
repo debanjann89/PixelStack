@@ -45,8 +45,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       url: 'https://dnbdigitals.in',
     },
     areaServed: [
-      { '@type': 'Country', name: 'United States' },
       { '@type': 'Country', name: 'India' },
+      { '@type': 'State', name: 'West Bengal' },
     ],
     description: 'Custom website design for plumbing, HVAC, and home service businesses featuring emergency dispatch CTAs, online booking, and local SEO optimization.',
   };

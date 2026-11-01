@@ -45,8 +45,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       url: 'https://dnbdigitals.in',
     },
     areaServed: [
-      { '@type': 'Country', name: 'United States' },
       { '@type': 'Country', name: 'India' },
+      { '@type': 'State', name: 'West Bengal' },
+      { '@type': 'State', name: 'Sikkim' },
     ],
     description: 'Premium website design for hotels, resorts, and hospitality businesses featuring direct booking systems, virtual tours, and OTA commission reduction strategies.',
   };

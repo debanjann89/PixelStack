@@ -100,18 +100,54 @@ export default function ArticleCostPage() {
             <div className="bg-[#0a0a0a] border border-zinc-800 rounded-2xl p-8 mt-12">
               <h3 className="text-xl font-bold mb-4">About the Author</h3>
               <p className="text-zinc-400 text-sm mb-0">
-                Debanjan Amin is the Lead Developer and Co-Founder at D&B Digitals. With years of experience building high-performance web applications, he specializes in crafting digital experiences that drive real business growth for clients across the US and India.
+                Debanjan Amin is the Lead Developer and Co-Founder at D&amp;B Digitals. With years of experience building high-performance web applications, he specializes in crafting digital experiences that drive real business growth for clients in West Bengal and across India.
               </p>
             </div>
 
             <div className="mt-16 text-center bg-emerald-950/20 border border-emerald-900/50 rounded-2xl p-10">
               <h2 className="text-3xl font-bold mb-4 text-white">Ready to invest in your business?</h2>
               <p className="text-zinc-300 mb-8 max-w-lg mx-auto">
-                Stop losing customers to outdated design. Let's build a website that works as hard as you do.
+                Stop losing customers to outdated design. Let&apos;s build a website that works as hard as you do.
               </p>
-              <Link href="/contact" className="inline-block bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 px-8 rounded-full transition-colors">
-                Get a Free Consultation
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/pricing" className="inline-block bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 px-8 rounded-full transition-colors">
+                  View Scope &amp; Pricing
+                </Link>
+                <Link href="/contact" className="inline-block border border-zinc-700 hover:border-zinc-500 text-white font-medium py-3 px-8 rounded-full transition-colors">
+                  Get a Free Consultation
+                </Link>
+              </div>
+            </div>
+
+            {/* Related Articles */}
+            <div className="mt-16 pt-10 border-t border-zinc-800">
+              <h3 className="text-xl font-bold text-white mb-6">Related Articles</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Link
+                  href="/blog/cheap-vs-premium-website-india"
+                  className="group block bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 transition-all no-underline text-left"
+                >
+                  <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Business &amp; Pricing</p>
+                  <p className="text-white font-semibold text-sm group-hover:text-emerald-400 transition-colors leading-snug">
+                    ₹15,000 vs ₹1,50,000 Website: Kya Farak Hai? (The Real Indian Business Guide)
+                  </p>
+                  <span className="text-zinc-500 text-xs mt-3 inline-flex items-center gap-1">
+                    Read Article &rarr;
+                  </span>
+                </Link>
+                <Link
+                  href="/blog/doctor-clinic-website-cost-india"
+                  className="group block bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 transition-all no-underline text-left"
+                >
+                  <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Healthcare</p>
+                  <p className="text-white font-semibold text-sm group-hover:text-emerald-400 transition-colors leading-snug">
+                    Doctor &amp; Clinic Website Cost in India (2026): The Complete ₹ Pricing &amp; ROI Guide
+                  </p>
+                  <span className="text-zinc-500 text-xs mt-3 inline-flex items-center gap-1">
+                    Read Article &rarr;
+                  </span>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

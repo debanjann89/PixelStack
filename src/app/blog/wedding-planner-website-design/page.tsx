@@ -183,10 +183,42 @@ export default function WeddingPlannerArticlePage() {
                 Chat on WhatsApp Now
               </a>
               <Link
-                href="/portfolio"
-                className="border border-zinc-700 hover:border-zinc-500 text-white font-medium px-6 py-3 rounded-full transition-colors inline-flex items-center justify-center text-sm"
+                href="/graphic-design-kolkata"
+                className="border border-zinc-700 hover:border-zinc-500 text-white font-medium px-6 py-3 rounded-full transition-colors inline-flex items-center justify-center text-sm gap-2"
               >
-                Explore Agency Portfolio
+                Graphic &amp; Brand Design
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Related Articles */}
+          <div className="mt-16 pt-10 border-t border-zinc-800">
+            <h3 className="text-xl font-bold text-white mb-6">Related Articles</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link
+                href="/blog/social-media-management-cost-india"
+                className="group block bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 transition-all no-underline"
+              >
+                <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Social Media &amp; Pricing</p>
+                <p className="text-white font-semibold text-sm group-hover:text-emerald-400 transition-colors leading-snug">
+                  Social Media Management Cost in India 2026: What You Actually Pay
+                </p>
+                <span className="text-zinc-500 text-xs mt-3 inline-flex items-center gap-1">
+                  Read Article <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+              <Link
+                href="/blog/cheap-vs-premium-website-india"
+                className="group block bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 transition-all no-underline"
+              >
+                <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Business &amp; Pricing</p>
+                <p className="text-white font-semibold text-sm group-hover:text-emerald-400 transition-colors leading-snug">
+                  ₹15,000 vs ₹1,50,000 Website: Kya Farak Hai? (The Real Indian Business Guide)
+                </p>
+                <span className="text-zinc-500 text-xs mt-3 inline-flex items-center gap-1">
+                  Read Article <ArrowRight className="w-3 h-3" />
+                </span>
               </Link>
             </div>
           </div>

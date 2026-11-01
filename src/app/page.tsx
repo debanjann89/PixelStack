@@ -84,12 +84,12 @@ function ScrollReveal({ children, delay = 0 }: { children: React.ReactNode; dela
 
 // ─── Data ────────────────────────────────────────────────
 const SERVICES = [
-  { num: '01', name: 'Web Development', desc: 'Crafting bespoke digital experiences.', icon: Code },
-  { num: '02', name: 'UI/UX Design', desc: 'Designing interfaces that convert.', icon: Layers },
-  { num: '03', name: 'Website Redesign', desc: 'Transforming your online presence.', icon: RefreshCw },
-  { num: '04', name: 'SEO Optimization', desc: 'Driving organic traffic and visibility.', icon: Search },
-  { num: '05', name: 'Digital Marketing', desc: 'Strategic growth campaigns.', icon: Megaphone },
-  { num: '06', name: 'Social Media', desc: 'Building engaged communities.', icon: Share2 },
+  { num: '01', name: 'Web Development', desc: 'Custom Next.js websites built for Indian businesses & high conversions.', icon: Code, href: '/web-design-india' },
+  { num: '02', name: 'SEO Optimization', desc: 'Rank on Google Page 1 with local Siliguri & pan-India SEO.', icon: Search, href: '/seo-services-siliguri' },
+  { num: '03', name: 'Social Media & Reels', desc: 'Instagram management, reels production & audience growth.', icon: Share2, href: '/social-media-management-siliguri' },
+  { num: '04', name: 'Digital Marketing', desc: 'End-to-end campaigns, Meta ads & customer acquisition funnels.', icon: Megaphone, href: '/digital-marketing-siliguri' },
+  { num: '05', name: 'Graphic Design', desc: 'Brand identity, logos, packaging & scroll-stopping creatives.', icon: Layers, href: '/graphic-design-kolkata' },
+  { num: '06', name: 'Website Redesign', desc: 'Transform slow, outdated WordPress/Wix sites into modern assets.', icon: RefreshCw, href: '/services' },
 ];
 
 const MARQUEE_ITEMS = [
@@ -190,12 +190,12 @@ export default function HomePage() {
           className="px-4 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-zinc-400 text-xs font-medium uppercase tracking-[0.15em] mb-8 flex items-center gap-2"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          Digital Agency for Modern Businesses
+          Web Design • SEO • Social Media • Siliguri &amp; India
         </motion.span>
 
         {/* Main headline — character split */}
         <SplitText
-          text="We Build Digital Experiences"
+          text="Web Design & Digital Growth Agency"
           className="heading-hero text-white max-w-6xl mb-6"
           delay={1.8}
           highlightWords={['Digital']}
@@ -206,9 +206,9 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 2.4 }}
-          className="text-zinc-500 text-lg md:text-xl max-w-2xl leading-relaxed mb-12"
+          className="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-12"
         >
-          Websites that convert. Brands that resonate. Growth that compounds.
+          High-performance custom websites, local SEO, and social media management engineered for Indian businesses — from Siliguri to pan-India.
         </motion.p>
 
         {/* CTA buttons */}
@@ -288,7 +288,7 @@ export default function HomePage() {
         <div className="border-t border-zinc-800">
           {SERVICES.map((service, i) => (
             <ScrollReveal key={service.num} delay={i * 0.05}>
-              <Link href="/services" className="service-row group">
+              <Link href={service.href || '/services'} className="service-row group">
                 <span className="service-number">{service.num}</span>
                 <span className="service-name text-xl md:text-3xl">{service.name}</span>
                 <span className="service-desc hidden md:block">{service.desc}</span>
@@ -486,12 +486,12 @@ export default function HomePage() {
           </ScrollReveal>
           <div className="space-y-4">
             {[
-              { q: 'How long does it take to build a website?', a: 'Most projects are delivered within 2–4 weeks depending on complexity. A simple landing page can be ready in under 10 days, while full-stack web applications with admin dashboards typically take 4–6 weeks.' },
-              { q: 'Do you work with businesses outside India?', a: 'Absolutely. We primarily serve small-to-medium businesses in the United States and India. Our workflow is fully remote — we communicate via video calls, Slack, and email across time zones.' },
-              { q: 'What is included in your web development packages?', a: 'Every package includes custom UI/UX design, hand-coded development in Next.js 15, mobile responsiveness, basic SEO setup, contact form integration, and post-launch support. Higher tiers add admin dashboards, CRM integration, and advanced SEO.' },
-              { q: 'Can you redesign my existing website?', a: 'Yes — website redesign is one of our core services. We migrate your content to a modern Next.js architecture, dramatically improving speed, design, and search engine visibility without losing your existing SEO equity.' },
-              { q: 'Do you offer ongoing maintenance and support?', a: 'Yes. All packages include 30–365 days of post-launch support depending on the tier. We also offer monthly retainer plans for ongoing updates, performance monitoring, and content changes.' },
-              { q: 'What industries do you specialize in?', a: 'We have deep experience building websites for home service businesses (plumbing, HVAC, roofing), hotels & resorts, real estate agencies, dental & healthcare clinics, restaurants, and eCommerce brands.' },
+              { q: 'How long does it take to build a website?', a: 'Most projects are delivered within 1–3 weeks depending on complexity. A dedicated landing page can be ready in under 7 days, while full multi-page business websites with WhatsApp triggers and CMS capabilities take 2–3 weeks.' },
+              { q: 'Do you work with businesses across West Bengal and India?', a: 'Yes! We are based locally in Siliguri, North Bengal, and serve clients across Kolkata, West Bengal, and pan-India. Our workflow is fully transparent and WhatsApp-first for rapid communication and approvals.' },
+              { q: 'What is included in your digital agency packages?', a: 'We offer full-service solutions: custom Next.js web development, local & technical SEO, social media management (Instagram reels, graphics, captions), Meta & Google ads, and brand design.' },
+              { q: 'Can you redesign my existing website without losing Google rankings?', a: 'Yes — website redesign is one of our specialties. We migrate your content to modern Next.js architecture, preserve all existing URL structures and SEO equity with 301 redirects, and boost your mobile speed to 95+.' },
+              { q: 'Do you offer ongoing maintenance and support?', a: 'Yes. All packages include post-launch support and warranty. We also offer monthly retainer plans for continuous SEO ranking tracking, Instagram management, and website updates.' },
+              { q: 'What industries do you specialize in?', a: 'We specialize in coaching institutes & schools, clinics & doctors, hotels & resorts (North Bengal & Sikkim), restaurants & cafes, retail boutiques, and real estate developers across India.' },
             ].map((faq, i) => (
               <ScrollReveal key={i} delay={i * 0.05}>
                 <details className="group rounded-2xl bg-[#0a0a0a] border border-zinc-800/60 overflow-hidden">
@@ -515,12 +515,12 @@ export default function HomePage() {
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
               mainEntity: [
-                { '@type': 'Question', name: 'How long does it take to build a website?', acceptedAnswer: { '@type': 'Answer', text: 'Most projects are delivered within 2–4 weeks depending on complexity. A simple landing page can be ready in under 10 days, while full-stack web applications with admin dashboards typically take 4–6 weeks.' } },
-                { '@type': 'Question', name: 'Do you work with businesses outside India?', acceptedAnswer: { '@type': 'Answer', text: 'Absolutely. We primarily serve small-to-medium businesses in the United States and India. Our workflow is fully remote — we communicate via video calls, Slack, and email across time zones.' } },
-                { '@type': 'Question', name: 'What is included in your web development packages?', acceptedAnswer: { '@type': 'Answer', text: 'Every package includes custom UI/UX design, hand-coded development in Next.js 15, mobile responsiveness, basic SEO setup, contact form integration, and post-launch support.' } },
-                { '@type': 'Question', name: 'Can you redesign my existing website?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — website redesign is one of our core services. We migrate your content to a modern Next.js architecture, dramatically improving speed, design, and search engine visibility.' } },
-                { '@type': 'Question', name: 'Do you offer ongoing maintenance and support?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. All packages include 30–365 days of post-launch support depending on the tier. We also offer monthly retainer plans for ongoing updates, performance monitoring, and content changes.' } },
-                { '@type': 'Question', name: 'What industries do you specialize in?', acceptedAnswer: { '@type': 'Answer', text: 'We have deep experience building websites for home service businesses (plumbing, HVAC, roofing), hotels & resorts, real estate agencies, dental & healthcare clinics, restaurants, and eCommerce brands.' } },
+                { '@type': 'Question', name: 'How long does it take to build a website?', acceptedAnswer: { '@type': 'Answer', text: 'Most projects are delivered within 1–3 weeks depending on complexity. A dedicated landing page can be ready in under 7 days, while full multi-page business websites with WhatsApp triggers and CMS capabilities take 2–3 weeks.' } },
+                { '@type': 'Question', name: 'Do you work with businesses across West Bengal and India?', acceptedAnswer: { '@type': 'Answer', text: 'Yes! We are based locally in Siliguri, North Bengal, and serve clients across Kolkata, West Bengal, and pan-India. Our workflow is fully transparent and WhatsApp-first for rapid communication and approvals.' } },
+                { '@type': 'Question', name: 'What is included in your digital agency packages?', acceptedAnswer: { '@type': 'Answer', text: 'We offer full-service solutions: custom Next.js web development, local & technical SEO, social media management (Instagram reels, graphics, captions), Meta & Google ads, and brand design.' } },
+                { '@type': 'Question', name: 'Can you redesign my existing website without losing Google rankings?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — website redesign is one of our specialties. We migrate your content to modern Next.js architecture, preserve all existing URL structures and SEO equity with 301 redirects, and boost your mobile speed to 95+.' } },
+                { '@type': 'Question', name: 'Do you offer ongoing maintenance and support?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. All packages include post-launch support and warranty. We also offer monthly retainer plans for continuous SEO ranking tracking, Instagram management, and website updates.' } },
+                { '@type': 'Question', name: 'What industries do you specialize in?', acceptedAnswer: { '@type': 'Answer', text: 'We specialize in coaching institutes & schools, clinics & doctors, hotels & resorts (North Bengal & Sikkim), restaurants & cafes, retail boutiques, and real estate developers across India.' } },
               ],
             }),
           }}

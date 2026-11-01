@@ -3,24 +3,26 @@ import type { Metadata } from 'next';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://dnbdigitals.in';
 
 export const metadata: Metadata = {
-  title: 'Our Services | Web Development, UI/UX Design & SEO',
+  title: 'Our Services | Web Development, SEO, Social Media & Graphic Design',
   description:
-    'Custom Next.js website development, modern UI/UX design, site redesigns, and technical SEO services engineered to scale your business by D&B Digitals.',
+    'Full-suite digital agency services by D&B Digitals: custom Next.js websites, local & technical SEO, Instagram & social media management, video editing, and brand identity design across India.',
   keywords: [
-    'Website Development Services',
+    'Website Development Services India',
     'Custom UI UX Design',
     'Website Redesign Services',
-    'SEO Optimization India',
-    'Nextjs Agency Services',
-    'Digital Marketing Agency Siliguri'
+    'SEO Services Siliguri',
+    'Social Media Management India',
+    'Graphic Design Kolkata',
+    'Digital Marketing Agency Siliguri',
+    'Nextjs Agency India'
   ],
   alternates: {
     canonical: `${SITE_URL}/services`,
   },
   openGraph: {
-    title: 'Our Services | Web Development, UI/UX Design & SEO | D&B Digitals',
+    title: 'Our Services | Web Development, SEO, Social Media & Design | D&B Digitals',
     description:
-      'High-performance Next.js web development, UI/UX design systems, and SEO foundations built to convert visitors into loyal clients.',
+      'High-performance Next.js websites, Google SEO foundations, Instagram management, and creative design built to turn searchers into paying clients.',
     url: `${SITE_URL}/services`,
   },
 };

@@ -130,16 +130,47 @@ export default function ArticleWixWordpressPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/contact"
+                  href="/seo-services-siliguri"
                   className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold px-6 py-3 rounded-full transition-colors inline-flex items-center justify-center gap-2"
                 >
-                  Book a Free Strategy Call <ArrowRight className="w-4 h-4" />
+                  Explore SEO Services <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/portfolio"
                   className="border border-zinc-700 hover:border-zinc-500 text-white font-medium px-6 py-3 rounded-full transition-colors inline-flex items-center justify-center"
                 >
                   Explore Our Work
+                </Link>
+              </div>
+            </div>
+
+            {/* Related Articles */}
+            <div className="mt-16 pt-10 border-t border-zinc-800">
+              <h3 className="text-xl font-bold text-white mb-6">Related Articles</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Link
+                  href="/blog/cheap-vs-premium-website-india"
+                  className="group block bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 transition-all no-underline"
+                >
+                  <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Pricing &amp; Value</p>
+                  <p className="text-white font-semibold text-sm group-hover:text-emerald-400 transition-colors leading-snug">
+                    ₹15,000 vs ₹1,50,000 Website: Kya Farak Hai? (The Real Indian Business Guide)
+                  </p>
+                  <span className="text-zinc-500 text-xs mt-3 inline-flex items-center gap-1">
+                    Read Article <ArrowRight className="w-3 h-3" />
+                  </span>
+                </Link>
+                <Link
+                  href="/blog/why-your-google-business-profile-isnt-enough"
+                  className="group block bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 transition-all no-underline"
+                >
+                  <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">Local SEO</p>
+                  <p className="text-white font-semibold text-sm group-hover:text-emerald-400 transition-colors leading-snug">
+                    Why Your Google Business Profile Isn&apos;t Enough for Leads in 2026
+                  </p>
+                  <span className="text-zinc-500 text-xs mt-3 inline-flex items-center gap-1">
+                    Read Article <ArrowRight className="w-3 h-3" />
+                  </span>
                 </Link>
               </div>
             </div>
