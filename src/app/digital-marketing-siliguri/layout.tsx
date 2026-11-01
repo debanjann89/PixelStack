@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing Agency in Siliguri | Grow Your Business — D&B Digitals',
+  title: 'Best Digital Marketing Agency & Services in Siliguri | D&B Digitals',
   description:
-    'Top digital marketing agency in Siliguri & North Bengal. Website, SEO, social media, video, and graphic design — all under one roof. D&B Digitals delivers real results for local businesses.',
+    'Looking for the best digital marketing company in Siliguri? D&B Digitals provides SEO, Facebook marketing, website design, and lead generation for North Bengal businesses.',
   keywords:
-    'digital marketing siliguri, digital marketing agency north bengal, online marketing siliguri, digital marketing west bengal, best digital marketing company siliguri',
+    'digital marketing agency in siliguri, best digital marketing company in siliguri, digital marketing services in siliguri, digital marketing company in siliguri, digital marketing service provider in siliguri, digital marketing siliguri, online marketing north bengal',
   alternates: {
     canonical: 'https://dnbdigitals.in/digital-marketing-siliguri',
   },
   openGraph: {
-    title: 'Digital Marketing Agency in Siliguri | D&B Digitals',
+    title: 'Best Digital Marketing Agency in Siliguri | D&B Digitals',
     description:
-      'Top digital marketing agency in Siliguri & North Bengal. Website, SEO, social media, video, and graphic design — all under one roof.',
+      'Top digital marketing service provider in Siliguri & North Bengal. Website, SEO, social media, video, and graphic design — all under one roof.',
     url: 'https://dnbdigitals.in/digital-marketing-siliguri',
     siteName: 'D&B Digitals',
     locale: 'en_IN',

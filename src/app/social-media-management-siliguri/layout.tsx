@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Social Media Management in Siliguri | Instagram & Facebook — D&B Digitals',
+  title: 'Social Media & Facebook Marketing Agency in Siliguri | D&B Digitals',
   description:
-    'Professional social media management for Siliguri businesses. Instagram reels, Facebook posts, graphic design, and growth strategy. D&B Digitals helps you build a brand online. WhatsApp now.',
+    'Top social media and Facebook marketing agency in Siliguri. Instagram reels, Meta advertising, content creation, and lead generation for local businesses. WhatsApp now.',
   keywords:
-    'social media management siliguri, instagram management siliguri, facebook marketing north bengal, social media agency siliguri, content creation siliguri',
+    'social media management siliguri, facebook marketing in siliguri, facebook advertising company siliguri, facebook ad agency in siliguri, top facebook marketing agency siliguri, instagram management siliguri, social media agency siliguri',
   alternates: {
     canonical: 'https://dnbdigitals.in/social-media-management-siliguri',
   },
   openGraph: {
-    title: 'Social Media Management in Siliguri | Instagram & Facebook — D&B Digitals',
+    title: 'Social Media & Facebook Marketing Agency in Siliguri | D&B Digitals',
     description:
-      'Professional social media management for Siliguri businesses. Instagram reels, Facebook posts, graphic design, and growth strategy.',
+      'Professional social media and Facebook advertising services for Siliguri & North Bengal businesses. Turn followers into paying clients.',
     url: 'https://dnbdigitals.in/social-media-management-siliguri',
     siteName: 'D&B Digitals',
     locale: 'en_IN',
