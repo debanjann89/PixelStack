@@ -24,18 +24,21 @@ const FOOTER_INDUSTRIES = [
   { name: 'Real Estate', path: '/industries/real-estate-website-development' },
 ];
 
-const FOOTER_LOCATIONS = [
-  { name: 'Siliguri & North Bengal', path: '/web-design-siliguri' },
-  { name: 'Kolkata Metro', path: '/web-design-kolkata' },
-  { name: 'West Bengal Hub', path: '/web-design-west-bengal' },
-  { name: 'All India', path: '/web-design-india' },
+const FOOTER_NATIONAL_SERVICES = [
+  { name: 'Web Development India', path: '/web-design-india' },
+  { name: 'Digital Marketing India', path: '/digital-marketing-india' },
+  { name: 'SEO Services India', path: '/seo-services-india' },
+  { name: 'Social Media Management India', path: '/social-media-management-india' },
 ];
 
-const FOOTER_SERVICES = [
-  { name: 'SEO Services – Siliguri', path: '/seo-services-siliguri' },
-  { name: 'Social Media Management', path: '/social-media-management-siliguri' },
-  { name: 'Digital Marketing – Siliguri', path: '/digital-marketing-siliguri' },
-  { name: 'Graphic Design – Kolkata', path: '/graphic-design-kolkata' },
+const FOOTER_LOCATIONS = [
+  { name: 'Siliguri & North Bengal', path: '/web-design-siliguri' },
+  { name: 'Siliguri Digital Marketing', path: '/digital-marketing-siliguri' },
+  { name: 'Siliguri SEO Services', path: '/seo-services-siliguri' },
+  { name: 'Siliguri Social Media', path: '/social-media-management-siliguri' },
+  { name: 'Kolkata Web Design', path: '/web-design-kolkata' },
+  { name: 'Kolkata Graphic Design', path: '/graphic-design-kolkata' },
+  { name: 'West Bengal Hub', path: '/web-design-west-bengal' },
 ];
 
 export default function Footer() {
@@ -101,14 +104,38 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Row 2: Regional Service Locations */}
+        {/* Row 2: Pan-India Digital Services */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center justify-between pt-6 border-t border-zinc-900/40">
+          <div className="md:col-span-4">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-violet-400 block mb-1">
+              National Services (India)
+            </span>
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              Full-service custom web development, Google SEO ranking, and Meta advertising nationwide.
+            </p>
+          </div>
+          <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-2.5">
+            {FOOTER_NATIONAL_SERVICES.map((svc) => (
+              <Link
+                key={svc.path}
+                href={svc.path}
+                className="text-xs text-zinc-300 hover:text-violet-400 transition-colors flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+                {svc.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 3: Regional Service Locations */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center justify-between pt-6 border-t border-zinc-900/40">
           <div className="md:col-span-4">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 block mb-1">
               Regional Locations
             </span>
             <p className="text-xs text-zinc-500 leading-relaxed">
-              Localized web design, Google SEO, and digital consulting across West Bengal and India.
+              Localized agency hubs across Siliguri, Kolkata, and North Bengal.
             </p>
           </div>
           <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-2.5">
@@ -120,30 +147,6 @@ export default function Footer() {
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                 {loc.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Row 3: Digital Services */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center justify-between pt-6 border-t border-zinc-900/40">
-          <div className="md:col-span-4">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-violet-400 block mb-1">
-              Digital Services
-            </span>
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              SEO, social media, graphic design, and full digital marketing for Indian businesses.
-            </p>
-          </div>
-          <div className="md:col-span-8 flex flex-wrap items-center md:justify-end gap-x-6 gap-y-2.5">
-            {FOOTER_SERVICES.map((svc) => (
-              <Link
-                key={svc.path}
-                href={svc.path}
-                className="text-xs text-zinc-300 hover:text-violet-400 transition-colors flex items-center gap-1.5"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
-                {svc.name}
               </Link>
             ))}
           </div>

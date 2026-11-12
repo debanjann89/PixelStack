@@ -12,23 +12,25 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://dnbdigitals.in";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Web Design, SEO & Digital Marketing Agency in Siliguri — D&B Digitals",
+    default: "Web Design, SEO & Digital Marketing Agency in India — D&B Digitals",
     template: "%s | D&B Digitals",
   },
   description:
-    "D&B Digitals is a digital marketing agency in Siliguri, India. We build high-speed websites, do SEO, social media management, graphic design & video editing for Indian businesses. WhatsApp us today.",
+    "D&B Digitals is a full-service digital marketing, SEO, and custom web development agency in India. We engineer high-speed Next.js websites, rank brands #1 on Google, and manage social media nationwide. WhatsApp us.",
   keywords: [
     "D&B Digitals",
     "DNB Digitals",
-    "web design agency Siliguri",
-    "digital marketing agency Siliguri",
-    "SEO services Siliguri",
-    "social media management India",
-    "graphic design Kolkata",
-    "website design India",
-    "web developer North Bengal",
+    "digital marketing agency India",
+    "web design company India",
+    "SEO services India",
+    "social media management agency India",
+    "custom web development India",
+    "best website designers in India",
+    "web development company India",
+    "SEO agency India",
+    "web design Siliguri",
     "digital marketing West Bengal",
-    "website design company Siliguri",
+    "graphic design Kolkata",
     "Debanjan Amin",
     "Banashree Das"
   ],
@@ -56,9 +58,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Web Design, SEO & Digital Marketing Agency in Siliguri — D&B Digitals",
+    title: "Web Design, SEO & Digital Marketing Agency in India — D&B Digitals",
     description:
-      "D&B Digitals builds high-speed websites, handles SEO, social media, graphic design & video editing for businesses across India. Based in Siliguri, West Bengal.",
+      "D&B Digitals builds high-speed websites, handles SEO, social media, graphic design & performance marketing for businesses across India. Fast delivery, transparent quotes.",
     url: SITE_URL,
     siteName: "D&B Digitals",
     locale: "en_IN",
@@ -66,9 +68,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Design, SEO & Digital Marketing Agency in Siliguri — D&B Digitals",
+    title: "Web Design, SEO & Digital Marketing Agency in India — D&B Digitals",
     description:
-      "D&B Digitals builds high-speed websites, handles SEO, social media, graphic design & video editing for businesses across India. Based in Siliguri, West Bengal.",
+      "D&B Digitals builds high-speed websites, handles SEO, social media, graphic design & performance marketing for businesses across India. Fast delivery, transparent quotes.",
     creator: "@DBDigitals",
   },
   robots: {
@@ -153,7 +155,11 @@ export default function RootLayout({
       { "@type": "Country", "name": "India" },
       { "@type": "State", "name": "West Bengal" },
       { "@type": "City", "name": "Siliguri" },
-      { "@type": "City", "name": "Kolkata" }
+      { "@type": "City", "name": "Kolkata" },
+      { "@type": "City", "name": "Delhi" },
+      { "@type": "City", "name": "Mumbai" },
+      { "@type": "City", "name": "Bangalore" },
+      { "@type": "City", "name": "Hyderabad" }
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",

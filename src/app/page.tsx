@@ -85,9 +85,9 @@ function ScrollReveal({ children, delay = 0 }: { children: React.ReactNode; dela
 // ─── Data ────────────────────────────────────────────────
 const SERVICES = [
   { num: '01', name: 'Web Development', desc: 'Custom Next.js websites built for Indian businesses & high conversions.', icon: Code, href: '/web-design-india' },
-  { num: '02', name: 'SEO Optimization', desc: 'Rank on Google Page 1 with local Siliguri & pan-India SEO.', icon: Search, href: '/seo-services-siliguri' },
-  { num: '03', name: 'Social Media & Reels', desc: 'Instagram management, reels production & audience growth.', icon: Share2, href: '/social-media-management-siliguri' },
-  { num: '04', name: 'Digital Marketing', desc: 'End-to-end campaigns, Meta ads & customer acquisition funnels.', icon: Megaphone, href: '/digital-marketing-siliguri' },
+  { num: '02', name: 'SEO Optimization', desc: 'Rank on Google Page 1 with pan-India search optimization.', icon: Search, href: '/seo-services-india' },
+  { num: '03', name: 'Social Media & Reels', desc: 'Instagram management, reels production & nationwide audience growth.', icon: Share2, href: '/social-media-management-india' },
+  { num: '04', name: 'Digital Marketing', desc: 'End-to-end campaigns, Meta ads & customer acquisition funnels.', icon: Megaphone, href: '/digital-marketing-india' },
   { num: '05', name: 'Graphic Design', desc: 'Brand identity, logos, packaging & scroll-stopping creatives.', icon: Layers, href: '/graphic-design-kolkata' },
   { num: '06', name: 'Website Redesign', desc: 'Transform slow, outdated WordPress/Wix sites into modern assets.', icon: RefreshCw, href: '/services' },
 ];
@@ -190,7 +190,7 @@ export default function HomePage() {
           className="px-4 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-zinc-400 text-xs font-medium uppercase tracking-[0.15em] mb-8 flex items-center gap-2"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          Web Design • SEO • Social Media • Siliguri &amp; India
+          Web Design • SEO • Social Media • India
         </motion.span>
 
         {/* Main headline — character split */}
@@ -208,7 +208,7 @@ export default function HomePage() {
           transition={{ duration: 0.8, delay: 2.4 }}
           className="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-12"
         >
-          High-performance custom websites, local SEO, and social media management engineered for Indian businesses — from Siliguri to pan-India.
+          High-performance custom Next.js websites, data-driven Google SEO, and social media growth engineered for ambitious businesses across India.
         </motion.p>
 
         {/* CTA buttons */}
